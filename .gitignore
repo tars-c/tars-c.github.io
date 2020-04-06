@@ -1,0 +1,13 @@
+*.gem
+*.gemspec
+*.sublime-project
+*.sublime-workspace
+*.yml
+.bundle
+.DS_Store
+.jekyll-cache
+.jekyll-metadata
+*.command
+*.json
+_*.js
+ba*.js
