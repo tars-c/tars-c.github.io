@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[MFC] 모달 및 모달리스 - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC] 모달 및 모달리스">
+
+
+  <meta name="author" content="타스 (TARS-C)">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="타스의 개발 블로그">
+<meta property="og:title" content="[MFC] 모달 및 모달리스">
+<meta property="og:url" content="https://tars-c.github.io/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/">
+
+
+  <meta property="og:description" content="[MFC] 모달 및 모달리스">
+
+
+
+  <meta property="og:image" content="https://tars-c.github.io/assets/images/profile_tars200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-04-10T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2019-04-12T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://tars-c.github.io/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "타스 (TARS-C)",
+      "url": "https://tars-c.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="타스의 개발 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          타스의 개발 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" >프로그래밍</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile_tars200.png" alt="타스 (TARS-C)" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">타스 (TARS-C)</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>아마추어 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea, KR</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Send to mail</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[MFC] 모달 및 모달리스">
+    <meta itemprop="description" content="[MFC] 모달 및 모달리스">
+    <meta itemprop="datePublished" content="2020-04-10T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2019-04-12T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] 모달 및 모달리스
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#서론">서론</a></li>
+  <li><a href="#모달-modal-설명">모달 (Modal) 설명</a></li>
+  <li><a href="#모달-modal-코드">모달 (Modal) 코드</a></li>
+  <li><a href="#모달리스-modeless-설명">모달리스 (Modeless) 설명</a></li>
+  <li><a href="#모달리스-modeless-코드">모달리스 (Modeless) 코드</a></li>
+  <li><a href="#쓸모-없는-결론">쓸모 없는 결론</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <h2 id="서론">서론</h2>
+<p>윈도우즈에서 사용되는 Dialog는 2가지 종류로 구분됩니다.<br />
+<code class="highlighter-rouge">Modal Dialog</code> 와 <code class="highlighter-rouge">Modeless Dialog</code>가 있습니다.<br />
+둘은 서로 비슷하면서 다른 특징을 가지고 있습니다.<br />
+윈도우즈에서 사용되는 Dialog는 부모 창이 종료되면 자동으로 종료되는 특징을 가지고 있습니다.<br /></p>
+
+<p>CDialog 타입의 객체를 생성했을 경우 메시지 및 이벤트 처리가 상당히 복잡할 수 있습니다.<br />
+CDialog, CDialogEx 클래스를 상속받아 자식 클래스를 만들어 이벤트를 처리하는 방식이 편하고 좋습니다.</p>
+
+<h2 id="모달-modal-설명">모달 (Modal) 설명</h2>
+<p>Modal Dialog의 특징은 Modal Dialog가 활성화 되었을 땐<br />
+Dialog가 종료될 때 까지 다른 창을 제어할 수 없는 <code class="highlighter-rouge">제어권 독점</code> 형태를 가지고 있습니다.<br /></p>
+
+<p>하나의 창에서만 작업을 처리하기에 프로그래밍이 매우 간편합니다.<br />
+사용자에게 중요한 입력을 무조건 받아야할 때 사용하면 유용합니다.<br />
+Modal Dialog의 대표적인 예시로는 MessageBox가 있습니다.</p>
+
+<p>생성에 사용되는 방식은 정적으로 변수를 선언하거나 동적할당으로 생성이 가능합니다.<br />
+MFC에서 DoModal() 함수를 이용하여 창을 생성합니다.<br />
+창 닫기 및 종료는 EndDialog() 함수를 이용합니다.<br />
+EndDialog() 함수를 호출한다고 할당했던 메모리가 자동을 해제되지는 않습니다.</p>
+
+<p>Modeless Dialog랑 다르게 창이 종료될 때 눌렀던 버튼에 해당하는 컨트롤ID 값을 반환합니다.<br />
+반환값을 이용해 조건을 검사하여 특정 버튼을 눌렀는지에 대해 검사할 수 있습니다.</p>
+
+<h2 id="모달-modal-코드">모달 (Modal) 코드</h2>
+<p>MFC View InitDialogEx(…) 함수에서 사용 되는 코드입니다.</p>
+
+<p>InitDialog() 함수가 아닌 InitDialogEx()를 사용하는 이유는<br />
+Based Dialog 환경에서 MainDialog가 생성된 후 바로 Dialog를 사용자에게 보여주려고 했지만,<br />
+Modal Dialog 특징으로 창에 제어권이 독점되어 OnCreate(), OnInitDialog() 함수 처리문에서<br />
+Modal Dialog를 생성해서 보여줘도 Main Dialog가 생성 되기 전에 Modal Dialog가 생성되서 나타나기 떄문에<br />
+PostMessage() 함수를 이용하여 사용자 정의 메시지(WM_USER)를 보내고 처리하여 함수를 확장한 것입니다.<br /></p>
+
+<p>Modal Dialog Create/Destroy 를 간단한 예시 코드로 알아보겠습니다.<br />
+ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입니다.<br /></p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 모달 다이얼로그 생성 (MainDialog.cpp)</span>
+<span class="n">LRESULT</span> <span class="n">MainDialog</span><span class="o">::</span><span class="n">OnInitDialogEx</span><span class="p">(</span><span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">ModalDlg_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ModalDialog</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this = 부모 윈도우</span>
+	<span class="n">ModalDlg_</span><span class="o">-&gt;</span><span class="n">DoModal</span><span class="p">();</span>
+	<span class="k">delete</span> <span class="n">ModalDlg_</span><span class="p">;</span>
+	<span class="n">ModalDlg_</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 왼쪽 마우스 클릭 시 Modal Dialog 닫기 (ModalDialog.cpp)</span>
+<span class="kt">void</span> <span class="n">ModalDialog</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">UINT</span> <span class="n">nFlags</span><span class="p">,</span> <span class="n">CPoint</span> <span class="n">point</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">EndDialog</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+	<span class="n">CDialogEx</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">nFlags</span><span class="p">,</span> <span class="n">point</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>EndDialog() 함수가 호출되면 DoModal() 함수가 해당하는 컨트롤 ID값을 반환 후 밑에 있는 코드들이 실행됩니다.</p>
+
+<h2 id="모달리스-modeless-설명">모달리스 (Modeless) 설명</h2>
+<p>Modeless Dialog의 특징은 창이 열리더라도<br />
+Dialog 종료와 상관없이 다른 창을 전환하여 사용할 수 있습니다.</p>
+
+<p>일반적인 프로그램은 Modeless Dialog 방식으로 작동됩니다.<br />
+사용자가 창을 전환할 수 있기에 다시 화면을 그리거나<br />
+창 전환시에 특정 이벤트 및 메시지가 발생할 수 있으므로 이를 고려하는 프로그래밍을 해야합니다.<br />
+Modeless Dialog의 예시로는 윈도우즈 메모장 찾기(Ctrl + F) Dialog입니다.<br /></p>
+
+<p>동일한 부모 윈도우를 기준으로 Modal Dialog와 Modeless Dialog를 생성했을 때<br />
+Modeless Dialog는 Modal Dialog 특징인 <code class="highlighter-rouge">제어권 독점에 상관없이 자유롭게 전환</code>할 수 있습니다.</p>
+
+<p>생성에 사용되는 방식은 동적할당으로만 가능하며<br />
+MFC에서 Create() 함수를 이용하여 메모리에 할당받아<br />
+ShowWindow() 함수를 이용하여 사용자에게 창을 보여줍니다.<br />
+창 닫기 및 종료는 DestroyWindow() 함수를 이용합니다.<br />
+DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 해제되지는 않습니다.</p>
+
+<h2 id="모달리스-modeless-코드">모달리스 (Modeless) 코드</h2>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// MainDialog.cpp</span>
+<span class="n">BOOL</span> <span class="n">MainDialog</span><span class="o">::</span><span class="n">OnInitDialog</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">CDialogEx</span><span class="o">::</span><span class="n">OnInitDialog</span><span class="p">();</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">ModelessDlg_</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">ModelessDlg_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ModalDialog</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this = 부모 윈도우</span>
+		<span class="n">ModelessDlg_</span><span class="o">-&gt;</span><span class="n">Create</span><span class="p">(</span><span class="n">IDD_MODELESS</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">ModelessDlg_</span><span class="o">-&gt;</span><span class="n">ShowWindow</span><span class="p">(</span><span class="n">SW_SHOW</span><span class="p">);</span>
+	<span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ModelessDialog.cpp</span>
+<span class="c1">// 왼쪽 마우스 클릭 시 Modeless Dialog 닫기</span>
+<span class="kt">void</span> <span class="n">ModelessDialog</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">UINT</span> <span class="n">nFlags</span><span class="p">,</span> <span class="n">CPoint</span> <span class="n">point</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">this</span><span class="o">-&gt;</span><span class="n">DestroyWindow</span><span class="p">();</span>
+	<span class="n">CDialogEx</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">nFlags</span><span class="p">,</span> <span class="n">point</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Modeless Dialog는 창이 종료되더라도 반환되는 ID값이 따로 없습니다.</p>
+
+<h2 id="쓸모-없는-결론">쓸모 없는 결론</h2>
+<p>간단한 코드와 함께 Modal과 Modeless에 대해 알아보았습니다.<br />
+간단히 아래에 특징들을 정리해보았습니다.</p>
+<ul>
+  <li>Dialog
+    <ul>
+      <li>Resource View에서 상속을 받아 클래스로 확장하여 생성하는 것이 편리하고 좋음</li>
+      <li>EndDialog(), DestroyWindow() 함수 사용과 별개로 할당받은 메모리는 해제해야함</li>
+    </ul>
+  </li>
+  <li>Modal
+    <ul>
+      <li>제어권 독점으로 인한 창 전환불가</li>
+      <li>InitDialog() 에서 생성하고 보여줄 시 Main Dialog 보여지기 전에 생성됨</li>
+      <li>사용자에게 중요한 것을 무조건 입력받을 때 사용 시 유용</li>
+    </ul>
+  </li>
+  <li>Modeleess
+    <ul>
+      <li>Modal과 반대로 창 전환 자유롭게 가능</li>
+      <li>동일한 부모를 기준으로 Modal Dialog가 보여지는 중에도 자유롭게 접근 가능</li>
+      <li>찾기, 바꾸기 같은 사용자에게 편리성을 가져다주는 창이 필요할 때 사용 시 유용</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<ul>
+  <li>오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.</li>
+</ul>
+
+<p>글 업데이트 내역:<br />
+– None.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#c" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#cpp" class="page__taxonomy-item" rel="tag">Cpp</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#dialog" class="page__taxonomy-item" rel="tag">Dialog</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#modal" class="page__taxonomy-item" rel="tag">Modal</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#modeless" class="page__taxonomy-item" rel="tag">Modeless</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%8B%A4%EC%9D%B4%EC%96%BC%EB%A1%9C%EA%B7%B8" class="page__taxonomy-item" rel="tag">다이얼로그</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%AA%A8%EB%8B%AC" class="page__taxonomy-item" rel="tag">모달</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4" class="page__taxonomy-item" rel="tag">모달리스</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%83%80%EC%8A%A4" class="page__taxonomy-item" rel="tag">타스</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" class="page__taxonomy-item" rel="tag">프로그래밍</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#mfc" class="page__taxonomy-item" rel="tag">MFC</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-12">April 12, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+%EB%AA%A8%EB%8B%AC+%EB%B0%8F+%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4%20https%3A%2F%2Ftars-c.github.io%2Fmfc%2FMFC_%25EB%25AA%25A8%25EB%258B%25AC%25EA%25B3%25BC-%25EB%25AA%25A8%25EB%258B%25AC%25EB%25A6%25AC%25EC%258A%25A4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2Fmfc%2FMFC_%25EB%25AA%25A8%25EB%258B%25AC%25EA%25B3%25BC-%25EB%25AA%25A8%25EB%258B%25AC%25EB%25A6%25AC%25EC%258A%25A4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2Fmfc%2FMFC_%25EB%25AA%25A8%25EB%258B%25AC%25EA%25B3%25BC-%25EB%25AA%25A8%25EB%258B%25AC%25EB%25A6%25AC%25EC%258A%25A4%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" class="pagination--pager" title="[C++] 멤버이니셜라이저(Member-Initializer)
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">Well begun is half done, aristotle</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" rel="permalink">[C++] 멤버이니셜라이저(Member-Initializer)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 10 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[C++] 멤버이니셜라이저(Member-Initializer)
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">Copyright 2020 타스 (TARS-C). Powered by <a href="https://github.com" rel="nofollow">Github.</a></div>
+      </footer>
+    </div>
+
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/assets/js/notify.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/4eee35f757.js"></script> -->
+  <script src="https://kit.fontawesome.com/194998b224.js" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://tars-c.github.io/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/mfc/MFC_모달과 모달리스"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tars-c-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+
+
+
+
+
+  </body>
+</html>
