@@ -337,7 +337,24 @@ PostMessage() 함수를 이용하여 사용자 정의 메시지(WM_USER)를 보�
 
 <p>Modal Dialog Create/Destroy 를 간단한 예시 코드로 알아보겠습니다.<br />
 ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입니다.<br /></p>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 모달 다이얼로그 생성 (MainDialog.cpp)</span>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre><span class="c1">// 모달 다이얼로그 생성 (MainDialog.cpp)</span>
 <span class="n">LRESULT</span> <span class="n">MainDialog</span><span class="o">::</span><span class="n">OnInitDialogEx</span><span class="p">(</span><span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">)</span>
 <span class="p">{</span>
 	<span class="n">ModalDlg_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ModalDialog</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this = 부모 윈도우</span>
@@ -353,7 +370,8 @@ ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입
 	<span class="n">EndDialog</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 	<span class="n">CDialogEx</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">nFlags</span><span class="p">,</span> <span class="n">point</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></figure>
+
 <p>EndDialog() 함수가 호출되면 DoModal() 함수가 해당하는 컨트롤 ID값을 반환 후 밑에 있는 코드들이 실행됩니다.</p>
 
 <h2 id="모달리스-modeless-설명">모달리스 (Modeless) 설명</h2>
@@ -375,13 +393,34 @@ ShowWindow() 함수를 이용하여 사용자에게 창을 보여줍니다.<br /
 DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 해제되지는 않습니다.</p>
 
 <h2 id="모달리스-modeless-코드">모달리스 (Modeless) 코드</h2>
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// MainDialog.cpp</span>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="c1">// MainDialog.cpp</span>
 <span class="n">BOOL</span> <span class="n">MainDialog</span><span class="o">::</span><span class="n">OnInitDialog</span><span class="p">()</span>
 <span class="p">{</span>
 	<span class="n">CDialogEx</span><span class="o">::</span><span class="n">OnInitDialog</span><span class="p">();</span>
 	<span class="k">if</span> <span class="p">(</span><span class="n">ModelessDlg_</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span>
 	<span class="p">{</span>
-		<span class="n">ModelessDlg_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ModalDialog</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this = 부모 윈도우</span>
+		<span class="n">ModelessDlg_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ModalDialog</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우</span>
 		<span class="n">ModelessDlg_</span><span class="o">-&gt;</span><span class="n">Create</span><span class="p">(</span><span class="n">IDD_MODELESS</span><span class="p">);</span>
 	<span class="p">}</span>
 	<span class="n">ModelessDlg_</span><span class="o">-&gt;</span><span class="n">ShowWindow</span><span class="p">(</span><span class="n">SW_SHOW</span><span class="p">);</span>
@@ -395,7 +434,8 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
 	<span class="k">this</span><span class="o">-&gt;</span><span class="n">DestroyWindow</span><span class="p">();</span>
 	<span class="n">CDialogEx</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">nFlags</span><span class="p">,</span> <span class="n">point</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div></div>
+</pre></td></tr></tbody></table></code></pre></figure>
+
 <p>Modeless Dialog는 창이 종료되더라도 반환되는 ID값이 따로 없습니다.</p>
 
 <h2 id="쓸모-없는-결론">쓸모 없는 결론</h2>
