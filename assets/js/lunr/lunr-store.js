@@ -8,4 +8,9 @@ var store = [{
         "excerpt":"서론 윈도우즈에서 사용되는 Dialog는 2가지 종류로 구분됩니다. Modal Dialog 와 Modeless Dialog가 있습니다. 둘은 서로 비슷하면서 다른 특징을 가지고 있습니다. 윈도우즈에서 사용되는 Dialog는 부모 창이 종료되면 자동으로 종료되는 특징을 가지고 있습니다. CDialog 타입의 객체를 생성했을 경우 메시지 및 이벤트 처리가 상당히 복잡할 수 있습니다. CDialog, CDialogEx 클래스를 상속받아 자식 클래스를...","categories": ["MFC"],
         "tags": ["타스","프로그래밍","Cpp","C++","MFC","모달","모달리스","다이얼로그","Modal","Modeless","Dialog"],
         "url": "https://tars-c.github.io/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/",
+        "teaser":null},{
+        "title": "[MFC] 파일 다이얼로그(CFileDialog)",
+        "excerpt":"서론 이 글에서는 CFileDialog가 제공하는 함수를 이용한 실습은 다루지 않습니다. MFC에서 사용자는 CFileDialog를 이용해 편리하게 파일을 저장하고 열 수 있습니다. 흔히 사용되는 메모장 프로그램에서도 FileDialog를 볼 수 있습니다. CFileDialog는 Modal Dialog 방식을 이용해 DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다. CFileDialog 인스턴스를 생성하여 사용자에게 FileDialog를 보여주고 파일을 선택하면 파일에 대한 정보를...","categories": ["MFC"],
+        "tags": ["타스","프로그래밍","Cpp","C++","MFC","Dialog","CFileDialog","파일다이얼로그","파일","CFile"],
+        "url": "https://tars-c.github.io/mfc/MFC_CFileDialog/",
         "teaser":null}]
