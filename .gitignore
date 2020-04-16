@@ -3,6 +3,7 @@ vendor/
 lun*.js
 ba*.js
 _*.js
+*.map.css
 *.command
 *.gemspec
 *.yml

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[MFC] 모달 및 모달리스(Modal and Modeless) - 타스의 개발 블로그</title>
-<meta name="description" content="[MFC] 모달 및 모달리스(Modal and Modeless)">
+<!-- begin _includes/seo.html --><title>[MFC] Modal &amp; Modeless Dialog : 설명 - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC] Modal &amp; Modeless Dialog : 설명">
 
 
   <meta name="author" content="타스 (TARS-C)">
@@ -13,11 +13,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
-<meta property="og:title" content="[MFC] 모달 및 모달리스(Modal and Modeless)">
-<meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/">
+<meta property="og:title" content="[MFC] Modal &amp; Modeless Dialog : 설명">
+<meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/">
 
 
-  <meta property="og:description" content="[MFC] 모달 및 모달리스(Modal and Modeless)">
+  <meta property="og:description" content="[MFC] Modal &amp; Modeless Dialog : 설명">
 
 
 
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/">
+<link rel="canonical" href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/">
 
 
 
@@ -271,15 +271,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[MFC] 모달 및 모달리스(Modal and Modeless)">
-    <meta itemprop="description" content="[MFC] 모달 및 모달리스(Modal and Modeless)">
+    <meta itemprop="headline" content="[MFC] Modal &amp; Modeless Dialog : 설명">
+    <meta itemprop="description" content="[MFC] Modal &amp; Modeless Dialog : 설명">
     <meta itemprop="datePublished" content="2020-04-12T00:00:00+09:00">
     <meta itemprop="dateModified" content="2019-04-12T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] 모달 및 모달리스(Modal and Modeless)
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] Modal &amp; Modeless Dialog : 설명
 </h1>
           
         </header>
@@ -303,7 +303,7 @@
         
         <h2 id="서론">서론</h2>
 <p>윈도우즈에서 사용되는 Dialog는 2가지 종류로 구분됩니다.<br />
-<code class="highlighter-rouge">Modal Dialog</code> 와 <code class="highlighter-rouge">Modeless Dialog</code>가 있습니다.</p>
+<code class="highlighter-rouge">Modal Dialog(모달)</code> 와 <code class="highlighter-rouge">Modeless Dialog(모달리스)</code>가 있습니다.</p>
 
 <p>둘은 서로 비슷하면서 다른 특징을 가지고 있습니다.<br />
 윈도우즈에서 사용되는 Dialog는 부모 창이 종료되면 자동으로 종료되는 특징을 가지고 있습니다.<br /></p>
@@ -337,8 +337,10 @@ Modal Dialog 특징으로 창에 제어권이 독점되어 OnCreate(), OnInitDia
 Modal Dialog를 생성해서 보여줘도 Main Dialog가 생성 되기 전에 Modal Dialog가 생성되서 나타나기 떄문에<br />
 PostMessage() 함수를 이용하여 사용자 정의 메시지(WM_USER)를 보내고 처리하여 함수를 확장한 것입니다.<br /></p>
 
-<p>Modal Dialog Create/Destroy 를 간단한 예시 코드로 알아보겠습니다.<br />
+<p>Modal Dialog를 사용자에게 띄우고 지우는 간단한 예시 코드로 알아보겠습니다.<br />
 ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입니다.<br /></p>
+
+<figcaption>MainDialog.cpp [ Modal Dialog 띄우기 ]</figcaption>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
@@ -348,16 +350,7 @@ ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입
 6
 7
 8
-9
-10
-11
-12
-13
-14
-15
-16
-</pre></td><td class="code"><pre><span class="c1">// 모달 다이얼로그 생성 (MainDialog.cpp)</span>
-<span class="n">LRESULT</span> <span class="n">MainDialog</span><span class="o">::</span><span class="n">OnInitDialogEx</span><span class="p">(</span><span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">)</span>
+</pre></td><td class="code"><pre><span class="n">LRESULT</span> <span class="n">MainDialog</span><span class="o">::</span><span class="n">OnInitDialogEx</span><span class="p">(</span><span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">)</span>
 <span class="p">{</span>
 	<span class="n">ModalDlg_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ModalDialog</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this = 부모 윈도우</span>
 	<span class="n">ModalDlg_</span><span class="o">-&gt;</span><span class="n">DoModal</span><span class="p">();</span>
@@ -365,9 +358,16 @@ ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입
 	<span class="n">ModalDlg_</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">;</span>
 	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
-<span class="c1">// 왼쪽 마우스 클릭 시 Modal Dialog 닫기 (ModalDialog.cpp)</span>
-<span class="kt">void</span> <span class="n">ModalDialog</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">UINT</span> <span class="n">nFlags</span><span class="p">,</span> <span class="n">CPoint</span> <span class="n">point</span><span class="p">)</span>
+<figcaption>ModalDialog.cpp [ 왼쪽 마우스 클릭 시 Modal Dialog 닫기 ]</figcaption>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="kt">void</span> <span class="n">ModalDialog</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">UINT</span> <span class="n">nFlags</span><span class="p">,</span> <span class="n">CPoint</span> <span class="n">point</span><span class="p">)</span>
 <span class="p">{</span>
 	<span class="n">EndDialog</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 	<span class="n">CDialogEx</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">nFlags</span><span class="p">,</span> <span class="n">point</span><span class="p">);</span>
@@ -396,6 +396,8 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
 
 <h2 id="4-모달리스-modeless-코드">4. 모달리스 (Modeless) 코드</h2>
 
+<figcaption>MainDialog.cpp [ Modeless Dialog 띄우기 ]</figcaption>
+
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
@@ -407,30 +409,28 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
 9
 10
 11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-</pre></td><td class="code"><pre><span class="c1">// MainDialog.cpp</span>
-<span class="n">BOOL</span> <span class="n">MainDialog</span><span class="o">::</span><span class="n">OnInitDialog</span><span class="p">()</span>
+</pre></td><td class="code"><pre><span class="n">BOOL</span> <span class="n">MainDialog</span><span class="o">::</span><span class="n">OnInitDialog</span><span class="p">()</span>
 <span class="p">{</span>
 	<span class="n">CDialogEx</span><span class="o">::</span><span class="n">OnInitDialog</span><span class="p">();</span>
 	<span class="k">if</span> <span class="p">(</span><span class="n">ModelessDlg_</span> <span class="o">==</span> <span class="nb">nullptr</span><span class="p">)</span>
 	<span class="p">{</span>
-		<span class="n">ModelessDlg_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ModalDialog</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우</span>
+		<span class="n">ModelessDlg_</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ModelessDialog</span><span class="p">(</span><span class="k">this</span><span class="p">);</span> <span class="c1">// this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModelessDialog(this); // this = 부모 윈도우</span>
 		<span class="n">ModelessDlg_</span><span class="o">-&gt;</span><span class="n">Create</span><span class="p">(</span><span class="n">IDD_MODELESS</span><span class="p">);</span>
 	<span class="p">}</span>
 	<span class="n">ModelessDlg_</span><span class="o">-&gt;</span><span class="n">ShowWindow</span><span class="p">(</span><span class="n">SW_SHOW</span><span class="p">);</span>
 	<span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
 <span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
-<span class="c1">// ModelessDialog.cpp</span>
-<span class="c1">// 왼쪽 마우스 클릭 시 Modeless Dialog 닫기</span>
+<figcaption>ModelessDialog.cpp [ 왼쪽 마우스 클릭 시 Modeless Dialog 닫기 ]</figcaption>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="c1">// 왼쪽 마우스 클릭 시 Modeless Dialog 닫기</span>
 <span class="kt">void</span> <span class="n">ModelessDialog</span><span class="o">::</span><span class="n">OnLButtonDown</span><span class="p">(</span><span class="n">UINT</span> <span class="n">nFlags</span><span class="p">,</span> <span class="n">CPoint</span> <span class="n">point</span><span class="p">)</span>
 <span class="p">{</span>
 	<span class="k">this</span><span class="o">-&gt;</span><span class="n">DestroyWindow</span><span class="p">();</span>
@@ -554,6 +554,10 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     
       
       
+      <a href="/categories/#dialog" class="page__taxonomy-item" rel="tag">Dialog</a><span class="sep">, </span>
+    
+      
+      
       <a href="/categories/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
     
       
@@ -574,22 +578,22 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+%EB%AA%A8%EB%8B%AC+%EB%B0%8F+%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4%28Modal+and+Modeless%29%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2FMFC_%25EB%25AA%25A8%25EB%258B%25AC%25EA%25B3%25BC-%25EB%25AA%25A8%25EB%258B%25AC%25EB%25A6%25AC%25EC%258A%25A4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+Modal+%26+Modeless+Dialog+%3A+%EC%84%A4%EB%AA%85%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FMFC_Modal-and-Modeless-%25EC%2584%25A4%25EB%25AA%2585%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2FMFC_%25EB%25AA%25A8%25EB%258B%25AC%25EA%25B3%25BC-%25EB%25AA%25A8%25EB%258B%25AC%25EB%25A6%25AC%25EC%258A%25A4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FMFC_Modal-and-Modeless-%25EC%2584%25A4%25EB%25AA%2585%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2FMFC_%25EB%25AA%25A8%25EB%258B%25AC%25EA%25B3%25BC-%25EB%25AA%25A8%25EB%258B%25AC%25EB%25A6%25AC%25EC%258A%25A4%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FMFC_Modal-and-Modeless-%25EC%2584%25A4%25EB%25AA%2585%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" class="pagination--pager" title="[C++] 멤버이니셜라이저(Member-Initializer)
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" class="pagination--pager" title="[C++] Member Initializer : 설명
 ">Previous</a>
     
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_CFileDialog/" class="pagination--pager" title="[MFC] 파일 다이얼로그(CFileDialog)
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/" class="pagination--pager" title="[MFC] CFileDialog : 설명 및 파일확장명 필터
 ">Next</a>
     
   </nav>
@@ -623,7 +627,7 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_CFileDialog/" rel="permalink">[MFC] 파일 다이얼로그(CFileDialog)
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/" rel="permalink">[MFC] CFileDialog : 시작 디렉토리 변경
 </a>
       
     </h2>
@@ -631,10 +635,10 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     
   -->
   
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 13 2020</p>
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 16 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[MFC] 파일 다이얼로그(CFileDialog)
+  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 시작 디렉토리 변경
 </p>
   </article>
 </div>
@@ -649,7 +653,59 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" rel="permalink">[C++] 멤버이니셜라이저(Member-Initializer)
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="permalink">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 16 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/" rel="permalink">[MFC] CFileDialog : 설명 및 파일확장명 필터
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 13 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 설명 및 파일확장명 필터
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" rel="permalink">[C++] Member Initializer : 설명
 </a>
       
     </h2>
@@ -660,7 +716,7 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
   <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 10 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[C++] 멤버이니셜라이저(Member-Initializer)
+  <p class="archive__item-excerpt" itemprop="description">[C++] Member Initializer : 설명
 </p>
   </article>
 </div>
@@ -726,8 +782,8 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_모달과 모달리스"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal and Modeless - 설명"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     
     (function() { // DON'T EDIT BELOW THIS LINE

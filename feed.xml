@@ -1,4 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-04-16T12:57:48+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] 파일 다이얼로그(CFileDialog)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_CFileDialog/" rel="alternate" type="text/html" title="[MFC] 파일 다이얼로그(CFileDialog)" /><published>2020-04-13T00:00:00+09:00</published><updated>2019-04-16T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_CFileDialog</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_CFileDialog/">&lt;h3 id=&quot;관련-링크&quot;&gt;관련 링크&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-04-16T23:40:04+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)" /><published>2020-04-16T00:00:00+09:00</published><updated>2019-04-16T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%84%A0%ED%83%9D%EB%90%9C%20%ED%8C%8C%EC%9D%BC%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,%20%ED%99%95%EC%9E%A5%EB%AA%85,%20%EA%B2%BD%EB%A1%9C)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;CFileDialog 클래스에서 제공해주는 함수가 여려가지 있습니다.&lt;br /&gt;
+그중에 FileDialog에서 파일 정보를 가져오는 자주 쓰이는 함수가 있습니다&lt;/p&gt;
+
+&lt;p&gt;이 글에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;FileDialog에서 선택된 파일 정보를 가져오는 함수&lt;/code&gt;에 대해 알아보겠습니다.&lt;br /&gt;
+아래 모든 함수들이 반환하는 타입은 CString입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1-파일-이름-가져오기-확장명-포함&quot;&gt;1. 파일 이름 가져오기 (확장명 포함)&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;확장명이 포함된 파일 이름&lt;/code&gt;을 가져오는 함수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;GetFileName()&lt;/code&gt; 입니다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetFileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetFileTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;2-파일-이름-가져오기-확장명-미포함&quot;&gt;2. 파일 이름 가져오기 (확장명 미포함)&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;확장명이 미포함된 파일 이름&lt;/code&gt;만 가져오는 함수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;GetFileTitle()&lt;/code&gt; 입니다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetFileTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetFileTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;3-파일-확장명-가져오기&quot;&gt;3. 파일 확장명 가져오기&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;확장명&lt;/code&gt;을 가져오는 함수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;GetFileExt()&lt;/code&gt; 입니다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetFileExt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetFileExt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;4-파일-경로-가져오기&quot;&gt;4. 파일 경로 가져오기&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;파일 경로&lt;/code&gt;를 가져오는 함수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;GetFolderPath()&lt;/code&gt; 입니다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetFileExt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetFolderPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;5-함수를-이용한-결과-출력&quot;&gt;5. 함수를 이용한 결과 출력&lt;/h2&gt;
+
+&lt;p&gt;파일 정보를 가져오는 함수를 이용해 MainDialog에서 간단히 출력해보겠습니다.&lt;br /&gt;
+솔루션 이름: MainDialog&lt;br /&gt;
+프로젝트 형태: Dialog 기반&lt;/p&gt;
+
+&lt;p&gt;경로 ‘C:\Temp’ 폴더에 존재하는 Text.txt 파일을 선택해보겠습니다.&lt;br /&gt;
+결과:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CFileDialog/MFC_ResultFileInfo.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;글 업데이트 내역:&lt;br /&gt;
+– None.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일" /><category term="이름" /><category term="확장명" /><category term="경로" /><category term="가져오기" /><category term="정보가져오기" /><summary type="html">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)</summary></entry><entry><title type="html">[MFC] CFileDialog : 시작 디렉토리 변경</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 시작 디렉토리 변경" /><published>2020-04-16T00:00:00+09:00</published><updated>2019-04-16T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%8B%9C%EC%9E%91%20%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%20%EB%B3%80%EA%B2%BD</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/">&lt;p&gt;CFileDialog를 이용해 FileDialog를 사용자에게 보여줄 때 &lt;br /&gt;
+Visual Studio에서 작업했을 경우 FileDialog 렉토리가 현재 프로젝트로 설정되어 있습니다.&lt;/p&gt;
+
+&lt;p&gt;CFileDialog 객체가 가지고 있는  멤버변수 &lt;code class=&quot;highlighter-rouge&quot;&gt;m_ofn.lpstrInitialDir&lt;/code&gt; 값을 변경하여&lt;br /&gt;
+FileDialog 시작 디렉토리를 변경할 수 있습니다.&lt;br /&gt;
+디렉토리를 변경하여 해당 디렉토리에 존재하는 파일과 폴더를 보여줄 수 있습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;간단한 코드를 작성해보겠습니다.&lt;/p&gt;
+&lt;figcaption&gt;MainDialog.cpp [ FileDialog 초기 디렉토리 변경 ]&lt;/figcaption&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;LPCTSTR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;All Files (*.*)|*.*;||&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_ofn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lpstrInitialDir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Program Files&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DoModal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;br /&gt;
+결과:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CFileDialog/MFC_CFileDialog_InitDirectory.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;글 업데이트 내역:&lt;br /&gt;
+– None.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="디렉토리 변경" /><category term="경로 변경" /><category term="디렉토리 변경" /><category term="기본경로" /><category term="처음경로" /><category term="경로" /><summary type="html">[MFC] CFileDialog : 시작 디렉토리 변경</summary></entry><entry><title type="html">[MFC] CFileDialog : 설명 및 파일확장명 필터</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 설명 및 파일확장명 필터" /><published>2020-04-13T00:00:00+09:00</published><updated>2019-04-16T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%84%A4%EB%AA%85</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/">&lt;h2 id=&quot;관련-링크&quot;&gt;관련 링크&lt;/h2&gt;
+&lt;p&gt;없음&lt;/p&gt;
 
 &lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;이 글에서는 CFileDialog가 제공하는 함수 및 변수를 이용한 실습은 다루지 않습니다.&lt;/strong&gt;&lt;/p&gt;
@@ -6,14 +102,15 @@
 &lt;p&gt;MFC에서 사용자는 CFileDialog를 이용해 편리하게 파일을 저장하고 열 수 있습니다.&lt;br /&gt;
 흔히 사용되는 메모장 프로그램에서도 FileDialog를 볼 수 있습니다.&lt;br /&gt;
 CFileDialog는 Modal Dialog 방식을 이용해&lt;br /&gt;
-DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt;/p&gt;
+DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.
+인스턴스를 생성 후 EndDialog() 함수를 호출하여 객체를 소멸하지 않아도 자동으로 처리됩니다.&lt;/p&gt;
 
 &lt;p&gt;CFileDialog 인스턴스를 생성하여 사용자에게 FileDialog를 보여주고&lt;br /&gt;
-파일을 선택하면 파일에 대한 정보를 CFileDialog 인스턴스로 가져오게 됩니다.&lt;/p&gt;
+파일을 선택하면 파일에 대한 정보를 CFileDialog 인스턴스로 가져오게 됩니다.&lt;br /&gt;
+인스턴스 멤버변수에 접근하여 관련된 정보를 사용할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;인스턴스 멤버변수에 접근하여 관련된 정보를 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;figcaption&gt;CFileDialog 함수&lt;/figcaption&gt;
+&lt;p&gt;함수 매개변수를 살펴봅시다.&lt;/p&gt;
+&lt;figcaption&gt;CFileDialog Function Arguments&lt;/figcaption&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -54,7 +151,7 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
 &lt;p&gt;하나씩 풀어봅시다.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;파일을 여는건 TRUE, 저장하는건 FALSE입니다.&lt;/li&gt;
-  &lt;li&gt;기본확장자는 저장시에만 사용되며 필터링이 모든 파일(*.*)인 상태에서 사용가능합니다.&lt;br /&gt;  단순히 파일을 저장하는 것이라면 NULL을 추천드립니다.&lt;/li&gt;
+  &lt;li&gt;기본확장자는 저장시에만 사용되며 필터링이 모든 파일(*.*)인 상태에서 사용가능합니다.&lt;br /&gt;  단순히 파일을 저장하는 것이라면 NULL을 추천드립니다.&lt;/li&gt;
   &lt;li&gt;기본파일명은 저장 및 열기할 때 아래 ‘파일 이름’ 란에 &lt;br /&gt;기본적으로 적혀있는 파일 이름을 나타냅니다.&lt;/li&gt;
   &lt;li&gt;OPENFILENAME 구조체에 해당하는 플래그 값을 의미합니다.&lt;/li&gt;
   &lt;li&gt;사용자가 해당 확장명을 가진 파일만 볼 수 있게 해주는 파일 확장명 필터입니다.&lt;/li&gt;
@@ -114,12 +211,12 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
 &lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 1개의 필터에서 2개의 파일 확장명을 필터링해보겠습니다.&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Files&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;txt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;txt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JPG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Files&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jpg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jpg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;필터를 사용하게 되면 텍스트(&lt;em&gt;.txt) 그리고 이미지(&lt;/em&gt;.jpg) 파일이 입력한 필터에 맞게 필터링 되어&lt;br /&gt;
+&lt;p&gt;필터를 사용하게 되면 텍스트(*.txt) 그리고 이미지(*.jpg) 파일이 입력한 필터에 맞게 필터링 되어&lt;br /&gt;
 폴더를 제외하고 해당하는 확장자를 가진 파일에 대해서만 File Dialog 파일 리스트에서 보여지게 됩니다.&lt;/p&gt;
 
-&lt;h1 id=&quot;cfiledialog-생성&quot;&gt;CFileDialog 생성&lt;/h1&gt;
-
-&lt;figcaption&gt;MainDialog.cpp&lt;/figcaption&gt;
+&lt;h2 id=&quot;cfiledialog-생성&quot;&gt;CFileDialog 생성&lt;/h2&gt;
+&lt;p&gt;FileDialog 생성 코드를 적어보겠습니다.&lt;/p&gt;
+&lt;figcaption&gt;MainDialog.cpp [ FileDialog 띄우기(저장모드) ]&lt;/figcaption&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -127,9 +224,7 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
 4
 5
 6
-7
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// 필터를 이용한 FileDialog 띄우기 (저장모드)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;LPCTSTR&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;filesFilter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;All Files (*.*)| *.*; ||&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dlg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;txt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myFile&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filesFilter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -137,16 +232,14 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
+&lt;figcaption&gt;MainDialog.cpp [ 간단하게 FileDialog 띄우기(저장모드) ]&lt;/figcaption&gt;
+
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
 3
 4
 5
-6
-7
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// MainDialog.cpp&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 필터없이 가장 간단한 코드로 FileDialog 띄우기 (저장모드)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DoModal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
@@ -159,9 +252,9 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
 &lt;/ul&gt;
 
 &lt;p&gt;글 업데이트 내역:&lt;br /&gt;
-– 2020. 04. 16: 파일명 주석 제거&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일다이얼로그" /><category term="파일" /><category term="CFile" /><summary type="html">[MFC] 파일 다이얼로그(CFileDialog)</summary></entry><entry><title type="html">[MFC] 모달 및 모달리스(Modal and Modeless)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/" rel="alternate" type="text/html" title="[MFC] 모달 및 모달리스(Modal and Modeless)" /><published>2020-04-12T00:00:00+09:00</published><updated>2019-04-12T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC%20%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+– 2020. 04. 16: 파일명 주석 제거, 설명 추가&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일다이얼로그" /><category term="파일" /><category term="CFile" /><summary type="html">[MFC] CFileDialog : 설명 및 파일확장명 필터</summary></entry><entry><title type="html">[MFC] Modal &amp;amp; Modeless Dialog : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/" rel="alternate" type="text/html" title="[MFC] Modal &amp; Modeless Dialog : 설명" /><published>2020-04-12T00:00:00+09:00</published><updated>2019-04-12T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal%20and%20Modeless%20-%20%EC%84%A4%EB%AA%85</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;윈도우즈에서 사용되는 Dialog는 2가지 종류로 구분됩니다.&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Modal Dialog&lt;/code&gt; 와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Modeless Dialog&lt;/code&gt;가 있습니다.&lt;/p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Modal Dialog(모달)&lt;/code&gt; 와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Modeless Dialog(모달리스)&lt;/code&gt;가 있습니다.&lt;/p&gt;
 
 &lt;p&gt;둘은 서로 비슷하면서 다른 특징을 가지고 있습니다.&lt;br /&gt;
 윈도우즈에서 사용되는 Dialog는 부모 창이 종료되면 자동으로 종료되는 특징을 가지고 있습니다.&lt;br /&gt;&lt;/p&gt;
@@ -195,8 +288,10 @@ Modal Dialog 특징으로 창에 제어권이 독점되어 OnCreate(), OnInitDia
 Modal Dialog를 생성해서 보여줘도 Main Dialog가 생성 되기 전에 Modal Dialog가 생성되서 나타나기 떄문에&lt;br /&gt;
 PostMessage() 함수를 이용하여 사용자 정의 메시지(WM_USER)를 보내고 처리하여 함수를 확장한 것입니다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;Modal Dialog Create/Destroy 를 간단한 예시 코드로 알아보겠습니다.&lt;br /&gt;
+&lt;p&gt;Modal Dialog를 사용자에게 띄우고 지우는 간단한 예시 코드로 알아보겠습니다.&lt;br /&gt;
 ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;figcaption&gt;MainDialog.cpp [ Modal Dialog 띄우기 ]&lt;/figcaption&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -206,16 +301,7 @@ ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입
 6
 7
 8
-9
-10
-11
-12
-13
-14
-15
-16
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// 모달 다이얼로그 생성 (MainDialog.cpp)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// this = 부모 윈도우&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DoModal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
@@ -223,9 +309,16 @@ ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입
 	&lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nullptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;span class=&quot;c1&quot;&gt;// 왼쪽 마우스 클릭 시 Modal Dialog 닫기 (ModalDialog.cpp)&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UINT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;figcaption&gt;ModalDialog.cpp [ 왼쪽 마우스 클릭 시 Modal Dialog 닫기 ]&lt;/figcaption&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UINT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;EndDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;CDialogEx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -254,6 +347,8 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
 
 &lt;h2 id=&quot;4-모달리스-modeless-코드&quot;&gt;4. 모달리스 (Modeless) 코드&lt;/h2&gt;
 
+&lt;figcaption&gt;MainDialog.cpp [ Modeless Dialog 띄우기 ]&lt;/figcaption&gt;
+
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
 3
@@ -265,30 +360,28 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
 9
 10
 11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// MainDialog.cpp&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;BOOL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;BOOL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;CDialogEx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nullptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModelessDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModelessDialog(this); // this = 부모 윈도우&lt;/span&gt;
 		&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IDD_MODELESS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ShowWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SW_SHOW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;span class=&quot;c1&quot;&gt;// ModelessDialog.cpp&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 왼쪽 마우스 클릭 시 Modeless Dialog 닫기&lt;/span&gt;
+&lt;figcaption&gt;ModelessDialog.cpp [ 왼쪽 마우스 클릭 시 Modeless Dialog 닫기 ]&lt;/figcaption&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// 왼쪽 마우스 클릭 시 Modeless Dialog 닫기&lt;/span&gt;
 &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModelessDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UINT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DestroyWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
@@ -330,7 +423,7 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
 &lt;/ul&gt;
 
 &lt;p&gt;글 업데이트 내역:&lt;br /&gt;
-– None.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="모달" /><category term="모달리스" /><category term="다이얼로그" /><category term="Modal" /><category term="Modeless" /><category term="Dialog" /><summary type="html">[MFC] 모달 및 모달리스(Modal and Modeless)</summary></entry><entry><title type="html">[C++] 멤버이니셜라이저(Member-Initializer)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" rel="alternate" type="text/html" title="[C++] 멤버이니셜라이저(Member-Initializer)" /><published>2020-04-10T00:00:00+09:00</published><updated>2019-04-13T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+– None.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="모달" /><category term="모달리스" /><category term="다이얼로그" /><category term="Modal" /><category term="Modeless" /><category term="Dialog" /><summary type="html">[MFC] Modal &amp; Modeless Dialog : 설명</summary></entry><entry><title type="html">[C++] Member Initializer : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" rel="alternate" type="text/html" title="[C++] Member Initializer : 설명" /><published>2020-04-10T00:00:00+09:00</published><updated>2019-04-13T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 
 &lt;p&gt;멤버변수의 선언 후 기본값이 Visual Studio에서는&lt;br /&gt;
 디버그 환경으로 빌드할 시 0이 아닌 0xCDCDCD라는 이상한 값이 들어가 있습니다.&lt;br /&gt;
@@ -700,4 +793,4 @@ Point:: x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 10, y &lt;span class=&q
 &lt;/ul&gt;
 
 &lt;p&gt;글 업데이트 내역:&lt;br /&gt;
-– 2012.04.13: 잘못된 오타 수정&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="멤버이니셜라이저" /><category term="Member-Initializer" /><summary type="html">[C++] 멤버이니셜라이저(Member-Initializer)</summary></entry></feed>
+– 2012.04.13: 잘못된 오타 수정&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="멤버이니셜라이저" /><category term="Member-Initializer" /><summary type="html">[C++] Member Initializer : 설명</summary></entry></feed>
