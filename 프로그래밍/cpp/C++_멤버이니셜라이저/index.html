@@ -14,7 +14,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
 <meta property="og:title" content="[C++] 멤버이니셜라이저(Member-Initializer)">
-<meta property="og:url" content="https://tars-c.github.io/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/">
+<meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/">
 
 
   <meta property="og:description" content="[C++] 멤버이니셜라이저(Member-Initializer)">
@@ -31,7 +31,7 @@
 
 
 
-  <meta property="article:modified_time" content="2019-04-10T00:00:00+09:00">
+  <meta property="article:modified_time" content="2019-04-13T00:00:00+09:00">
 
 
 
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="https://tars-c.github.io/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/">
+<link rel="canonical" href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/">
 
 
 
@@ -274,7 +274,7 @@
     <meta itemprop="headline" content="[C++] 멤버이니셜라이저(Member-Initializer)">
     <meta itemprop="description" content="[C++] 멤버이니셜라이저(Member-Initializer)">
     <meta itemprop="datePublished" content="2020-04-10T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2019-04-10T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2019-04-13T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
@@ -339,20 +339,14 @@
 6
 7
 8
-9
-10
-11
 </pre></td><td class="code"><pre><span class="n">Constructor</span><span class="p">()</span> <span class="o">:</span> <span class="n">Member1</span><span class="p">(</span><span class="n">Value1</span><span class="p">),</span> <span class="n">Member2</span><span class="p">(</span><span class="n">Value2</span><span class="p">),</span> <span class="n">Member3</span><span class="p">(</span><span class="n">Value3</span><span class="p">)</span> <span class="p">...</span>
 <span class="p">{</span>
 
 <span class="p">}</span>
-
-<span class="err">*/</span>
-	<span class="err">위</span> <span class="err">코드는</span> <span class="n">Member1</span><span class="err">에</span> <span class="err">해당하는</span> <span class="err">변수를</span> <span class="n">Value1</span><span class="err">로</span> <span class="err">초기화한다</span><span class="p">.</span> <span class="err">라는</span> <span class="err">의미를</span> <span class="err">가지고</span> <span class="err">있습니다</span><span class="p">.</span>
-	<span class="err">생성자</span> <span class="err">정의부</span> <span class="err">헤더에</span> <span class="err">멤버변수와</span> <span class="err">초기화할</span> <span class="err">값을</span> <span class="err">넣어주시면</span> <span class="err">됩니다</span><span class="p">.</span>
-	<span class="err">여러개의</span> <span class="err">멤버변수를</span> <span class="err">초기화할</span> <span class="err">경우</span> <span class="p">,</span><span class="err">를</span> <span class="err">써주고</span> <span class="err">다음</span> <span class="err">초기화할</span> <span class="err">내용을</span> <span class="err">적어줍니다</span><span class="p">.</span>
-	<span class="err">중요한</span> <span class="err">점은</span> <span class="err">세미콜론</span><span class="p">(;)</span><span class="err">이</span> <span class="err">들어가지</span> <span class="err">않습니다</span><span class="p">.</span>
-<span class="o">/*</span>
+<span class="c1">//	위 코드는 Member1에 해당하는 변수를 Value1로 초기화한다. 라는 의미를 가지고 있습니다.</span>
+<span class="c1">//	생성자 정의부 헤더에 멤버변수와 초기화할 값을 넣어주시면 됩니다.</span>
+<span class="c1">//	여러개의 멤버변수를 초기화할 경우 ,를 써주고 다음 초기화할 내용을 적어줍니다.</span>
+<span class="c1">//	중요한 점은 세미콜론(;)이 들어가지 않습니다.</span>
 </pre></td></tr></tbody></table></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
@@ -496,7 +490,9 @@ Parent:: ID = 5, Name = Chris
 55
 56
 57
-</pre></td><td class="code"><pre><span class="cp">#include "pch.h" // visual studio 2017
+58
+</pre></td><td class="code"><pre><span class="c1">// Visual Studio 2017</span>
+<span class="cp">#include "pch.h"
 #include &lt;iostream&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
@@ -738,14 +734,18 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
     
       
       
-      <a href="/categories/#cpp" class="page__taxonomy-item" rel="tag">Cpp</a>
+      <a href="/categories/#cpp" class="page__taxonomy-item" rel="tag">cpp</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" class="page__taxonomy-item" rel="tag">프로그래밍</a>
     
     </span>
   </p>
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-10">April 10, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-13">April 13, 2019</time></p>
         
       </footer>
 
@@ -754,11 +754,11 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BC%2B%2B%5D+%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80%28Member-Initializer%29%20https%3A%2F%2Ftars-c.github.io%2Fcpp%2FC%2B%2B_%25EB%25A9%25A4%25EB%25B2%2584%25EC%259D%25B4%25EB%258B%2588%25EC%2585%259C%25EB%259D%25BC%25EC%259D%25B4%25EC%25A0%2580%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BC%2B%2B%5D+%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80%28Member-Initializer%29%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fcpp%2FC%2B%2B_%25EB%25A9%25A4%25EB%25B2%2584%25EC%259D%25B4%25EB%258B%2588%25EC%2585%259C%25EB%259D%25BC%25EC%259D%25B4%25EC%25A0%2580%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2Fcpp%2FC%2B%2B_%25EB%25A9%25A4%25EB%25B2%2584%25EC%259D%25B4%25EB%258B%2588%25EC%2585%259C%25EB%259D%25BC%25EC%259D%25B4%25EC%25A0%2580%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fcpp%2FC%2B%2B_%25EB%25A9%25A4%25EB%25B2%2584%25EC%259D%25B4%25EB%258B%2588%25EC%2585%259C%25EB%259D%25BC%25EC%259D%25B4%25EC%25A0%2580%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2Fcpp%2FC%2B%2B_%25EB%25A9%25A4%25EB%25B2%2584%25EC%259D%25B4%25EB%258B%2588%25EC%2585%259C%25EB%259D%25BC%25EC%259D%25B4%25EC%25A0%2580%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fcpp%2FC%2B%2B_%25EB%25A9%25A4%25EB%25B2%2584%25EC%259D%25B4%25EB%258B%2588%25EC%2585%259C%25EB%259D%25BC%25EC%259D%25B4%25EC%25A0%2580%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -768,7 +768,7 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
       <a href="#" class="pagination--pager disabled">Previous</a>
     
     
-      <a href="/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/" class="pagination--pager" title="[MFC] 모달 및 모달리스(Modal and Modeless)
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/" class="pagination--pager" title="[MFC] 모달 및 모달리스(Modal and Modeless)
 ">Next</a>
     
   </nav>
@@ -802,7 +802,7 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/mfc/MFC_CFileDialog/" rel="permalink">[MFC] 파일 다이얼로그(CFileDialog)
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_CFileDialog/" rel="permalink">[MFC] 파일 다이얼로그(CFileDialog)
 </a>
       
     </h2>
@@ -828,7 +828,7 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/" rel="permalink">[MFC] 모달 및 모달리스(Modal and Modeless)
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/" rel="permalink">[MFC] 모달 및 모달리스(Modal and Modeless)
 </a>
       
     </h2>
@@ -905,8 +905,8 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://tars-c.github.io/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/cpp/C++_멤버이니셜라이저"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_멤버이니셜라이저"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     
     (function() { // DON'T EDIT BELOW THIS LINE

@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-04-13T18:59:52+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] 파일 다이얼로그(CFileDialog)</title><link href="https://tars-c.github.io/mfc/MFC_CFileDialog/" rel="alternate" type="text/html" title="[MFC] 파일 다이얼로그(CFileDialog)" /><published>2020-04-13T00:00:00+09:00</published><updated>2019-04-13T00:00:00+09:00</updated><id>https://tars-c.github.io/mfc/MFC_CFileDialog</id><content type="html" xml:base="https://tars-c.github.io/mfc/MFC_CFileDialog/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;이 글에서는 CFileDialog가 제공하는 함수를 이용한 실습은 다루지 않습니다.&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-04-16T12:57:48+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] 파일 다이얼로그(CFileDialog)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_CFileDialog/" rel="alternate" type="text/html" title="[MFC] 파일 다이얼로그(CFileDialog)" /><published>2020-04-13T00:00:00+09:00</published><updated>2019-04-16T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_CFileDialog</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_CFileDialog/">&lt;h3 id=&quot;관련-링크&quot;&gt;관련 링크&lt;/h3&gt;
+
+&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;이 글에서는 CFileDialog가 제공하는 함수 및 변수를 이용한 실습은 다루지 않습니다.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;MFC에서 사용자는 CFileDialog를 이용해 편리하게 파일을 저장하고 열 수 있습니다.&lt;br /&gt;
 흔히 사용되는 메모장 프로그램에서도 FileDialog를 볼 수 있습니다.&lt;br /&gt;
@@ -10,6 +12,8 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
 파일을 선택하면 파일에 대한 정보를 CFileDialog 인스턴스로 가져오게 됩니다.&lt;/p&gt;
 
 &lt;p&gt;인스턴스 멤버변수에 접근하여 관련된 정보를 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;figcaption&gt;CFileDialog 함수&lt;/figcaption&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -59,11 +63,11 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
   &lt;li&gt;TRUE는 비스타 윈도우 스타일을 사용하고 FALSE는 윈도우10 스타일을 사용합니다.&lt;br /&gt;  Windows10 기준, Visual Studio 2008 이상&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Vista Style: TRUE(열기모드)&lt;br /&gt;
-&lt;img src=&quot;../../assets/images/CFileDialog/vista_style_dialog.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Vista Style: 적용(열기모드)&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CFileDialog/vista_style_dialog.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Vista Style: FALSE(열기모드)&lt;br /&gt;
-&lt;img src=&quot;../../assets/images/CFileDialog/window10_style_dialog.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Vista Style: 미적용(열기모드)&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CFileDialog/window10_style_dialog.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;cfiledialog-확장명을-필터링---필터설명&quot;&gt;CFileDialog 확장명을 필터링 - 필터설명&lt;/h2&gt;
 &lt;p&gt;FileDialog는 확장명에 대해서 필터링 할 수 있습니다.&lt;br /&gt;
@@ -115,6 +119,8 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
 
 &lt;h1 id=&quot;cfiledialog-생성&quot;&gt;CFileDialog 생성&lt;/h1&gt;
 
+&lt;figcaption&gt;MainDialog.cpp&lt;/figcaption&gt;
+
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
 3
@@ -122,9 +128,7 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
 5
 6
 7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// MainDialog.cpp&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 필터를 이용한 FileDialog 띄우기 (저장모드)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// 필터를 이용한 FileDialog 띄우기 (저장모드)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;n&quot;&gt;LPCTSTR&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;filesFilter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;All Files (*.*)| *.*; ||&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -155,7 +159,7 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.&lt
 &lt;/ul&gt;
 
 &lt;p&gt;글 업데이트 내역:&lt;br /&gt;
-– None.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일다이얼로그" /><category term="파일" /><category term="CFile" /><summary type="html">[MFC] 파일 다이얼로그(CFileDialog)</summary></entry><entry><title type="html">[MFC] 모달 및 모달리스(Modal and Modeless)</title><link href="https://tars-c.github.io/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/" rel="alternate" type="text/html" title="[MFC] 모달 및 모달리스(Modal and Modeless)" /><published>2020-04-12T00:00:00+09:00</published><updated>2019-04-12T00:00:00+09:00</updated><id>https://tars-c.github.io/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC%20%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4</id><content type="html" xml:base="https://tars-c.github.io/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+– 2020. 04. 16: 파일명 주석 제거&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일다이얼로그" /><category term="파일" /><category term="CFile" /><summary type="html">[MFC] 파일 다이얼로그(CFileDialog)</summary></entry><entry><title type="html">[MFC] 모달 및 모달리스(Modal and Modeless)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/" rel="alternate" type="text/html" title="[MFC] 모달 및 모달리스(Modal and Modeless)" /><published>2020-04-12T00:00:00+09:00</published><updated>2019-04-12T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC%20%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/MFC_%EB%AA%A8%EB%8B%AC%EA%B3%BC-%EB%AA%A8%EB%8B%AC%EB%A6%AC%EC%8A%A4/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;윈도우즈에서 사용되는 Dialog는 2가지 종류로 구분됩니다.&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;Modal Dialog&lt;/code&gt; 와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Modeless Dialog&lt;/code&gt;가 있습니다.&lt;/p&gt;
 
@@ -326,7 +330,7 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
 &lt;/ul&gt;
 
 &lt;p&gt;글 업데이트 내역:&lt;br /&gt;
-– None.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="모달" /><category term="모달리스" /><category term="다이얼로그" /><category term="Modal" /><category term="Modeless" /><category term="Dialog" /><summary type="html">[MFC] 모달 및 모달리스(Modal and Modeless)</summary></entry><entry><title type="html">[C++] 멤버이니셜라이저(Member-Initializer)</title><link href="https://tars-c.github.io/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" rel="alternate" type="text/html" title="[C++] 멤버이니셜라이저(Member-Initializer)" /><published>2020-04-10T00:00:00+09:00</published><updated>2019-04-10T00:00:00+09:00</updated><id>https://tars-c.github.io/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80</id><content type="html" xml:base="https://tars-c.github.io/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+– None.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="모달" /><category term="모달리스" /><category term="다이얼로그" /><category term="Modal" /><category term="Modeless" /><category term="Dialog" /><summary type="html">[MFC] 모달 및 모달리스(Modal and Modeless)</summary></entry><entry><title type="html">[C++] 멤버이니셜라이저(Member-Initializer)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" rel="alternate" type="text/html" title="[C++] 멤버이니셜라이저(Member-Initializer)" /><published>2020-04-10T00:00:00+09:00</published><updated>2019-04-13T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/C++_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 
 &lt;p&gt;멤버변수의 선언 후 기본값이 Visual Studio에서는&lt;br /&gt;
 디버그 환경으로 빌드할 시 0이 아닌 0xCDCDCD라는 이상한 값이 들어가 있습니다.&lt;br /&gt;
@@ -363,20 +367,14 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
 6
 7
 8
-9
-10
-11
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;Constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Member1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Member2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Member3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;err&quot;&gt;*/&lt;/span&gt;
-	&lt;span class=&quot;err&quot;&gt;위&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;코드는&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Member1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;에&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;해당하는&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;변수를&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Value1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;로&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;초기화한다&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;라는&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;의미를&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;가지고&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;있습니다&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-	&lt;span class=&quot;err&quot;&gt;생성자&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;정의부&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;헤더에&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;멤버변수와&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;초기화할&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;값을&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;넣어주시면&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;됩니다&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-	&lt;span class=&quot;err&quot;&gt;여러개의&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;멤버변수를&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;초기화할&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;경우&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;를&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;써주고&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;다음&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;초기화할&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;내용을&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;적어줍니다&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-	&lt;span class=&quot;err&quot;&gt;중요한&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;점은&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;세미콜론&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;이&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;들어가지&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;않습니다&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//	위 코드는 Member1에 해당하는 변수를 Value1로 초기화한다. 라는 의미를 가지고 있습니다.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//	생성자 정의부 헤더에 멤버변수와 초기화할 값을 넣어주시면 됩니다.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//	여러개의 멤버변수를 초기화할 경우 ,를 써주고 다음 초기화할 내용을 적어줍니다.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//	중요한 점은 세미콜론(;)이 들어가지 않습니다.&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
@@ -520,7 +518,9 @@ Parent:: ID = 5, Name = Chris
 55
 56
 57
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cp&quot;&gt;#include &quot;pch.h&quot; // visual studio 2017
+58
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Visual Studio 2017&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include &quot;pch.h&quot;
 #include &amp;lt;iostream&amp;gt;
 &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
