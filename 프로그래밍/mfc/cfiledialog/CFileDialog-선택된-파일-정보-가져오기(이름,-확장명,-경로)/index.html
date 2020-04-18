@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로) - 타스의 개발 블로그</title>
-<meta name="description" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)">
+<!-- begin _includes/seo.html --><title>[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로) - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)">
 
 
   <meta name="author" content="타스 (TARS-C)">
@@ -13,11 +13,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
-<meta property="og:title" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)">
+<meta property="og:title" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)">
 <meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/">
 
 
-  <meta property="og:description" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)">
+  <meta property="og:description" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)">
 
 
 
@@ -27,11 +27,11 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-16T00:00:00+09:00">
+  <meta property="article:published_time" content="2020-04-17T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2019-04-16T00:00:00+09:00">
+  <meta property="article:modified_time" content="2020-04-17T00:00:00+09:00">
 
 
 
@@ -271,15 +271,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)">
-    <meta itemprop="description" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)">
-    <meta itemprop="datePublished" content="2020-04-16T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2019-04-16T00:00:00+09:00">
+    <meta itemprop="headline" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)">
+    <meta itemprop="description" content="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)">
+    <meta itemprop="datePublished" content="2020-04-17T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-04-17T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 경로)
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
 </h1>
           
         </header>
@@ -292,11 +292,12 @@
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
               <ul class="toc__menu">
   <li><a href="#서론">서론</a></li>
-  <li><a href="#1-파일-이름-가져오기-확장명-포함">1. 파일 이름 가져오기 (확장명 포함)</a></li>
-  <li><a href="#2-파일-이름-가져오기-확장명-미포함">2. 파일 이름 가져오기 (확장명 미포함)</a></li>
-  <li><a href="#3-파일-확장명-가져오기">3. 파일 확장명 가져오기</a></li>
-  <li><a href="#4-파일-경로-가져오기">4. 파일 경로 가져오기</a></li>
-  <li><a href="#5-함수를-이용한-결과-출력">5. 함수를 이용한 결과 출력</a></li>
+  <li><a href="#1-확장명이-포함된-파일-이름-구하기">1. 확장명이 포함된 파일 이름 구하기</a></li>
+  <li><a href="#2-확장명-없이-파일-이름만-구하기">2. 확장명 없이 파일 이름만 구하기</a></li>
+  <li><a href="#3-파일-확장명-구하기">3. 파일 확장명 구하기</a></li>
+  <li><a href="#4-시작-경로-가져오기">4. 시작 경로 가져오기</a></li>
+  <li><a href="#5-선택한-파일-경로-가져오기">5. 선택한 파일 경로 가져오기</a></li>
+  <li><a href="#6-함수를-이용한-결과-출력">6. 함수를 이용한 결과 출력</a></li>
 </ul>
             </nav>
           </aside>
@@ -305,18 +306,18 @@
 <p>CFileDialog 클래스에서 제공해주는 함수가 여려가지 있습니다.<br />
 그중에 FileDialog에서 파일 정보를 가져오는 자주 쓰이는 함수가 있습니다</p>
 
-<p>이 글에서는 <code class="highlighter-rouge">FileDialog에서 선택된 파일 정보를 가져오는 함수</code>에 대해 알아보겠습니다.<br />
+<p>이 글에서는 <code class="highlighter-rouge">FileDialog에서 1개의 파일을 선택하여 정보를 가져오는 함수</code>에 대해 알아보겠습니다.<br />
 아래 모든 함수들이 반환하는 타입은 CString입니다.</p>
 
-<h2 id="1-파일-이름-가져오기-확장명-포함">1. 파일 이름 가져오기 (확장명 포함)</h2>
+<h2 id="1-확장명이-포함된-파일-이름-구하기">1. 확장명이 포함된 파일 이름 구하기</h2>
 <p><code class="highlighter-rouge">확장명이 포함된 파일 이름</code>을 가져오는 함수는 <code class="highlighter-rouge">GetFileName()</code> 입니다.</p>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">CString</span> <span class="nf">GetFileName</span><span class="p">(</span><span class="k">const</span> <span class="n">CFileDialog</span> <span class="o">*</span><span class="n">fileDialog</span><span class="p">)</span>
 <span class="p">{</span>
-  <span class="k">return</span> <span class="n">fileDialog</span><span class="o">-&gt;</span><span class="n">GetFileTitle</span><span class="p">();</span>
+  <span class="k">return</span> <span class="n">fileDialog</span><span class="o">-&gt;</span><span class="n">GetFileName</span><span class="p">();</span>
 <span class="p">}</span></code></pre></figure>
 
-<h2 id="2-파일-이름-가져오기-확장명-미포함">2. 파일 이름 가져오기 (확장명 미포함)</h2>
+<h2 id="2-확장명-없이-파일-이름만-구하기">2. 확장명 없이 파일 이름만 구하기</h2>
 <p><code class="highlighter-rouge">확장명이 미포함된 파일 이름</code>만 가져오는 함수는 <code class="highlighter-rouge">GetFileTitle()</code> 입니다.</p>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">CString</span> <span class="nf">GetFileTitle</span><span class="p">(</span><span class="k">const</span> <span class="n">CFileDialog</span> <span class="o">*</span><span class="n">fileDialog</span><span class="p">)</span>
@@ -324,7 +325,7 @@
   <span class="k">return</span> <span class="n">fileDialog</span><span class="o">-&gt;</span><span class="n">GetFileTitle</span><span class="p">();</span>
 <span class="p">}</span></code></pre></figure>
 
-<h2 id="3-파일-확장명-가져오기">3. 파일 확장명 가져오기</h2>
+<h2 id="3-파일-확장명-구하기">3. 파일 확장명 구하기</h2>
 <p><code class="highlighter-rouge">확장명</code>을 가져오는 함수는 <code class="highlighter-rouge">GetFileExt()</code> 입니다.</p>
 
 <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">CString</span> <span class="nf">GetFileExt</span><span class="p">(</span><span class="k">const</span> <span class="n">CFileDialog</span> <span class="o">*</span><span class="n">fileDialog</span><span class="p">)</span>
@@ -332,15 +333,29 @@
   <span class="k">return</span> <span class="n">fileDialog</span><span class="o">-&gt;</span><span class="n">GetFileExt</span><span class="p">();</span>
 <span class="p">}</span></code></pre></figure>
 
-<h2 id="4-파일-경로-가져오기">4. 파일 경로 가져오기</h2>
-<p><code class="highlighter-rouge">파일 경로</code>를 가져오는 함수는 <code class="highlighter-rouge">GetFolderPath()</code> 입니다.</p>
+<h2 id="4-시작-경로-가져오기">4. 시작 경로 가져오기</h2>
+<p>반드시 m_ofn.lpstrInitialDir 멤버변수 값이 설정되어 있어야 합니다.<br />
+<code class="highlighter-rouge">시작 경로</code>를 가져오는 함수는 <code class="highlighter-rouge">GetFolderPath()</code> 입니다.</p>
 
-<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">CString</span> <span class="nf">GetFileExt</span><span class="p">(</span><span class="k">const</span> <span class="n">CFileDialog</span> <span class="o">*</span><span class="n">fileDialog</span><span class="p">)</span>
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">CString</span> <span class="nf">GetFolderPath</span><span class="p">(</span><span class="k">const</span> <span class="n">CFileDialog</span> <span class="o">*</span><span class="n">fileDialog</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="k">return</span> <span class="n">fileDialog</span><span class="o">-&gt;</span><span class="n">GetFolderPath</span><span class="p">();</span>
 <span class="p">}</span></code></pre></figure>
 
-<h2 id="5-함수를-이용한-결과-출력">5. 함수를 이용한 결과 출력</h2>
+<h2 id="5-선택한-파일-경로-가져오기">5. 선택한 파일 경로 가져오기</h2>
+<p><code class="highlighter-rouge">선택한 파일에 대한 경로</code>를 가져오는 함수는 <code class="highlighter-rouge">GetPathName()</code> 입니다.<br />
+이 함수는 파일이름 및 확장명을 포함하여 선택된 파일에 대한 전체 경로를 가져오게 됩니다.<br />
+CString 클래스 Left(), RevesrseFind() 함수를 이용해 짤라내서 사용할 수 있습니다.
+위 함수들은 부모 폴더를 구할 때에도 사용되오니 알아두시는게 좋습니다.</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">CString</span> <span class="nf">GetPathName</span><span class="p">(</span><span class="k">const</span> <span class="n">CFileDialog</span> <span class="o">*</span><span class="n">fileDialog</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">CString</span> <span class="n">fileFullPath</span> <span class="o">=</span> <span class="n">fileDialog</span><span class="o">-&gt;</span><span class="n">GetPathName</span><span class="p">();</span>
+  <span class="n">CString</span> <span class="n">resultPath</span> <span class="o">=</span> <span class="n">fileFullPath</span><span class="p">.</span><span class="n">Left</span><span class="p">(</span><span class="n">fileFullPath</span><span class="p">.</span><span class="n">ReverseFind</span><span class="p">(</span><span class="sc">'\\'</span><span class="p">));</span>
+  <span class="k">return</span> <span class="n">resultPath</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="6-함수를-이용한-결과-출력">6. 함수를 이용한 결과 출력</h2>
 
 <p>파일 정보를 가져오는 함수를 이용해 MainDialog에서 간단히 출력해보겠습니다.<br />
 솔루션 이름: MainDialog<br />
@@ -461,7 +476,7 @@
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-16">April 16, 2019</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-04-17">April 17, 2020</time></p>
         
       </footer>
 
@@ -470,7 +485,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+CFileDialog+%3A+%ED%8C%8C%EC%9D%BC+%EC%A0%95%EB%B3%B4+%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0%28%EC%9D%B4%EB%A6%84%2C+%ED%99%95%EC%9E%A5%EB%AA%85%2C+%EA%B2%BD%EB%A1%9C%29%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fcfiledialog%2FCFileDialog-%25EC%2584%25A0%25ED%2583%259D%25EB%2590%259C-%25ED%258C%258C%25EC%259D%25BC-%25EC%25A0%2595%25EB%25B3%25B4-%25EA%25B0%2580%25EC%25A0%25B8%25EC%2598%25A4%25EA%25B8%25B0%28%25EC%259D%25B4%25EB%25A6%2584%2C-%25ED%2599%2595%25EC%259E%25A5%25EB%25AA%2585%2C-%25EA%25B2%25BD%25EB%25A1%259C%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+CFileDialog+%3A+%ED%8C%8C%EC%9D%BC+%EC%A0%95%EB%B3%B4+%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0%28%EC%9D%B4%EB%A6%84%2C+%ED%99%95%EC%9E%A5%EB%AA%85%2C+%EC%8B%9C%EC%9E%91%EA%B2%BD%EB%A1%9C%2C+%ED%8C%8C%EC%9D%BC%EA%B2%BD%EB%A1%9C%29%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fcfiledialog%2FCFileDialog-%25EC%2584%25A0%25ED%2583%259D%25EB%2590%259C-%25ED%258C%258C%25EC%259D%25BC-%25EC%25A0%2595%25EB%25B3%25B4-%25EA%25B0%2580%25EC%25A0%25B8%25EC%2598%25A4%25EA%25B8%25B0%28%25EC%259D%25B4%25EB%25A6%2584%2C-%25ED%2599%2595%25EC%259E%25A5%25EB%25AA%2585%2C-%25EA%25B2%25BD%25EB%25A1%259C%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fcfiledialog%2FCFileDialog-%25EC%2584%25A0%25ED%2583%259D%25EB%2590%259C-%25ED%258C%258C%25EC%259D%25BC-%25EC%25A0%2595%25EB%25B3%25B4-%25EA%25B0%2580%25EC%25A0%25B8%25EC%2598%25A4%25EA%25B8%25B0%28%25EC%259D%25B4%25EB%25A6%2584%2C-%25ED%2599%2595%25EC%259E%25A5%25EB%25AA%2585%2C-%25EA%25B2%25BD%25EB%25A1%259C%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -481,11 +496,11 @@
       
   <nav class="pagination">
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/" class="pagination--pager" title="[MFC] CFileDialog : 설명 및 파일확장명 필터
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/" class="pagination--pager" title="[MFC] CFileDialog : 시작 디렉토리 변경
 ">Previous</a>
     
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/" class="pagination--pager" title="[MFC] CFileDialog : 시작 디렉토리 변경
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" class="pagination--pager" title="[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
 ">Next</a>
     
   </nav>
@@ -509,6 +524,58 @@
     <div class="page__related">
       <h4 class="page__related-title">Well begun is half done, aristotle</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/file/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/" rel="permalink">[MFC] File : 파일 PATH 데이터로 정보 구하기 (이름, 확장명, 폴더, 상위폴더)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC] File : 파일 PATH 데이터로 정보 구하기 (이름, 확장명, 폴더, 상위폴더)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="permalink">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
+</p>
+  </article>
+</div>
+
         
           
 
@@ -545,7 +612,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/" rel="permalink">[MFC] CFileDialog : 설명 및 파일확장명 필터
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="permalink">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
 </a>
       
     </h2>
@@ -553,62 +620,10 @@
     
   -->
   
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 13 2020</p>
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 16 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 설명 및 파일확장명 필터
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/" rel="permalink">[MFC] Modal &amp; Modeless Dialog : 설명
-</a>
-      
-    </h2>
-    <!--     
-    
-  -->
-  
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 12 2020</p>
-  
-  
-  <p class="archive__item-excerpt" itemprop="description">[MFC] Modal &amp; Modeless Dialog : 설명
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" rel="permalink">[C++] Member Initializer : 설명
-</a>
-      
-    </h2>
-    <!--     
-    
-  -->
-  
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 10 2020</p>
-  
-  
-  <p class="archive__item-excerpt" itemprop="description">[C++] Member Initializer : 설명
+  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
 </p>
   </article>
 </div>
