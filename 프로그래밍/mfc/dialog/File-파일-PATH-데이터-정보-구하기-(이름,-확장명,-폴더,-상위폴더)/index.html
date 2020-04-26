@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[MFC] CFileDialog : 시작 디렉토리 변경 - 타스의 개발 블로그</title>
-<meta name="description" content="[MFC] CFileDialog : 시작 디렉토리 변경">
+<!-- begin _includes/seo.html --><title>[MFC] Dialog : HWND(핸들) 얻기 - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC] Dialog : HWND(핸들) 얻기">
 
 
   <meta name="author" content="타스 (TARS-C)">
@@ -13,11 +13,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
-<meta property="og:title" content="[MFC] CFileDialog : 시작 디렉토리 변경">
-<meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/">
+<meta property="og:title" content="[MFC] Dialog : HWND(핸들) 얻기">
+<meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/">
 
 
-  <meta property="og:description" content="[MFC] CFileDialog : 시작 디렉토리 변경">
+  <meta property="og:description" content="[MFC] Dialog : HWND(핸들) 얻기">
 
 
 
@@ -27,11 +27,11 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-16T00:00:00+09:00">
+  <meta property="article:published_time" content="2020-04-18T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2020-04-16T00:00:00+09:00">
+  <meta property="article:modified_time" content="2020-04-18T00:00:00+09:00">
 
 
 
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/">
+<link rel="canonical" href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/">
 
 
 
@@ -271,15 +271,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[MFC] CFileDialog : 시작 디렉토리 변경">
-    <meta itemprop="description" content="[MFC] CFileDialog : 시작 디렉토리 변경">
-    <meta itemprop="datePublished" content="2020-04-16T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2020-04-16T00:00:00+09:00">
+    <meta itemprop="headline" content="[MFC] Dialog : HWND(핸들) 얻기">
+    <meta itemprop="description" content="[MFC] Dialog : HWND(핸들) 얻기">
+    <meta itemprop="datePublished" content="2020-04-18T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-04-18T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] CFileDialog : 시작 디렉토리 변경
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] Dialog : HWND(핸들) 얻기
 </h1>
           
         </header>
@@ -287,41 +287,7 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>CFileDialog를 이용해 FileDialog를 사용자에게 보여줄 때 <br />
-Visual Studio에서 작업했을 경우 FileDialog 시작 디렉토리가 현재 프로젝트로 설정되어 있습니다.</p>
-
-<p>CFileDialog 객체가 가지고 있는  멤버변수 <code class="highlighter-rouge">m_ofn.lpstrInitialDir</code> 값을 변경하여<br />
-FileDialog 시작 디렉토리를 변경할 수 있습니다.<br />
-디렉토리를 변경하여 해당 디렉토리에 존재하는 파일과 폴더를 보여줄 수 있습니다.<br /></p>
-
-<p>간단한 코드를 작성해보겠습니다.</p>
-<figcaption>MainDialog.cpp [ FileDialog 초기 디렉토리 변경 ]</figcaption>
-
-<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-</pre></td><td class="code"><pre><span class="n">LRESULT</span> <span class="n">MainDialog</span><span class="o">::</span><span class="n">OnInitDialogEx</span><span class="p">(</span><span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">)</span>
-<span class="p">{</span>
-	<span class="n">LPCTSTR</span> <span class="n">filter</span> <span class="o">=</span> <span class="n">_T</span><span class="p">(</span><span class="s">"All Files (*.*)|*.*;||"</span><span class="p">);</span>
-
-	<span class="n">CFileDialog</span> <span class="n">fileDialog</span><span class="p">(</span><span class="n">FALSE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">filter</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
-	<span class="n">fileDialog</span><span class="p">.</span><span class="n">m_ofn</span><span class="p">.</span><span class="n">lpstrInitialDir</span> <span class="o">=</span> <span class="n">_T</span><span class="p">(</span><span class="s">"C:</span><span class="se">\\</span><span class="s">Program Files"</span><span class="p">);</span>
-	<span class="n">fileDialog</span><span class="p">.</span><span class="n">DoModal</span><span class="p">();</span>
-	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></td></tr></tbody></table></code></pre></figure>
-
-<p><br />
-결과:<br />
-<img src="/assets/images/CFileDialog/MFC_CFileDialog_InitDirectory.png" alt="img1" /></p>
-
-<hr />
+        <hr />
 <ul>
   <li>오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.</li>
 </ul>
@@ -349,43 +315,11 @@ FileDialog 시작 디렉토리를 변경할 수 있습니다.<br />
     
       
       
-      <a href="/tags/#cfiledialog" class="page__taxonomy-item" rel="tag">CFileDialog</a><span class="sep">, </span>
-    
-      
-      
       <a href="/tags/#cpp" class="page__taxonomy-item" rel="tag">Cpp</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#dialog" class="page__taxonomy-item" rel="tag">Dialog</a><span class="sep">, </span>
-    
-      
-      
       <a href="/tags/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%EA%B2%BD%EB%A1%9C-%EB%B3%80%EA%B2%BD" class="page__taxonomy-item" rel="tag">경로 변경</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%EA%B2%BD%EB%A1%9C" class="page__taxonomy-item" rel="tag">경로</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%EA%B8%B0%EB%B3%B8%EA%B2%BD%EB%A1%9C" class="page__taxonomy-item" rel="tag">기본경로</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD" class="page__taxonomy-item" rel="tag">디렉토리 변경</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD" class="page__taxonomy-item" rel="tag">디렉토리 변경</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%EC%B2%98%EC%9D%8C%EA%B2%BD%EB%A1%9C" class="page__taxonomy-item" rel="tag">처음경로</a><span class="sep">, </span>
     
       
       
@@ -414,7 +348,7 @@ FileDialog 시작 디렉토리를 변경할 수 있습니다.<br />
     
       
       
-      <a href="/categories/#cfiledialog" class="page__taxonomy-item" rel="tag">CFileDialog</a><span class="sep">, </span>
+      <a href="/categories/#dialog" class="page__taxonomy-item" rel="tag">Dialog</a><span class="sep">, </span>
     
       
       
@@ -429,7 +363,7 @@ FileDialog 시작 디렉토리를 변경할 수 있습니다.<br />
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-04-16">April 16, 2020</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-04-18">April 18, 2020</time></p>
         
       </footer>
 
@@ -438,22 +372,22 @@ FileDialog 시작 디렉토리를 변경할 수 있습니다.<br />
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+CFileDialog+%3A+%EC%8B%9C%EC%9E%91+%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC+%EB%B3%80%EA%B2%BD%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fcfiledialog%2FCFileDialog-%25EC%258B%259C%25EC%259E%2591-%25EB%2594%2594%25EB%25A0%2589%25ED%2586%25A0%25EB%25A6%25AC-%25EB%25B3%2580%25EA%25B2%25BD%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+Dialog+%3A+HWND%28%ED%95%B8%EB%93%A4%29+%EC%96%BB%EA%B8%B0%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FFile-%25ED%258C%258C%25EC%259D%25BC-PATH-%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25A0%2595%25EB%25B3%25B4-%25EA%25B5%25AC%25ED%2595%2598%25EA%25B8%25B0-%28%25EC%259D%25B4%25EB%25A6%2584%2C-%25ED%2599%2595%25EC%259E%25A5%25EB%25AA%2585%2C-%25ED%258F%25B4%25EB%258D%2594%2C-%25EC%2583%2581%25EC%259C%2584%25ED%258F%25B4%25EB%258D%2594%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fcfiledialog%2FCFileDialog-%25EC%258B%259C%25EC%259E%2591-%25EB%2594%2594%25EB%25A0%2589%25ED%2586%25A0%25EB%25A6%25AC-%25EB%25B3%2580%25EA%25B2%25BD%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FFile-%25ED%258C%258C%25EC%259D%25BC-PATH-%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25A0%2595%25EB%25B3%25B4-%25EA%25B5%25AC%25ED%2595%2598%25EA%25B8%25B0-%28%25EC%259D%25B4%25EB%25A6%2584%2C-%25ED%2599%2595%25EC%259E%25A5%25EB%25AA%2585%2C-%25ED%258F%25B4%25EB%258D%2594%2C-%25EC%2583%2581%25EC%259C%2584%25ED%258F%25B4%25EB%258D%2594%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fcfiledialog%2FCFileDialog-%25EC%258B%259C%25EC%259E%2591-%25EB%2594%2594%25EB%25A0%2589%25ED%2586%25A0%25EB%25A6%25AC-%25EB%25B3%2580%25EA%25B2%25BD%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FFile-%25ED%258C%258C%25EC%259D%25BC-PATH-%25EB%258D%25B0%25EC%259D%25B4%25ED%2584%25B0-%25EC%25A0%2595%25EB%25B3%25B4-%25EA%25B5%25AC%25ED%2595%2598%25EA%25B8%25B0-%28%25EC%259D%25B4%25EB%25A6%2584%2C-%25ED%2599%2595%25EC%259E%25A5%25EB%25AA%2585%2C-%25ED%258F%25B4%25EB%258D%2594%2C-%25EC%2583%2581%25EC%259C%2584%25ED%258F%25B4%25EB%258D%2594%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" class="pagination--pager" title="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" class="pagination--pager" title="[MFC] Modal &amp; Modeless Dialog : 설명
 ">Previous</a>
     
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" class="pagination--pager" title="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
+      <a href="/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84-%EA%B0%80%EC%A7%80%EB%8A%94-%EC%82%AC%EB%9E%8C%EC%9D%B4-%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90/" class="pagination--pager" title="[잡담] 메인기술을 가지는 사람이 되어보자
 ">Next</a>
     
   </nav>
@@ -513,32 +447,6 @@ FileDialog 시작 디렉토리를 변경할 수 있습니다.<br />
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/" rel="permalink">[MFC] Dialog : HWND(핸들) 얻기
-</a>
-      
-    </h2>
-    <!--     
-    
-  -->
-  
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2020</p>
-  
-  
-  <p class="archive__item-excerpt" itemprop="description">[MFC] Dialog : HWND(핸들) 얻기
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
         <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="permalink">[MFC] Modal &amp; Modeless Dialog : 설명
 </a>
       
@@ -577,6 +485,32 @@ FileDialog 시작 디렉토리를 변경할 수 있습니다.<br />
   
   
   <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="permalink">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 17 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
 </p>
   </article>
 </div>
@@ -642,8 +576,8 @@ FileDialog 시작 디렉토리를 변경할 수 있습니다.<br />
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog - 시작 디렉토리 변경"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File - 파일 PATH 데이터 정보 구하기 (이름, 확장명, 폴더, 상위폴더)"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     
     (function() { // DON'T EDIT BELOW THIS LINE

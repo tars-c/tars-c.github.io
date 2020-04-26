@@ -583,7 +583,7 @@ nullptr값으로 변경할 수 없으며, nullptr은 상수 레퍼런스(const &
 
 <p>멤버이니셜라이저로 초기화 하지 않으면 위와 같은 컴파일 오류가 발생하게 됩니다.</p>
 
-<figure class="highlight"><pre><code class="language-lang" data-lang="lang"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -617,40 +617,40 @@ nullptr값으로 변경할 수 없으며, nullptr은 상수 레퍼런스(const &
 32
 33
 34
-</pre></td><td class="code"><pre>#include &lt;iostream&gt;
-using namespace std;
+</pre></td><td class="code"><pre><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-class Point
-{
-public:
-	int &amp;x;
-	int &amp;y;
+<span class="k">class</span> <span class="nc">Point</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+	<span class="kt">int</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">;</span>
 
-	/*
+	<span class="cm">/*
 	멤버이니셜라이저로 레퍼런스 타입의 멤버변수를 초기화 하지 않는다면 이 생성자는 사용할 수 없습니다.
 	현재 모든 멤버변수가 레퍼런스 타입이므로 참조할 변수가 없어 기본 생성자는 사용할 수 없습니다.
 	Point()
 	{
 
 	}
-	*/
+	*/</span>
 
-	Point(int &amp;px, int &amp;py) : x(px), y(py)
-	{
-	}
-	void ShowData()
-	{
-		cout &lt;&lt; "Point:: " &lt;&lt; "x = " &lt;&lt; x &lt;&lt; ", y = " &lt;&lt; y &lt;&lt; '\n';
-	}
-};
+	<span class="n">Point</span><span class="p">(</span><span class="kt">int</span> <span class="o">&amp;</span><span class="n">px</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">py</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">px</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">py</span><span class="p">)</span>
+	<span class="p">{</span>
+	<span class="p">}</span>
+	<span class="kt">void</span> <span class="n">ShowData</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Point:: "</span> <span class="o">&lt;&lt;</span> <span class="s">"x = "</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">", y = "</span> <span class="o">&lt;&lt;</span> <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="sc">'\n'</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">};</span>
 
-int main()
-{
-	int x = 10;
-	int y = 20;
-	Point pt(x, y);
-	pt.ShowData();
-}
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+	<span class="n">Point</span> <span class="n">pt</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+	<span class="n">pt</span><span class="p">.</span><span class="n">ShowData</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></figure>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>출력 결과:
@@ -670,9 +670,6 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
 <ul>
   <li>오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.</li>
 </ul>
-
-<p>글 업데이트 내역:<br />
-– 2012.04.13: 잘못된 오타 수정</p>
 
         
       </section>
@@ -802,7 +799,33 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/file/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/" rel="permalink">[MFC] File : 파일 PATH 데이터로 정보 구하기 (이름, 확장명, 폴더, 상위폴더)
+        <a href="/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84-%EA%B0%80%EC%A7%80%EB%8A%94-%EC%82%AC%EB%9E%8C%EC%9D%B4-%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90/" rel="permalink">[잡담] 메인기술을 가지는 사람이 되어보자
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 26 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[잡담] 메인기술을 가지는 사람이 되어보자
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/" rel="permalink">[MFC] Dialog : HWND(핸들) 얻기
 </a>
       
     </h2>
@@ -813,7 +836,33 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
   <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[MFC] File : 파일 PATH 데이터로 정보 구하기 (이름, 확장명, 폴더, 상위폴더)
+  <p class="archive__item-excerpt" itemprop="description">[MFC] Dialog : HWND(핸들) 얻기
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="permalink">[MFC] Modal &amp; Modeless Dialog : 설명
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC] Modal &amp; Modeless Dialog : 설명
 </p>
   </article>
 </div>
@@ -840,58 +889,6 @@ Point:: x <span class="o">=</span> 10, y <span class="o">=</span> 20
   
   
   <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="permalink">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
-</a>
-      
-    </h2>
-    <!--     
-    
-  -->
-  
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 17 2020</p>
-  
-  
-  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/" rel="permalink">[MFC] CFileDialog : 시작 디렉토리 변경
-</a>
-      
-    </h2>
-    <!--     
-    
-  -->
-  
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 16 2020</p>
-  
-  
-  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 시작 디렉토리 변경
 </p>
   </article>
 </div>

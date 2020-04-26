@@ -14,7 +14,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
 <meta property="og:title" content="[MFC] Modal &amp; Modeless Dialog : 설명">
-<meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/">
+<meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">
 
 
   <meta property="og:description" content="[MFC] Modal &amp; Modeless Dialog : 설명">
@@ -27,7 +27,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-04-12T00:00:00+09:00">
+  <meta property="article:published_time" content="2020-04-18T00:00:00+09:00">
 
 
 
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/">
+<link rel="canonical" href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">
 
 
 
@@ -273,7 +273,7 @@
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="[MFC] Modal &amp; Modeless Dialog : 설명">
     <meta itemprop="description" content="[MFC] Modal &amp; Modeless Dialog : 설명">
-    <meta itemprop="datePublished" content="2020-04-12T00:00:00+09:00">
+    <meta itemprop="datePublished" content="2020-04-18T00:00:00+09:00">
     <meta itemprop="dateModified" content="2020-04-12T00:00:00+09:00">
 
     <div class="page__inner-wrap">
@@ -575,22 +575,22 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+Modal+%26+Modeless+Dialog+%3A+%EC%84%A4%EB%AA%85%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FMFC_Modal-and-Modeless-%25EC%2584%25A4%25EB%25AA%2585%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+Modal+%26+Modeless+Dialog+%3A+%EC%84%A4%EB%AA%85%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FDialog-HWND-%25EA%25B0%2580%25EC%25A0%25B8%25EC%2598%25A4%25EA%25B8%25B0%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FMFC_Modal-and-Modeless-%25EC%2584%25A4%25EB%25AA%2585%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FDialog-HWND-%25EA%25B0%2580%25EC%25A0%25B8%25EC%2598%25A4%25EA%25B8%25B0%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FMFC_Modal-and-Modeless-%25EC%2584%25A4%25EB%25AA%2585%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fdialog%2FDialog-HWND-%25EA%25B0%2580%25EC%25A0%25B8%25EC%2598%25A4%25EA%25B8%25B0%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" class="pagination--pager" title="[C++] Member Initializer : 설명
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" class="pagination--pager" title="[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
 ">Previous</a>
     
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/" class="pagination--pager" title="[MFC] CFileDialog : 설명 및 파일확장명 필터
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/" class="pagination--pager" title="[MFC] Dialog : HWND(핸들) 얻기
 ">Next</a>
     
   </nav>
@@ -676,7 +676,7 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="permalink">[MFC] Modal &amp; Modeless Dialog : 설명
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="permalink">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
 </a>
       
     </h2>
@@ -687,7 +687,7 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
   <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[MFC] Modal &amp; Modeless Dialog : 설명
+  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
 </p>
   </article>
 </div>
@@ -702,7 +702,7 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="permalink">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="permalink">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
 </a>
       
     </h2>
@@ -710,10 +710,10 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     
   -->
   
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 18 2020</p>
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> April 17 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기
+  <p class="archive__item-excerpt" itemprop="description">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)
 </p>
   </article>
 </div>
@@ -779,8 +779,8 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal and Modeless - 설명"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND 가져오기"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     
     (function() { // DON'T EDIT BELOW THIS LINE
