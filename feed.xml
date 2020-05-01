@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-01T23:04:51+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC][실습] CImage : 이미지 불러오고 출력하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 이미지 불러오고 출력하기" /><published>2020-05-01T00:00:00+09:00</published><updated>2020-05-01T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0%20%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-01T23:43:59+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] MFC 클래스 계층도</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%20%EC%9E%85%EB%A0%A5%5B6%5D/Class-MFC-%ED%81%B4%EB%9E%98%EC%8A%A4-%EA%B3%84%EC%B8%B5%EB%8F%84/" rel="alternate" type="text/html" title="[MFC] MFC 클래스 계층도" /><published>2020-05-01T00:00:00+09:00</published><updated>2020-05-01T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%20%EC%9E%85%EB%A0%A5%5B6%5D/Class%20-%20MFC%20%ED%81%B4%EB%9E%98%EC%8A%A4%20%EA%B3%84%EC%B8%B5%EB%8F%84</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/%EC%B9%B4%ED%85%8C%EA%B3%A0%EB%A6%AC%20%EC%9E%85%EB%A0%A5%5B6%5D/Class-MFC-%ED%81%B4%EB%9E%98%EC%8A%A4-%EA%B3%84%EC%B8%B5%EB%8F%84/">&lt;p&gt;Microsoft에서 제공하는 MFC Class Hierachy(MFC 클래스 계층도)입니다.&lt;br /&gt;
+아래 모든 사진의 출처는 Microsoft가 가지고 있습니다.&lt;/p&gt;
+&lt;h2 id=&quot;part1-cobject를-상속받은-클래스-mfc-클래스-계층&quot;&gt;PART1: CObject를 상속받은 클래스 MFC 클래스 계층&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/Hierachy/mfc_hierarchy_chart1of3.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;part2-ccmdtarget-및-cwnd를-상속받은-클래스-계층&quot;&gt;PART2: CCmdTarget 및 CWnd를 상속받은 클래스 계층&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/Hierachy/mfc_hierarchy_chart2of3.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;part3-cobject를-상속받지-않은-클래스-계층&quot;&gt;PART3: CObject를 상속받지 않은 클래스 계층&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/Hierachy/mfc_hierarchy_chart3of3.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;참고링크: &lt;a href=&quot;https://docs.microsoft.com/ko-kr/cpp/mfc/hierarchy-chart?view=vs-2019&quot; target=&quot;_blank&quot;&gt;MSDN&lt;/a&gt;(사이트 내 PDF 다운로드 지원)&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="태그입력" /><summary type="html">[MFC] MFC 클래스 계층도</summary></entry><entry><title type="html">[MFC][실습] CImage : 이미지 불러오고 출력하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 이미지 불러오고 출력하기" /><published>2020-05-01T00:00:00+09:00</published><updated>2020-05-01T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0%20%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;MFC는 이미지를 출력할 때 비트맵 변환과정을 거치게 됩니다.&lt;br /&gt;
 과거 비트맵을 출력하기 위해서는 복잡한 과정이 있었지만 시간이 지나면서 많은 변화를 겪게되어&lt;br /&gt;
 함수 몇가지를 이용하여 이미지를 아주 간단하게 출력할 수 있습니다.&lt;/p&gt;
@@ -808,172 +817,4 @@ DoModa() 함수를 호출하여 사용자에게 보여주고 사용합니다.
 &lt;hr /&gt;
 &lt;ul&gt;
   &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일다이얼로그" /><category term="파일" /><category term="CFile" /><summary type="html">[MFC] CFileDialog : 설명 및 파일확장명 필터</summary></entry><entry><title type="html">[MFC] Modal &amp;amp; Modeless Dialog : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/" rel="alternate" type="text/html" title="[MFC] Modal &amp; Modeless Dialog : 설명" /><published>2020-04-12T00:00:00+09:00</published><updated>2020-04-12T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal%20and%20Modeless%20-%20%EC%84%A4%EB%AA%85</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/MFC_Modal-and-Modeless-%EC%84%A4%EB%AA%85/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;윈도우즈에서 사용되는 Dialog는 2가지 종류로 구분됩니다.&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Modal Dialog(모달)&lt;/code&gt; 와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Modeless Dialog(모달리스)&lt;/code&gt;가 있습니다.&lt;/p&gt;
-
-&lt;p&gt;둘은 서로 비슷하면서 다른 특징을 가지고 있습니다.&lt;br /&gt;
-윈도우즈에서 사용되는 Dialog는 부모 창이 종료되면 자동으로 종료되는 특징을 가지고 있습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;CDialog 타입의 객체를 생성했을 경우 메시지 및 이벤트 처리가 상당히 복잡할 수 있습니다.&lt;br /&gt;
-CDialog, CDialogEx 클래스를 상속받아 자식 클래스를 만들어&lt;br /&gt;
-이벤트를 처리하는 방식이 편하고 좋습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-모달-modal-설명&quot;&gt;1. 모달 (Modal) 설명&lt;/h2&gt;
-&lt;p&gt;Modal Dialog의 특징은 Modal Dialog가 활성화 되었을 땐&lt;br /&gt;
-Dialog가 종료될 때 까지 다른 창을 제어할 수 없는 &lt;code class=&quot;highlighter-rouge&quot;&gt;제어권 독점&lt;/code&gt; 형태를 가지고 있습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;하나의 창에서만 작업을 처리하기에 프로그래밍이 매우 간편합니다.&lt;br /&gt;
-사용자에게 중요한 입력을 무조건 받아야할 때 사용하면 유용합니다.&lt;br /&gt;
-Modal Dialog의 대표적인 예시로는 MessageBox가 있습니다.&lt;/p&gt;
-
-&lt;p&gt;생성에 사용되는 방식은 정적으로 변수를 선언하거나 동적할당으로 생성이 가능합니다.&lt;br /&gt;
-MFC에서 DoModal() 함수를 이용하여 창을 생성합니다.&lt;br /&gt;
-창 닫기 및 종료는 EndDialog() 함수를 이용합니다.&lt;br /&gt;
-EndDialog() 함수를 호출한다고 할당했던 메모리가 자동을 해제되지는 않습니다.&lt;/p&gt;
-
-&lt;p&gt;Modeless Dialog랑 다르게 창이 종료될 때 눌렀던 버튼에 해당하는 컨트롤ID 값을 반환합니다.&lt;br /&gt;
-반환값을 이용해 조건을 검사하여 특정 버튼을 눌렀는지에 대해 검사할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-모달-modal-코드&quot;&gt;2. 모달 (Modal) 코드&lt;/h2&gt;
-&lt;p&gt;MFC View InitDialogEx(…) 함수에서 사용 되는 코드입니다.&lt;/p&gt;
-
-&lt;p&gt;InitDialog() 함수가 아닌 InitDialogEx()를 사용하는 이유는&lt;br /&gt;
-Based Dialog 환경에서 MainDialog가 생성된 후 바로 Dialog를 사용자에게 보여주려고 했지만,&lt;br /&gt;
-Modal Dialog 특징으로 창에 제어권이 독점되어 OnCreate(), OnInitDialog() 함수 처리문에서&lt;br /&gt;
-Modal Dialog를 생성해서 보여줘도 Main Dialog가 생성 되기 전에 Modal Dialog가 생성되서 나타나기 떄문에&lt;br /&gt;
-PostMessage() 함수를 이용하여 사용자 정의 메시지(WM_USER)를 보내고 처리하여 함수를 확장한 것입니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;Modal Dialog를 사용자에게 띄우고 지우는 간단한 예시 코드로 알아보겠습니다.&lt;br /&gt;
-ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;figcaption&gt;MainDialog.cpp [ Modal Dialog 띄우기 ]&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// this = 부모 윈도우&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DoModal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nullptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figcaption&gt;ModalDialog.cpp [ 왼쪽 마우스 클릭 시 Modal Dialog 닫기 ]&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UINT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;EndDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;CDialogEx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;EndDialog() 함수가 호출되면 DoModal() 함수가 해당하는 컨트롤 ID값을 반환 후 밑에 있는 코드들이 실행됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-모달리스-modeless-설명&quot;&gt;3. 모달리스 (Modeless) 설명&lt;/h2&gt;
-&lt;p&gt;Modeless Dialog의 특징은 창이 열리더라도&lt;br /&gt;
-Dialog 종료와 상관없이 다른 창을 전환하여 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;일반적인 프로그램은 Modeless Dialog 방식으로 작동됩니다.&lt;br /&gt;
-사용자가 창을 전환할 수 있기에 다시 화면을 그리거나&lt;br /&gt;
-창 전환시에 특정 이벤트 및 메시지가 발생할 수 있으므로 이를 고려하는 프로그래밍을 해야합니다.&lt;br /&gt;
-Modeless Dialog의 예시로는 윈도우즈 메모장 찾기(Ctrl + F) Dialog입니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;동일한 부모 윈도우를 기준으로 Modal Dialog와 Modeless Dialog를 생성했을 때&lt;br /&gt;
-Modeless Dialog는 Modal Dialog 특징인 &lt;code class=&quot;highlighter-rouge&quot;&gt;제어권 독점에 상관없이 자유롭게 전환&lt;/code&gt;할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;생성에 사용되는 방식은 동적할당으로만 가능하며&lt;br /&gt;
-MFC에서 Create() 함수를 이용하여 메모리에 할당받아&lt;br /&gt;
-ShowWindow() 함수를 이용하여 사용자에게 창을 보여줍니다.&lt;br /&gt;
-창 닫기 및 종료는 DestroyWindow() 함수를 이용합니다.&lt;br /&gt;
-DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 해제되지는 않습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-모달리스-modeless-코드&quot;&gt;4. 모달리스 (Modeless) 코드&lt;/h2&gt;
-
-&lt;figcaption&gt;MainDialog.cpp [ Modeless Dialog 띄우기 ]&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;BOOL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;CDialogEx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nullptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModelessDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModelessDialog(this); // this = 부모 윈도우&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IDD_MODELESS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ShowWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SW_SHOW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figcaption&gt;ModelessDialog.cpp [ 왼쪽 마우스 클릭 시 Modeless Dialog 닫기 ]&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// 왼쪽 마우스 클릭 시 Modeless Dialog 닫기&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModelessDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UINT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DestroyWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;CDialogEx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Modeless Dialog는 창이 종료되더라도 반환되는 ID값이 따로 없습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;5-쓸모-없는-결론&quot;&gt;5. 쓸모 없는 결론&lt;/h2&gt;
-&lt;p&gt;간단한 코드와 함께 Modal과 Modeless에 대해 알아보았습니다.&lt;br /&gt;
-간단히 아래에 특징들을 정리해보았습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Dialog
-    &lt;ul&gt;
-      &lt;li&gt;Resource View에서 상속을 받아 클래스로 확장하여 생성하는 것이 편리하고 좋음&lt;/li&gt;
-      &lt;li&gt;EndDialog(), DestroyWindow() 함수 사용과 별개로 할당받은 메모리는 해제해야함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Modal
-    &lt;ul&gt;
-      &lt;li&gt;제어권 독점으로 인한 창 전환불가&lt;/li&gt;
-      &lt;li&gt;InitDialog() 에서 생성하고 보여줄 시 Main Dialog 보여지기 전에 생성됨&lt;/li&gt;
-      &lt;li&gt;사용자에게 중요한 것을 무조건 입력받을 때 사용 시 유용&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Modeleess
-    &lt;ul&gt;
-      &lt;li&gt;Modal과 반대로 창 전환 자유롭게 가능&lt;/li&gt;
-      &lt;li&gt;동일한 부모를 기준으로 Modal Dialog가 보여지는 중에도 자유롭게 접근 가능&lt;/li&gt;
-      &lt;li&gt;찾기, 바꾸기 같은 사용자에게 편리성을 가져다주는 창이 필요할 때 사용 시 유용&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="모달" /><category term="모달리스" /><category term="다이얼로그" /><category term="Modal" /><category term="Modeless" /><category term="Dialog" /><summary type="html">[MFC] Modal &amp; Modeless Dialog : 설명</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일다이얼로그" /><category term="파일" /><category term="CFile" /><summary type="html">[MFC] CFileDialog : 설명 및 파일확장명 필터</summary></entry></feed>
