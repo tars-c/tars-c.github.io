@@ -1,4 +1,180 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-04-26T23:19:12+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[잡담] 메인기술을 가지는 사람이 되어보자</title><link href="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84-%EA%B0%80%EC%A7%80%EB%8A%94-%EC%82%AC%EB%9E%8C%EC%9D%B4-%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90/" rel="alternate" type="text/html" title="[잡담] 메인기술을 가지는 사람이 되어보자" /><published>2020-04-26T00:00:00+09:00</published><updated>2020-04-26T00:00:00+09:00</updated><id>https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%8A%94%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84-%EA%B0%80%EC%A7%80%EB%8A%94-%EC%82%AC%EB%9E%8C%EC%9D%B4-%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90/">&lt;p&gt;&lt;strong&gt;이 글은 생각나는 대로 적는 것이니라 글의 두서가 없을 수 있으니 참고 바란다.&lt;/strong&gt;&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-01T23:04:51+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC][실습] CImage : 이미지 불러오고 출력하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 이미지 불러오고 출력하기" /><published>2020-05-01T00:00:00+09:00</published><updated>2020-05-01T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0%20%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;MFC는 이미지를 출력할 때 비트맵 변환과정을 거치게 됩니다.&lt;br /&gt;
+과거 비트맵을 출력하기 위해서는 복잡한 과정이 있었지만 시간이 지나면서 많은 변화를 겪게되어&lt;br /&gt;
+함수 몇가지를 이용하여 이미지를 아주 간단하게 출력할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;비트맵(*.bmp) 확장명을 가진 파일을 불러오고 간단히 출력해보도록 하겠습니다.&lt;br /&gt;
+OnPaint에서 작업을 했기에 dc 변수의 타입은 OnPaintDC입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;이미지 크기가 큰 경우&lt;/code&gt;에는 초기화되는 시점에 &lt;code class=&quot;highlighter-rouge&quot;&gt;미리 로드&lt;/code&gt;하여&lt;br /&gt;
+멤버 및 전역변수로 접근하여 사용하는 것이 좋습니다.&lt;br /&gt;
+이 예제에서는 아주 간단하게 알아보는 것이므로 따로 작업하지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;이미지를 단순히 불러오고 화면에 출력하는건 &lt;code class=&quot;highlighter-rouge&quot;&gt;CImage 클래스&lt;/code&gt;가 적합합니다.&lt;br /&gt;
+CImage 클래스는 &lt;code class=&quot;highlighter-rouge&quot;&gt;#include &amp;lt;atlimage.h&amp;gt;&lt;/code&gt;를 필요로 합니다.&lt;/p&gt;
+
+&lt;p&gt;비트맵을 로드 하는 방법은 총 2가지가 존재합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;리소스id를-이용하여-비트맵-출력하기&quot;&gt;리소스ID를 이용하여 비트맵 출력하기&lt;/h2&gt;
+&lt;!-- 리소스ID를 이용해 비트맵을 불러올 때에는 CBitmap 클래스에서 제공하는 LoadBitmap\(\) 함수를 이용합니다.
+리소스ID를 사용하기 위해서는 리소스뷰에서 비트맵을 추가하거나 삽입해야 합니다.
+비트맵 자체에는 DC가 없어서 출력할 수 없습니다.
+호환되는 DC를 만들고 비트맵을 담아주도록 합니다. --&gt;
+&lt;p&gt;LoadFromResource() 함수를 이용하려면 Resource View에서 비트맵 파일을 추가합니다.&lt;br /&gt;
+추가한 비트맵 파일에 리소스ID를 변경 및 부여하도록 합니다.&lt;br /&gt;
+비트맵을 불러오려면 CImage 클래스에서 제공하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;LoadFromResource() 함수&lt;/code&gt;를 이용합니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoadFromResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AfxGetInstanceHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IDB_BITMAP1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BitBlt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SRCCOPY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//bmpImage.Detach();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;비트맵-파일을-이용하여-비트맵-출력하기&quot;&gt;비트맵 파일을 이용하여 비트맵 출력하기&lt;/h2&gt;
+&lt;p&gt;비트맵 파일을 불러올 땐 CImage 클래스가 제공하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Load() 함수&lt;/code&gt;를 이용합니다.&lt;br /&gt;
+Load() 함수는 JPEG, GIF, BMP 및 PNG 확장명을 가진 이미지 파일을 불러옵니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;비트맵을 화면에 출력하기 전에 파일을 제대로 불러왔는지 여부를 판단해야합니다.&lt;br /&gt;
+Load() 함수가 반환하는 타입은 H_REUSLT 입니다.&lt;br /&gt;
+반환값은 S_OK(성공) 및 S_FALSE(실패) 값을 가지고 있습니다.&lt;br /&gt;
+SUCCEEDED, FAILED 매크로 함수를 이용하여 성공 및 실패 여부 확인을 조건문에 활용할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;파일을 불러올 때 기본위치는 cpp 소스파일이 포함된 프로젝트 위치로 지정되어 있습니다.&lt;br /&gt;
+상대경로를 사용하여 이미지 폴더에 있는 이미지 파일을 불러오면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;CImage 인스턴스에서 제공되는 BitBlt() 함수를 이용하면&lt;br /&gt;
+특정 DC에 CImage 인스턴스가 가지고 있는 이미지를 복사 및 출력할 수 있습니다.&lt;br /&gt;
+BitBlt() 함수는 ATL 함수이기에 DC는 HDC 타입을 요구합니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FAILED&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;.&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;RAY.bmp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BitBlt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SRCCOPY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// bmpImage.Detach();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;간단히 위에 사용 된 BitBlt() 함수를 해석해보면&lt;br /&gt;
+   (0,0)에서부터 전체크기만큼 bmpImage 인스턴스가 가지고 있는 이미지 데이터를&lt;br /&gt;
+   dc.m_hDC에다가 (80,15)위치에서 (300,300)크기만큼의 이미지를 복사해라 정도가 되겠네요?!&lt;/p&gt;
+
+&lt;h2 id=&quot;f리소스id를-이용해-해당-dc에-이미지를-그려주는-함수&quot;&gt;[F]리소스ID를 이용해 해당 DC에 이미지를 그려주는 함수&lt;/h2&gt;
+&lt;figcaption&gt;이 함수는 크기가 작은 이미지를 사용했을 때 빠릅니다&lt;/figcaption&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DrawFromResourceID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CDC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resourceID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DrawFromResourceID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CDC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resourceID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoadFromResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AfxGetInstanceHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resourceID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BitBlt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SRCCOPY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Detach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//DrawFromResourceID(dc, 400, 15, 300, 300, IDB_BITMAP1, 0, 0);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;f이미지-파일을-이용해-해당-dc에-이미지를-그려주는-함수&quot;&gt;[F]이미지 파일을 이용해 해당 DC에 이미지를 그려주는 함수&lt;/h2&gt;
+&lt;figcaption&gt;이 함수는 크기가 작은 이미지를 사용했을 때 빠릅니다&lt;/figcaption&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;BOOL&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DrawFromFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CDC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPCWSTR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;BOOL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DrawFromFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CDC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPCWSTR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FAILED&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BitBlt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SRCCOPY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Detach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//DrawFromFile(dc, 80, 15, 300, 300, _T(&quot;.\\res\\img\\RAY.BMP&quot;), 0, 0);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;정리&quot;&gt;정리&lt;/h2&gt;
+&lt;p&gt;비트맵 확장명을 가진 파일을 리소스ID를 이용 및 파일을 직접 불러오고&lt;br /&gt;
+이미지를 출력하는 방법에 대해 알아보았습니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;이미지를 간단히 불러오고 화면에 출력하는데는 CImage 클래스가 적합합니다.&lt;/li&gt;
+  &lt;li&gt;LoadFromResource() 함수는 리소스 ID를 이용해 비트맵을 불러옵니다.&lt;/li&gt;
+  &lt;li&gt;Load() 함수는 이미지 파일을 이용해 비트맵을 불러옵니다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;실습 결과:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CImage/CImageCBitmapBitBlt.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="비트맵" /><category term="CImage" /><category term="이미지" /><summary type="html">[MFC][실습] CImage : 이미지 불러오고 출력하기</summary></entry><entry><title type="html">[잡담] MFC 및 WINAPI 이렇게 공부하자</title><link href="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/MFC%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%98%EB%A9%B4%EC%84%9C-%EB%8A%90%EB%82%80%EC%A0%90/" rel="alternate" type="text/html" title="[잡담] MFC 및 WINAPI 이렇게 공부하자" /><published>2020-04-30T00:00:00+09:00</published><updated>2020-04-30T00:00:00+09:00</updated><id>https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/MFC%EB%A5%BC%20%EA%B3%B5%EB%B6%80%ED%95%98%EB%A9%B4%EC%84%9C%20%EB%8A%90%EB%82%80%EC%A0%90</id><content type="html" xml:base="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/MFC%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%98%EB%A9%B4%EC%84%9C-%EB%8A%90%EB%82%80%EC%A0%90/">&lt;p&gt;MFC 및 WINAPI 를 계속 공부하면서 느낀게 하나 있습니다.&lt;br /&gt;
+클래스가 제공하는 함수가 나무나 복잡하다는 것입니다.&lt;br /&gt;
+함수 이름도 심지어 비슷비슷해서 상당히 복잡해서 익히는데 큰 시간이 소비되는 것 같습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;MFC나 WINAPI는 상당히 코드가 길게 구성되어 있습니다.&lt;br /&gt;
+몇몇분들이 이 함수의 매개변수들을 외우려고 하지만&lt;br /&gt;
+공부하는 기간동안 이를 다 외워서 코딩하는건 시간낭비일 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;전체적으로 작동하는 흐름을 보자면&lt;br /&gt;
+수 많은 구조체들이 시스템의 일부를 가르키고 있고 복잡한 구조체를 이용해&lt;br /&gt;
+객체를 만들고 함수를 이용하여 시스템을 제어하는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;이를 어느정도 이해를 하는 것이 중요합니다.&lt;/p&gt;
+
+&lt;p&gt;수 많은 클래스가 제공하는 함수를 외울 필요는 없습니다. (외우면 당연히 좋아요)&lt;br /&gt;
+하지만 해당 구조체 및 클래스가 어떤 역할을 하는지 이해하는건 필수인 것 같습니다.&lt;br /&gt;
+그리고 역할을 이해하게 된다면 제공하는 함수에 대해서도 간접적으로 알 수 있습니다.&lt;br /&gt;
+이해를 한다면 나중에 MFC 프로젝트가 필요하거나 WINAPI를 이용한 프로그램을 제작할 때&lt;br /&gt;
+복잡한 구조체에 당황하지 않고 프로그래밍이 가능할 것 같습니다. &lt;br /&gt;
+클래스 계층도를 이해하는 것 또한 중요합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;비슷하면서도 같아보이는 클래스 및 구조체들..
+    &lt;ul&gt;
+      &lt;li&gt;HBITMAP: (WINAPI BITMAP HANDLE)&lt;/li&gt;
+      &lt;li&gt;CBitmap: (GDI BITMAP 객체)&lt;/li&gt;
+      &lt;li&gt;Bitmap: (GDI+ BITMAP 객체)&lt;/li&gt;
+      &lt;li&gt;BITMAP: (비트맵 정보를 가지는 구조체)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;구조체 및 클래스 이름도 상당히 비슷합니다.&lt;br /&gt;
+이름들이 거의 한글자씩만 다릅니다. (하아…)&lt;br /&gt;
+자주 쓰이는 함수는 어떤 클래스에 속해있는지 알아야하고 함수가 제공하는 매개변수는 msdn이나&lt;br /&gt;
+구글링을 통해 큰 흐름을 익히는 것이 중요한 것 같습니다.&lt;/p&gt;
+
+&lt;p&gt;함수 전부 외우거나 이해하는 것보다&lt;br /&gt;
+큰 틀(구조체 및 클래스)을 이해하는 것이 중요합니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;위 내용을 간략히 정리해보면&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;수 많은 클래스들이 제공하는 함수 및 매개변수를 외우려하지말라&lt;/li&gt;
+  &lt;li&gt;클래스와 구조체가 어떤 역할 및 기능을 하는지는 알아두도록 하자
+    &lt;ul&gt;
+      &lt;li&gt;추가로 함수에서 클래스와 구조체가 필요로 한다면 왜 필요한지 정도는 알아두도록 하자(쓰임세)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;복잡한 함수의 매개변수는 구글링이나 msdn을 참고하자&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="MFC" /><category term="공부방법" /><summary type="html">[잡담] MFC 및 WINAPI 이렇게 공부하자</summary></entry><entry><title type="html">[잡담] 메인기술을 가지는 사람이 되어보자</title><link href="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84-%EA%B0%80%EC%A7%80%EB%8A%94-%EC%82%AC%EB%9E%8C%EC%9D%B4-%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90/" rel="alternate" type="text/html" title="[잡담] 메인기술을 가지는 사람이 되어보자" /><published>2020-04-26T00:00:00+09:00</published><updated>2020-04-26T00:00:00+09:00</updated><id>https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%8A%94%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84-%EA%B0%80%EC%A7%80%EB%8A%94-%EC%82%AC%EB%9E%8C%EC%9D%B4-%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90/">&lt;p&gt;&lt;strong&gt;이 글은 생각나는 대로 적는 것이니라 글의 두서가 없을 수 있으니 참고 바란다.&lt;/strong&gt;&lt;br /&gt;
 &lt;br /&gt;
 블로그에 포스팅하면서 몇가지 의문점이 들었다…&lt;br /&gt;
 내가 짧게 본 것들을 누군가에게 자세히 설명할 수 있을까 ?&lt;br /&gt;
@@ -50,175 +226,81 @@ MFC는 생각보다 나에게 어렵다고 느껴지기만 했다.&lt;br /&gt;&l
 &lt;p&gt;&lt;strong&gt;- MFC 강의 목록 -&lt;/strong&gt;
 &lt;img src=&quot;/assets/images/잡담/lec.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;교수님 감사합니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><summary type="html">[잡담] 메인기술을 가지는 사람이 되어보자</summary></entry><entry><title type="html">[MFC] Modal &amp;amp; Modeless Dialog : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] Modal &amp; Modeless Dialog : 설명" /><published>2020-04-18T00:00:00+09:00</published><updated>2020-04-12T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/Dialog-HWND-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;윈도우즈에서 사용되는 Dialog는 2가지 종류로 구분됩니다.&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Modal Dialog(모달)&lt;/code&gt; 와 &lt;code class=&quot;highlighter-rouge&quot;&gt;Modeless Dialog(모달리스)&lt;/code&gt;가 있습니다.&lt;/p&gt;
+&lt;p&gt;교수님 감사합니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><summary type="html">[잡담] 메인기술을 가지는 사람이 되어보자</summary></entry><entry><title type="html">[MFC] 컨트롤 핸들(HWND) 가져오기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/control/%EC%BB%A8%ED%8A%B8%EB%A1%A4-%ED%95%B8%EB%93%A4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] 컨트롤 핸들(HWND) 가져오기" /><published>2020-04-18T00:00:00+09:00</published><updated>2020-04-12T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/control/%EC%BB%A8%ED%8A%B8%EB%A1%A4%20%ED%95%B8%EB%93%A4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/control/%EC%BB%A8%ED%8A%B8%EB%A1%A4-%ED%95%B8%EB%93%A4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;MFC에는 수 많은 컨트롤이 존재합니다.&lt;br /&gt;
+이 컨트롤을 제어하기 위해서는 CWnd 인스턴스에 접근하거나&lt;br /&gt;
+핸들을 이용하는 방식이 있습니다.&lt;/p&gt;
 
-&lt;p&gt;둘은 서로 비슷하면서 다른 특징을 가지고 있습니다.&lt;br /&gt;
-윈도우즈에서 사용되는 Dialog는 부모 창이 종료되면 자동으로 종료되는 특징을 가지고 있습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;WINAPI에서는 HWND 구조체를 이용해 컨트롤을 제어했지만&lt;br /&gt;
+MFC에서는 조금 더 편리하게 CWnd 윈도우 클래스의 인스턴스를 접근하여 제어할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;CDialog 타입의 객체를 생성했을 경우 메시지 및 이벤트 처리가 상당히 복잡할 수 있습니다.&lt;br /&gt;
-CDialog, CDialogEx 클래스를 상속받아 자식 클래스를 만들어&lt;br /&gt;
-이벤트를 처리하는 방식이 편하고 좋습니다.&lt;/p&gt;
+&lt;p&gt;핸들을 가져오는 방법은 여러가지 있습니다.&lt;br /&gt;
+그중 대표적으로 사용하는 방법에 대해 알아보겠습니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;1-모달-modal-설명&quot;&gt;1. 모달 (Modal) 설명&lt;/h2&gt;
-&lt;p&gt;Modal Dialog의 특징은 Modal Dialog가 활성화 되었을 땐&lt;br /&gt;
-Dialog가 종료될 때 까지 다른 창을 제어할 수 없는 &lt;code class=&quot;highlighter-rouge&quot;&gt;제어권 독점&lt;/code&gt; 형태를 가지고 있습니다.&lt;br /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;리소스id를-이용해-핸들-얻기-getdlgitem&quot;&gt;리소스ID를 이용해 핸들 얻기 (GetDlgItem)&lt;/h2&gt;
+&lt;p&gt;GetDlgItem() 함수를 사용하기 위해서는 해당 컨트롤이 가진 리소스ID에 대해 알아야합니다.&lt;br /&gt;
+리소스ID는 숫자지만 편리하게 #define을 사용해 관리 합니다. (resource.h 파일에 명시됨)&lt;br /&gt;
+뷰를 여러개 사용하게 되면 해당 뷰에 컨트롤이 포함되어 있어야만 정상적으로 가져올 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetDlgItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MY_CONTROL_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;하나의 창에서만 작업을 처리하기에 프로그래밍이 매우 간편합니다.&lt;br /&gt;
-사용자에게 중요한 입력을 무조건 받아야할 때 사용하면 유용합니다.&lt;br /&gt;
-Modal Dialog의 대표적인 예시로는 MessageBox가 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+GetDlgItem() 함수를 이용해 CWnd 인스턴스를 얻었으면&lt;br /&gt;
+형변환을 통해 해당 컨트롤 타입으로 변환하여 해당 인스턴스에 대한 함수를 사용할 수 있습니다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;생성에 사용되는 방식은 정적으로 변수를 선언하거나 동적할당으로 생성이 가능합니다.&lt;br /&gt;
-MFC에서 DoModal() 함수를 이용하여 창을 생성합니다.&lt;br /&gt;
-창 닫기 및 종료는 EndDialog() 함수를 이용합니다.&lt;br /&gt;
-EndDialog() 함수를 호출한다고 할당했던 메모리가 자동을 해제되지는 않습니다.&lt;/p&gt;
+&lt;p&gt;예를들어 Edit Control을 제어한다면 아래와 같이 사용할 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pEdit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetDlgItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IDC_MY_EDIT1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetWindowText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;제어 성공!));&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Modeless Dialog랑 다르게 창이 종료될 때 눌렀던 버튼에 해당하는 컨트롤ID 값을 반환합니다.&lt;br /&gt;
-반환값을 이용해 조건을 검사하여 특정 버튼을 눌렀는지에 대해 검사할 수 있습니다.&lt;/p&gt;
+&lt;h2 id=&quot;hwnd를-이용해-cwnd-인스턴스-얻기-fromhandle&quot;&gt;HWND를 이용해 CWnd 인스턴스 얻기 (FromHandle)&lt;/h2&gt;
+&lt;p&gt;가끔 WINAPI 함수를 이용해야 한다면 핸들 구조체를(HWND) 이용할 수 밖에 없습니다.&lt;br /&gt;
+MFC에서는 핸들(HWND)을 이용한 접근방법보다 CWnd 인스턴스로 접근방법이 많습니다.&lt;br /&gt;
+그러므로 MFC는 변환하는 함수를 제공해줍니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;2-모달-modal-코드&quot;&gt;2. 모달 (Modal) 코드&lt;/h2&gt;
-&lt;p&gt;MFC View InitDialogEx(…) 함수에서 사용 되는 코드입니다.&lt;/p&gt;
+&lt;p&gt;FromHandle() 함수를 이용한다면 컨트롤이 가진 핸들에 대해 CWnd* 인스턴스를 반환시켜 줍니다.&lt;br /&gt;
+해당 핸들의 컨트롤이 가진 CWnd 타입의 인스턴스가 없다면&lt;br /&gt;
+임시로 인스턴스를 생성하여 포인터를 반환해줍니다.&lt;br /&gt;&lt;br /&gt;
+임시로 생성된 인스턴스는 전역으로 사용하기에 적절하지 못합니다.&lt;br /&gt;
+지역변수처럼 사용하고 버려주시면 됩니다.&lt;br /&gt;
+FromHandle() 함수는 static 함수이므로 인스턴스가 따로 필요하지 않습니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;HWND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;editHwnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CreateWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;edit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;editWnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FromHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editHwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pEDit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;InitDialog() 함수가 아닌 InitDialogEx()를 사용하는 이유는&lt;br /&gt;
-Based Dialog 환경에서 MainDialog가 생성된 후 바로 Dialog를 사용자에게 보여주려고 했지만,&lt;br /&gt;
-Modal Dialog 특징으로 창에 제어권이 독점되어 OnCreate(), OnInitDialog() 함수 처리문에서&lt;br /&gt;
-Modal Dialog를 생성해서 보여줘도 Main Dialog가 생성 되기 전에 Modal Dialog가 생성되서 나타나기 떄문에&lt;br /&gt;
-PostMessage() 함수를 이용하여 사용자 정의 메시지(WM_USER)를 보내고 처리하여 함수를 확장한 것입니다.&lt;br /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;cwnd-인스턴스에서-핸들hwnd-접근&quot;&gt;CWnd 인스턴스에서 핸들(HWND) 접근&lt;/h2&gt;
+&lt;p&gt;CWnd 인스턴스에서는 아주 쉽게 멤버변수로 핸들(HWND)을 제공합니다.&lt;br /&gt;
+CWnd 클래스를 상속받은 자식 인스턴스에 대해서도 핸들(HWND)로 접근할 수 있습니다. (뷰 포함)&lt;br /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetSafeHwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Modal Dialog를 사용자에게 띄우고 지우는 간단한 예시 코드로 알아보겠습니다.&lt;br /&gt;
-ModalDialog는 리소스뷰에서 CDialog를 상속받아 작성된 클래스입니다.&lt;br /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;f리소스id를-사용하여-cwnd를-반환하는-함수&quot;&gt;[F]리소스ID를 사용하여 CWnd*를 반환하는 함수&lt;/h2&gt;
 
-&lt;figcaption&gt;MainDialog.cpp [ Modal Dialog 띄우기 ]&lt;/figcaption&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getCWndFromResourceID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controlID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetDlgItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;controlID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;fhwnd를-사용하여-cwnd를-반환하는-함수&quot;&gt;[F]HWND를 사용하여 CWnd*를 반환하는 함수&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
 3
 4
 5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getCWndFromHWND&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HWND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// this = 부모 윈도우&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DoModal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;ModalDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nullptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 임시 인스턴스가 생성될 수 있으니 주의할 필요가 있다.&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FromHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figcaption&gt;ModalDialog.cpp [ 왼쪽 마우스 클릭 시 Modal Dialog 닫기 ]&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModalDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UINT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;EndDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;CDialogEx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;EndDialog() 함수가 호출되면 DoModal() 함수가 해당하는 컨트롤 ID값을 반환 후 밑에 있는 코드들이 실행됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-모달리스-modeless-설명&quot;&gt;3. 모달리스 (Modeless) 설명&lt;/h2&gt;
-&lt;p&gt;Modeless Dialog의 특징은 창이 열리더라도&lt;br /&gt;
-Dialog 종료와 상관없이 다른 창을 전환하여 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;일반적인 프로그램은 Modeless Dialog 방식으로 작동됩니다.&lt;br /&gt;
-사용자가 창을 전환할 수 있기에 다시 화면을 그리거나&lt;br /&gt;
-창 전환시에 특정 이벤트 및 메시지가 발생할 수 있으므로 이를 고려하는 프로그래밍을 해야합니다.&lt;br /&gt;
-Modeless Dialog의 예시로는 윈도우즈 메모장 찾기(Ctrl + F) Dialog입니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;동일한 부모 윈도우를 기준으로 Modal Dialog와 Modeless Dialog를 생성했을 때&lt;br /&gt;
-Modeless Dialog는 Modal Dialog 특징인 &lt;code class=&quot;highlighter-rouge&quot;&gt;제어권 독점에 상관없이 자유롭게 전환&lt;/code&gt;할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;생성에 사용되는 방식은 동적할당으로만 가능하며&lt;br /&gt;
-MFC에서 Create() 함수를 이용하여 메모리에 할당받아&lt;br /&gt;
-ShowWindow() 함수를 이용하여 사용자에게 창을 보여줍니다.&lt;br /&gt;
-창 닫기 및 종료는 DestroyWindow() 함수를 이용합니다.&lt;br /&gt;
-DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 해제되지는 않습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-모달리스-modeless-코드&quot;&gt;4. 모달리스 (Modeless) 코드&lt;/h2&gt;
-
-&lt;figcaption&gt;MainDialog.cpp [ Modeless Dialog 띄우기 ]&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;BOOL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;CDialogEx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nullptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModelessDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModalDialog(this); // this = 부모 윈도우 ModelessDlg_ = new ModelessDialog(this); // this = 부모 윈도우&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IDD_MODELESS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;ModelessDlg_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ShowWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SW_SHOW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figcaption&gt;ModelessDialog.cpp [ 왼쪽 마우스 클릭 시 Modeless Dialog 닫기 ]&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// 왼쪽 마우스 클릭 시 Modeless Dialog 닫기&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ModelessDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UINT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DestroyWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;CDialogEx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnLButtonDown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nFlags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Modeless Dialog는 창이 종료되더라도 반환되는 ID값이 따로 없습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;5-쓸모-없는-결론&quot;&gt;5. 쓸모 없는 결론&lt;/h2&gt;
-&lt;p&gt;간단한 코드와 함께 Modal과 Modeless에 대해 알아보았습니다.&lt;br /&gt;
-간단히 아래에 특징들을 정리해보았습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Dialog
-    &lt;ul&gt;
-      &lt;li&gt;Resource View에서 상속을 받아 클래스로 확장하여 생성하는 것이 편리하고 좋음&lt;/li&gt;
-      &lt;li&gt;EndDialog(), DestroyWindow() 함수 사용과 별개로 할당받은 메모리는 해제해야함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Modal
-    &lt;ul&gt;
-      &lt;li&gt;제어권 독점으로 인한 창 전환불가&lt;/li&gt;
-      &lt;li&gt;InitDialog() 에서 생성하고 보여줄 시 Main Dialog 보여지기 전에 생성됨&lt;/li&gt;
-      &lt;li&gt;사용자에게 중요한 것을 무조건 입력받을 때 사용 시 유용&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Modeleess
-    &lt;ul&gt;
-      &lt;li&gt;Modal과 반대로 창 전환 자유롭게 가능&lt;/li&gt;
-      &lt;li&gt;동일한 부모를 기준으로 Modal Dialog가 보여지는 중에도 자유롭게 접근 가능&lt;/li&gt;
-      &lt;li&gt;찾기, 바꾸기 같은 사용자에게 편리성을 가져다주는 창이 필요할 때 사용 시 유용&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="모달" /><category term="모달리스" /><category term="다이얼로그" /><category term="Modal" /><category term="Modeless" /><category term="Dialog" /><summary type="html">[MFC] Modal &amp; Modeless Dialog : 설명</summary></entry><entry><title type="html">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기" /><published>2020-04-18T00:00:00+09:00</published><updated>2020-04-18T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20%ED%8C%8C%EC%9D%BC%EC%9D%84%20%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Control" /><category term="컨트롤" /><summary type="html">[MFC] 컨트롤 핸들(HWND) 가져오기</summary></entry><entry><title type="html">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기" /><published>2020-04-18T00:00:00+09:00</published><updated>2020-04-18T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20%ED%8C%8C%EC%9D%BC%EC%9D%84%20%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;FileDialog에서는 여러개의 파일을 선택하는 기능을 지원하고 있습니다. &lt;br /&gt;
 Adobe사 포토샵 같은 프로그램을 보면 이미지를 여러개 선택해 불러와서 사용자 작업을 처리합니다.&lt;/p&gt;
 
@@ -399,10 +481,7 @@ CString 클래스에서 제공되는 함수들을 이용하면 파일이름 혹�
 &lt;hr /&gt;
 &lt;ul&gt;
   &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="CFile" /><category term="파일" /><category term="다중 파일 정보" /><category term="파일정보" /><category term="파일이름" /><category term="파일확장명" /><category term="파일경로" /><category term="이름" /><category term="경로" /><category term="확장명" /><category term="GetNextPathName" /><category term="GetStartPosition" /><summary type="html">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기</summary></entry><entry><title type="html">[MFC] Dialog : HWND(핸들) 얻기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/" rel="alternate" type="text/html" title="[MFC] Dialog : HWND(핸들) 얻기" /><published>2020-04-18T00:00:00+09:00</published><updated>2020-04-18T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File%20-%20%ED%8C%8C%EC%9D%BC%20PATH%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%A0%95%EB%B3%B4%20%EA%B5%AC%ED%95%98%EA%B8%B0%20(%EC%9D%B4%EB%A6%84,%20%ED%99%95%EC%9E%A5%EB%AA%85,%20%ED%8F%B4%EB%8D%94,%20%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/dialog/File-%ED%8C%8C%EC%9D%BC-PATH-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EB%B3%B4-%EA%B5%AC%ED%95%98%EA%B8%B0-(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%ED%8F%B4%EB%8D%94,-%EC%83%81%EC%9C%84%ED%8F%B4%EB%8D%94)/">&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><summary type="html">[MFC] Dialog : HWND(핸들) 얻기</summary></entry><entry><title type="html">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%84%A0%ED%83%9D%EB%90%9C%20%ED%8C%8C%EC%9D%BC%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,%20%ED%99%95%EC%9E%A5%EB%AA%85,%20%EA%B2%BD%EB%A1%9C)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="CFile" /><category term="파일" /><category term="다중 파일 정보" /><category term="파일정보" /><category term="파일이름" /><category term="파일확장명" /><category term="파일경로" /><category term="이름" /><category term="경로" /><category term="확장명" /><category term="GetNextPathName" /><category term="GetStartPosition" /><summary type="html">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기</summary></entry><entry><title type="html">[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="alternate" type="text/html" title="[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%84%A0%ED%83%9D%EB%90%9C%20%ED%8C%8C%EC%9D%BC%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,%20%ED%99%95%EC%9E%A5%EB%AA%85,%20%EA%B2%BD%EB%A1%9C)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;CFileDialog 클래스에서 제공해주는 함수가 여려가지 있습니다.&lt;br /&gt;
 그중에 FileDialog에서 파일 정보를 가져오는 자주 쓰이는 함수가 있습니다&lt;/p&gt;
 
@@ -468,7 +547,7 @@ CString 클래스 Left(), RevesrseFind() 함수를 이용해 짤라내서 사용
 &lt;hr /&gt;
 &lt;ul&gt;
   &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일" /><category term="이름" /><category term="확장명" /><category term="경로" /><category term="가져오기" /><category term="정보가져오기" /><summary type="html">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</summary></entry><entry><title type="html">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)" /><published>2020-04-16T00:00:00+09:00</published><updated>2019-04-17T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%84%A0%ED%83%9D%EB%90%9C%20%ED%8C%8C%EC%9D%BC%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,%20%ED%99%95%EC%9E%A5%EB%AA%85,%20%EA%B2%BD%EB%A1%9C)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일" /><category term="이름" /><category term="확장명" /><category term="경로" /><category term="가져오기" /><category term="정보가져오기" /><summary type="html">[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</summary></entry><entry><title type="html">[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="alternate" type="text/html" title="[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)" /><published>2020-04-16T00:00:00+09:00</published><updated>2019-04-17T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%84%A0%ED%83%9D%EB%90%9C%20%ED%8C%8C%EC%9D%BC%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,%20%ED%99%95%EC%9E%A5%EB%AA%85,%20%EA%B2%BD%EB%A1%9C)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;CFileDialog 클래스에서 제공해주는 함수가 여려가지 있습니다.&lt;br /&gt;
 그중에 FileDialog에서 파일 정보를 가져오는 자주 쓰이는 함수가 있습니다&lt;/p&gt;
 
@@ -534,7 +613,7 @@ CString 클래스 Left(), RevesrseFind() 함수를 이용해 짤라내서 사용
 &lt;hr /&gt;
 &lt;ul&gt;
   &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일" /><category term="이름" /><category term="확장명" /><category term="경로" /><category term="가져오기" /><category term="정보가져오기" /><summary type="html">[MFC] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</summary></entry><entry><title type="html">[MFC] CFileDialog : 시작 디렉토리 변경</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 시작 디렉토리 변경" /><published>2020-04-16T00:00:00+09:00</published><updated>2020-04-16T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%8B%9C%EC%9E%91%20%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%20%EB%B3%80%EA%B2%BD</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/">&lt;p&gt;CFileDialog를 이용해 FileDialog를 사용자에게 보여줄 때 &lt;br /&gt;
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일" /><category term="이름" /><category term="확장명" /><category term="경로" /><category term="가져오기" /><category term="정보가져오기" /><summary type="html">[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</summary></entry><entry><title type="html">[MFC][실습] CFileDialog : 시작 디렉토리 변경</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/" rel="alternate" type="text/html" title="[MFC][실습] CFileDialog : 시작 디렉토리 변경" /><published>2020-04-16T00:00:00+09:00</published><updated>2020-04-16T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%8B%9C%EC%9E%91%20%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%20%EB%B3%80%EA%B2%BD</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/">&lt;p&gt;CFileDialog를 이용해 FileDialog를 사용자에게 보여줄 때 &lt;br /&gt;
 Visual Studio에서 작업했을 경우 FileDialog 시작 디렉토리가 현재 프로젝트로 설정되어 있습니다.&lt;/p&gt;
 
 &lt;p&gt;CFileDialog 객체가 가지고 있는  멤버변수 &lt;code class=&quot;highlighter-rouge&quot;&gt;m_ofn.lpstrInitialDir&lt;/code&gt; 값을 변경하여&lt;br /&gt;
@@ -571,7 +650,7 @@ FileDialog 시작 디렉토리를 변경할 수 있습니다.&lt;br /&gt;
 &lt;hr /&gt;
 &lt;ul&gt;
   &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="디렉토리 변경" /><category term="경로 변경" /><category term="디렉토리 변경" /><category term="기본경로" /><category term="처음경로" /><category term="경로" /><summary type="html">[MFC] CFileDialog : 시작 디렉토리 변경</summary></entry><entry><title type="html">[MFC] CFileDialog : 설명 및 파일확장명 필터</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 설명 및 파일확장명 필터" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%84%A4%EB%AA%85</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/">&lt;h2 id=&quot;관련-링크&quot;&gt;관련 링크&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="디렉토리 변경" /><category term="경로 변경" /><category term="디렉토리 변경" /><category term="기본경로" /><category term="처음경로" /><category term="경로" /><summary type="html">[MFC][실습] CFileDialog : 시작 디렉토리 변경</summary></entry><entry><title type="html">[MFC] CFileDialog : 설명 및 파일확장명 필터</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 설명 및 파일확장명 필터" /><published>2020-04-13T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%84%A4%EB%AA%85</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A4%EB%AA%85/">&lt;h2 id=&quot;관련-링크&quot;&gt;관련 링크&lt;/h2&gt;
 &lt;p&gt;없음&lt;/p&gt;
 
 &lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
@@ -897,371 +976,4 @@ DestroyWindow() 함수를 호출한다고 할당했던 메모리가 자동을 �
 &lt;hr /&gt;
 &lt;ul&gt;
   &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="모달" /><category term="모달리스" /><category term="다이얼로그" /><category term="Modal" /><category term="Modeless" /><category term="Dialog" /><summary type="html">[MFC] Modal &amp; Modeless Dialog : 설명</summary></entry><entry><title type="html">[C++] Member Initializer : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/" rel="alternate" type="text/html" title="[C++] Member Initializer : 설명" /><published>2020-04-10T00:00:00+09:00</published><updated>2020-04-13T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/cpp/CPP_%EB%A9%A4%EB%B2%84%EC%9D%B4%EB%8B%88%EC%85%9C%EB%9D%BC%EC%9D%B4%EC%A0%80/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-
-&lt;p&gt;멤버변수의 선언 후 기본값이 Visual Studio에서는&lt;br /&gt;
-디버그 환경으로 빌드할 시 0이 아닌 0xCDCDCD라는 이상한 값이 들어가 있습니다.&lt;br /&gt;
-기본값이 잘못되어 런타임에서 프로그램이 실행되다가 갑자기 멈춘다거나&lt;br /&gt;
-결과물이 다르게 출력되는 현상이 나타납니다.&lt;/p&gt;
-
-&lt;p&gt;값을 초기화 한다는 것은 프로그래밍에서 매우 중요한 역할을 합니다.&lt;br /&gt;
-클래스 멤버변수를 초기화하려면 &lt;code class=&quot;highlighter-rouge&quot;&gt;생성자&lt;/code&gt;를 이용하거나 &lt;code class=&quot;highlighter-rouge&quot;&gt;멤버이니셜라이저&lt;/code&gt;를 이용합니다.&lt;br /&gt;
-레퍼런스 타입을 가진 멤버변수 같은 경우는 생성자를 이용해 초기화할 수 없습니다.&lt;br /&gt;
-멤버이니셜라이저의 호출은 객체가 생성되기 전에 호출됩니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;멤버이니셜라이저가 사용되는 방식은 크게 4가지정도 있습니다.
-    &lt;ol&gt;
-      &lt;li&gt;멤버변수 초기화&lt;/li&gt;
-      &lt;li&gt;부모 멤버변수 초기화&lt;/li&gt;
-      &lt;li&gt;상수 멤버변수 초기화 (&amp;lt; C++11)&lt;/li&gt;
-      &lt;li&gt;레퍼런스 멤버변수 초기화&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이번 글에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;멤버이니셜라이저&lt;/code&gt;를 이용하여&lt;br /&gt;
-멤버변수 초기화 방법에 대해 알아봅니다.&lt;br /&gt;
-기본적인 방법만 알고 있으면 크게 어려울 것이 없습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-사용방법&quot;&gt;1. 사용방법&lt;/h2&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;Constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Member1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Member2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Member3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//	위 코드는 Member1에 해당하는 변수를 Value1로 초기화한다. 라는 의미를 가지고 있습니다.&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//	생성자 정의부 헤더에 멤버변수와 초기화할 값을 넣어주시면 됩니다.&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//	여러개의 멤버변수를 초기화할 경우 ,를 써주고 다음 초기화할 내용을 적어줍니다.&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//	중요한 점은 세미콜론(;)이 들어가지 않습니다.&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;Constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; 
-	&lt;span class=&quot;n&quot;&gt;Member1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;Member2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;Member3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Value3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 위와 같이 가독성 있게 수정해서 쓸 수도 있습니다.&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;2-멤버변수-초기화&quot;&gt;2. 멤버변수 초기화&lt;/h2&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Parent&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Chris&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	
-	&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Parent:: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ID = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;, Name = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'\n'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;출력 결과:
-	* 멤버 statusID_ 값이 5로, Name_ 값이 'Chris' 로 초기화 되었다.
-
-Parent:: ID = 5, Name = Chris
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;3-부모-멤버변수-초기화&quot;&gt;3. 부모 멤버변수 초기화&lt;/h2&gt;
-&lt;p&gt;자식(Child) 객체의 멤버이니셜라이저를 이용해 부모(Parent) 객체의 멤버변수들을 초기화할 수 있습니다.
-멤버이니셜라이저에서 가장 많이 사용되는 방법이라고 생각합니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// Visual Studio 2017&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;#include &quot;pch.h&quot;
-#include &amp;lt;iostream&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Parent&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Chris&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;strcpy_s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Parent:: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ID = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;, Name = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'\n'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Child&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;Child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;James&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Jack&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Child:: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ID = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;statusID_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;, Name = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Name_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'\n'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ParentShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;Parent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;Child&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ParentShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;출력 결과:
-	&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 자식&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Child&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 객체의 멤버이니셜라이저에서 부모&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Parent&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 매개변수 생성자를 호출하여
-	&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 부모&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Parent&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 멤버변수가 초기화 되었다.
-
-Child:: ID &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 10, Name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; James
-Parent:: ID &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 99, Name &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Jack
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;4-상수-멤버변수-초기화--c11&quot;&gt;4. 상수 멤버변수 초기화 (&amp;lt; C++11)&lt;/h2&gt;
-&lt;p&gt;C++11 에서는 멤버이니셜라이저를 사용하지 않고도 상수 멤버변수를 선언하자마자 쉽게 초기화 할 수 있습니다.&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;(warning: in-class initialization of non-static data member is a C++11 extension [-Wc++11-extensions])&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;GCC 표준 옵션(-std=98)을 적용하여 컴파일 해봤지만… 위와 같은 warning만 보여지고 error는 없었습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;5-레퍼런스-멤버변수-초기화&quot;&gt;5. 레퍼런스 멤버변수 초기화&lt;/h2&gt;
-&lt;p&gt;레퍼런스의 특징은 선언을 했으면 반드시 초기화 값을 가지고 있어야합니다.&lt;br /&gt;
-nullptr값으로 변경할 수 없으며, nullptr은 상수 레퍼런스(const &amp;amp;ref)만 사용가능합니다.&lt;/p&gt;
-
-&lt;p&gt;레퍼런스 타입 멤버변수를 가진 객체를 생성하기 위해서는&lt;br /&gt;
-레퍼런스 타입 멤버변수는 멤버이니셜라이저를 이용하여 반드시 초기화가 되어야만 합니다.&lt;/p&gt;
-
-&lt;p&gt;클래스에서 여러개의 생성자를 가지고 있으면&lt;br /&gt;
-모든 생성자에서 멤버이니셜라이저를 이용하여 레퍼런스 타입의 멤버변수를 초기화해야만 합니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;(error: constructor for ‘Point’ must explicitly initialize the reference member ‘x’)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;멤버이니셜라이저로 초기화 하지 않으면 위와 같은 컴파일 오류가 발생하게 됩니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Point&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-	&lt;span class=&quot;cm&quot;&gt;/*
-	멤버이니셜라이저로 레퍼런스 타입의 멤버변수를 초기화 하지 않는다면 이 생성자는 사용할 수 없습니다.
-	현재 모든 멤버변수가 레퍼런스 타입이므로 참조할 변수가 없어 기본 생성자는 사용할 수 없습니다.
-	Point()
-	{
-
-	}
-	*/&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;Point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;py&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Point:: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;x = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;, y = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'\n'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;Point&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;pt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ShowData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;출력 결과:
-	&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; main 함수에서 x, y를 레퍼런스 타입으로 받아 객체에 넘겨주었다.
-
-Point:: x &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 10, y &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 20
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;6-쓸모없는-결론&quot;&gt;6. 쓸모없는 결론&lt;/h2&gt;
-&lt;p&gt;총 4가지 사용방법에 대해 코드와 함께 정리해보았습니다.&lt;br /&gt;
-기본적으로 멤버변수를 초기화할 때에는 멤버이니셜라이저를 사용하는 것이 좋습니다.&lt;br /&gt;
-멤버이니셜라이저는 객체가 생성되기 전에 호출됩니다.&lt;br /&gt;
-부모 생성자를 초기화할 때에는 아주 유용할 것 같습니다.&lt;br /&gt;
-상수 멤버변수 초기화는 C++11부터는 편하게 초기화할 수 있으므로 사용되지 않습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="멤버이니셜라이저" /><category term="Member-Initializer" /><summary type="html">[C++] Member Initializer : 설명</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="모달" /><category term="모달리스" /><category term="다이얼로그" /><category term="Modal" /><category term="Modeless" /><category term="Dialog" /><summary type="html">[MFC] Modal &amp; Modeless Dialog : 설명</summary></entry></feed>
