@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-02T23:59:45+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-2</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-03T00:09:13+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-2</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;비어있는 비트맵 만들기 1편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-1&quot; target=&quot;_blank&quot;&gt;비어있는 비트맵 만들기&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;비어있는 비트맵을 만들었으니 큰 이미지에서 일부만 잘라서 화면에 출력해보겠습니다.&lt;br /&gt;
@@ -14,7 +14,7 @@ BitBlt() 함수를 이용하여 이미지를 그리고 그릴 이미지의 범�
 bmpImage가 가지고 있는 이미지를 sliceBmpImage DC에 복사(BitBlt) 합니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;비트맵을 만들 때 주의할 점은 어떤 이미지를 잘라내어 담을지 결정해두고&lt;br /&gt;
-해당 이미지와 화소당 비트(&lt;a href=&quot;https://ko.wikipedia.org/wiki/색_깊이&quot;&gt;BPP&lt;/a&gt;를 똑같이 만들어줘야 합니다.&lt;br /&gt;&lt;/p&gt;
+해당 이미지와 화소당 비트(&lt;a href=&quot;https://ko.wikipedia.org/wiki/색_깊이&quot;&gt;BPP&lt;/a&gt;)를 똑같이 만들어줘야 합니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;DC를 가져올 때에는 BitBlt() 함수는 HDC 타입 데이터를 요구하기 때문에&lt;br /&gt;
 CImage 클래스에서 제공하는 GetDC() 함수를 사용합니다.&lt;br /&gt;
@@ -26,7 +26,7 @@ GetDC() 함수를 사용했을 경우 반드시 ReleaseDC()를 해줘서 사용�
 &lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoadFromResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AfxGetInstanceHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IDB_BITMAP1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;ㅖ&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;// 사용자는 그림에서 250, 250 위치부터 150x150 크기 조각 이미지를 비어있는 비트맵에 0,0 위치에 복사&lt;/span&gt;
@@ -121,14 +121,18 @@ GetDC() 함수를 사용했을 경우 반드시 ReleaseDC()를 해줘서 사용�
 &lt;ol&gt;
   &lt;li&gt;조각 이미지 크기를 입력하여 비어있는 비트맵을 만들고 큰 이미지를 일부 복사해야합니다.
     &lt;ul&gt;
-      &lt;li&gt;비어있는 비트맵과 큰 이미지의 화소당 비트(BPP)는 반드시 동일해야합니다.&lt;/li&gt;
+      &lt;li&gt;비어있는 비트맵과 큰 이미지의 화소당 비트(&lt;a href=&quot;https://ko.wikipedia.org/wiki/색_깊이&quot;&gt;BPP&lt;/a&gt;)는 반드시 동일해야합니다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;이미지를 복사할 때 복사를 시작할 위치 및 복사할 이미지 크기를 적어야합니다.&lt;/li&gt;
   &lt;li&gt;BitBlt() 함수를 이용하여 비어있는 비트맵에 큰 이미지를 복사합니다.
     &lt;ul&gt;
-      &lt;li&gt;복사할 대상DC 매개변수가 HDC를 요구하므로&lt;br /&gt;GetDC() 함수를 이용하여 CImage가 가지고 있는 이미지 DC로 접근할 수 있습니다.&lt;/li&gt;
-      &lt;li&gt;GetDC() 함수를 사용한 경우 빠르게 ReleaseDC() 함수를 사용하여 사용한 리소스를 되돌려 줍니다.&lt;/li&gt;
+      &lt;li&gt;복사할 대상DC 매개변수가 HDC를 요구하므로
+        &lt;ul&gt;
+          &lt;li&gt;GetDC() 함수를 이용하여 CImage가 가지고 있는 이미지 DC로 접근할 수 있습니다.&lt;/li&gt;
+          &lt;li&gt;GetDC() 함수를 사용한 경우 빠르게 ReleaseDC() 함수를 사용하여 사용한 리소스를 되돌려 줍니다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;View에 출력할 조각 이미지를 출력할 위치와 출력할 조각 이미지의 크기를 입력합니다.&lt;/li&gt;
@@ -137,10 +141,11 @@ GetDC() 함수를 사용했을 경우 반드시 ReleaseDC()를 해줘서 사용�
 
 &lt;p&gt;실습 결과:&lt;br /&gt;
 &lt;img src=&quot;/assets/images/CImage/sliceBmpImage.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><category term="SliceDraw" /><category term="getSliceImage" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</summary></entry><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-1</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-1" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-1</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;비어있는 비트맵 만들기 2편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-2&quot; target=&quot;_blank&quot;&gt;화면에 조각 이미지 출력하기&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;잠깐만요! 이미 1편을 보셨다구요 ?&lt;br /&gt;
+비어있는 비트맵 만들기 2편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-2&quot; target=&quot;_blank&quot;&gt;화면에 조각 이미지 출력하기&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;이미지를 편집할 때 일부 이미지를 잘라야할 때가 있습니다.&lt;br /&gt;
-이미지를 자르기 위해서는 비어있는 비트맵을 만들어야합니다.
+MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만들어야합니다.&lt;br /&gt;
 실습에서 사용된 이미지 파일은 bmp 파일(24 bit)입니다.&lt;/p&gt;
 
 &lt;p&gt;이 글에서는 비어있는 비트맵을 만드는 방법에 대해 적어보겠습니다.&lt;/p&gt;
