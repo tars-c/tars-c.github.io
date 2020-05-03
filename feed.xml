@@ -1,4 +1,352 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-03T00:10:26+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-2</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-03T20:57:15+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[C++] 비트 연산 Bitwise</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR/" rel="alternate" type="text/html" title="[C++] 비트 연산 Bitwise " /><published>2020-05-03T00:00:00+09:00</published><updated>2020-05-03T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;저에게 XOR은 조금 친근하지 못한 연산자였는데&lt;br /&gt;
+한가지 쓰임을 알게게 되어 비트 연산 전체를 포스팅하게 되었습니다.&lt;br /&gt;
+비트 연산을 한다고 해서 피연산자를 2개 요구하는 연산자들은 결과가 바로 반영되지 않습니다.&lt;br /&gt;
+비트 연산도 산술연산자처럼 축약형으로 사용할 수 있습니다. (&amp;amp;=, |=, ^=, «=, »=)&lt;/p&gt;
+
+&lt;p&gt;비트연산은 다른 연산자에 비해 처리 속도가 빠릅니다.&lt;br /&gt;
+공부를 할때 숫자를 막 써놔도 비트연산은 눈으로 봐도 잘 들어오지 않습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;화면에 계산기를 켜두고 하나씩 실습해보면 누구나 쉽게 터득할 수 있습니다.&lt;br /&gt;
+비트연산 관련 프로그래밍 시 계산기를 이용하면 빠르게 작업을 처리할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;예시에서 사용되는 타입 크기는 임의 크기인 1byte입니다.&lt;br /&gt;
+기본 int 타입 크기는 x86 환경에서 4byte인 점을 주의하셔야 합니다.&lt;br /&gt;
+(자료형의 크기가 클 수록 비트가 복잡하므로 나머지 3byte는 명시 안함)&lt;/p&gt;
+
+&lt;p&gt;비트는 10진수가 가진 값을 2의 n승 꼴로 표현할 수 있습니다.&lt;br /&gt;
+10진수와 관계지어 비트가 차지하고 있는 위치에 대해 알아야합니다.&lt;br /&gt;
+아래에 비트연산을 이해하기 위해서는 다음과 같은 개념을 아셔야 합니다.&lt;br /&gt;
+첫번째 비트: 2의 0승 = 1&lt;br /&gt;
+두번째 비트: 2의 1승 = 2&lt;br /&gt;
+세번쨰 비트: 2의 3승 = 4&lt;br /&gt;
+네번째 비트: 2의 4승 = 8&lt;br /&gt;
+다섯번째 비트: 2의 5승 = 16&lt;/p&gt;
+
+&lt;p&gt;비트가 0000 1111 로 구성되어 있으면&lt;br /&gt;
+10진수 값은  15가 됩니다. (1 + 2 + 4 + 8)&lt;/p&gt;
+
+&lt;h2 id=&quot;or-연산&quot;&gt;OR 연산&lt;/h2&gt;
+&lt;p&gt;OR 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt; 입니다.&lt;br /&gt;
+피연산자는 2개가 필요합니다.&lt;/p&gt;
+
+&lt;p&gt;OR 비트연산은 두개의 비트 중 하나만 1이면 결과가 참(1)이 되는 것을 의미합니다.&lt;br /&gt;
+쉽게 이해하기 위해 변수를 만들어 연산자를 이용해 계산을 해보고 과정을 적어보겠습니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;위 식에서 A와 B는 OR 연산자(|)를 이용해 비트 연산을 진행하게 됩니다.&lt;br /&gt;
+0000 0101 :: 5&lt;br /&gt;
+0000 0010 :: 2&lt;br /&gt;
+0000 0111 :: 7(결과)&lt;/p&gt;
+
+&lt;p&gt;연산하는 과정을 하나씩 살펴보자면, (맨 오른쪽이 첫번째 비트)&lt;br /&gt;
+(5의 1번째 비트 1 | 2의 1번째 비트 0) 연산 = 1&lt;br /&gt;
+(5의 2번째 비트 0 | 2의 2번째 비트 1) 연산 = 1&lt;br /&gt;
+(5의 3번째 비트 1 | 2의 3번째 비트 0) 연산 = 1&lt;br /&gt;
+나머지 비트 모두 0&lt;br /&gt;
+연산 결과: 0000 0111 (10진수: 7)이 나오게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;또, OR 연산은 두개의 피연산자가 가진 값에 해당하는 비트가 중복되지 않는 선에서 더하기에도 쓰인다는 겁니다.&lt;br /&gt;
+5와 2를 OR 비트 연산했는데 결과값이 7이 나왔죠 ? &lt;del&gt;&lt;strong&gt;(어이쿠! 더해졌네?)&lt;/strong&gt;&lt;/del&gt;&lt;br /&gt;
+반대로 비트가 중복되는 경우를 보자면&lt;br /&gt;
+1과 3을 OR 연산하면 결과가 3이 나오게 되고 덧셈을 못하는 슬픔을 겪게 될 수도 있습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;덧셈방식을 이용하여 특정 속상값을 부여할 수도 있습니다.&lt;br /&gt;
+0000 0000 비어 있는 비트가 있을 때&lt;br /&gt;
+0000 0001 10진수 1을 사용하여 OR 연산으로 1비트를 채워줄 수 있고&lt;br /&gt;
+0000 0010 두번째 비트도 10진수 2를 사용하여 1을 채워줄 수 있습니다.&lt;br /&gt;
+OR 비트 연산을 이용하면 값에 여러가지 속성값을 부여할 수 있습니다. (Flag 연산)&lt;/p&gt;
+
+&lt;p&gt;WINAPI, MFC에서도 스타일처럼 여러개의 속성을 적용시킬 수 있을 때&lt;br /&gt;
+OR 비트 연산을 이용해 여러개의 속성을 부여하는 방식을 다음과 같이 사용합됩니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_VISIBLE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_CHILD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_THINFRAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;and-연산&quot;&gt;AND 연산&lt;/h2&gt;
+&lt;p&gt;AND 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt; 입니다.&lt;br /&gt;
+피연산자는 2개가 필요합니다.&lt;/p&gt;
+
+&lt;p&gt;AND 비트 연산은 두개의 비트 중 둘다 1이어야 결과가 참(1)이 되는 것을 의미합니다.&lt;br /&gt;
+쉽게 이해하기 위해 변수를 만들어 연산자를 이용해 계산을 해보고 과정을 적어보겠습니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;위 식에서 A와 B는 AND 연산자(&amp;amp;)를 이용해 비트 연산을 진행하게 됩니다.&lt;br /&gt;
+0000 0101 :: 5&lt;br /&gt;
+0000 0011 :: 3&lt;br /&gt;
+0000 0001 :: 1(결과)&lt;/p&gt;
+
+&lt;p&gt;연산하는 과정을 하나씩 살펴보자면, (맨 왼쪽이 첫번째 비트)&lt;br /&gt;
+(5의 1번째 비트 1 &amp;amp; 3의 1번째 비트 1) 연산 = 1&lt;br /&gt;
+(5의 2번째 비트 0 &amp;amp; 3의 2번째 비트 1) 연산 = 0&lt;br /&gt;
+(5의 3번째 비트 1 &amp;amp; 3의 3번째 비트 0) 연산 = 0&lt;br /&gt;
+나머지 비트 모두 0&lt;br /&gt;
+연산 결과: 0000 0001 (10진수: 1)&lt;/p&gt;
+
+&lt;p&gt;또, AND 연산자(&amp;amp;)를 이용해 속성값을 가지고 있는지에 대해 찾을 수도 있습니다.&lt;br /&gt;
+말로 설명하는 것보다 코드로 설명드리겠습니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x02&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x04&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;levelPermission&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myPermission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myPermission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//invalid permission&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// success&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;속성에서 관리자의 권한값은 4입니다.&lt;br /&gt;
+사용자가 가지고 있는 권한은 유저(1) + 관리자(4)이므로 권한값은 즉, 5입니다.&lt;br /&gt;
+4와 5를 AND 연산자(&amp;amp;)를 이용해 비트연산을 진행합니다.&lt;br /&gt;
+0000 0101 (10진수: 5)&lt;br /&gt;
+0000 0100 (10진수: 4)&lt;/p&gt;
+
+&lt;p&gt;두 수가 가진 비트 중 3번째 비트가 모두 1이므로 AND 연산 결과는 1이 됩니다.&lt;br /&gt;
+&lt;strong&gt;(전 개인적으로 접근 불가나 오류 발생하는 코드가 위에 있으면 좋더라구요..)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;속성 값이 가진 비트를 뒤집어서 &amp;amp; 연산하면 사용자가 가지고 있는 권한을 뺏을 수 있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;myPermission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;not-연산&quot;&gt;NOT 연산&lt;/h2&gt;
+&lt;p&gt;NOT 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt; 입니다.&lt;br /&gt;
+피연산자는 1개가 필요합니다.&lt;/p&gt;
+
+&lt;p&gt;NOT 비트연산은 비트를 모두 뒤집어버리는 것입니다.&lt;br /&gt;
+0을 1로, 1을 0으로 바꾼다 생각하시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;생각보다 쓰임이 적다고 생각되는 연산자였습니다.&lt;br /&gt;
+&lt;del&gt;&lt;strong&gt;알고리즈머 YunGoon님께 관련된 쓰임세를 몇가지 알아왔습니다. 감사합니다.&lt;/strong&gt;&lt;/del&gt;&lt;br /&gt;
+쓰임1과 쓰임2에 해당하는 - 는 부호 연산자입니다. &lt;del&gt;(빼기가 아닙니다)&lt;/del&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;-n은-n1-꼴로-사용될-수-있다&quot;&gt;-~n은 n+1 꼴로 사용될 수 있다&lt;/h3&gt;
+&lt;p&gt;10진수 4를 비트로 표현하면 0000 0100 입니다.&lt;br /&gt;
+이를 NOT 연산하여 비트를 뒤집어 보면 1111 1011이 됩니다.&lt;br /&gt;
+그리고 맨 앞에 있는 -로 부호를 반전시켜주면 비트는 0000 0101이 되고 5가 되는 것입니다.&lt;br /&gt;
+부호를 반전시킬 때는 NOT 연산으로 비트를 모두 뒤집고 맨 오른쪽 비트에 1을 더하면 됩니다.&lt;br /&gt;
+1을 더하는 이유는 보수의 변환과정에서 1을 더했기 때문에 다시 더해주는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;0000 0100 (10진수: 4)&lt;br /&gt;
+1111 1011 (NOT) (10진수: -5)&lt;br /&gt;
+0000 0101 (부호반전) (10진수: 5)&lt;/p&gt;
+
+&lt;h3 id=&quot;-n은-n-1-꼴로-사용할-수-있다&quot;&gt;~-n은 n-1 꼴로 사용할 수 있다&lt;/h3&gt;
+&lt;p&gt;쓰임1과 매우 비슷합니다. 이번엔 7로 해보겠습니다.&lt;br /&gt;
+10진수 7을 비트로 표현하면 0000 0111 입니다.&lt;br /&gt;
+2의 보수로 만드는 방법을 이용해 -7로 만들어주는 것입니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;음수를 표현할 때 2의 보수를 사용하는데 변환과정을 아주 간략하게 설명드리면&lt;br /&gt;
+양수 7이 가진 비트를 뒤집고 맨 오른쪽 비트에 1을 더해줍니다.&lt;br /&gt;
+-7에서 NOT 연산을 하여 비트를 뒤집어주면 6이 됩니다.&lt;/p&gt;
+
+&lt;p&gt;0000 0111 (10진수: 7)&lt;br /&gt;
+1111 1001 (부호반전) (10진수: -7)&lt;br /&gt;
+0000 0110 (NOT) (10진수: 6)&lt;/p&gt;
+
+&lt;h3 id=&quot;eof라면-루프-탈출에-사용할-수-있다&quot;&gt;EOF라면 루프 탈출에 사용할 수 있다&lt;/h3&gt;
+&lt;p&gt;수 많은 컴파일러가 EOF를 -1로 정의합니다.&lt;br /&gt;
+-1 값을 가지고 반복문을 사용한다면 NOT 연산을 통해 비트를 뒤집습니다.&lt;br /&gt;
+-1 값이 0 으로 변경되고 if, while, for 같은 조건문에서 활용될 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;1111 1111 (10진수: -1)&lt;br /&gt;
+0000 0000 (NOT) (10진수: 0)&lt;/p&gt;
+
+&lt;p&gt;이는 while(~scanf()) { } 처럼 응용할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;xor-연산&quot;&gt;XOR 연산&lt;/h2&gt;
+&lt;p&gt;XOR 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt; 입니다.&lt;br /&gt;
+피연산자는 2개가 필요합니다.&lt;/p&gt;
+
+&lt;p&gt;XOR 비트연산은 OR과 비슷하면서도 전혀 다릅니다.&lt;br /&gt;
+두 수중 비트를 하나씩 비교하여 둘다 1이거나 0일 떄 0을 반환합니다.&lt;br /&gt;
+서로 같은 값이면 0, 서로 같지 않으면 1을 반환한다고 생가하시면 됩니다.&lt;br /&gt;
+쉽게 이해하기 위해 변수를 만들어 연산자를 이용해 계산을 해보고 과정을 적어보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;숫자 7과 3을 예시로 들어보겠습니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 식에서 A와 B는 XOR 연산자(^)를 이용해 비트 연산을 진행하게 됩니다.&lt;br /&gt;
+0000 0111 :: 7&lt;br /&gt;
+0000 0011 :: 3&lt;br /&gt;
+0000 0100 :: 4(결과)&lt;/p&gt;
+
+&lt;p&gt;연산하는 과정을 하나씩 살펴보자면, (맨 왼쪽이 첫번째 비트)&lt;br /&gt;
+(7의 1번째 비트 1 &amp;amp; 3의 1번째 비트 1) 연산 = 0&lt;br /&gt;
+(7의 2번째 비트 1 &amp;amp; 3의 2번째 비트 1) 연산 = 0&lt;br /&gt;
+(7의 3번째 비트 1 &amp;amp; 3의 3번째 비트 0) 연산 = 1&lt;br /&gt;
+나머지 비트 모두 0 또는 1로 같으므로 0&lt;/p&gt;
+
+&lt;p&gt;XOR은 알면 알 수록 신기한 녀석입니다. &lt;del&gt;&lt;strong&gt;(누가 발견한거지?)&lt;/strong&gt;&lt;/del&gt;&lt;br /&gt;
+XOR은 이미지 연산이나 교체 알고리즘에 사용됩니다.&lt;br /&gt;
+우연히 알파벳을 빠르게 교체하는 문제를 풀면서 새로운 사용 방법을 알게되었습니다.&lt;br /&gt;
+&lt;del&gt;&lt;strong&gt;이 방법도 알고리즈머 YunGoon님께서 알려주셨습니다. (깊게 생각했으면 스스로 알았을까?)&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/CPP/bitwise.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+위 그림처럼 10진수 32는 비트를 1개만 가지고 있습니다.&lt;br /&gt;
+반대로 31은 32가 가지고 있는 비트를 제외한 나머지 하위 비트를 모두 가지고 있습니다.&lt;br /&gt;
+&lt;del&gt;&lt;strong&gt;(이미 알고있는 정보인데도 뭔가 다시 깨달은 느낌이랄까요 ?)&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;비트가-가득찬-경우&quot;&gt;비트가 가득찬 경우&lt;/h3&gt;
+&lt;p&gt;10진수 31과 5를 XOR 연산해보겠습니다.&lt;br /&gt;
+0001 1111 :: 31&lt;br /&gt;
+0000 0101 :: 5&lt;br /&gt;
+0001 1010 :: 26(결과)&lt;/p&gt;
+
+&lt;p&gt;자세한 연산과정은 생략하겠습니다.&lt;br /&gt;
+재밌는 사실은 31에서 5를 뺀 값인 26이 나온다는 겁니다.&lt;br /&gt;
+주의할 점은 31과 31을 연산하면 0이 나오니 주의해야합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;비트가-비어-있는-경우&quot;&gt;비트가 비어 있는 경우&lt;/h3&gt;
+&lt;p&gt;10진수 32와 5를 XOR 연산해보겠습니다.&lt;br /&gt;
+0010 0000 :: 32&lt;br /&gt;
+0000 0101 :: 5&lt;br /&gt;
+0010 0101 :: 37&lt;/p&gt;
+
+&lt;p&gt;자세한 연산과정은 생략하겠습니다.&lt;br /&gt;
+재밌는 사실은 32에서 5를 더한 값인 37이 나온다는 겁니다.&lt;br /&gt;
+32가 가지고 있는 비트 중 연산하려는 5의 비트가 비어있는 경우 덧셈을 하게 됩니다.&lt;br /&gt;
+&lt;br /&gt;
+위 방식을 응용한다면 영어 대소문자를 변환하는 작업에 처리속도를 향상시킬 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;shift-연산&quot;&gt;SHIFT 연산&lt;/h2&gt;
+&lt;p&gt;SHIFT 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;, &amp;gt;&amp;gt;&lt;/code&gt; 입니다.&lt;br /&gt;
+피연산자는 2개가 필요합니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;왼쪽 피연산자에는 비트를 조작할 데이터를 적고&lt;br /&gt;
+오른쪽 피연산자에는 몇칸을 밀 것인지에 대해 적습니다.&lt;/p&gt;
+
+&lt;p&gt;SHIFT 연산은 비트를 오른쪽 혹은 왼쪽으로 이동할 때 사용합니다.&lt;br /&gt;
+왼쪽으로 비트가 밀려서 범위를 초과하면 값이 사라지게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;양수는 최상위 부호비트가 0이므로 어떻게 밀어도 상관이 없습니다.&lt;br /&gt;
+음수인 경우에 SHIFT 연산할 경우 최상위 비트(MSB, 부호비트)도 같이 밀리기 때문에 주의해야합니다.&lt;/p&gt;
+
+&lt;p&gt;오른쪽으로 « 밀어서 범위 초과로 값이 이상한 경우 오버플로우(overflow)&lt;br /&gt;
+왼쪽으로 » 밀어서 범위 초과로 값이 이상한 경우 언더플로우(underflow)라 합니다.&lt;br /&gt;
+SHIFT 연산은 단독으로 사용되기보다 | 및 &amp;amp; 연산과 함께 사용되는 편입니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;shift-오른쪽으로-시프트&quot;&gt;SHIFT « (오른쪽으로 시프트)&lt;/h3&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;31 이 가지고 있는 전체 비트를 오른쪽으로 1칸 밀게 됩니다.&lt;br /&gt;
+오른쪽으로 비트가 밀리면 빈자리는 0으로 채워집니다.&lt;/p&gt;
+
+&lt;p&gt;0001 1111 :: 31&lt;br /&gt;
+0011 1110 :: 62(결과)&lt;br /&gt;
+결과를 보면 알 수 있듯이 오른쪽으로 비트를 1칸 밀 수록 2배 커집니다.&lt;br /&gt;
+&lt;br /&gt;
+그럼 한번에 2칸을 밀면 2배 커질까요 ? 아닙니다.&lt;br /&gt;
+4배 커지게 되는데 이는 오른쪽으로 비트를 밀 수록 2의 n승만큼 커지는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;31 « 3을 계산해봅시다.&lt;br /&gt;
+2의 3승은 8 즉, 31x8 값인 248이 결과로 산출됩니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;shift-왼쪽으로-시프트&quot;&gt;SHIFT » (왼쪽으로 시프트)&lt;/h3&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;79&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;79 가 가지고 있는 전체 비트를 왼쪽으로 2칸 밀게 됩니다.&lt;br /&gt;
+왼쪽으로 비트가 밀려서 자료형 범위를 초과하게 되면 값이 사라지게 됩니다.&lt;br /&gt;
+&lt;br /&gt;
+0100 1111 :: 79&lt;br /&gt;
+0001 0011 :: 19(결과)&lt;/p&gt;
+
+&lt;p&gt;결과를 보면 알 수 있듯이 왼쪽으로 비트를 1칸 밀 수록 2배 작아집니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;shift-and를-이용한-색상값-마스크&quot;&gt;SHIFT, AND를 이용한 색상값 마스크&lt;/h3&gt;
+&lt;p&gt;SHIFT 연산은 컬러값에서 마스크 연산에 사용 됩니다.&lt;br /&gt;
+색상은 RGB로 표현하는데 0~255 값으로 구성되어 있습니다.&lt;/p&gt;
+
+&lt;p&gt;RGB 하얀색 색상값을 가진 값은 0xFF(R) FF(G) FF(B)가 됩니다.&lt;br /&gt;
+16진수 기준 15는 0xF입니다.&lt;br /&gt;
+10진수 255는 16진수로 0xFF가 됩니다.&lt;br /&gt;
+FF를 2진수로 표현하면 1111 1111 입니다.&lt;/p&gt;
+
+&lt;p&gt;10진수 65,535는 16진수 0xFFFF가 됩니다.&lt;br /&gt;
+10진수 16,777,215는 16진수 0xFFFFFF가 됩니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;0xFFEE11 컬러값에서 RGB중 R을 나타내는 FF 부분을 뽑아 내려면&lt;br /&gt;
+왼쪽으로 8칸씩 2번 밀면됩니다. (총 16번)&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;비트로 표현해보겠습니다.&lt;br /&gt;
+0001 0001 :: 11&lt;br /&gt;
+1110 1110 :: EE&lt;br /&gt;
+1111 1111 :: FF
+&lt;br /&gt;
+처음 8칸을 오른쪽으로 밀면 가장 하위 비트에 속하는 11은 사라지게 됩니다.&lt;br /&gt;
+다시 8칸을 오른쪽으로 밀면 하위 비트에 속하는 EE는 사라지게 됩니다.&lt;br /&gt;
+색상값을 비트를 밀어서 찾아낼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;그럼 만약 ? EE 값을 뽑기 위해선 어떤 방법을 취해야할까요 ?&lt;br /&gt;
+11은 찾는 값이 아니므로 8칸을 밀어서 버려줍니다.&lt;br /&gt;
+0xFFEE 값 중 EE 값을 추출하기 위해서는 0xFF 값과 AND 연산을 진행하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;이를 비트로 표현해보겠습니다. 8자리마다 비트 구분은 / 로 하겠습니다.&lt;br /&gt;
+1111 1111 / 1110 1110 :: FFEE&lt;br /&gt;
+0000 0000 / 1111 1111 :: FF&lt;br /&gt;
+0000 0000 / 1110 1110 :: EE(결과)&lt;/p&gt;
+
+&lt;p&gt;지금까지 비트연산과 쓰임세를 알아보는 유익한 시간이었습니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="비트" /><category term="bit" /><category term="bitwise" /><category term="비트연산" /><category term="or" /><category term="and" /><category term="not" /><category term="xor" /><category term="shift" /><summary type="html">[C++] 비트 연산 Bitwise</summary></entry><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-1</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-1" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-1</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;잠깐만요! 이미 1편을 보셨다구요 ?&lt;br /&gt;
+비어있는 비트맵 만들기 2편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-2&quot; target=&quot;_blank&quot;&gt;화면에 조각 이미지 출력하기&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;이미지를 편집할 때 일부 이미지를 잘라야할 때가 있습니다.&lt;br /&gt;
+MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만들어야합니다.&lt;br /&gt;
+실습에서 사용된 이미지 파일은 bmp 파일(24 bit)입니다.&lt;/p&gt;
+
+&lt;p&gt;이 글에서는 비어있는 비트맵을 만드는 방법에 대해 적어보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;비어있는-비트맵-생성&quot;&gt;비어있는 비트맵 생성&lt;/h2&gt;
+&lt;p&gt;비어있는 비트맵을 만드는 방법은 CImage 클래스에서 제공하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Create() 함수&lt;/code&gt;를 사용합니다.&lt;br /&gt;
+비어있는 비트맵을 만들고 BitBlt() 함수를 사용하여 DC에 그림을 그려줄 수 있습니다.&lt;br /&gt;
+비어있는 비트맵이 너무 작은 경우 검은 배경이 나타날 수 있으니 크기에 주의해야합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;기본적으로 비어있는 비트맵을 만들 때 필요한 요소는 3가지입니다.
+    &lt;ol&gt;
+      &lt;li&gt;비트맵 가로 크기(Wdith)&lt;/li&gt;
+      &lt;li&gt;비트맵 세로 크기(Height)&lt;/li&gt;
+      &lt;li&gt;비트맵 화소 당 비트(&lt;a href=&quot;https://ko.wikipedia.org/wiki/색_깊이&quot; target=&quot;_blank&quot;&gt;BPP&lt;/a&gt;)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;OnPaintDC&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//sliceBmpImage.BitBlt(dc.m_hDC, 40, 15, 300, 300, 0, 0, SRCCOPY);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;150x150 크기의 24bit 비어있는 비트맵을 생성합니다.&lt;br /&gt;
+비트맵을 처음 만들게 되면 검은색으로 칠해져 있습니다. (비트맵 색상값이 0으로 채워져 있음)&lt;/p&gt;
+
+&lt;p&gt;실습 결과:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CImage/emptyBitmap.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-1</summary></entry><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-2</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;비어있는 비트맵 만들기 1편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-1&quot; target=&quot;_blank&quot;&gt;비어있는 비트맵 만들기&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;비어있는 비트맵을 만들었으니 큰 이미지에서 일부만 잘라서 화면에 출력해보겠습니다.&lt;br /&gt;
@@ -140,40 +488,7 @@ GetDC() 함수를 사용했을 경우 반드시 ReleaseDC()를 해줘서 사용�
 &lt;/ol&gt;
 
 &lt;p&gt;실습 결과:&lt;br /&gt;
-&lt;img src=&quot;/assets/images/CImage/sliceBmpImage.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><category term="SliceDraw" /><category term="getSliceImage" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</summary></entry><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-1</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-1" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-1</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;잠깐만요! 이미 1편을 보셨다구요 ?&lt;br /&gt;
-비어있는 비트맵 만들기 2편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-2&quot; target=&quot;_blank&quot;&gt;화면에 조각 이미지 출력하기&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;이미지를 편집할 때 일부 이미지를 잘라야할 때가 있습니다.&lt;br /&gt;
-MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만들어야합니다.&lt;br /&gt;
-실습에서 사용된 이미지 파일은 bmp 파일(24 bit)입니다.&lt;/p&gt;
-
-&lt;p&gt;이 글에서는 비어있는 비트맵을 만드는 방법에 대해 적어보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;비어있는-비트맵-생성&quot;&gt;비어있는 비트맵 생성&lt;/h2&gt;
-&lt;p&gt;비어있는 비트맵을 만드는 방법은 CImage 클래스에서 제공하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Create() 함수&lt;/code&gt;를 사용합니다.&lt;br /&gt;
-비어있는 비트맵을 만들고 BitBlt() 함수를 사용하여 DC에 그림을 그려줄 수 있습니다.&lt;br /&gt;
-비어있는 비트맵이 너무 작은 경우 검은 배경이 나타날 수 있으니 크기에 주의해야합니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;기본적으로 비어있는 비트맵을 만들 때 필요한 요소는 3가지입니다.
-    &lt;ol&gt;
-      &lt;li&gt;비트맵 가로 크기(Wdith)&lt;/li&gt;
-      &lt;li&gt;비트맵 세로 크기(Height)&lt;/li&gt;
-      &lt;li&gt;비트맵 화소 당 비트(&lt;a href=&quot;https://ko.wikipedia.org/wiki/색_깊이&quot; target=&quot;_blank&quot;&gt;BPP&lt;/a&gt;)&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;OnPaintDC&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//sliceBmpImage.BitBlt(dc.m_hDC, 40, 15, 300, 300, 0, 0, SRCCOPY);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;150x150 크기의 24bit 비어있는 비트맵을 생성합니다.&lt;br /&gt;
-비트맵을 처음 만들게 되면 검은색으로 칠해져 있습니다. (비트맵 색상값이 0으로 채워져 있음)&lt;/p&gt;
-
-&lt;p&gt;실습 결과:&lt;br /&gt;
-&lt;img src=&quot;/assets/images/CImage/emptyBitmap.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-1</summary></entry><entry><title type="html">[MFC][실습] CImage : 이미지 불러오고 출력하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 이미지 불러오고 출력하기" /><published>2020-05-01T00:00:00+09:00</published><updated>2020-05-01T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0%20%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;img src=&quot;/assets/images/CImage/sliceBmpImage.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><category term="SliceDraw" /><category term="getSliceImage" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</summary></entry><entry><title type="html">[MFC][실습] CImage : 이미지 불러오고 출력하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 이미지 불러오고 출력하기" /><published>2020-05-01T00:00:00+09:00</published><updated>2020-05-01T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0%20%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;MFC는 이미지를 출력할 때 비트맵 변환과정을 거치게 됩니다.&lt;br /&gt;
 과거 비트맵을 출력하기 위해서는 복잡한 과정이 있었지만 시간이 지나면서 많은 변화를 겪게되어&lt;br /&gt;
 함수 몇가지를 이용하여 이미지를 아주 간단하게 출력할 수 있습니다.&lt;/p&gt;
@@ -731,41 +1046,4 @@ CString 클래스 Left(), RevesrseFind() 함수를 이용해 짤라내서 사용
 &lt;hr /&gt;
 &lt;ul&gt;
   &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일" /><category term="이름" /><category term="확장명" /><category term="경로" /><category term="가져오기" /><category term="정보가져오기" /><summary type="html">[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</summary></entry><entry><title type="html">[MFC][실습] CFileDialog : 시작 디렉토리 변경</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/" rel="alternate" type="text/html" title="[MFC][실습] CFileDialog : 시작 디렉토리 변경" /><published>2020-04-16T00:00:00+09:00</published><updated>2020-04-16T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%8B%9C%EC%9E%91%20%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC%20%EB%B3%80%EA%B2%BD</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%8B%9C%EC%9E%91-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EB%B3%80%EA%B2%BD/">&lt;p&gt;CFileDialog를 이용해 FileDialog를 사용자에게 보여줄 때 &lt;br /&gt;
-Visual Studio에서 작업했을 경우 FileDialog 시작 디렉토리가 현재 프로젝트로 설정되어 있습니다.&lt;/p&gt;
-
-&lt;p&gt;CFileDialog 객체가 가지고 있는  멤버변수 &lt;code class=&quot;highlighter-rouge&quot;&gt;m_ofn.lpstrInitialDir&lt;/code&gt; 값을 변경하여&lt;br /&gt;
-FileDialog 시작 디렉토리를 변경할 수 있습니다.&lt;br /&gt;
-디렉토리를 변경하여 해당 디렉토리에 존재하는 파일과 폴더를 보여줄 수 있습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;간단한 코드를 작성해보겠습니다.&lt;/p&gt;
-&lt;figcaption&gt;MainDialog.cpp [ FileDialog 초기 디렉토리 변경 ]&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;LRESULT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MainDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitDialogEx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LPARAM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;LPCTSTR&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;All Files (*.*)|*.*;||&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_ofn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lpstrInitialDir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Program Files&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DoModal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;br /&gt;
-결과:&lt;br /&gt;
-&lt;img src=&quot;/assets/images/CFileDialog/MFC_CFileDialog_InitDirectory.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="디렉토리 변경" /><category term="경로 변경" /><category term="디렉토리 변경" /><category term="기본경로" /><category term="처음경로" /><category term="경로" /><summary type="html">[MFC][실습] CFileDialog : 시작 디렉토리 변경</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일" /><category term="이름" /><category term="확장명" /><category term="경로" /><category term="가져오기" /><category term="정보가져오기" /><summary type="html">[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</summary></entry></feed>
