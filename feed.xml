@@ -1,4 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-04T16:07:55+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[C++] 비트 연산 Bitwise</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR/" rel="alternate" type="text/html" title="[C++] 비트 연산 Bitwise " /><published>2020-05-03T00:00:00+09:00</published><updated>2020-05-03T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-04T16:33:33+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기" /><published>2020-05-04T00:00:00+09:00</published><updated>2020-05-04T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%97%A4%EB%8D%94%20%EC%9D%BD%EC%96%B4%EC%84%9C%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;비트맵 파일 헤더 중 파일 크기 정보에 해당하는 데이터를 읽어서 파일 크기를 출력합니다..&lt;br /&gt;
+비트맵 헤더 시작 위치는 0x0에 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;비트맵-헤더&quot;&gt;비트맵 헤더&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;비트맵 헤더는 총 2가지로 구성되어 있습니다.
+    &lt;ul&gt;
+      &lt;li&gt;BITMAPFILEHEADER (14byte)&lt;/li&gt;
+      &lt;li&gt;BITMAPINFOHEADER (54byte)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;파일 크기 정보가 명시된 헤더는 Biamp File Header(BITMAPFILEHEADER) 입니다.&lt;br /&gt;
+아래 그림은 비트맵 파일 전체 구조입니다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CImage/bmpheader.jpg&quot; alt=&quot;img1&quot; /&gt;
+파일 크기 정보를 구해오기 위해 중요하게 봐야할 것은 FileSize 입니다.&lt;br /&gt;
+파일 크기 정보를 가진 데이터는 4Byte이며,&lt;br /&gt;
+시작위치는 2번째 위치에 있습니다. (start based 0)&lt;/p&gt;
+
+&lt;p&gt;비트맵 헤더에서 파일 크기 정보를 가지고 있는 부분을 읽어서 출력하면 됩니다.&lt;br /&gt;
+주의할 점은 일반적으로 메모리를 읽어들이는 방식은 BigEndian입니다.&lt;br /&gt;
+하지만 헤더의 데이터는 LittleEndian 방식으로 되어있으며 변환작업이 필요합니다. &lt;del&gt;&lt;strong&gt;(비트를 밀면 됩니다)&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;파일을 Open 후 seekg() 함수를 사용해서 파일을 읽어들이는 위치를 지정합니다.&lt;br /&gt;
+파일 크기 정보를 얻으려면 2번째 위치부터 4byte 읽어옵니다.&lt;/p&gt;
+
+&lt;p&gt;LittleEndian 방식의 데이터를 비트 연산자를 이용해 비트를 밀어서 Bigendian 데이터로 출력합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;f비트맵-파일-크기를-얻어오는-함수&quot;&gt;[F]비트맵 파일 크기를 얻어오는 함수&lt;/h2&gt;
+&lt;figcaption&gt;filename&lt;/figcaption&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-lang&quot; data-lang=&quot;lang&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;unsigned int getBitmapFileSize(const string&amp;amp; filePath);
+unsigned int getBitmapFileSize(const string&amp;amp; filePath)
+{
+    ifstream readFile;
+    readFile.open(filePath, ios::binary | ios::in);
+    unsigned char data[4];
+    if (!readFile.is_open())
+        return 0;
+    else
+    {
+        readFile.seekg(2, ios::cur);
+        readFile.read((char*)data, 4);
+        readFile.close();
+    }
+    unsigned int size = 0;
+    size = data[0] | data[1] &amp;lt;&amp;lt; 8 | data[2] &amp;lt;&amp;lt; 16 |  data[3] &amp;lt;&amp;lt; 24;
+    return size;
+}
+//string filePath = &quot;Desktop/myBmp.bmp&quot;;
+//getBitmapFileSize(filePath);
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;실습 결과:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CImage/resultbmpfilesize.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/CImage/bmpfilesizeinfo.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="cpp" /><category term="비트맵" /><category term="bitmap" /><category term="bmp" /><category term="header" /><category term="헤더" /><category term="파일크기" /><category term="파일읽기" /><category term="파일 크기 정보" /><category term="BITMAPFILEHEADER" /><category term="BITMAPINFOHEADER" /><summary type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</summary></entry><entry><title type="html">[C++] 비트 연산 Bitwise</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR/" rel="alternate" type="text/html" title="[C++] 비트 연산 Bitwise " /><published>2020-05-03T00:00:00+09:00</published><updated>2020-05-03T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;저에게 XOR은 조금 친근하지 못한 연산자였는데&lt;br /&gt;
 한가지 쓰임을 알게게 되어 비트 연산 전체를 포스팅하게 되었습니다.&lt;br /&gt;
 비트 연산을 한다고 해서 피연산자를 2개 요구하는 연산자들은 결과가 바로 반영되지 않습니다.&lt;br /&gt;
@@ -319,40 +397,7 @@ FF를 2진수로 표현하면 1111 1111 입니다.&lt;/p&gt;
 &lt;p&gt;지금까지 비트연산과 쓰임세를 알아보는 유익한 시간이었습니다.
 &lt;!--
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
---&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="비트" /><category term="bit" /><category term="bitwise" /><category term="비트연산" /><category term="or" /><category term="and" /><category term="not" /><category term="xor" /><category term="shift" /><summary type="html">[C++] 비트 연산 Bitwise</summary></entry><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-1</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-1" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-1</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;잠깐만요! 이미 1편을 보셨다구요 ?&lt;br /&gt;
-비어있는 비트맵 만들기 2편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-2&quot; target=&quot;_blank&quot;&gt;화면에 조각 이미지 출력하기&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;이미지를 편집할 때 일부 이미지를 잘라야할 때가 있습니다.&lt;br /&gt;
-MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만들어야합니다.&lt;br /&gt;
-실습에서 사용된 이미지 파일은 bmp 파일(24 bit)입니다.&lt;/p&gt;
-
-&lt;p&gt;이 글에서는 비어있는 비트맵을 만드는 방법에 대해 적어보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;비어있는-비트맵-생성&quot;&gt;비어있는 비트맵 생성&lt;/h2&gt;
-&lt;p&gt;비어있는 비트맵을 만드는 방법은 CImage 클래스에서 제공하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Create() 함수&lt;/code&gt;를 사용합니다.&lt;br /&gt;
-비어있는 비트맵을 만들고 BitBlt() 함수를 사용하여 DC에 그림을 그려줄 수 있습니다.&lt;br /&gt;
-비어있는 비트맵이 너무 작은 경우 검은 배경이 나타날 수 있으니 크기에 주의해야합니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;기본적으로 비어있는 비트맵을 만들 때 필요한 요소는 3가지입니다.
-    &lt;ol&gt;
-      &lt;li&gt;비트맵 가로 크기(Wdith)&lt;/li&gt;
-      &lt;li&gt;비트맵 세로 크기(Height)&lt;/li&gt;
-      &lt;li&gt;비트맵 화소 당 비트(&lt;a href=&quot;https://ko.wikipedia.org/wiki/색_깊이&quot; target=&quot;_blank&quot;&gt;BPP&lt;/a&gt;)&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;OnPaintDC&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//sliceBmpImage.BitBlt(dc.m_hDC, 40, 15, 300, 300, 0, 0, SRCCOPY);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;150x150 크기의 24bit 비어있는 비트맵을 생성합니다.&lt;br /&gt;
-비트맵을 처음 만들게 되면 검은색으로 칠해져 있습니다. (비트맵 색상값이 0으로 채워져 있음)&lt;/p&gt;
-
-&lt;p&gt;실습 결과:&lt;br /&gt;
-&lt;img src=&quot;/assets/images/CImage/emptyBitmap.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-1</summary></entry><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-2</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+--&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="비트" /><category term="bit" /><category term="bitwise" /><category term="비트연산" /><category term="or" /><category term="and" /><category term="not" /><category term="xor" /><category term="shift" /><summary type="html">[C++] 비트 연산 Bitwise</summary></entry><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-2</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;비어있는 비트맵 만들기 1편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-1&quot; target=&quot;_blank&quot;&gt;비어있는 비트맵 만들기&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;비어있는 비트맵을 만들었으니 큰 이미지에서 일부만 잘라서 화면에 출력해보겠습니다.&lt;br /&gt;
@@ -494,7 +539,40 @@ GetDC() 함수를 사용했을 경우 반드시 ReleaseDC()를 해줘서 사용�
 &lt;/ol&gt;
 
 &lt;p&gt;실습 결과:&lt;br /&gt;
-&lt;img src=&quot;/assets/images/CImage/sliceBmpImage.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><category term="SliceDraw" /><category term="getSliceImage" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</summary></entry><entry><title type="html">[MFC][실습] CImage : 이미지 불러오고 출력하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 이미지 불러오고 출력하기" /><published>2020-05-01T00:00:00+09:00</published><updated>2020-05-01T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0%20%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;img src=&quot;/assets/images/CImage/sliceBmpImage.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><category term="SliceDraw" /><category term="getSliceImage" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</summary></entry><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-1</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-1" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-1</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;잠깐만요! 이미 1편을 보셨다구요 ?&lt;br /&gt;
+비어있는 비트맵 만들기 2편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-2&quot; target=&quot;_blank&quot;&gt;화면에 조각 이미지 출력하기&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;이미지를 편집할 때 일부 이미지를 잘라야할 때가 있습니다.&lt;br /&gt;
+MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만들어야합니다.&lt;br /&gt;
+실습에서 사용된 이미지 파일은 bmp 파일(24 bit)입니다.&lt;/p&gt;
+
+&lt;p&gt;이 글에서는 비어있는 비트맵을 만드는 방법에 대해 적어보겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;비어있는-비트맵-생성&quot;&gt;비어있는 비트맵 생성&lt;/h2&gt;
+&lt;p&gt;비어있는 비트맵을 만드는 방법은 CImage 클래스에서 제공하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;Create() 함수&lt;/code&gt;를 사용합니다.&lt;br /&gt;
+비어있는 비트맵을 만들고 BitBlt() 함수를 사용하여 DC에 그림을 그려줄 수 있습니다.&lt;br /&gt;
+비어있는 비트맵이 너무 작은 경우 검은 배경이 나타날 수 있으니 크기에 주의해야합니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;기본적으로 비어있는 비트맵을 만들 때 필요한 요소는 3가지입니다.
+    &lt;ol&gt;
+      &lt;li&gt;비트맵 가로 크기(Wdith)&lt;/li&gt;
+      &lt;li&gt;비트맵 세로 크기(Height)&lt;/li&gt;
+      &lt;li&gt;비트맵 화소 당 비트(&lt;a href=&quot;https://ko.wikipedia.org/wiki/색_깊이&quot; target=&quot;_blank&quot;&gt;BPP&lt;/a&gt;)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;OnPaintDC&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//sliceBmpImage.BitBlt(dc.m_hDC, 40, 15, 300, 300, 0, 0, SRCCOPY);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;150x150 크기의 24bit 비어있는 비트맵을 생성합니다.&lt;br /&gt;
+비트맵을 처음 만들게 되면 검은색으로 칠해져 있습니다. (비트맵 색상값이 0으로 채워져 있음)&lt;/p&gt;
+
+&lt;p&gt;실습 결과:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CImage/emptyBitmap.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-1</summary></entry><entry><title type="html">[MFC][실습] CImage : 이미지 불러오고 출력하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 이미지 불러오고 출력하기" /><published>2020-05-01T00:00:00+09:00</published><updated>2020-05-01T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0%20%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;MFC는 이미지를 출력할 때 비트맵 변환과정을 거치게 됩니다.&lt;br /&gt;
 과거 비트맵을 출력하기 위해서는 복잡한 과정이 있었지만 시간이 지나면서 많은 변화를 겪게되어&lt;br /&gt;
 함수 몇가지를 이용하여 이미지를 아주 간단하게 출력할 수 있습니다.&lt;/p&gt;
@@ -986,70 +1064,4 @@ CWnd 클래스를 상속받은 자식 인스턴스에 대해서도 핸들(HWND)�
   &lt;span class=&quot;c1&quot;&gt;// 임시 인스턴스가 생성될 수 있으니 주의할 필요가 있다.&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FromHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Control" /><category term="컨트롤" /><summary type="html">[MFC] 컨트롤 핸들(HWND) 가져오기</summary></entry><entry><title type="html">[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/" rel="alternate" type="text/html" title="[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)" /><published>2020-04-17T00:00:00+09:00</published><updated>2020-04-17T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%84%A0%ED%83%9D%EB%90%9C%20%ED%8C%8C%EC%9D%BC%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,%20%ED%99%95%EC%9E%A5%EB%AA%85,%20%EA%B2%BD%EB%A1%9C)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%84%A0%ED%83%9D%EB%90%9C-%ED%8C%8C%EC%9D%BC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0(%EC%9D%B4%EB%A6%84,-%ED%99%95%EC%9E%A5%EB%AA%85,-%EA%B2%BD%EB%A1%9C)/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;CFileDialog 클래스에서 제공해주는 함수가 여려가지 있습니다.&lt;br /&gt;
-그중에 FileDialog에서 파일 정보를 가져오는 자주 쓰이는 함수가 있습니다&lt;/p&gt;
-
-&lt;p&gt;이 글에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;FileDialog에서 1개의 파일을 선택하여 정보를 가져오는 함수&lt;/code&gt;에 대해 알아보겠습니다.&lt;br /&gt;
-아래 모든 함수들이 반환하는 타입은 CString입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-확장명이-포함된-파일-이름-구하기&quot;&gt;1. 확장명이 포함된 파일 이름 구하기&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;확장명이 포함된 파일 이름&lt;/code&gt;을 가져오는 함수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;GetFileName()&lt;/code&gt; 입니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetFileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetFileName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;2-확장명-없이-파일-이름만-구하기&quot;&gt;2. 확장명 없이 파일 이름만 구하기&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;확장명이 미포함된 파일 이름&lt;/code&gt;만 가져오는 함수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;GetFileTitle()&lt;/code&gt; 입니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetFileTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetFileTitle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;3-파일-확장명-구하기&quot;&gt;3. 파일 확장명 구하기&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;확장명&lt;/code&gt;을 가져오는 함수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;GetFileExt()&lt;/code&gt; 입니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetFileExt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetFileExt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;4-시작-경로-가져오기&quot;&gt;4. 시작 경로 가져오기&lt;/h2&gt;
-&lt;p&gt;반드시 m_ofn.lpstrInitialDir 멤버변수 값이 설정되어 있어야 합니다.&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;시작 경로&lt;/code&gt;를 가져오는 함수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;GetFolderPath()&lt;/code&gt; 입니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetFolderPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetFolderPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;5-선택한-파일-경로-가져오기&quot;&gt;5. 선택한 파일 경로 가져오기&lt;/h2&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;선택한 파일에 대한 경로&lt;/code&gt;를 가져오는 함수는 &lt;code class=&quot;highlighter-rouge&quot;&gt;GetPathName()&lt;/code&gt; 입니다.&lt;br /&gt;
-이 함수는 파일이름 및 확장명을 포함하여 선택된 파일에 대한 전체 경로를 가져오게 됩니다.&lt;br /&gt;
-CString 클래스 Left(), RevesrseFind() 함수를 이용해 짤라내서 사용할 수 있습니다.
-위 함수들은 부모 폴더를 구할 때에도 사용되오니 알아두시는게 좋습니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GetPathName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFileDialog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileFullPath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetPathName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resultPath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileFullPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileFullPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReverseFind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'\\'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resultPath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;6-함수를-이용한-결과-출력&quot;&gt;6. 함수를 이용한 결과 출력&lt;/h2&gt;
-
-&lt;p&gt;파일 정보를 가져오는 함수를 이용해 MainDialog에서 간단히 출력해보겠습니다.&lt;br /&gt;
-솔루션 이름: MainDialog&lt;br /&gt;
-프로젝트 형태: Dialog 기반&lt;/p&gt;
-
-&lt;p&gt;경로 ‘C:\Temp’ 폴더에 존재하는 Text.txt 파일을 선택해보겠습니다.&lt;br /&gt;
-결과:&lt;br /&gt;
-&lt;img src=&quot;/assets/images/CFileDialog/MFC_ResultFileInfo.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="파일" /><category term="이름" /><category term="확장명" /><category term="경로" /><category term="가져오기" /><category term="정보가져오기" /><summary type="html">[MFC][실습] CFileDialog : 파일 정보 가져오기(이름, 확장명, 시작경로, 파일경로)</summary></entry></feed>
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Control" /><category term="컨트롤" /><summary type="html">[MFC] 컨트롤 핸들(HWND) 가져오기</summary></entry></feed>
