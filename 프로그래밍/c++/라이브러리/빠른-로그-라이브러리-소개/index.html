@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[MFC][실습] CImage : 비어있는 비트맵 만들기-1 - 타스의 개발 블로그</title>
-<meta name="description" content="[MFC][실습] CImage : 비어있는 비트맵 만들기-1">
+<!-- begin _includes/seo.html --><title>[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog - 타스의 개발 블로그</title>
+<meta name="description" content="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog">
 
 
   <meta name="author" content="타스 (TARS-C)">
@@ -13,11 +13,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
-<meta property="og:title" content="[MFC][실습] CImage : 비어있는 비트맵 만들기-1">
-<meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/">
+<meta property="og:title" content="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog">
+<meta property="og:url" content="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/">
 
 
-  <meta property="og:description" content="[MFC][실습] CImage : 비어있는 비트맵 만들기-1">
+  <meta property="og:description" content="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog">
 
 
 
@@ -27,11 +27,11 @@
 
 
 
-  <meta property="article:published_time" content="2020-05-02T00:00:00+09:00">
+  <meta property="article:published_time" content="2020-05-05T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2020-05-02T00:00:00+09:00">
+  <meta property="article:modified_time" content="2020-05-05T00:00:00+09:00">
 
 
 
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/">
+<link rel="canonical" href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/">
 
 
 
@@ -277,15 +277,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[MFC][실습] CImage : 비어있는 비트맵 만들기-1">
-    <meta itemprop="description" content="[MFC][실습] CImage : 비어있는 비트맵 만들기-1">
-    <meta itemprop="datePublished" content="2020-05-02T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2020-05-02T00:00:00+09:00">
+    <meta itemprop="headline" content="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog">
+    <meta itemprop="description" content="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog">
+    <meta itemprop="datePublished" content="2020-05-05T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-05T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[MFC][실습] CImage : 비어있는 비트맵 만들기-1
+          <h1 id="page-title" class="page__title" itemprop="headline">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog
 </h1>
           
         </header>
@@ -293,50 +293,40 @@
 
       <section class="page__content" itemprop="text">
         
-          <aside class="sidebar__right sticky">
-            <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
-              <ul class="toc__menu">
-  <li><a href="#서론">서론</a></li>
-  <li><a href="#비어있는-비트맵-생성">비어있는 비트맵 생성</a></li>
-</ul>
-            </nav>
-          </aside>
-        
-        <h2 id="서론">서론</h2>
-<p>잠깐만요! 이미 1편을 보셨다구요 ?<br />
-비어있는 비트맵 만들기 2편: <a href="/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-2" target="_blank">화면에 조각 이미지 출력하기</a></p>
+        <p>C++ 개발자방에서 한분이 라이브러리를 소개시켜주었습니다.<br />
+벤치마크 성능을 보니까 빠르고 좋아보여 공유하고자 합니다.<br />
+자세한건 아래 링크를 참고해주시기 바랍니다.</p>
 
-<p>이미지를 편집할 때 일부 이미지를 잘라야할 때가 있습니다.<br />
-MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만들어야합니다.<br />
-실습에서 사용된 이미지 파일은 bmp 파일(24 bit)입니다.</p>
-
-<p>이 글에서는 비어있는 비트맵을 만드는 방법에 대해 적어보겠습니다.</p>
-
-<h2 id="비어있는-비트맵-생성">비어있는 비트맵 생성</h2>
-<p>비어있는 비트맵을 만드는 방법은 CImage 클래스에서 제공하는 <code class="highlighter-rouge">Create() 함수</code>를 사용합니다.<br />
-비어있는 비트맵을 만들고 BitBlt() 함수를 사용하여 DC에 그림을 그려줄 수 있습니다.<br />
-비어있는 비트맵이 너무 작은 경우 검은 배경이 나타날 수 있으니 크기에 주의해야합니다.</p>
+<p><a href="https://github.com/gabime/spdlog" target="_blank">Project: spldog Library Repository</a><br />
+<a href="https://travis-ci.org/gabime/spdlog"><img src="https://travis-ci.org/gabime/spdlog.svg?branch=v1.x" alt="Build Status" /></a>   <a href="https://ci.appveyor.com/project/gabime/spdlog"><img src="https://ci.appveyor.com/api/projects/status/d2jnxclg20vd0o50?svg=true" alt="Build status" /></a>   <a href="https://github.com/gabime/spdlog/releases/latest"><img src="https://img.shields.io/github/release/gabime/spdlog.svg" alt="Release" /></a></p>
 
 <ul>
-  <li>기본적으로 비어있는 비트맵을 만들 때 필요한 요소는 3가지입니다.
-    <ol>
-      <li>비트맵 가로 크기(Wdith)</li>
-      <li>비트맵 세로 크기(Height)</li>
-      <li>비트맵 화소 당 비트(<a href="https://ko.wikipedia.org/wiki/색_깊이" target="_blank">BPP</a>)</li>
-    </ol>
+  <li>지원하는 플랫폼
+    <ul>
+      <li>Android</li>
+      <li>Linux (FreeBSD, OpenBSD, Solaris, AIX)</li>
+      <li>macOS (clang 3.5 later)</li>
+      <li>Windows (msvc 2013 later, cygwin)</li>
+    </ul>
+  </li>
+  <li>지원하는 설치 및 패키지 매니저
+    <ul>
+      <li>cmake</li>
+      <li>Homebrew</li>
+      <li>MacPorts</li>
+      <li>FreeBSD</li>
+      <li>Fedora</li>
+      <li>Gentoo</li>
+      <li>Arch Linux</li>
+      <li>vcpkg</li>
+      <li>conan</li>
+      <li>conda</li>
+    </ul>
   </li>
 </ul>
 
-<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">OnPaintDC</span> <span class="n">dc</span><span class="p">;(</span><span class="k">this</span><span class="p">);</span>
-<span class="n">sliceBmpImage</span><span class="p">.</span><span class="n">Create</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">24</span><span class="p">);</span>
-<span class="c1">//sliceBmpImage.BitBlt(dc.m_hDC, 40, 15, 300, 300, 0, 0, SRCCOPY);</span>
-</code></pre></div></div>
-<p>150x150 크기의 24bit 비어있는 비트맵을 생성합니다.<br />
-비트맵을 처음 만들게 되면 검은색으로 칠해져 있습니다. (비트맵 색상값이 0으로 채워져 있음)</p>
-
-<p>실습 결과:<br />
-<img src="/assets/images/CImage/emptyBitmap.png" alt="img1" /></p>
+<p><br />
+  이 라이브러리는 JetBrains 라이센스 기증을 받아 제작되었습니다.</p>
 
         
       </section>
@@ -357,35 +347,27 @@ MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만�
     
       
       
-      <a href="/tags/#bitblt" class="page__taxonomy-item" rel="tag">BitBlt</a><span class="sep">, </span>
+      <a href="/tags/#library" class="page__taxonomy-item" rel="tag">Library</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#bitmap" class="page__taxonomy-item" rel="tag">Bitmap</a><span class="sep">, </span>
+      <a href="/tags/#logging" class="page__taxonomy-item" rel="tag">Logging</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#cimage" class="page__taxonomy-item" rel="tag">CImage</a><span class="sep">, </span>
+      <a href="/tags/#log" class="page__taxonomy-item" rel="tag">Log</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#image" class="page__taxonomy-item" rel="tag">Image</a><span class="sep">, </span>
+      <a href="/tags/#spdlog" class="page__taxonomy-item" rel="tag">spdlog</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#%EB%B6%80%EB%B6%84-%EC%9D%B4%EB%AF%B8%EC%A7%80" class="page__taxonomy-item" rel="tag">부분 이미지</a><span class="sep">, </span>
+      <a href="/tags/#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC" class="page__taxonomy-item" rel="tag">라이브러리</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#%EB%B9%84%ED%8A%B8%EB%A7%B5" class="page__taxonomy-item" rel="tag">비트맵</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%EC%9D%B4%EB%AF%B8%EC%A7%80" class="page__taxonomy-item" rel="tag">이미지</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%EC%B6%9C%EB%A0%A5" class="page__taxonomy-item" rel="tag">출력</a>
+      <a href="/tags/#%EB%A1%9C%EA%B7%B8" class="page__taxonomy-item" rel="tag">로그</a>
     
     </span>
   </p>
@@ -406,11 +388,11 @@ MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만�
     
       
       
-      <a href="/categories/#cimage" class="page__taxonomy-item" rel="tag">CImage</a><span class="sep">, </span>
+      <a href="/categories/#c" class="page__taxonomy-item" rel="tag">C++</a><span class="sep">, </span>
     
       
       
-      <a href="/categories/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
+      <a href="/categories/#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC" class="page__taxonomy-item" rel="tag">라이브러리</a><span class="sep">, </span>
     
       
       
@@ -421,7 +403,7 @@ MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만�
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-02">May 02, 2020</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-05">May 05, 2020</time></p>
         
       </footer>
 
@@ -430,22 +412,22 @@ MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만�
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D%5B%EC%8B%A4%EC%8A%B5%5D+CImage+%3A+%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94+%EB%B9%84%ED%8A%B8%EB%A7%B5+%EB%A7%8C%EB%93%A4%EA%B8%B0-1%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fcimage%2FCImage-%25EB%25B9%2584%25EC%2596%25B4%25EC%259E%2588%25EB%258A%2594-%25EB%25B9%2584%25ED%258A%25B8%25EB%25A7%25B5-%25EB%25A7%258C%25EB%2593%25A4%25EA%25B8%25B0-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BC%2B%2B%5D%5B%EC%86%8C%EA%B0%9C%5D+%EB%B9%A0%EB%A5%B8+%EB%A1%9C%EA%B9%85%28Logging%29+%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC+%3A+spdlog%20https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fc%2B%2B%2F%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C%25EB%259F%25AC%25EB%25A6%25AC%2F%25EB%25B9%25A0%25EB%25A5%25B8-%25EB%25A1%259C%25EA%25B7%25B8-%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C%25EB%259F%25AC%25EB%25A6%25AC-%25EC%2586%258C%25EA%25B0%259C%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fcimage%2FCImage-%25EB%25B9%2584%25EC%2596%25B4%25EC%259E%2588%25EB%258A%2594-%25EB%25B9%2584%25ED%258A%25B8%25EB%25A7%25B5-%25EB%25A7%258C%25EB%2593%25A4%25EA%25B8%25B0-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fc%2B%2B%2F%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C%25EB%259F%25AC%25EB%25A6%25AC%2F%25EB%25B9%25A0%25EB%25A5%25B8-%25EB%25A1%259C%25EA%25B7%25B8-%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C%25EB%259F%25AC%25EB%25A6%25AC-%25EC%2586%258C%25EA%25B0%259C%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fmfc%2Fcimage%2FCImage-%25EB%25B9%2584%25EC%2596%25B4%25EC%259E%2588%25EB%258A%2594-%25EB%25B9%2584%25ED%258A%25B8%25EB%25A7%25B5-%25EB%25A7%258C%25EB%2593%25A4%25EA%25B8%25B0-1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F%25ED%2594%2584%25EB%25A1%259C%25EA%25B7%25B8%25EB%259E%2598%25EB%25B0%258D%2Fc%2B%2B%2F%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C%25EB%259F%25AC%25EB%25A6%25AC%2F%25EB%25B9%25A0%25EB%25A5%25B8-%25EB%25A1%259C%25EA%25B7%25B8-%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C%25EB%259F%25AC%25EB%25A6%25AC-%25EC%2586%258C%25EA%25B0%259C%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B3%A0-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/" class="pagination--pager" title="[MFC][실습] CImage : 이미지 불러오고 출력하기
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/" class="pagination--pager" title="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기
 ">Previous</a>
     
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/" class="pagination--pager" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)
+      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/" class="pagination--pager" title="[MFC] Bitmap Format (DIB, DDB) : 설명
 ">Next</a>
     
   </nav>
@@ -531,7 +513,7 @@ MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만�
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/" rel="permalink">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/" rel="permalink">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기
 </a>
       
     </h2>
@@ -539,10 +521,10 @@ MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만�
     
   -->
   
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 05 2020</p>
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 04 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog
+  <p class="archive__item-excerpt" itemprop="description">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기
 </p>
   </article>
 </div>
@@ -557,7 +539,7 @@ MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만�
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/" rel="permalink">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기
+        <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/CPP-XOR/" rel="permalink">[C++] 비트 연산 Bitwise
 </a>
       
     </h2>
@@ -565,10 +547,10 @@ MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만�
     
   -->
   
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 04 2020</p>
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 03 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기
+  <p class="archive__item-excerpt" itemprop="description">[C++] 비트 연산 Bitwise
 </p>
   </article>
 </div>
@@ -638,8 +620,8 @@ MFC에서는 이미지를 자르기 위해서는 비어있는 비트맵을 만�
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-1/";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage - 비어있는 비트맵 만들기-1"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/빠른 로그 라이브러리 소개"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     
     (function() { // DON'T EDIT BELOW THIS LINE

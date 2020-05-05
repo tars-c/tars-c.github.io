@@ -1,13 +1,164 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-04T16:36:47+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기" /><published>2020-05-04T00:00:00+09:00</published><updated>2020-05-04T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%97%A4%EB%8D%94%20%EC%9D%BD%EC%96%B4%EC%84%9C%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-05T14:45:31+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;프로그램 개발 시 이미지의 크기 정보 및 가지고 있는 정보가 필요할 때가 있습니다.&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;CImage 클래스에서 제공하는 함수&lt;/code&gt;에서 이미지 정보를 가져오는 함수를 알아봅니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;이미지-정보-가져오기&quot;&gt;이미지 정보 가져오기&lt;/h2&gt;
+
+&lt;h3 id=&quot;가로폭-width-가져오기&quot;&gt;가로(폭, Width) 가져오기&lt;/h3&gt;
+&lt;p&gt;가로 폭 정보를 제공해주는 함수는 GetWidth() 입니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;세로높이-height-가져오기&quot;&gt;세로(높이, Height) 가져오기&lt;/h3&gt;
+&lt;p&gt;세로 높이 정보를 제공해주는 함수는 GetHeight() 입니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;pixel당-비트-수bpp-가져오기&quot;&gt;Pixel당 비트 수(BPP) 가져오기&lt;/h3&gt;
+&lt;p&gt;Pixel당 비트 수 정보를 제공해주는 함수는 GetBPP() 입니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;x-y-위치의-픽셀-주소-및-컬러값-가져오기&quot;&gt;x, y 위치의 픽셀 주소 및 컬러값 가져오기&lt;/h3&gt;
+&lt;p&gt;(x, y) 위치의 픽셀 주소값 제공해주는 함수는 GetPixelAddress() 입니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;COLORREF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;memcpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetPixelAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>타스 (TARS-C)</name></author><category term="이미지" /><category term="Image" /><category term="정보" /><category term="GetWidth" /><category term="GetHeight" /><category term="GetBPP" /><category term="GetPixelAddress" /><category term="가로" /><category term="Width" /><category term="세로" /><category term="Height" /><category term="화소당비트" /><category term="BPP" /><category term="픽셀" /><category term="Pixel" /><category term="주소" /><category term="Address" /><summary type="html">[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)</summary></entry><entry><title type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/" rel="alternate" type="text/html" title="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8%20%EB%A1%9C%EA%B7%B8%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/">&lt;p&gt;C++ 개발자방에서 한분이 라이브러리를 소개시켜주었습니다.&lt;br /&gt;
+벤치마크 성능을 보니까 빠르고 좋아보여 공유하고자 합니다.&lt;br /&gt;
+자세한건 아래 링크를 참고해주시기 바랍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/gabime/spdlog&quot; target=&quot;_blank&quot;&gt;Project: spldog Library Repository&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://travis-ci.org/gabime/spdlog&quot;&gt;&lt;img src=&quot;https://travis-ci.org/gabime/spdlog.svg?branch=v1.x&quot; alt=&quot;Build Status&quot; /&gt;&lt;/a&gt;   &lt;a href=&quot;https://ci.appveyor.com/project/gabime/spdlog&quot;&gt;&lt;img src=&quot;https://ci.appveyor.com/api/projects/status/d2jnxclg20vd0o50?svg=true&quot; alt=&quot;Build status&quot; /&gt;&lt;/a&gt;   &lt;a href=&quot;https://github.com/gabime/spdlog/releases/latest&quot;&gt;&lt;img src=&quot;https://img.shields.io/github/release/gabime/spdlog.svg&quot; alt=&quot;Release&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;지원하는 플랫폼
+    &lt;ul&gt;
+      &lt;li&gt;Android&lt;/li&gt;
+      &lt;li&gt;Linux (FreeBSD, OpenBSD, Solaris, AIX)&lt;/li&gt;
+      &lt;li&gt;macOS (clang 3.5 later)&lt;/li&gt;
+      &lt;li&gt;Windows (msvc 2013 later, cygwin)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;지원하는 설치 및 패키지 매니저
+    &lt;ul&gt;
+      &lt;li&gt;cmake&lt;/li&gt;
+      &lt;li&gt;Homebrew&lt;/li&gt;
+      &lt;li&gt;MacPorts&lt;/li&gt;
+      &lt;li&gt;FreeBSD&lt;/li&gt;
+      &lt;li&gt;Fedora&lt;/li&gt;
+      &lt;li&gt;Gentoo&lt;/li&gt;
+      &lt;li&gt;Arch Linux&lt;/li&gt;
+      &lt;li&gt;vcpkg&lt;/li&gt;
+      &lt;li&gt;conan&lt;/li&gt;
+      &lt;li&gt;conda&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;
+  이 라이브러리는 JetBrains 라이센스 기증을 받아 제작되었습니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="spdlog" /><category term="로그" /><category term="Logging" /><category term="Log" /><category term="라이브러리" /><category term="Library" /><summary type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</summary></entry><entry><title type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/" rel="alternate" type="text/html" title="[MFC] Bitmap Format (DIB, DDB) : 설명" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80%20%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%8F%AC%EB%A7%B7%20(DIB,%20DDB)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/">&lt;ul&gt;
+  &lt;li&gt;Windows에서 비트맵은 총 2가지 포맷을 지원합니다.
+    &lt;ul&gt;
+      &lt;li&gt;DDB(Device Dependent Bitmap)&lt;/li&gt;
+      &lt;li&gt;DIB(Device Indepedent Bitmap)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ddb-과거-화려했던-스타&quot;&gt;DDB (과거 화려했던 스타)&lt;/h2&gt;
+&lt;p&gt;Windows 3.0 이전 버전에서 사용되던 포맷 방식입니다.&lt;br /&gt;
+하지만 오늘날에서도 쓸 수 있습니다.&lt;br /&gt;
+DC에 SelectObject() 할 수 있는 포맷&lt;br /&gt;
+&lt;del&gt;&lt;strong&gt;(개발자라면 DDB도 알아야합니다)&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;장치에 의존 및 독립되지 않은 비트맵을 의미합니다.&lt;br /&gt;
+과거 비트맵을 출력했던 방식에서 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;장치에 독립되지 않고 의존적이므로 내 장치가 흑백 장치라면&lt;br /&gt;
+어떤 이미지든 흑백으로 밖에 이미지를 볼 수 밖에 없는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;DIB의 장점은 연산할 때 속도가 빠릅니다.&lt;br /&gt;
+단점은 컬러 비트맵을 출력할 수 있는 장치에서는 흑백 비트맵을 출력할 수 없습니다.&lt;/p&gt;
+
+&lt;p&gt;Createbitmap() 함수를 사용하여 DDB 비트맵을 생성할 수 있습니다.&lt;br /&gt;
+장치에 독립적이므로 비트맵 헤더 구조가 간단하게 이루어져있습니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tagBITMAP&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LONG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LONG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LONG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LONG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmWidthBytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WORD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmPlanes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WORD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmBitsPixel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LPVOID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmBits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BITMAP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;dib-지금도-핫한-스타&quot;&gt;DIB (지금도 핫한 스타)&lt;/h2&gt;
+&lt;p&gt;Windows 3.0 버전부터 사용되온 포맷 방식입니다.&lt;br /&gt;
+지금까지도 흔하게 쓰고 있는 비트맵입니다.&lt;/p&gt;
+
+&lt;p&gt;비트맵 파일을 저장될 때에도 DIB 포맷을 사용합니다.&lt;br /&gt;
+DC에 SelectObject() 할 수 없는 포맷&lt;/p&gt;
+
+&lt;p&gt;장치랑 상관없이 어느장치에나 색상을 완벽하게 출력할 수 있습니다.&lt;br /&gt;
+활용도가 DIB보단 훨씬 넓고 광범위합니다.&lt;br /&gt;
+전체적으로 파일이 가지고 있는 데이터가 크므로 연산 속도가 느립니다.&lt;/p&gt;
+
+&lt;p&gt;흑백만 출력할 수 있는 장치에서&lt;br /&gt;
+파일 자체가 비트맵 정보를 가지고 있기 때문에 컬러로 출력할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;CreateCompatibleBitmap() 함수를 사용하여 DIB 비트맵을 변환 및 생성할 수 있습니다.&lt;br /&gt;
+색상정보를 가지고 있기 때문에 비트맵 헤더의 크기는 DIB 비트맵 헤더보다 큽니다.&lt;br /&gt;
+헤더는 BITMAPFILEHEADER, BITMAPINFOHEADER 로 구성되어 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;정리&quot;&gt;정리&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;DDB
+    &lt;ul&gt;
+      &lt;li&gt;과거 화려했던 스타 (Windows 3.0 이전 버전, 지금까지도 사용할 수 있음)&lt;/li&gt;
+      &lt;li&gt;장치에 묶여있음(종송적)&lt;/li&gt;
+      &lt;li&gt;장치가 지원하는 색상만 출력할 수 있음&lt;/li&gt;
+      &lt;li&gt;비트맵 헤더가 매우 단순하고 가벼움&lt;/li&gt;
+      &lt;li&gt;연산 속도는 빠름&lt;/li&gt;
+      &lt;li&gt;생성 및 파괴 오버헤드 적음&lt;/li&gt;
+      &lt;li&gt;DC에 SelectObject() 가능 &lt;del&gt;&lt;strong&gt;(Only You)&lt;/strong&gt;&lt;/del&gt;&lt;/li&gt;
+      &lt;li&gt;Createbitmap() 함수를 이용한 생성&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;DIB
+    &lt;ul&gt;
+      &lt;li&gt;지금도 핫한 스타 (WIndows 3.0 버전에서부터 사용됨)&lt;/li&gt;
+      &lt;li&gt;장치랑 상관없이 자유로움 &lt;del&gt;&lt;strong&gt;(장치에서의 해방이다~)&lt;/strong&gt;&lt;/del&gt;&lt;/li&gt;
+      &lt;li&gt;장치가 지원하지 않지만 다른 색상도 출력할 수 있음&lt;/li&gt;
+      &lt;li&gt;색상 정보를 가지고 있으므로 비트맵 헤더가 복잡하고 큼&lt;/li&gt;
+      &lt;li&gt;연산속도는 DDB보다 느림&lt;/li&gt;
+      &lt;li&gt;생성 및 파괴는 DIB보다 비효율적&lt;/li&gt;
+      &lt;li&gt;DC에 SelectObject() 불가능! (내부 변환과정 거쳐야함)&lt;/li&gt;
+      &lt;li&gt;CreateCompatibleBitmap() 함수를 이용한 변환 및 생성&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="DIB" /><category term="DDB" /><category term="장치" /><category term="Device" /><category term="비트맵" /><category term="Bitmap" /><category term="포맷" /><category term="Format" /><category term="이미지포맷" /><category term="ImageFormat" /><summary type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</summary></entry><entry><title type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기" /><published>2020-05-04T00:00:00+09:00</published><updated>2020-05-04T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%97%A4%EB%8D%94%20%EC%9D%BD%EC%96%B4%EC%84%9C%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;비트맵 파일 헤더 중 파일 크기 정보에 해당하는 데이터를 읽어서 파일 크기를 출력합니다.&lt;br /&gt;
 비트맵 헤더 시작 위치는 0x0에 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;비트맵-헤더&quot;&gt;비트맵 헤더&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;비트맵 헤더는 총 2가지로 구성되어 있습니다.
+  &lt;li&gt;비트맵 헤더는 총 2가지로 구성되어 있으며 총 54byte 크기를 차지하고 있습니다.
     &lt;ul&gt;
       &lt;li&gt;BITMAPFILEHEADER (14byte)&lt;/li&gt;
-      &lt;li&gt;BITMAPINFOHEADER (54byte)&lt;/li&gt;
+      &lt;li&gt;BITMAPINFOHEADER (40byte)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -757,311 +908,4 @@ BitBlt() 함수는 ATL 함수이기에 DC는 HDC 타입을 요구합니다.&lt;/
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;복잡한 함수의 매개변수는 구글링이나 msdn을 참고하자&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="MFC" /><category term="공부방법" /><summary type="html">[잡담] MFC 및 WINAPI 이렇게 공부하자</summary></entry><entry><title type="html">[잡담] 메인기술을 가지는 사람이 되어보자</title><link href="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84-%EA%B0%80%EC%A7%80%EB%8A%94-%EC%82%AC%EB%9E%8C%EC%9D%B4-%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90/" rel="alternate" type="text/html" title="[잡담] 메인기술을 가지는 사람이 되어보자" /><published>2020-04-26T00:00:00+09:00</published><updated>2020-04-26T00:00:00+09:00</updated><id>https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84%20%EA%B0%80%EC%A7%80%EB%8A%94%20%EC%82%AC%EB%9E%8C%EC%9D%B4%20%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/%EB%A9%94%EC%9D%B8%EA%B8%B0%EC%88%A0%EC%9D%84-%EA%B0%80%EC%A7%80%EB%8A%94-%EC%82%AC%EB%9E%8C%EC%9D%B4-%EB%90%98%EC%96%B4%EB%B3%B4%EC%9E%90/">&lt;p&gt;&lt;strong&gt;이 글은 생각나는 대로 적는 것이니라 글의 두서가 없을 수 있으니 참고 바란다.&lt;/strong&gt;&lt;br /&gt;
-&lt;br /&gt;
-블로그에 포스팅하면서 몇가지 의문점이 들었다…&lt;br /&gt;
-내가 짧게 본 것들을 누군가에게 자세히 설명할 수 있을까 ?&lt;br /&gt;
-왜 나는 단순하게는 설명할 수 있는데 깊게는 설명하지 못할까 ?&lt;br /&gt;
-분명 머릿속에서 코드에 대한 작동 흐름은 있는거 같은데도 말이지..&lt;br /&gt;
-설명만 하면 입이 잘 안떨어진단 말이지..&lt;/p&gt;
-
-&lt;p&gt;하루종일 나는 모니터 앞에 앉아서 공부만 한다.&lt;br /&gt;
-가끔 친구들이 부르면 나가지만 메인은 방 구석에 있는 책상이다.&lt;br /&gt;
-어제는 오랜만에 보는 사람들이 좋아 과음한 날이었다..&lt;br /&gt;
-해가 뜨고 해가 저무는 것 또한 책상에 앉아서 보고있다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;블로그의 글을 포스팅 하기 전에 인터넷으로 찾은 정보를 모으고 수집한다.&lt;br /&gt;
-그리고 이를 정리하여 포스팅을 써내려 간다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;내가 정리한 정보도 누군가에게 도움이 될 수 있다고 생각하니까 …&lt;br /&gt;
-정보를 정리하고 내것으로 만드는 것이 나는 지식이라고 생각했다.&lt;br /&gt;
-이때까지 나는 중요한 것들을 깨닫지 못했다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;내것으로 만든다는 기준이 애매하다는 것을 이제서야 깨달았다.&lt;br /&gt;
-MFC를 공부하면서 항상 나 자신이 부족하다는 것을 알고 있다.&lt;br /&gt;
-왜 공부는 주입식 암기처럼 할 수 밖에 없을까 ?&lt;br /&gt;
-내가 제대로 이해는 하고 있는걸까 ?&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;내가 게임 스크립트를 보조해서 작업했을 때에는 부족했지만&lt;br /&gt;
-내가 원하는 대로 기획하는 것과 코드는 어느정도 짤 수 있는데&lt;br /&gt;
-MFC는 생각보다 나에게 어렵다고 느껴지기만 했다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;아마도 수 많은 매개변수로 구성된 함수들이 있어서일까 ?&lt;br /&gt;
-정말 구글링 없이는 프로그램을 만들 수 없을까 ?&lt;br /&gt;
-자주 사용하는 함수쯤은 암기할 수 있는거 아닐까 ?&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;그래서 나는 C언어를 배우듯이 다시 초심으로 돌아갔다.&lt;br /&gt;
-우연히 좋은 대학교 강의를 발견하여 블로그 포스팅을 잠시 중단하고 열심히 공부했다.&lt;br /&gt;
-그리고 더블버퍼링에 대해 더 자세히 알게된 시간을 가지게도 되었고&lt;br /&gt;
-컨트롤 제어에 대해 부족한 부분을 채워주는 계기도 되었다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;아직 강의를 마지막까지 다 보지는 않았지만&lt;br /&gt;
-느낀바를 잊어먹기 전에 생각나는 대로 적어보았다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;공부를 하면서 느끼는 것이지만 하루라는 시간은 매우 짧은 것 같다. 그리고 기술의 발전은 매우 빠르다는 것이다.&lt;br /&gt;
-하지만 여러 사람이 공들여 만든 기술들을 혼자서 완벽하게 익히기에는 턱없이 시간이 부족하다.&lt;br /&gt;
-부족한건 기술문서를 참고하고 메인기술을 하나쯤은 가지고 있어야&lt;br /&gt;
-이 경쟁력에서 살아남을 수 있는것이 아닐까 ?&lt;br /&gt;
-특정 분야와 팀이 있는 것이 아닐까 생각이든다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;아직도 길다란 길이 남은 것 같다. 오늘도 화이팅!&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;- MFC 강의 목록 -&lt;/strong&gt;
-&lt;img src=&quot;/assets/images/잡담/lec.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;교수님 감사합니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><summary type="html">[잡담] 메인기술을 가지는 사람이 되어보자</summary></entry><entry><title type="html">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기" /><published>2020-04-18T00:00:00+09:00</published><updated>2020-04-18T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog%20-%20%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20%ED%8C%8C%EC%9D%BC%EC%9D%84%20%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cfiledialog/CFileDialog-%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%84%A0%ED%83%9D%ED%95%98%EC%97%AC-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;FileDialog에서는 여러개의 파일을 선택하는 기능을 지원하고 있습니다. &lt;br /&gt;
-Adobe사 포토샵 같은 프로그램을 보면 이미지를 여러개 선택해 불러와서 사용자 작업을 처리합니다.&lt;/p&gt;
-
-&lt;p&gt;위와 같은 작업은 개발자가 프로그램을 만들 때&lt;br /&gt;
-여러개의 파일을 선택해서 정보를 얻어 처리하는 프로그래밍을 했기에 가능합니다.&lt;/p&gt;
-
-&lt;p&gt;이 글에서는 여러개의 파일을 선택해 선택된 파일에 대한 정보를 가져오는 방법에 대해 적어보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;선택한 여러개의 파일 정보를 구하기 위해서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;OFN_ALLOWMULTISELECT&lt;/code&gt; 플래그가 적용되어야 합니다.&lt;br /&gt;
-FileDialog는 반드시 &lt;code class=&quot;highlighter-rouge&quot;&gt;열기모드&lt;/code&gt;(TRUE)로 작동해야합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[ ! ]&lt;/code&gt; 아래 작업은 &lt;code class=&quot;highlighter-rouge&quot;&gt;DoModal() 함수가 호출되기 이전에 진행&lt;/code&gt;해야 합니다.&lt;br /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;여러개의 파일을 선택하기 위해서는 아래에 적힌 작업을 모두 진행해야 합니다.
-    &lt;ol&gt;
-      &lt;li&gt;기존 버퍼를 교체 (새롭게 버퍼를 만듬)&lt;/li&gt;
-      &lt;li&gt;FileDialog가 가지고 있는 버퍼 크기 변경&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;1-기존-버퍼를-교체&quot;&gt;1. 기존 버퍼를 교체&lt;/h2&gt;
-&lt;p&gt;FileDialog가 여러개의 파일 정보를 얻기 위해서는 큰 버퍼가 필요합니다.&lt;/p&gt;
-
-&lt;p&gt;기본적으로 버퍼를 가지고 있지만 1개의 파일에 대한 PATH 정보를 담을 수 있으며&lt;br /&gt;
-기본 크기는 260으로 설정되어 있습니다.&lt;/p&gt;
-
-&lt;p&gt;작은 크기의 버퍼를 사용할 경우 여러개의 파일을 선택했을 때 오류가 발생하거나&lt;br /&gt;
-선택한 모든 파일에 대한 일부 파일의 정보만 가져올 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;기존 버퍼를 변경하기 위해서는 버퍼의 위치(포인터)를 나타내는 멤버변수 &lt;code class=&quot;highlighter-rouge&quot;&gt;m_ofn.lpstrFile&lt;/code&gt; 값을 변경해야 합니다.&lt;br /&gt;
-CString 지역변수를 선언하고 가르키는 버퍼를 변경해보도록 하겠습니다.&lt;br /&gt;
-CString 클래스 GetBuffer() 함수를 이용해서 해당 객체가 가지고 있는 데이터의 시작 위치(포인터)를 얻어올 수 있습니다.&lt;br /&gt;
-GetBuffer() 함수를 이용해 새롭게 객체를 할당 받았다면&lt;br /&gt;
-반드시 ReleaseBuffer() 함수를 호출하여 메모리를 해제해야 됩니다.&lt;/p&gt;
-
-&lt;p&gt;버퍼를 변경하는 코드는 다음과 같습니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;fileDialog_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CFileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OFN_ALLOWMULTISELECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;filePathList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;fileDialog_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_ofn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lpstrFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filePathList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBuffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4096&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileDialog_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DoModal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IDOK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//...&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;filePathList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReleaseBuffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;버퍼만 변경한다고 해서 프로그램이 정상적으로 작동하는 것은 아닙니다.&lt;br /&gt;
-고정된 버퍼의 크기는 런타임 오류가 발생할 위험이 있습니다.&lt;/p&gt;
-
-&lt;p&gt;사용자가 최대 몇개의 파일을 선택할 것인지에 대해 생각하여 버퍼의 크기를 명시하는 것이 좋습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;2-버퍼의-크기-변경&quot;&gt;2. 버퍼의 크기 변경&lt;/h2&gt;
-&lt;p&gt;버퍼의 크기를 변경하기 위해서는 멤버변수 &lt;code class=&quot;highlighter-rouge&quot;&gt;m_ofn.nMaxFile&lt;/code&gt; 값을 변경해야 합니다.&lt;br /&gt;
-버퍼의 크기를 지정할 때에는 주어진 공식을 이용하는 것이 좋습니다.&lt;br /&gt;
-버퍼의 크기 계산 공식은 &lt;code class=&quot;highlighter-rouge&quot;&gt;n * (MAX_PATH + 1) + 1)&lt;/code&gt; 입니다. (참고:MSDN)&lt;br /&gt;
-이 공식은 n개의 파일에 대한 PATH 정보를 담을 수 있는 것을 의미합니다.&lt;/p&gt;
-
-&lt;p&gt;최소 99개의 파일을 선택할 수 있는 버퍼 크기를 변경하는 코드는 다음과 같습니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nMaxFiles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;nBufferSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nMaxFiles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_MAX_PATH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;fileDialog_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_ofn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nMaxFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nBufferSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;선택된 파일에 따라 PATH 정보 크기는 다릅니다.&lt;br /&gt;
-그러므로 PATH 정보가 차지하고 있는 데이터의 크기는 항상 다릅니다.&lt;br /&gt;
-PATH가 아무리 긴다고 가정하에 99개의 파일 정보를 가져올 수 있으며&lt;br /&gt;
-반대로 PATH가 너무 짧은 경우 99개 이상의 파일의 정보를 가져올 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-다중-선택-가능한-파일-다이얼로그-띄우기&quot;&gt;3. 다중 선택 가능한 파일 다이얼로그 띄우기&lt;/h2&gt;
-&lt;p&gt;위에서 배운 내용을 종합해 코드로 만들어보겠습니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;CString&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filePathList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxFiles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;99&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bufferSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nBufferSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_MAX_PATH&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;fileDialog_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CFileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OFN_ALLOWMULTISELECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;CFileDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OFN_ALLOWMULTISELECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;fileDialog_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_ofn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lpstrFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filePathList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBuffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bufferSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;fileDialog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DoModal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;4-여러개의-파일-정보-가져오기&quot;&gt;4. 여러개의 파일 정보 가져오기&lt;/h2&gt;
-
-&lt;p&gt;여러개의 선택된 파일 정보를 가져오기 위해서는 2가지 함수를 사용하여 구할 수 있습니다.&lt;br /&gt;
-이 함수들은 DoModal() 함수가 호출 이후 사용해야 합니다.&lt;br /&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;아래 함수들은 CFileDialog 클래스에서 기본적으로 제공하는 함수들입니다.
-    &lt;ol&gt;
-      &lt;li&gt;GetStartPosition()&lt;/li&gt;
-      &lt;li&gt;GetNextPathName()&lt;/li&gt;
-    &lt;/ol&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;두 함수는 바로가기 파일에 대해서 값을 가져올 때 오류가 발생할 수 있으니 참고 바랍니다.
-GetStartPosition() 함수는 FileDialog가 가진 버퍼의 시작위치를 얻어올 수 있습니다.&lt;br /&gt;
-GetNextPathName() 함수는 버퍼의 담긴 여러개의 PATH 정보들을 구분해서 하나씩 얻어올 수 있습니다.&lt;br /&gt;
-얻어온 데이터들을 이용해 파일이름 혹은 확장명만 얻기 위해서는 &lt;a href=&quot;/../프로그래밍/mfc/file/File-파일-PATH-데이터-정보-구하기-(이름,-확장명,-폴더,-상위폴더)/&quot; target=&quot;_blank&quot;&gt;따로 프로그래밍&lt;/a&gt;을 해야합니다.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;POSITION&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileDialog_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetStartPosition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;fileDialog_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetNextPathName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;GetNextPathName() 함수는 더 이상 구분하여 얻어올 PATH 정보가 없다면 NULL을 반환하므로&lt;br /&gt;
-반복문을 이용해 하나씩 선택했던 파일에 대한 PATH 정보를 꺼내올 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;얻어온 PATH 정보는 CString 타입의 데이터이며 아래 같이 PATH 정보를 가지고 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;C:&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;Temp&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;Test1.txt
-C:&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;Temp&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;Test2.txt
-C:&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;Temp&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;Test3.txt
-C:&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;Temp&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;Test3.txt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;GetNextPathName() 함수를 이용하여 PATH 정보를 얻어와&lt;br /&gt;
-CString 클래스에서 제공되는 함수들을 이용하면 파일이름 혹은 파일확장명을 구할 수 있습니다.
-자체적으로 제공해주는 함수가 없으므로 따로 프로그래밍을 해야합니다.&lt;/p&gt;
-&lt;h2 id=&quot;4-결론&quot;&gt;4. 결론&lt;/h2&gt;
-
-&lt;p&gt;위 내용을 정리해보겠습니다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;여러개의 파일을 선택할 때
-    &lt;ul&gt;
-      &lt;li&gt;OFN_ALLOWMULTISELECT 플래그 적용&lt;/li&gt;
-      &lt;li&gt;열기모드 사용&lt;/li&gt;
-      &lt;li&gt;기존 FileDialog가 쓰던 버퍼는 작으므로 새로운 큰 버퍼로 변경&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;기존 버퍼를 새로운 버퍼로 변경
-    &lt;ul&gt;
-      &lt;li&gt;DoModal() 함수가 호출되기 전에 작업 진행&lt;/li&gt;
-      &lt;li&gt;CString GetBuffer(), ReleaseBuffer() 함수를 이용하여 새로운 버퍼를 만듬&lt;/li&gt;
-      &lt;li&gt;m_ofn.lpstrFile 값을 다르게 변경하여 새로운 버퍼의 시작 위치를 가르킴&lt;/li&gt;
-      &lt;li&gt;m_ofn.nMaxFile 값을 다르게 변경하여 버퍼 크기를 변경 (반드시 공식이용)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;여러개의 파일 정보를 얻기
-    &lt;ul&gt;
-      &lt;li&gt;GetStartPosition() 함수 반환값을 이용하여 버퍼의 시작위치를 구함&lt;/li&gt;
-      &lt;li&gt;GetNextPathName() 함수로 버퍼의 시작위치에서 여러개의 파일 PATH 정보를 구분하여 가져옴&lt;/li&gt;
-      &lt;li&gt;얻어온 PATH 정보에서 파일이름 및 확장명을 얻어 오기 위해서는 &lt;a href=&quot;/../프로그래밍/mfc/file/File-파일-PATH-데이터-정보-구하기-(이름,-확장명,-폴더,-상위폴더)/&quot; target=&quot;_blank&quot;&gt;따로 프로그래밍&lt;/a&gt;을 해야함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;ul&gt;
-  &lt;li&gt;오타 및 잘못된 내용에 대해 피드백 해주시는건 언제든 환영합니다.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Cpp" /><category term="C++" /><category term="MFC" /><category term="Dialog" /><category term="CFileDialog" /><category term="CFile" /><category term="파일" /><category term="다중 파일 정보" /><category term="파일정보" /><category term="파일이름" /><category term="파일확장명" /><category term="파일경로" /><category term="이름" /><category term="경로" /><category term="확장명" /><category term="GetNextPathName" /><category term="GetStartPosition" /><summary type="html">[MFC] CFileDialog : 여러개의 파일을 선택하여 정보 가져오기</summary></entry><entry><title type="html">[MFC] 컨트롤 핸들(HWND) 가져오기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/control/%EC%BB%A8%ED%8A%B8%EB%A1%A4-%ED%95%B8%EB%93%A4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] 컨트롤 핸들(HWND) 가져오기" /><published>2020-04-18T00:00:00+09:00</published><updated>2020-04-12T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/control/%EC%BB%A8%ED%8A%B8%EB%A1%A4%20%ED%95%B8%EB%93%A4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/control/%EC%BB%A8%ED%8A%B8%EB%A1%A4-%ED%95%B8%EB%93%A4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;MFC에는 수 많은 컨트롤이 존재합니다.&lt;br /&gt;
-이 컨트롤을 제어하기 위해서는 CWnd 인스턴스에 접근하거나&lt;br /&gt;
-핸들을 이용하는 방식이 있습니다.&lt;/p&gt;
-
-&lt;p&gt;WINAPI에서는 HWND 구조체를 이용해 컨트롤을 제어했지만&lt;br /&gt;
-MFC에서는 조금 더 편리하게 CWnd 윈도우 클래스의 인스턴스를 접근하여 제어할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;핸들을 가져오는 방법은 여러가지 있습니다.&lt;br /&gt;
-그중 대표적으로 사용하는 방법에 대해 알아보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;리소스id를-이용해-핸들-얻기-getdlgitem&quot;&gt;리소스ID를 이용해 핸들 얻기 (GetDlgItem)&lt;/h2&gt;
-&lt;p&gt;GetDlgItem() 함수를 사용하기 위해서는 해당 컨트롤이 가진 리소스ID에 대해 알아야합니다.&lt;br /&gt;
-리소스ID는 숫자지만 편리하게 #define을 사용해 관리 합니다. (resource.h 파일에 명시됨)&lt;br /&gt;
-뷰를 여러개 사용하게 되면 해당 뷰에 컨트롤이 포함되어 있어야만 정상적으로 가져올 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetDlgItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MY_CONTROL_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;
-GetDlgItem() 함수를 이용해 CWnd 인스턴스를 얻었으면&lt;br /&gt;
-형변환을 통해 해당 컨트롤 타입으로 변환하여 해당 인스턴스에 대한 함수를 사용할 수 있습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;예를들어 Edit Control을 제어한다면 아래와 같이 사용할 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pEdit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetDlgItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IDC_MY_EDIT1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SetWindowText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;제어 성공!));&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;hwnd를-이용해-cwnd-인스턴스-얻기-fromhandle&quot;&gt;HWND를 이용해 CWnd 인스턴스 얻기 (FromHandle)&lt;/h2&gt;
-&lt;p&gt;가끔 WINAPI 함수를 이용해야 한다면 핸들 구조체를(HWND) 이용할 수 밖에 없습니다.&lt;br /&gt;
-MFC에서는 핸들(HWND)을 이용한 접근방법보다 CWnd 인스턴스로 접근방법이 많습니다.&lt;br /&gt;
-그러므로 MFC는 변환하는 함수를 제공해줍니다.&lt;/p&gt;
-
-&lt;p&gt;FromHandle() 함수를 이용한다면 컨트롤이 가진 핸들에 대해 CWnd* 인스턴스를 반환시켜 줍니다.&lt;br /&gt;
-해당 핸들의 컨트롤이 가진 CWnd 타입의 인스턴스가 없다면&lt;br /&gt;
-임시로 인스턴스를 생성하여 포인터를 반환해줍니다.&lt;br /&gt;&lt;br /&gt;
-임시로 생성된 인스턴스는 전역으로 사용하기에 적절하지 못합니다.&lt;br /&gt;
-지역변수처럼 사용하고 버려주시면 됩니다.&lt;br /&gt;
-FromHandle() 함수는 static 함수이므로 인스턴스가 따로 필요하지 않습니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;HWND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;editHwnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CreateWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;edit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;editWnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FromHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editHwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pEDit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CEdit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;cwnd-인스턴스에서-핸들hwnd-접근&quot;&gt;CWnd 인스턴스에서 핸들(HWND) 접근&lt;/h2&gt;
-&lt;p&gt;CWnd 인스턴스에서는 아주 쉽게 멤버변수로 핸들(HWND)을 제공합니다.&lt;br /&gt;
-CWnd 클래스를 상속받은 자식 인스턴스에 대해서도 핸들(HWND)로 접근할 수 있습니다. (뷰 포함)&lt;br /&gt;&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetSafeHwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;f리소스id를-사용하여-cwnd를-반환하는-함수&quot;&gt;[F]리소스ID를 사용하여 CWnd*를 반환하는 함수&lt;/h2&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getCWndFromResourceID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controlID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetDlgItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;controlID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;fhwnd를-사용하여-cwnd를-반환하는-함수&quot;&gt;[F]HWND를 사용하여 CWnd*를 반환하는 함수&lt;/h2&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getCWndFromHWND&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HWND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 임시 인스턴스가 생성될 수 있으니 주의할 필요가 있다.&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CWnd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FromHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="프로그래밍" /><category term="Control" /><category term="컨트롤" /><summary type="html">[MFC] 컨트롤 핸들(HWND) 가져오기</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="MFC" /><category term="공부방법" /><summary type="html">[잡담] MFC 및 WINAPI 이렇게 공부하자</summary></entry></feed>
