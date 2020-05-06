@@ -1,73 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-05T15:26:41+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;프로그램 개발 시 이미지의 크기 정보 및 가지고 있는 정보가 필요할 때가 있습니다.&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;CImage 클래스에서 제공하는 함수&lt;/code&gt;에서 이미지 정보를 가져오는 함수를 알아봅니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-06T17:01:38+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><subtitle>기록은 지식이라고 믿는 자의 블로그</subtitle><author><name>타스 (TARS-C)</name></author><entry><title type="html">[C++] Serialization : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/Serialization/" rel="alternate" type="text/html" title="[C++] Serialization : 설명" /><published>2020-05-06T00:00:00+09:00</published><updated>2020-05-06T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/Serialization</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/Serialization/">&lt;h2 id=&quot;직렬화serialization란-&quot;&gt;직렬화(Serialization)란 ?&lt;/h2&gt;
+&lt;p&gt;크고 복잡한 데이터(Object)를 가장 단순한 byte형태(Binary Data)로 변환하는 것을 의미합니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;이미지-정보-가져오기&quot;&gt;이미지 정보 가져오기&lt;/h2&gt;
-
-&lt;h3 id=&quot;가로폭-width-가져오기&quot;&gt;가로(폭, Width) 가져오기&lt;/h3&gt;
-&lt;p&gt;가로 폭 정보를 제공해주는 함수는 GetWidth() 입니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;세로높이-height-가져오기&quot;&gt;세로(높이, Height) 가져오기&lt;/h3&gt;
-&lt;p&gt;세로 높이 정보를 제공해주는 함수는 GetHeight() 입니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;pixel당-비트-수bpp-가져오기&quot;&gt;Pixel당 비트 수(BPP) 가져오기&lt;/h3&gt;
-&lt;p&gt;Pixel당 비트 수 정보를 제공해주는 함수는 GetBPP() 입니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;x-y-위치의-픽셀-주소-및-컬러값-가져오기&quot;&gt;x, y 위치의 픽셀 주소 및 컬러값 가져오기&lt;/h3&gt;
-&lt;p&gt;(x, y) 위치의 픽셀 주소값 제공해주는 함수는 GetPixelAddress() 입니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;COLORREF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;memcpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetPixelAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>타스 (TARS-C)</name></author><category term="이미지" /><category term="Image" /><category term="정보" /><category term="GetWidth" /><category term="GetHeight" /><category term="GetBPP" /><category term="GetPixelAddress" /><category term="가로" /><category term="Width" /><category term="세로" /><category term="Height" /><category term="화소당비트" /><category term="BPP" /><category term="픽셀" /><category term="Pixel" /><category term="주소" /><category term="Address" /><summary type="html">[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)</summary></entry><entry><title type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/" rel="alternate" type="text/html" title="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8%20%EB%A1%9C%EA%B7%B8%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/">&lt;p&gt;C++ 개발자방에서 한분이 라이브러리를 소개시켜주었습니다.&lt;br /&gt;
-벤치마크 성능을 보니까 빠르고 좋아보여 공유하고자 합니다.&lt;br /&gt;
-자세한건 아래 링크를 참고해주시기 바랍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/gabime/spdlog&quot; target=&quot;_blank&quot;&gt;Project: spldog Library Repository&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://travis-ci.org/gabime/spdlog&quot;&gt;&lt;img src=&quot;https://travis-ci.org/gabime/spdlog.svg?branch=v1.x&quot; alt=&quot;Build Status&quot; /&gt;&lt;/a&gt;   &lt;a href=&quot;https://ci.appveyor.com/project/gabime/spdlog&quot;&gt;&lt;img src=&quot;https://ci.appveyor.com/api/projects/status/d2jnxclg20vd0o50?svg=true&quot; alt=&quot;Build status&quot; /&gt;&lt;/a&gt;   &lt;a href=&quot;https://github.com/gabime/spdlog/releases/latest&quot;&gt;&lt;img src=&quot;https://img.shields.io/github/release/gabime/spdlog.svg&quot; alt=&quot;Release&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;반대로 가장 단순한 형태로 저장된 데이터들을 복잡한 데이터(Object)로 변환하는 것을&lt;br /&gt;
+역직렬화(Deserialiization)라 합니다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CPP/Serialiization.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;지원하는 플랫폼
+  &lt;li&gt;사용 예시는 크게 3가지입니다.
     &lt;ul&gt;
-      &lt;li&gt;Android&lt;/li&gt;
-      &lt;li&gt;Linux (FreeBSD, OpenBSD, Solaris, AIX)&lt;/li&gt;
-      &lt;li&gt;macOS (clang 3.5 later)&lt;/li&gt;
-      &lt;li&gt;Windows (msvc 2013 later, cygwin)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;지원하는 설치 및 패키지 매니저
-    &lt;ul&gt;
-      &lt;li&gt;cmake&lt;/li&gt;
-      &lt;li&gt;Homebrew&lt;/li&gt;
-      &lt;li&gt;MacPorts&lt;/li&gt;
-      &lt;li&gt;FreeBSD&lt;/li&gt;
-      &lt;li&gt;Fedora&lt;/li&gt;
-      &lt;li&gt;Gentoo&lt;/li&gt;
-      &lt;li&gt;Arch Linux&lt;/li&gt;
-      &lt;li&gt;vcpkg&lt;/li&gt;
-      &lt;li&gt;conan&lt;/li&gt;
-      &lt;li&gt;conda&lt;/li&gt;
+      &lt;li&gt;서로 다른프로세스 통신(IPC)&lt;/li&gt;
+      &lt;li&gt;파일 입출력(File I/O)&lt;/li&gt;
+      &lt;li&gt;네트워크 통신(Socket)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;
-  이 라이브러리는 JetBrains 라이센스 기증을 받아 제작되었습니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="spdlog" /><category term="로그" /><category term="Logging" /><category term="Log" /><category term="라이브러리" /><category term="Library" /><summary type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</summary></entry><entry><title type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/" rel="alternate" type="text/html" title="[MFC] Bitmap Format (DIB, DDB) : 설명" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80%20%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%8F%AC%EB%A7%B7%20(DIB,%20DDB)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/">&lt;ul&gt;
+&lt;h2 id=&quot;직렬화를-사용하는-이유는-&quot;&gt;직렬화를 사용하는 이유는 ?&lt;/h2&gt;
+&lt;p&gt;Object객체는 상당히 복잡한 형태로 이루어져 있습니다.&lt;br /&gt;
+객체를 파일로 저장하거나 다른 컴퓨터에게 전송을할 때 Stream을 이용합니다.&lt;/p&gt;
+
+&lt;p&gt;Stream을 이용해 이미지 파일을 복사한다고 할 때&lt;br /&gt;
+기존 파일을 Binary로 읽어(Read)들이고 읽어들인 데이터를 쓰게(Write) 됩니다.&lt;/p&gt;
+
+&lt;p&gt;Stream은 큰 데이터를 한번에 보낼 수 없고 원시타입(Primitive)의 데이터를 전송할 수 있습니다.&lt;br /&gt;
+큰 데이터들은 직렬화(Serialiization)를 이용하여 전송가능한 원시타입으로 변환하여&lt;br /&gt;
+Stream으로 데이터를 교환하거나 전송합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;직렬화한-데이터를-사용자가-직접-볼-수는-없는가-&quot;&gt;직렬화한 데이터를 사용자가 직접 볼 수는 없는가 ?&lt;/h2&gt;
+&lt;p&gt;직렬화된 데이터는 사용자가 직접 보기 힘듭니다.&lt;br /&gt;
+HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니다.&lt;br /&gt;
+이는 저장된 파일을 HEX Viewer로 보는 것과 비슷합니다.&lt;/p&gt;
+
+&lt;p&gt;이미지 같은 경우는 헤더를 포함한 데이터 자체만을 저장했을 때&lt;br /&gt;
+뷰어를 통해 이미지를 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;a href=&quot;https://rockdrumy.tistory.com/1044&quot; target=&quot;_blank&quot;&gt;이미지 출처: Tistory 드럼치는 프로그래머&lt;/a&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="직렬화" /><category term="Serialization" /><category term="Serialize" /><summary type="html">[C++] Serialiization : 설명</summary></entry><entry><title type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/" rel="alternate" type="text/html" title="[MFC] Bitmap Format (DIB, DDB) : 설명" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80%20%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%8F%AC%EB%A7%B7%20(DIB,%20DDB)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/">&lt;ul&gt;
   &lt;li&gt;Windows에서 비트맵은 총 2가지 포맷을 지원합니다.
     &lt;ul&gt;
       &lt;li&gt;DDB(Device Dependent Bitmap)&lt;/li&gt;
@@ -149,7 +117,76 @@ DC에 SelectObject() 할 수 없는 포맷&lt;/p&gt;
       &lt;li&gt;CreateCompatibleBitmap() 함수를 이용한 변환 및 생성&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="DIB" /><category term="DDB" /><category term="장치" /><category term="Device" /><category term="비트맵" /><category term="Bitmap" /><category term="포맷" /><category term="Format" /><category term="이미지포맷" /><category term="ImageFormat" /><summary type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</summary></entry><entry><title type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기" /><published>2020-05-04T00:00:00+09:00</published><updated>2020-05-04T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%97%A4%EB%8D%94%20%EC%9D%BD%EC%96%B4%EC%84%9C%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="DIB" /><category term="DDB" /><category term="장치" /><category term="Device" /><category term="비트맵" /><category term="Bitmap" /><category term="포맷" /><category term="Format" /><category term="이미지포맷" /><category term="ImageFormat" /><summary type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</summary></entry><entry><title type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/" rel="alternate" type="text/html" title="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8%20%EB%A1%9C%EA%B7%B8%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC/%EB%B9%A0%EB%A5%B8-%EB%A1%9C%EA%B7%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%86%8C%EA%B0%9C/">&lt;p&gt;C++ 개발자방에서 한분이 라이브러리를 소개시켜주었습니다.&lt;br /&gt;
+벤치마크 성능을 보니까 빠르고 좋아보여 공유하고자 합니다.&lt;br /&gt;
+자세한건 아래 링크를 참고해주시기 바랍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/gabime/spdlog&quot; target=&quot;_blank&quot;&gt;Project: spldog Library Repository&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://travis-ci.org/gabime/spdlog&quot;&gt;&lt;img src=&quot;https://travis-ci.org/gabime/spdlog.svg?branch=v1.x&quot; alt=&quot;Build Status&quot; /&gt;&lt;/a&gt;   &lt;a href=&quot;https://ci.appveyor.com/project/gabime/spdlog&quot;&gt;&lt;img src=&quot;https://ci.appveyor.com/api/projects/status/d2jnxclg20vd0o50?svg=true&quot; alt=&quot;Build status&quot; /&gt;&lt;/a&gt;   &lt;a href=&quot;https://github.com/gabime/spdlog/releases/latest&quot;&gt;&lt;img src=&quot;https://img.shields.io/github/release/gabime/spdlog.svg&quot; alt=&quot;Release&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;지원하는 플랫폼
+    &lt;ul&gt;
+      &lt;li&gt;Android&lt;/li&gt;
+      &lt;li&gt;Linux (FreeBSD, OpenBSD, Solaris, AIX)&lt;/li&gt;
+      &lt;li&gt;macOS (clang 3.5 later)&lt;/li&gt;
+      &lt;li&gt;Windows (msvc 2013 later, cygwin)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;지원하는 설치 및 패키지 매니저
+    &lt;ul&gt;
+      &lt;li&gt;cmake&lt;/li&gt;
+      &lt;li&gt;Homebrew&lt;/li&gt;
+      &lt;li&gt;MacPorts&lt;/li&gt;
+      &lt;li&gt;FreeBSD&lt;/li&gt;
+      &lt;li&gt;Fedora&lt;/li&gt;
+      &lt;li&gt;Gentoo&lt;/li&gt;
+      &lt;li&gt;Arch Linux&lt;/li&gt;
+      &lt;li&gt;vcpkg&lt;/li&gt;
+      &lt;li&gt;conan&lt;/li&gt;
+      &lt;li&gt;conda&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;
+  이 라이브러리는 JetBrains 라이센스 기증을 받아 제작되었습니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="spdlog" /><category term="로그" /><category term="Logging" /><category term="Log" /><category term="라이브러리" /><category term="Library" /><summary type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</summary></entry><entry><title type="html">[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage%20-%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;프로그램 개발 시 이미지의 크기 정보 및 가지고 있는 정보가 필요할 때가 있습니다.&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;CImage 클래스에서 제공하는 함수&lt;/code&gt;에서 이미지 정보를 가져오는 함수를 알아봅니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;이미지-정보-가져오기&quot;&gt;이미지 정보 가져오기&lt;/h2&gt;
+
+&lt;h3 id=&quot;가로폭-width-가져오기&quot;&gt;가로(폭, Width) 가져오기&lt;/h3&gt;
+&lt;p&gt;가로 폭 정보를 제공해주는 함수는 GetWidth() 입니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;세로높이-height-가져오기&quot;&gt;세로(높이, Height) 가져오기&lt;/h3&gt;
+&lt;p&gt;세로 높이 정보를 제공해주는 함수는 GetHeight() 입니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;pixel당-비트-수bpp-가져오기&quot;&gt;Pixel당 비트 수(BPP) 가져오기&lt;/h3&gt;
+&lt;p&gt;Pixel당 비트 수 정보를 제공해주는 함수는 GetBPP() 입니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;x-y-위치의-픽셀-주소-및-컬러값-가져오기&quot;&gt;x, y 위치의 픽셀 주소 및 컬러값 가져오기&lt;/h3&gt;
+&lt;p&gt;(x, y) 위치의 픽셀 주소값 제공해주는 함수는 GetPixelAddress() 입니다.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;COLORREF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;memcpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetPixelAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>타스 (TARS-C)</name></author><category term="이미지" /><category term="Image" /><category term="정보" /><category term="GetWidth" /><category term="GetHeight" /><category term="GetBPP" /><category term="GetPixelAddress" /><category term="가로" /><category term="Width" /><category term="세로" /><category term="Height" /><category term="화소당비트" /><category term="BPP" /><category term="픽셀" /><category term="Pixel" /><category term="주소" /><category term="Address" /><summary type="html">[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)</summary></entry><entry><title type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기" /><published>2020-05-04T00:00:00+09:00</published><updated>2020-05-04T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%97%A4%EB%8D%94%20%EC%9D%BD%EC%96%B4%EC%84%9C%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/c++/%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%97%A4%EB%8D%94-%EC%9D%BD%EC%96%B4%EC%84%9C-%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;비트맵 파일 헤더 중 파일 크기 정보에 해당하는 데이터를 읽어서 파일 크기를 출력합니다.&lt;br /&gt;
 비트맵 헤더 시작 위치는 0x0에 있습니다.&lt;/p&gt;
 
@@ -858,54 +895,4 @@ BitBlt() 함수는 ATL 함수이기에 DC는 HDC 타입을 요구합니다.&lt;/
 &lt;h2 id=&quot;part3-cobject를-상속받지-않은-클래스-계층&quot;&gt;PART3: CObject를 상속받지 않은 클래스 계층&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/Hierarchy/mfc_hierarchy_chart3of3.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;참고링크: &lt;a href=&quot;https://docs.microsoft.com/ko-kr/cpp/mfc/hierarchy-chart?view=vs-2019&quot; target=&quot;_blank&quot;&gt;MSDN&lt;/a&gt;(사이트 내 PDF 다운로드 지원)&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="MFC" /><category term="Class" /><category term="Hierarchy" /><summary type="html">[MFC] 클래스 계층도</summary></entry><entry><title type="html">[잡담] MFC 및 WINAPI 이렇게 공부하자</title><link href="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/MFC%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%98%EB%A9%B4%EC%84%9C-%EB%8A%90%EB%82%80%EC%A0%90/" rel="alternate" type="text/html" title="[잡담] MFC 및 WINAPI 이렇게 공부하자" /><published>2020-04-30T00:00:00+09:00</published><updated>2020-04-30T00:00:00+09:00</updated><id>https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/MFC%EB%A5%BC%20%EA%B3%B5%EB%B6%80%ED%95%98%EB%A9%B4%EC%84%9C%20%EB%8A%90%EB%82%80%EC%A0%90</id><content type="html" xml:base="https://tars-c.github.io/%EC%9E%A1%EB%8B%B4/MFC%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%98%EB%A9%B4%EC%84%9C-%EB%8A%90%EB%82%80%EC%A0%90/">&lt;p&gt;MFC 및 WINAPI 를 계속 공부하면서 느낀게 하나 있습니다.&lt;br /&gt;
-클래스가 제공하는 함수가 나무나 복잡하다는 것입니다.&lt;br /&gt;
-함수 이름도 심지어 비슷비슷해서 상당히 복잡해서 익히는데 큰 시간이 소비되는 것 같습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;MFC나 WINAPI는 상당히 코드가 길게 구성되어 있습니다.&lt;br /&gt;
-몇몇분들이 이 함수의 매개변수들을 외우려고 하지만&lt;br /&gt;
-공부하는 기간동안 이를 다 외워서 코딩하는건 시간낭비일 수도 있습니다.&lt;/p&gt;
-
-&lt;p&gt;전체적으로 작동하는 흐름을 보자면&lt;br /&gt;
-수 많은 구조체들이 시스템의 일부를 가르키고 있고 복잡한 구조체를 이용해&lt;br /&gt;
-객체를 만들고 함수를 이용하여 시스템을 제어하는 것입니다.&lt;/p&gt;
-
-&lt;p&gt;이를 어느정도 이해를 하는 것이 중요합니다.&lt;/p&gt;
-
-&lt;p&gt;수 많은 클래스가 제공하는 함수를 외울 필요는 없습니다. (외우면 당연히 좋아요)&lt;br /&gt;
-하지만 해당 구조체 및 클래스가 어떤 역할을 하는지 이해하는건 필수인 것 같습니다.&lt;br /&gt;
-그리고 역할을 이해하게 된다면 제공하는 함수에 대해서도 간접적으로 알 수 있습니다.&lt;br /&gt;
-이해를 한다면 나중에 MFC 프로젝트가 필요하거나 WINAPI를 이용한 프로그램을 제작할 때&lt;br /&gt;
-복잡한 구조체에 당황하지 않고 프로그래밍이 가능할 것 같습니다. &lt;br /&gt;
-클래스 계층도를 이해하는 것 또한 중요합니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;비슷하면서도 같아보이는 클래스 및 구조체들..
-    &lt;ul&gt;
-      &lt;li&gt;HBITMAP: (WINAPI BITMAP HANDLE)&lt;/li&gt;
-      &lt;li&gt;CBitmap: (GDI BITMAP 객체)&lt;/li&gt;
-      &lt;li&gt;Bitmap: (GDI+ BITMAP 객체)&lt;/li&gt;
-      &lt;li&gt;BITMAP: (비트맵 정보를 가지는 구조체)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;구조체 및 클래스 이름도 상당히 비슷합니다.&lt;br /&gt;
-이름들이 거의 한글자씩만 다릅니다. (하아…)&lt;br /&gt;
-자주 쓰이는 함수는 어떤 클래스에 속해있는지 알아야하고 함수가 제공하는 매개변수는 msdn이나&lt;br /&gt;
-구글링을 통해 큰 흐름을 익히는 것이 중요한 것 같습니다.&lt;/p&gt;
-
-&lt;p&gt;함수 전부 외우거나 이해하는 것보다&lt;br /&gt;
-큰 틀(구조체 및 클래스)을 이해하는 것이 중요합니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;위 내용을 간략히 정리해보면&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;수 많은 클래스들이 제공하는 함수 및 매개변수를 외우려하지말라&lt;/li&gt;
-  &lt;li&gt;클래스와 구조체가 어떤 역할 및 기능을 하는지는 알아두도록 하자
-    &lt;ul&gt;
-      &lt;li&gt;추가로 함수에서 클래스와 구조체가 필요로 한다면 왜 필요한지 정도는 알아두도록 하자(쓰임세)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;복잡한 함수의 매개변수는 구글링이나 msdn을 참고하자&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="MFC" /><category term="공부방법" /><summary type="html">[잡담] MFC 및 WINAPI 이렇게 공부하자</summary></entry></feed>
+&lt;p&gt;참고링크: &lt;a href=&quot;https://docs.microsoft.com/ko-kr/cpp/mfc/hierarchy-chart?view=vs-2019&quot; target=&quot;_blank&quot;&gt;MSDN&lt;/a&gt;(사이트 내 PDF 다운로드 지원)&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="타스" /><category term="MFC" /><category term="Class" /><category term="Hierarchy" /><summary type="html">[MFC] 클래스 계층도</summary></entry></feed>
