@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-07T23:18:10+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천</title><link href="https://tars-c.github.io/mojave-darkmode-darkeader-app/2020/05/07" rel="alternate" type="text/html" title="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/mojave-darkmode-darkeader-app/2020/05/MacOS-Mojave%20DarkReader%20App</id><content type="html" xml:base="https://tars-c.github.io/mojave-darkmode-darkeader-app/2020/05/07">&lt;p&gt;이 글이 앱 홍보가 될 수도 있는데&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-07T23:37:00+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천</title><link href="https://tars-c.github.io/mojave-darkmode-darkeader-app/2020/05/07" rel="alternate" type="text/html" title="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/mojave-darkmode-darkeader-app/2020/05/MacOS-Mojave%20DarkReader%20App</id><content type="html" xml:base="https://tars-c.github.io/mojave-darkmode-darkeader-app/2020/05/07">&lt;p&gt;이 글이 앱 홍보가 될 수도 있는데&lt;br /&gt;
 회사나 남한테 부탁받는 것이 아닌 내돈쓰고 내가 후기를 작성한 것이니 참고 바랍니다.&lt;/p&gt;
 
 &lt;p&gt;모하비를 설치하고 파인더를 둘러보고 설정창도 봤는데&lt;br /&gt;
@@ -7,7 +7,8 @@
 &lt;p&gt;&lt;br /&gt;
 이제 구글좀 한번 들어가볼까 하다가 사파리를 눌렀다.
 사파리를 키는 순간 (두둥!)&lt;br /&gt;
-&lt;img src=&quot;/assets/images/MacOS/darkmode_main.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;!-- ![img1](/assets/images/MacOS/darkmode_main.png)&lt;br/&gt; --&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306874-f3fd4500-90ba-11ea-9662-686b1d7545cd.png&quot; alt=&quot;darkmode_main&quot; /&gt;&lt;br /&gt;
 이럴거면 도대체 왜 내가 설치했지 ? 라는 생각이 한가득이었다.&lt;br /&gt;
 구글이 시작 페이지인데 브라우저 화면이 화이트톤 그자체였다.&lt;br /&gt;
 시간은 시간대로 날리고 허무한 느낌만 가득했다..&lt;/p&gt;
@@ -20,7 +21,7 @@
 &lt;p&gt;분명 나랑 똑같은 일을 겪은 사람들이 있을거라고 판단하고&lt;br /&gt;
 검색을 해봤다.&lt;/p&gt;
 
-&lt;p&gt;한가지 얻은 결론은…&lt;/p&gt;
+&lt;p&gt;한가지 얻은 결론은…&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306848-ee9ffa80-90ba-11ea-8d0c-186a9c1dfc04.png&quot; alt=&quot;darkmode_darkreader_app&quot; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;사파리에서 브라우저 화면이 다크해지는 건 지원하지 않습니다.&lt;br /&gt;
 CSS를 이용한 다크모드를 지원하며 사용하려면&lt;br /&gt;
@@ -28,17 +29,20 @@ CSS를 이용한 다크모드를 지원하며 사용하려면&lt;br /&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;대표적으로 다크모드 CSS를 설정한 웹사이트가 클리앙이다. &lt;strong&gt;&lt;del&gt;(역시 클라앙은 맥잘알)&lt;/del&gt;&lt;/strong&gt;
-&lt;img src=&quot;/assets/images/MacOS/darkmode_clien.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
+&lt;!-- ![img2](/assets/images/MacOS/darkmode_clien.png) --&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306844-ecd63700-90ba-11ea-909c-3f5f27f5a664.png&quot; alt=&quot;darkmode_clien&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;흠 …&lt;br /&gt;
 문제점은 파악했으니 이제 해결법을 찾아보도록 한다.&lt;br /&gt;
 앱스토어에 dark mode라 검색해보았고&lt;br /&gt;
 사파리에서 다크모드를 지원햊는 앱을 발견했다.&lt;br /&gt;
 이름은 말 그대로 DarkMode.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/MacOS/darkmode_app.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;
+&lt;!-- ![img3](/assets/images/MacOS/darkmode_app.png) --&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306835-e9db4680-90ba-11ea-93f5-107a5c0c59be.png&quot; alt=&quot;darkmode_app&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;후기를 찾아보니까 안좋다는 말이 있어서 패스했다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/MacOS/darkmode_review.png&quot; alt=&quot;img4&quot; /&gt;&lt;br /&gt;
+&lt;!-- ![img4](/assets/images/MacOS/darkmode_review.png)&lt;br/&gt; --&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306877-f495db80-90ba-11ea-99a0-0462ceced771.png&quot; alt=&quot;darkmode_review&quot; /&gt;&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;(유튜브 동영상을 봤을 땐 좋아보였는데)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;darkreader&quot;&gt;DarkReader&lt;/h2&gt;
@@ -52,8 +56,10 @@ CSS를 이용한 다크모드를 지원하며 사용하려면&lt;br /&gt;
 평점이 심각하게 낮은게 없어보여서 그냥 눈감고 질렀다.&lt;br /&gt;
 무료이면 좋겠지만 가격이 조금있었다. (5,900원)&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;(애플님께서 앱 개발자에게 연마다 등록비 명목으로 돈을 지불하기 때문에 어쩔 수 없다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-간식 한번 안먹고 병원 안가는 셈치고 바로 질렀다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/MacOS/darkmode_darkreader_app.png&quot; alt=&quot;img5&quot; /&gt;&lt;/p&gt;
+간식 한번 안먹고 병원 안가는 셈치고 바로 질렀다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;!-- ![img5](/assets/images/MacOS/darkmode_darkreader_app.png) --&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306848-ee9ffa80-90ba-11ea-8d0c-186a9c1dfc04.png&quot; alt=&quot;darkmode_darkreader_app&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;사용해본 결과 개인적으로 2%정도 아쉽지만 너무 좋다.&lt;/p&gt;
 &lt;ul&gt;
@@ -75,7 +81,9 @@ CSS를 이용한 다크모드를 지원하며 사용하려면&lt;br /&gt;
 &lt;p&gt;솔직히 색상 계열 테마를 사용자가 설정할 수 있으면 Best of Best아닌가&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;뭐.. 그래도 만족한다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;설치를 하면 사파리 메뉴바 상단에 DarkReader 앱 아이콘이 생긴다.&lt;br /&gt;
+&lt;!-- ![darkmode_darkreader_apply](/assets/images/MacOS/darkmode_darkreader_apply.png)&lt;br/&gt; --&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306853-efd12780-90ba-11ea-90a5-ff2e1ffac02e.png&quot; alt=&quot;darkmode_darkreader_apply&quot; /&gt;&lt;br /&gt;
+설치를 하면 사파리 메뉴바 상단에 DarkReader 앱 아이콘이 생긴다.&lt;br /&gt;
 그걸 눌러서 조절하면 된다.&lt;/p&gt;
 
 &lt;p&gt;아쉬운게 색상별 테마 기능이 없는 것과 macOS만 유료이고&lt;br /&gt;
@@ -85,15 +93,18 @@ CSS를 이용한 다크모드를 지원하며 사용하려면&lt;br /&gt;
 적용 전, 적용 후를 보는게 낫지&lt;/p&gt;
 
 &lt;h3 id=&quot;다크모드-적용-전&quot;&gt;다크모드 적용 전&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/MacOS/darkmode_disable.png&quot; alt=&quot;img7&quot; /&gt;&lt;/p&gt;
+&lt;!-- ![img7](/assets/images/MacOS/darkmode_disable.png) --&gt;
+&lt;p&gt;&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306860-f069be00-90ba-11ea-918e-557963747ae4.png&quot; alt=&quot;darkmode_disable&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;다크모드-적용-후&quot;&gt;다크모드 적용 후&lt;/h3&gt;
 &lt;p&gt;다이나믹 모드라 한다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/MacOS/darkmode_dynamic.png&quot; alt=&quot;img8&quot; /&gt;&lt;/p&gt;
+&lt;!-- ![img8](/assets/images/MacOS/darkmode_dynamic.png) --&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306864-f19aeb00-90ba-11ea-9a2c-34c82dcb40d2.png&quot; alt=&quot;darkmode_dynamic&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;필터-효과-적용-후&quot;&gt;필터 효과 적용 후&lt;/h3&gt;
 &lt;p&gt;(필터는 색상을 바꾸는게 아니라 빛의 밝기를 조절하는 것이다)&lt;br /&gt;
-&lt;img src=&quot;/assets/images/MacOS/darkmode_filter.png&quot; alt=&quot;img9&quot; /&gt;
+&lt;!-- ![img9](/assets/images/MacOS/darkmode_filter.png) --&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306866-f2338180-90ba-11ea-8fcb-66fd39742d6d.png&quot; alt=&quot;darkmode_filter&quot; /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
@@ -104,13 +115,14 @@ CSS를 이용한 다크모드를 지원하며 사용하려면&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;(뿌연 색보단 밝은 핑크색이 낫지)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;마지막으로 깃허브를 다크모드를 감상해보자&lt;br /&gt;
-&lt;img src=&quot;/assets/images/MacOS/darkmode_github.png&quot; alt=&quot;img10&quot; /&gt;&lt;/p&gt;
+&lt;!-- ![img10](/assets/images/MacOS/darkmode_github.png) --&gt;
+&lt;img src=&quot;https://user-images.githubusercontent.com/59531736/81306869-f2cc1800-90ba-11ea-80d5-c1e33304446f.png&quot; alt=&quot;darkmode_github&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;오오옷 역시 좋아 ㅠㅠ&lt;br /&gt;
 역시 돈투자한 보람이 있군&lt;br /&gt;
 &lt;img src=&quot;/assets/images/Fun/prodo_thumb_up.png&quot; alt=&quot;img11&quot; /&gt;&lt;br /&gt;
 &lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="다크모드" /><category term="DarkMode" /><category term="모하비" /><category term="Mojave" /><category term="다크리더" /><category term="DarkReader" /><category term="MacOS" /><category term="macOS" /><summary type="html">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천</summary></entry><entry><title type="html">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트</title><link href="https://tars-c.github.io/mojave-update/2020/05/07" rel="alternate" type="text/html" title="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/mojave-update/2020/05/MacOS-Mojave%20Update</id><content type="html" xml:base="https://tars-c.github.io/mojave-update/2020/05/07">&lt;p&gt;정말 &lt;strong&gt;다크모드&lt;/strong&gt;가 눈에 좋을까 ?&lt;br /&gt;
-&lt;img src=&quot;/assets/images/MacOS/mojave1.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/images/MacOS/mojave/mojave1.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;왜-갑자기-mojave로-업뎃을-했는가-&quot;&gt;왜 갑자기 Mojave로 업뎃을 했는가 ?&lt;/h2&gt;
 &lt;p&gt;요즘들어 공부를 오래하다보니…&lt;br /&gt;
@@ -162,7 +174,7 @@ CSS를 이용한 다크모드를 지원하며 사용하려면&lt;br /&gt;
 MacOS 모하비(Mojave) 크기는 약 6GB이다.&lt;br /&gt;
 &lt;del&gt;&lt;strong&gt;(윈도우즈10이랑 비교할 때 생각보다 큰 느낌인데 ?)&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/MacOS/mojave2.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/MacOS/mojave/mojave2.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;macOS Mojave  간편함, 강력함 그져 경이로울뿐&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -174,19 +186,19 @@ MacOS 모하비(Mojave) 크기는 약 6GB이다.&lt;br /&gt;
 &lt;del&gt;&lt;strong&gt;(맥북아 미안하다 정리해주지 못해서)&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
 
 &lt;p&gt;다운로드를 받기 시작하면 런치패드에도 아래 그림처럼 새로운 아이콘이 생성된다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/MacOS/mojave3.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/images/MacOS/mojave/mojave3.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;
 맥북은 다운로드하고 설치를 하는데 발열이 심하다. (다른 노트북도 그런가요?)&lt;br /&gt;
 다운로드를 마치고 설치를 진행할 때 나는 인터넷(WIFI)을 끄는 편이다.&lt;br /&gt;
 (이미 6GB를 다운받았는데 인터넷이 설마 필요하겠어 ?)&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/MacOS/mojave4.png&quot; alt=&quot;img4&quot; /&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/MacOS/mojave/mojave4.png&quot; alt=&quot;img4&quot; /&gt;
 그런데 인터넷이 필요하더라… (뜨헉!)&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;3분간 설치한 자료가 모두 날라간 것 같고 다시 설치했다.
-&lt;img src=&quot;/assets/images/MacOS/mojave5.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/images/MacOS/mojave/mojave5.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;화면에서 보이는 설치가 완료됬으면&lt;br /&gt;
 맥이 재부팅이 된 후 사과 아이콘에서 20분정도 백그라운드 설치? 가 진행된다.&lt;br /&gt;
@@ -196,7 +208,7 @@ MacOS 모하비(Mojave) 크기는 약 6GB이다.&lt;br /&gt;
 &lt;p&gt;음 다시 재부팅을 하고 보니까 Mojave의 메인 화면이 눈에 들어온다.&lt;br /&gt;
 이제 다크모드 감성을 즐기면 되는 것인가 ?
 &lt;del&gt;&lt;strong&gt;눈아 오래 버텨줘&lt;/strong&gt;&lt;/del&gt;
-&lt;img src=&quot;/assets/images/MacOS/mojave_final.png&quot; alt=&quot;img5&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/images/MacOS/mojave/mojave_final.png&quot; alt=&quot;img5&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Mojave에서 처음으로 도입된 스택이란 기능을 써보았는데&lt;br /&gt;
 바탕화면을 한방에 정리해주는 것은 가장 마음에 들었다. 하지만 불편한 것도 있었다..&lt;br /&gt;
