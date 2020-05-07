@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[C++] Serialization : 설명 - 타스의 개발 블로그</title>
-<meta name="description" content="[C++] Serialiization : 설명">
+<!-- begin _includes/seo.html --><title>[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 - 타스의 개발 블로그</title>
+<meta name="description" content="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트">
 
 
   <meta name="author" content="타스 (TARS-C)">
@@ -13,11 +13,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
-<meta property="og:title" content="[C++] Serialization : 설명">
-<meta property="og:url" content="https://tars-c.github.io/Serialiization/2020/05/06">
+<meta property="og:title" content="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트">
+<meta property="og:url" content="https://tars-c.github.io/mojave-update/2020/05/07">
 
 
-  <meta property="og:description" content="[C++] Serialiization : 설명">
+  <meta property="og:description" content="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트">
 
 
 
@@ -27,11 +27,11 @@
 
 
 
-  <meta property="article:published_time" content="2020-05-06T00:00:00+09:00">
+  <meta property="article:published_time" content="2020-05-07T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2020-05-06T00:00:00+09:00">
+  <meta property="article:modified_time" content="2020-05-07T00:00:00+09:00">
 
 
 
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="https://tars-c.github.io/Serialiization/2020/05/06">
+<link rel="canonical" href="https://tars-c.github.io/mojave-update/2020/05/07">
 
 
 
@@ -277,15 +277,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[C++] Serialization : 설명">
-    <meta itemprop="description" content="[C++] Serialiization : 설명">
-    <meta itemprop="datePublished" content="2020-05-06T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2020-05-06T00:00:00+09:00">
+    <meta itemprop="headline" content="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트">
+    <meta itemprop="description" content="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트">
+    <meta itemprop="datePublished" content="2020-05-07T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-07T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[C++] Serialization : 설명
+          <h1 id="page-title" class="page__title" itemprop="headline">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트
 </h1>
           
         </header>
@@ -297,51 +297,106 @@
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
               <ul class="toc__menu">
-  <li><a href="#직렬화serialization란-">직렬화(Serialization)란 ?</a></li>
-  <li><a href="#직렬화를-사용하는-이유는-">직렬화를 사용하는 이유는 ?</a></li>
-  <li><a href="#직렬화한-데이터를-사용자가-직접-볼-수는-없는가-">직렬화한 데이터를 사용자가 직접 볼 수는 없는가 ?</a></li>
+  <li><a href="#왜-갑자기-mojave로-업뎃을-했는가-">왜 갑자기 Mojave로 업뎃을 했는가 ?</a></li>
+  <li><a href="#mojave-업데이트">Mojave 업데이트</a></li>
 </ul>
             </nav>
           </aside>
         
-        <h2 id="직렬화serialization란-">직렬화(Serialization)란 ?</h2>
-<p>크고 복잡한 데이터(Object)를 가장 단순한 byte형태(Binary Data)로 변환하는 것을 의미합니다.</p>
+        <p>정말 <strong>다크모드</strong>가 눈에 좋을까 ?<br />
+<img src="/assets/images/MacOS/mojave1.png" alt="img1" /></p>
 
-<p>반대로 가장 단순한 형태로 저장된 데이터들을 복잡한 데이터(Object)로 변환하는 것을<br />
-역직렬화(Deserialiization)라 합니다.<br />
-<img src="/assets/images/CPP/Serialiization.png" alt="img1" /></p>
+<h2 id="왜-갑자기-mojave로-업뎃을-했는가-">왜 갑자기 Mojave로 업뎃을 했는가 ?</h2>
+<p>요즘들어 공부를 오래하다보니…<br />
+눈 상태가 조금 안좋아졌다.</p>
 
-<ul>
-  <li>사용 예시는 크게 3가지입니다.
-    <ul>
-      <li>서로 다른프로세스 통신(IPC)</li>
-      <li>파일 입출력(File I/O)</li>
-      <li>네트워크 통신(Socket)</li>
-    </ul>
-  </li>
-</ul>
+<p>나는 과거에 다크모드 광이었는데<br />
+어느날부터 자동 밝기라는 기능을 사용하면서 다크모드는 눈에 안좋다고 착각했다. <del>(착각이 맞겠지?)</del><br />
+그리고 자동 밝기를 적용하면서 화이트톤 배경으로 모두 바꾸고 사용했다.</p>
 
-<h2 id="직렬화를-사용하는-이유는-">직렬화를 사용하는 이유는 ?</h2>
-<p>Object객체는 상당히 복잡한 형태로 이루어져 있습니다.<br />
-객체를 파일로 저장하거나 다른 컴퓨터에게 전송을할 때 Stream을 이용합니다.</p>
+<p>아직도 의문점이 든다. 다크모드가 눈 건강에 정말 좋은지…<br />
+인터넷에 찾아보면 하얀색은 빛을 반사하기 때문에 눈에 안좋다고 한다.<br />
+<del><strong>(눈에 가장 좋은 그린 모드는 없나 ?)</strong></del></p>
 
-<p>Stream을 이용해 이미지 파일을 복사한다고 할 때<br />
-기존 파일을 Binary로 읽어(Read)들이고 읽어들인 데이터를 쓰게(Write) 됩니다.</p>
+<p>운영체제를 넘어 크롬이나 사파리 같은 것도 다크모드 기능을 지원하는거 보면<br />
+분명 효과는 있을거라 생각한다.<br />
+그래서 High Sierra 파이널 버전에서 Mojave로 업데이트하려고 한다.</p>
 
-<p>Stream은 큰 데이터를 한번에 보낼 수 없고 원시타입(Primitive)의 데이터를 전송할 수 있습니다.<br />
-큰 데이터들은 직렬화(Serialiization)를 이용하여 전송가능한 원시타입으로 변환하여<br />
-Stream으로 데이터를 교환하거나 전송합니다.</p>
+<p>나는 프로그램 업데이트를 선호하지 않는다.<br />
+업데이트할 수록 기능이 빨라지면서 개선되기도 하지만 반대로 확장되는 기능은 많아진다.<br />
+그만큼 나의 맥 배터리를 갉아먹기도하고<br />
+기능이 확장된 만큼 백그라운드 프로세스가 늘어나는건 기정사실인거 같다.<br />
+<del><strong>(꼭 메모리 크기가 적은 백그라운드 프로세스는 계속 돌더라)</strong></del></p>
 
-<h2 id="직렬화한-데이터를-사용자가-직접-볼-수는-없는가-">직렬화한 데이터를 사용자가 직접 볼 수는 없는가 ?</h2>
-<p>직렬화된 데이터는 사용자가 직접 보기 힘듭니다.<br />
-HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니다.<br />
-이는 저장된 파일을 HEX Viewer로 보는 것과 비슷합니다.</p>
+<p>직접 경험한 바로 윈도우즈10 애니버서리 업데이트를(Build: 1900)하면서<br />
+말도안되는 기능들이 갑자기 늘어난 것을 직접 보았다. <del><strong>(서비스를 일일히 꺼서 최적화시켰다)</strong></del></p>
 
-<p>이미지 같은 경우는 헤더를 포함한 데이터 자체만을 저장했을 때<br />
-뷰어를 통해 이미지를 확인할 수 있습니다.</p>
+<p>특히 마소나 애플을 보면 PC와 모바일 그리고 스마트홈 기기와 연동시키는 작업을 많이한다.<br />
+그런 기능 사용도 안하면 아예 비활성화 기능을 만들어줬으면 싶다.<br />
+눈 상태도 안좋고 가끔 다크모드도 써봐야하니까 업데이트를 다짐했다.</p>
 
-<hr />
-<p><a href="https://rockdrumy.tistory.com/1044" target="_blank">이미지 출처: Tistory 드럼치는 프로그래머</a></p>
+<h2 id="mojave-업데이트">Mojave 업데이트</h2>
+<p>모든 프로그램이 그렇지만 호환성이 떨어지는 프로그램을 쓰는건 아니라고 생각한다.<br />
+나는 시간이 지나 기능이 호환되고 안정한 상태가 되야 그 프로그램을 다운받고 사용한다.<br />
+베타 버전은 과거에 너무나 많이 겪어서 이젠 겪고싶디 않다.</p>
+
+<p>기업들이 최신버전을 팔기 위한 전략인지.. 앱스토어를 보면 베타버전처럼 느껴지는 카탈리나가 존재한다.<br />
+특별한 기능을 사용할 경우가 생기지 않는한 절대 카탈리나는 사용하지 않을 것이다.<br />
+<del><strong>(애플님 Mojave도 충분히 좋습니다)</strong></del></p>
+
+<p>인터넷에 찾다보니 특정 링크로 들어가면 Mojave로 다운받을 수 있다고 한다.<br />
+특이하게 아래 링크로 들어가면 카탈리나가 아닌 Mojave를 다운받을 수 있다.<br />
+<a href="https://apps.apple.com/kr/app/macos-mojave/id1398502828?mt=12" target="_blank">숨겨진 Mojave 다운로드가 가능한 앱스토어 열기</a></p>
+
+<p>링크를 누르는 순간 마치 해리포터 킹스크로스역 9와 4분의 3정거장에 들어온 느낌이다.<br />
+<img src="/assets/images/Fun/kings.jpeg" alt="kings" /></p>
+
+<p><br />
+본격적으로 설치해보자!<br />
+MacOS 모하비(Mojave) 크기는 약 6GB이다.<br />
+<del><strong>(윈도우즈10이랑 비교할 때 생각보다 큰 느낌인데 ?)</strong></del></p>
+
+<p><img src="/assets/images/MacOS/mojave2.png" alt="img2" /></p>
+<blockquote>
+  <p>macOS Mojave  간편함, 강력함 그져 경이로울뿐</p>
+</blockquote>
+
+<p>정말 애플답게 멘트를 잘친다. <del><strong>(정말 가벼울까?)</strong></del></p>
+
+<p>일단 다운로드를 받는데 인터넷속도가 느려서 40분정도 걸렸다.. (빠르면 약 20분 소요)<br />
+백업을 하지 않았으므로 시간이 오래걸리는 클린설치는 생략하도록 한다.<br />
+<del><strong>(맥북아 미안하다 정리해주지 못해서)</strong></del></p>
+
+<p>다운로드를 받기 시작하면 런치패드에도 아래 그림처럼 새로운 아이콘이 생성된다.<br />
+<img src="/assets/images/MacOS/mojave3.png" alt="img3" /></p>
+
+<p><br />
+맥북은 다운로드하고 설치를 하는데 발열이 심하다. (다른 노트북도 그런가요?)<br />
+다운로드를 마치고 설치를 진행할 때 나는 인터넷(WIFI)을 끄는 편이다.<br />
+(이미 6GB를 다운받았는데 인터넷이 설마 필요하겠어 ?)</p>
+
+<p><img src="/assets/images/MacOS/mojave4.png" alt="img4" />
+그런데 인터넷이 필요하더라… (뜨헉!)<br />
+<br /></p>
+
+<p>3분간 설치한 자료가 모두 날라간 것 같고 다시 설치했다.
+<img src="/assets/images/MacOS/mojave5.png" alt="img2" /></p>
+
+<p>화면에서 보이는 설치가 완료됬으면<br />
+맥이 재부팅이 된 후 사과 아이콘에서 20분정도 백그라운드 설치? 가 진행된다.<br />
+이때 겁나게 맥이 뜨거워 진다. <del><strong>(거짓말 안하고 계란 후라이 구울 정도 ?)</strong></del><br />
+맥은 뜨거운 열기를 끝내 버티고 백그라운드 설치가 완료했다.</p>
+
+<p>음 다시 재부팅을 하고 보니까 Mojave의 메인 화면이 눈에 들어온다.<br />
+이제 다크모드 감성을 즐기면 되는 것인가 ?
+<del><strong>눈아 오래 버텨줘</strong></del>
+<img src="/assets/images/MacOS/mojave_final.png" alt="img5" /></p>
+
+<p>Mojave에서 처음으로 도입된 스택이란 기능을 써보았는데<br />
+바탕화면을 한방에 정리해주는 것은 가장 마음에 들었다. 하지만 불편한 것도 있었다..<br />
+앞으로 써보고 후기글도 남겨보겠다.<br />
+<strong>글 다썻다아 ~</strong></p>
+
 
         
       </section>
@@ -362,15 +417,19 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     
       
       
-      <a href="/tags/#serialization" class="page__taxonomy-item" rel="tag">Serialization</a><span class="sep">, </span>
+      <a href="/tags/#mojave" class="page__taxonomy-item" rel="tag">Mojave</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#serialize" class="page__taxonomy-item" rel="tag">Serialize</a><span class="sep">, </span>
+      <a href="/tags/#update" class="page__taxonomy-item" rel="tag">Update</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#%EC%A7%81%EB%A0%AC%ED%99%94" class="page__taxonomy-item" rel="tag">직렬화</a>
+      <a href="/tags/#%EB%AA%A8%ED%95%98%EB%B9%84" class="page__taxonomy-item" rel="tag">모하비</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8" class="page__taxonomy-item" rel="tag">업데이트</a>
     
     </span>
   </p>
@@ -391,14 +450,14 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     
       
       
-      <a href="/categories/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" class="page__taxonomy-item" rel="tag">프로그래밍</a>
+      <a href="/categories/#macos" class="page__taxonomy-item" rel="tag">MacOS</a>
     
     </span>
   </p>
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-06">May 06, 2020</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-07">May 07, 2020</time></p>
         
       </footer>
 
@@ -407,23 +466,22 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BC%2B%2B%5D+Serialization+%3A+%EC%84%A4%EB%AA%85%20https%3A%2F%2Ftars-c.github.io%2FSerialiization%2F2020%2F05%2F06" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BMacOS%5D+%EB%92%A4%EB%8A%A6%EC%9D%80+%EB%AA%A8%ED%95%98%EB%B9%84%28Mojave%29+10.13.6+%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%20https%3A%2F%2Ftars-c.github.io%2Fmojave-update%2F2020%2F05%2F07" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2FSerialiization%2F2020%2F05%2F06" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2Fmojave-update%2F2020%2F05%2F07" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2FSerialiization%2F2020%2F05%2F06" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2Fmojave-update%2F2020%2F05%2F07" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" class="pagination--pager" title="[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)
+      <a href="/mojave-darkmode-darkeader-app/2020/05/07" class="pagination--pager" title="[MFC][MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천
 ">Previous</a>
     
     
-      <a href="/mojave-darkmode-darkeader-app/2020/05/07" class="pagination--pager" title="[MFC][MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -456,7 +514,7 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/mojave-update/2020/05/07" rel="permalink">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트
+        <a href="/mojave-darkmode-darkeader-app/2020/05/07" rel="permalink">[MFC][MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천
 </a>
       
     </h2>
@@ -467,7 +525,7 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
   <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트
+  <p class="archive__item-excerpt" itemprop="description">[MFC][MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천
 </p>
   </article>
 </div>
@@ -482,7 +540,7 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/mojave-darkmode-darkeader-app/2020/05/07" rel="permalink">[MFC][MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천
+        <a href="/Serialiization/2020/05/06" rel="permalink">[C++] Serialization : 설명
 </a>
       
     </h2>
@@ -490,10 +548,10 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     
   -->
   
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 06 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[MFC][MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천
+  <p class="archive__item-excerpt" itemprop="description">[C++] Serialiization : 설명
 </p>
   </article>
 </div>
@@ -616,8 +674,8 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://tars-c.github.io/Serialiization/2020/05/06";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/Serialiization/2020/05/Serialization"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://tars-c.github.io/mojave-update/2020/05/07";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/mojave-update/2020/05/MacOS-Mojave Update"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     
     (function() { // DON'T EDIT BELOW THIS LINE
