@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-09T16:26:35+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/Chromium-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/Chromium-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-09T16:56:14+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
 정보가 없는 상태에서 직접 다운받으면서 써본 경험을 바탕으로으로 작성되었습니다.&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;신문물을 접한 느낌이랄까..&lt;/del&gt;&lt;/strong&gt;
 &lt;br /&gt;&lt;/p&gt;
@@ -6,7 +6,7 @@
 &lt;p&gt;&lt;img src=&quot;/assets/images/Fun/surprise.jpg&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
 &lt;strong&gt;으아악!!&lt;/strong&gt;&lt;br /&gt;
 산소호흡기를 땔 조짐이 보였던 MS Edge가 크로미움 기반으로 새롭게 변했다는 소식을 접했다.&lt;br /&gt;
-출시 날짜를 찾아보니까… 2020년 02월 15일이다. &lt;strong&gt;&lt;del&gt;(포스팅이 좀 늦었네..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+출시 날짜를 찾아보니까… 2020년 01월 15일이다. &lt;strong&gt;&lt;del&gt;(포스팅이 좀 늦었네..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
 &lt;strong&gt;&lt;a href=&quot;https://www.microsoft.com/ko-kr/edge?form=MA13DE&amp;amp;OCID=MA13DE&quot; target=&quot;_blank&quot;&gt;LINK: (MicroSoft) Edge 다운로드 받기&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;구닥다리 Edge가 Chromium을 올라타서 새롭게 탄생했다.&lt;br /&gt;
