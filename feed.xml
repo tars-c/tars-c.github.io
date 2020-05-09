@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-09T17:00:56+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-09T17:11:23+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
 정보가 없는 상태에서 직접 다운받으면서 써본 경험을 바탕으로으로 작성되었습니다.&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;신문물을 접한 느낌이랄까..&lt;/del&gt;&lt;/strong&gt;
 &lt;br /&gt;&lt;/p&gt;
@@ -114,9 +114,9 @@ Edge 옵션에서 하드웨어 가속을 꺼도 빠른 느낌이 강했다. &lt;
 
 &lt;h3 id=&quot;편리한-설장창&quot;&gt;편리한 설장창&lt;/h3&gt;
 &lt;p&gt;설정창을 보면 너무나 편리하게 잘 써놔있다.&lt;br /&gt;
-자세한건 직접 드를 받아서 살펴보는걸 추천한다.&lt;br /&gt;
+자세한건 직접 다운로드를 받아서 살펴보기 바란다.&lt;br /&gt;
 크롬 사파리 비발디를 써봤지만 그중에 가장 눈에 확 들어온다.&lt;br /&gt;
-125% 확대된 상태에서 왼쪽 설정 리스트가 안보이니 참고하자.&lt;br /&gt;
+125% 확대된 상태에선 설정창 왼쪽 리스트가 안보이니 참고하자.&lt;br /&gt;
 &lt;img src=&quot;/assets/images/Edge/option_main.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/Edge/option_browser.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
@@ -141,7 +141,7 @@ Edge 옵션에서 하드웨어 가속을 꺼도 빠른 느낌이 강했다. &lt;
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;방문-기록-history&quot;&gt;방문 기록 (History)&lt;/h3&gt;
-&lt;p&gt;방문 기록을 “ 검색 기록 “ 이란 이름으로 제공한다.
+&lt;p&gt;방문 기록을 &lt;code class=&quot;highlighter-rouge&quot;&gt;검색 기록&lt;/code&gt;이란 이름으로 제공한다.
 필터링이 잘될 것 같이 UI가 세심하게 잘짜여졌다.
 시간까지 나올 줄은 몰랐다.
 &lt;img src=&quot;/assets/images/Edge/history.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
@@ -168,7 +168,7 @@ Ctrl+Shift+T 단축키를 이용해서 방금 닫은 탭을 복원할 수 있고
 &lt;h3 id=&quot;브라우저-데이터-가져오기&quot;&gt;브라우저 데이터 가져오기&lt;/h3&gt;
 &lt;p&gt;브라우저 데이터 가져오는 기능이 있다.&lt;br /&gt;
 크롬과 IE 브라우저에 있는 데이터를 가져올 수 있다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/load_data.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;img src=&quot;/assets/images/Edge/load_data.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
@@ -214,7 +214,7 @@ Ctrl+Shift+T 단축키를 이용해서 방금 닫은 탭을 복원할 수 있고
 &lt;h3 id=&quot;브라우저-작업관리자&quot;&gt;브라우저 작업관리자&lt;/h3&gt;
 &lt;p&gt;단축키는 Shift+ESC 이다.
 탭이 많은 경우 일일히 탭별로 찾아서 끄는 거 진짜 불편했다.&lt;br /&gt;
-크롬과 똑같이 과관리자를 지원했다.&lt;br /&gt;
+크롬과 똑같이 브라우저 내 작업관리자를 지원했다.&lt;br /&gt;
 &lt;img src=&quot;/assets/images/Edge/taskmgr.png&quot; alt=&quot;img1&quot; /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
@@ -224,7 +224,7 @@ Ctrl+Shift+T 단축키를 이용해서 방금 닫은 탭을 복원할 수 있고
 &lt;h3 id=&quot;번역&quot;&gt;번역&lt;/h3&gt;
 &lt;p&gt;크롬과 비슷하게 구글이 아닌 빙번역 기능도 제공한다.&lt;br /&gt;
 구글과 빙 두 번역간 약간의 차이가 있어 보이긴하다.&lt;br /&gt;
-어느 것이 좋은지는 사용자의 선택.&lt;br /&gt;
+어느 것이 좋은지는 사용자의 선택이다.&lt;br /&gt;
 &lt;img src=&quot;/assets/images/Edge/translate.png&quot; alt=&quot;img1&quot; /&gt;
 &lt;br /&gt;
 &lt;br /&gt;
