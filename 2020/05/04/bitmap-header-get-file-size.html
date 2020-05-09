@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기 - 타스의 개발 블로그</title>
+<meta name="description" content="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기">
+
+
+  <meta name="author" content="타스 (TARS-C)">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="타스의 개발 블로그">
+<meta property="og:title" content="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기">
+<meta property="og:url" content="https://tars-c.github.io/2020/05/04/bitmap-header-get-file-size">
+
+
+  <meta property="og:description" content="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기">
+
+
+
+  <meta property="og:image" content="https://tars-c.github.io/assets/images/profile_tars200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-04T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-05-04T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://tars-c.github.io/2020/05/04/bitmap-header-get-file-size">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "타스 (TARS-C)",
+      "url": "https://tars-c.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="타스의 개발 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/xeicon.min.css">
+
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+<meta name="google-site-verification" content="g-v4nitOjaIwCDktuCHo4KVSNkfjJuRQ0Nm_QDRcvPM" />
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          타스의 개발 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" >프로그래밍</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile_tars200.png" alt="타스 (TARS-C)" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">타스 (TARS-C)</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>탐구하며 노력하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea, KR</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a target="_blank" href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> 주인장에게 문의하기</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gv8vlln" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> C/C++ 단톡방</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기">
+    <meta itemprop="description" content="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기">
+    <meta itemprop="datePublished" content="2020-05-04T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-04T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#서론">서론</a></li>
+  <li><a href="#비트맵-헤더">비트맵 헤더</a></li>
+  <li><a href="#f비트맵-파일-크기를-얻어오는-함수">[F]비트맵 파일 크기를 얻어오는 함수</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <h2 id="서론">서론</h2>
+<p>비트맵 파일 헤더 중 파일 크기 정보에 해당하는 데이터를 읽어서 파일 크기를 출력합니다.<br />
+비트맵 헤더 시작 위치는 0x0에 있습니다.</p>
+
+<h2 id="비트맵-헤더">비트맵 헤더</h2>
+<ul>
+  <li>비트맵 헤더는 총 2가지로 구성되어 있으며 총 54byte 크기를 차지하고 있습니다.
+    <ul>
+      <li>BITMAPFILEHEADER (14byte)</li>
+      <li>BITMAPINFOHEADER (40byte)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>파일 크기 정보가 명시된 헤더는 Biamp File Header(BITMAPFILEHEADER) 입니다.<br />
+아래 그림은 비트맵 파일 전체 구조입니다.<br />
+<img src="/assets/images/CImage/bmpheader.jpg" alt="img1" />
+파일 크기 정보를 구해오기 위해 중요하게 봐야할 것은 FileSize 입니다.<br />
+파일 크기 정보를 가진 데이터는 4Byte이며,<br />
+시작위치는 2번째 위치에 있습니다. (start based 0)</p>
+
+<p>비트맵 헤더에서 파일 크기 정보를 가지고 있는 부분을 읽어서 출력하면 됩니다.<br />
+주의할 점은 일반적으로 메모리를 읽어들이는 방식은 BigEndian입니다.<br />
+하지만 헤더의 데이터는 LittleEndian 방식으로 되어있으며 변환작업이 필요합니다.<br />
+<del><strong>(변환 작업은 그냥 비트를 밀면 됩니다)</strong></del></p>
+
+<p>파일을 Open 후 seekg() 함수를 사용해서 파일을 읽어들이는 위치를 지정합니다.<br />
+파일 크기 정보를 얻으려면 2번째 위치부터 4byte 읽어옵니다.</p>
+
+<p>LittleEndian 방식의 데이터를 비트 연산자를 이용해 비트를 밀어서 Bigendian 데이터로 출력합니다.</p>
+
+<h2 id="f비트맵-파일-크기를-얻어오는-함수">[F]비트맵 파일 크기를 얻어오는 함수</h2>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">getBitmapFileSize</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filePath</span><span class="p">);</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="nf">getBitmapFileSize</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">filePath</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">ifstream</span> <span class="n">readFile</span><span class="p">;</span>
+    <span class="n">readFile</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span><span class="p">);</span>
+    <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">readFile</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="n">readFile</span><span class="p">.</span><span class="n">seekg</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">cur</span><span class="p">);</span>
+        <span class="n">readFile</span><span class="p">.</span><span class="n">read</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="n">readFile</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">|</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span> <span class="o">|</span> <span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span> <span class="o">|</span>  <span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">size</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//string filePath = "Desktop/myBmp.bmp";</span>
+<span class="c1">//getBitmapFileSize(filePath);</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>실습 결과:<br />
+<img src="/assets/images/CImage/resultbmpfilesize.png" alt="img2" /></p>
+
+<p><img src="/assets/images/CImage/bmpfilesizeinfo.png" alt="img3" /></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#bitmapfileheader" class="page__taxonomy-item" rel="tag">BITMAPFILEHEADER</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#bitmapinfoheader" class="page__taxonomy-item" rel="tag">BITMAPINFOHEADER</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#bitmap" class="page__taxonomy-item" rel="tag">bitmap</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#bmp" class="page__taxonomy-item" rel="tag">bmp</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#cpp" class="page__taxonomy-item" rel="tag">cpp</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#header" class="page__taxonomy-item" rel="tag">header</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%B9%84%ED%8A%B8%EB%A7%B5" class="page__taxonomy-item" rel="tag">비트맵</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%8C%8C%EC%9D%BC-%ED%81%AC%EA%B8%B0-%EC%A0%95%EB%B3%B4" class="page__taxonomy-item" rel="tag">파일 크기 정보</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%8C%8C%EC%9D%BC%EC%9D%BD%EA%B8%B0" class="page__taxonomy-item" rel="tag">파일읽기</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%8C%8C%EC%9D%BC%ED%81%AC%EA%B8%B0" class="page__taxonomy-item" rel="tag">파일크기</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%97%A4%EB%8D%94" class="page__taxonomy-item" rel="tag">헤더</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#c" class="page__taxonomy-item" rel="tag">c++</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" class="page__taxonomy-item" rel="tag">프로그래밍</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-04">May 04, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BC%2B%2B%5D+%EB%B9%84%ED%8A%B8%EB%A7%B5+%ED%97%A4%EB%8D%94+%EC%A0%95%EB%B3%B4%EB%A5%BC+%EC%9D%BD%EC%96%B4+%EB%B9%84%ED%8A%B8%EB%A7%B5+%ED%8C%8C%EC%9D%BC+%ED%81%AC%EA%B8%B0+%EA%B5%AC%ED%95%98%EA%B8%B0%20https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F04%2Fbitmap-header-get-file-size" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F04%2Fbitmap-header-get-file-size" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F04%2Fbitmap-header-get-file-size" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2020/05/03/bitwise" class="pagination--pager" title="[C++] 비트 연산 Bitwise
+">Previous</a>
+    
+    
+      <a href="/2020/05/05/library/spdlog" class="pagination--pager" title="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">Well begun is half done, aristotle</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/Chromium-edge" rel="permalink">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/explict-serialize" rel="permalink">[MFC][실습] Document CArchive 기본타입 클래스 직렬화
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-update" rel="permalink">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-darkmode-darkeader-app" rel="permalink">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Support</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">Copyright 2020 타스 (TARS-C). Powered by <a href="https://github.com" rel="nofollow">Github.</a></div>
+      </footer>
+    </div>
+
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/assets/js/notify.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/4eee35f757.js"></script> -->
+  <script src="https://kit.fontawesome.com/194998b224.js" crossorigin="anonymous"></script>
+  <script data-ad-client="ca-pub-2361575299096846" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://tars-c.github.io/2020/05/04/bitmap-header-get-file-size";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020/05/04/비트맵 헤더 읽어서 파일 크기 알아오기"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tars-c-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+
+
+
+
+
+  </body>
+</html>

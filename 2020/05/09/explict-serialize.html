@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[MFC][실습] Document CArchive 기본타입 클래스 직렬화 - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화">
+
+
+  <meta name="author" content="타스 (TARS-C)">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="타스의 개발 블로그">
+<meta property="og:title" content="[MFC][실습] Document CArchive 기본타입 클래스 직렬화">
+<meta property="og:url" content="https://tars-c.github.io/2020/05/09/explict-serialize">
+
+
+  <meta property="og:description" content="[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화">
+
+
+
+  <meta property="og:image" content="https://tars-c.github.io/assets/images/profile_tars200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-09T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-05-09T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://tars-c.github.io/2020/05/09/explict-serialize">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "타스 (TARS-C)",
+      "url": "https://tars-c.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="타스의 개발 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/xeicon.min.css">
+
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+<meta name="google-site-verification" content="g-v4nitOjaIwCDktuCHo4KVSNkfjJuRQ0Nm_QDRcvPM" />
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          타스의 개발 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" >프로그래밍</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile_tars200.png" alt="타스 (TARS-C)" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">타스 (TARS-C)</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>탐구하며 노력하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea, KR</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a target="_blank" href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> 주인장에게 문의하기</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gv8vlln" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> C/C++ 단톡방</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[MFC][실습] Document CArchive 기본타입 클래스 직렬화">
+    <meta itemprop="description" content="[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화">
+    <meta itemprop="datePublished" content="2020-05-09T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-09T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC][실습] Document CArchive 기본타입 클래스 직렬화
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#서론">서론</a></li>
+  <li><a href="#객체의-직렬화-매크로-함수">객체의 직렬화: 매크로 함수</a></li>
+  <li><a href="#객체의-직렬화-사용할-함수">객체의 직렬화: 사용할 함수</a></li>
+  <li><a href="#객체의-직렬화-실습">객체의 직렬화: 실습</a>
+    <ul>
+      <li><a href="#헤더-및-구현-코드">헤더 및 구현 코드</a></li>
+      <li><a href="#설명-및-결과">설명 및 결과</a></li>
+    </ul>
+  </li>
+  <li><a href="#확장명-필터-저장-및-불러오기">확장명 필터 (저장 및 불러오기)</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <h2 id="서론">서론</h2>
+<p>실습은 Doc 클래스 가상함수인 Serialize() 및 MyData 클래스 구현부만 개발한다.<br /></p>
+
+<p>데이터를 직렬화 하기 위해서는 CObject 클래스를 상속받거나<br />
+또는 CObject를 상속받은 자식 및 자손 클래스를 상속받으면 된다. (예: CBitmap, CButton 등)<br />
+(COjbect 클래스를 상속받는 이유는 Serialize() 가상함수 재정의를 위해서이다.</p>
+
+<ul>
+  <li>MFC에서 직렬화를 하는 방법이 대표적으로 2가지가 존재한다.
+    <ul>
+      <li>툴바에서 Open, Save 버튼을 이용한 방법 (CArchive 암시적 생성)</li>
+      <li>CFile, CArchive 객체를 이용한 방법 (CArchive 명시적 생성)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>겉으로 보면 달라 보이지만 둘다 비슷하다고 생각하면 된다.</p>
+
+<p>CArchive를 암시적으로 생성하는 원리는 간단하다.<br />
+사용자가 다른 이름으로 저장 또는 저장을 누르면 사용자가 선택한 파일을에 대해<br />
+내부적으로 CFile객체를 만들고 CArchive 객체는 파일을 참조하여 만들어진다.<br /></p>
+
+<p>도큐먼트(Doc)에서 Serialize() 함수를 호출하여 CArchive 객체에 전달한다.<br />
+직렬화 할 때 CArchive 객체에 데이터를 전달하고 버퍼가 가득찬 경우 파일 Write를 시작한다.<br />
+원시 타입이 아닌 Object 타입인 경우 따로 직렬화를 구현하여 Serialize() 함수를 호출한다.</p>
+
+<h2 id="객체의-직렬화-매크로-함수">객체의 직렬화: 매크로 함수</h2>
+<p>매크로 함수는 2가지다.</p>
+
+<ul>
+  <li>DECLARE_SERIAL(Class)
+    <ul>
+      <li>매크로 함수는 직려화할 클래스 헤더(*.h)에 적는다.</li>
+      <li>클래스 정보를 요구한다</li>
+    </ul>
+  </li>
+  <li>IMPLMENT_SERIAL(Class, BaseClass, )
+    <ul>
+      <li>직렬화를 구현할 클래스(Serialize 함수가 재정의된) 구현부(*.cpp)에 적는다.</li>
+      <li>클래스 정보를 요구한다.</li>
+      <li>데이터 검증을 위한 스키마 넘버를 요구한다. (0의 수 이상 사용)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>매크로 함수는 직렬화 클래스를 명시할 뿐 사용하지 않는다고해서 직렬화가 불가능하다는 의미는 아니다.<br />
+개발 프로젝트가 커지면서 외부 컴퓨터 및 시스템을 사용할 때 데이터를 가져오거나 교환 시<br />
+스키마 넘버는 직렬화 데이터가 클래스에 해당하는 데이터가 일치하는지 검증을 하기 위해 사용된다.<br />
+읽어들인 데이터의 스키마 넘버와 현재 메모리에 있는 스키마 넘버가 다른 경우 CAcriveException을 발생시킨다.<br />
+<strong><del>스키마 넘버라고해서 SQL 데이터베이스 스키마 넘버와 혼동하지말자</del></strong></p>
+
+<h2 id="객체의-직렬화-사용할-함수">객체의 직렬화: 사용할 함수</h2>
+<p>CObject* 타입의 데이터 및 원시타입(Primitive)의 데이터만 «, » 연산자를 사용하도록 한다.<br />
+사용자 정의 타입의 객체 데이터를 저장하고 불러올 때에는 Write(), Read() 함수를 사용한다.<br />
+MBCS 및 유니코드 환경의 문자열을 저장 및 불러올 땐 WriteString(), ReadString() 함수를 사용한다.</p>
+
+<h2 id="객체의-직렬화-실습">객체의 직렬화: 실습</h2>
+
+<h3 id="헤더-및-구현-코드">헤더 및 구현 코드</h3>
+
+<figcaption>MyClass.h</figcaption>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="k">class</span> <span class="nc">MyData</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CObject</span>
+<span class="p">{</span>
+<span class="n">DECLARE_SERIAL</span><span class="p">(</span><span class="n">MyData</span><span class="p">)</span>
+<span class="nl">public:</span>
+	<span class="kt">int</span> <span class="n">m_num1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">m_num2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+	<span class="kt">char</span> <span class="n">text</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">"ABCDEFG"</span>
+	<span class="n">COLORREF</span> <span class="n">m_color</span><span class="p">;</span>
+	<span class="k">virtual</span> <span class="kt">void</span> <span class="n">Serialize</span><span class="p">(</span><span class="n">CArchive</span><span class="o">&amp;</span> <span class="n">ar</span><span class="p">);</span>
+<span class="c1">// 기타 코드 생략</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<figcaption>MyClass.cpp</figcaption>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="code"><pre><span class="n">IMPLEMENT_SERIAL</span><span class="p">(</span><span class="n">MyData</span><span class="p">,</span> <span class="n">CObject</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">MyData</span><span class="o">::</span><span class="n">MyData</span><span class="p">()</span> <span class="o">:</span> <span class="n">m_num1</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">m_num2</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+	<span class="p">,</span> <span class="n">m_color</span><span class="p">(</span><span class="n">RGB</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="n">MyData</span><span class="o">::</span><span class="n">Serialize</span><span class="p">(</span><span class="n">CArchive</span><span class="o">&amp;</span> <span class="n">ar</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">CObject</span><span class="o">::</span><span class="n">Serialize</span><span class="p">(</span><span class="n">ar</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">ar</span><span class="p">.</span><span class="n">IsStoring</span><span class="p">())</span>
+	<span class="p">{</span>	<span class="c1">// storing code</span>
+		<span class="n">ar</span> <span class="o">&lt;&lt;</span> <span class="n">m_num1</span> <span class="o">&lt;&lt;</span> <span class="n">m_num2</span><span class="p">;</span>
+		<span class="n">ar</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+		<span class="n">ar</span> <span class="o">&lt;&lt;</span> <span class="n">m_color</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>	<span class="c1">// loading code</span>
+		<span class="n">ar</span> <span class="o">&gt;&gt;</span> <span class="n">m_num1</span> <span class="o">&gt;&gt;</span> <span class="n">m_num2</span><span class="p">;</span>
+		<span class="n">ar</span><span class="p">.</span><span class="n">Read</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+		<span class="n">ar</span> <span class="o">&gt;&gt;</span> <span class="n">m_color</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 기타코드 생략</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p><br /></p>
+
+<figcaption>CNormalSerializeDoc.h</figcaption>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="cp">#include "MyData.h"
+</span><span class="k">class</span> <span class="nc">CNormalSerializeDoc</span> <span class="o">:</span> <span class="k">public</span> <span class="n">CDocument</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">MyData</span> <span class="n">m_data</span><span class="p">;</span>
+<span class="c1">// 기타코드 생략</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<figcaption>CNormalSerializeDoc.cpp</figcaption>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="kt">void</span> <span class="n">CNormalSerializeDoc</span><span class="o">::</span><span class="n">Serialize</span><span class="p">(</span><span class="n">CArchive</span><span class="o">&amp;</span> <span class="n">ar</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">m_data</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">ar</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">ar</span><span class="p">.</span><span class="n">IsStoring</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="c1">// TODO: 여기에 저장 코드를 추가합니다.</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="c1">// TODO: 여기에 로딩 코드를 추가합니다.</span>
+	<span class="p">}</span>
+	<span class="n">UpdateAllViews</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<h3 id="설명-및-결과">설명 및 결과</h3>
+<ul>
+  <li>위에 선언된 변수값
+    <ul>
+      <li>직렬화 스키마 번호: 9</li>
+      <li>m_num1: -1 -&gt; 3</li>
+      <li>m_num2: -1 -&gt; 7</li>
+      <li>m_dnum1: 0.0 -&gt; 3.0</li>
+      <li>text[10]: “abcdefghijk”</li>
+      <li>color: RGB(255, 255, 15)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>m_data 에서 원시타입으로 접근하여 하나씩 직렬화한 것이다. 너무 쉽고 간단하다.<br />
+도큐먼트 Serialize() 함수에서는 간단히 해당 객체가 가진 시리얼라이즈 함수를 호출한다.<br />
+핵심은 해당 오브젝트의 Serialize() 함수를 재정의하여 구현한다.<br />
+주의할 점은 부모 클래스의 CObject::Serialize() 함수를 먼저 호출해주는 것이다.<br />
+불러오기를 테스트할 땐 값을 확인하기 위해 기본값을 임시로 바꾼다.<br />
+저장 및 불러오기를 테스트하자!<br />
+<img src="/assets/images/Serialize/messagebox.png" alt="img1" /></p>
+
+<p>직렬화를 마치면 22Byte 크기를 가진 파일이 생긴다.<br />
+자세한건 아래 그림을 참고하자 <strong><del>만들기 진짜 힘들었다</del></strong>
+데이터가 저장된 파일의 크기는 직렬화된 멤버변수 타입의 크기가 모두 더해져서 만들어진다.<br />
+Hex Viewer로 파일을 살펴보면 저장한 데이터들이 16진수로 저장되어 들어가져있다.<br />
+<strong><del>16진수는 컴퓨터 공부를 하면 할 수록 반드시 알아야할 녀석이라는 걸 깨닫게 된다.)</del></strong><br />
+<img src="/assets/images/Serialize/hex_viewer.png" alt="img2" /><br />
+값이 잘 불러와진다. OK!</p>
+
+<h2 id="확장명-필터-저장-및-불러오기">확장명 필터 (저장 및 불러오기)</h2>
+<p>특정 확장명을 가진 파일에 대해서 저장 및 불러오기에 대해 알아보자<br /></p>
+
+<p>CArchive 객체는 CFile 객체를 참조하고 있다.<br />
+사용자가 *.dat 확장명을 가진 파일에 대해서만 직렬화를 이용한 저장 및 불러오기를 진행하려고 한다.<br />
+툴바에서 사용되는 파일 다이얼로그 인스턴스에 접근하는 방법을 모르기에<br />
+CFile객체로 접근하여 파일의 패스 정보를 이용해 파일을 필터링한다.</p>
+<figcaption>CNormalSerializeDoc.cpp - Serialize()</figcaption>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="n">CFile</span> <span class="o">*</span><span class="n">pFile</span> <span class="o">=</span> <span class="n">ar</span><span class="p">.</span><span class="n">GetFile</span><span class="p">();</span>
+<span class="n">CString</span> <span class="n">filePath</span> <span class="o">=</span> <span class="n">pFile</span><span class="o">-&gt;</span><span class="n">GetFilePath</span><span class="p">();</span>
+<span class="kt">int</span> <span class="n">dotIdx</span> <span class="o">=</span> <span class="n">filePath</span><span class="p">.</span><span class="n">ReverseFind</span><span class="p">(</span><span class="sc">'.'</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">dotIdx</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">extension_length</span> <span class="o">=</span> <span class="n">filePath</span><span class="p">.</span><span class="n">GetLength</span><span class="p">()</span> <span class="o">-</span> <span class="p">(</span><span class="n">dotIdx</span> <span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">CString</span> <span class="n">fileExtensionStr</span> <span class="o">=</span> <span class="n">filePath</span><span class="p">.</span><span class="n">Right</span><span class="p">(</span><span class="n">extension_length</span><span class="p">);</span>
+
+<span class="n">AfxGetMainWnd</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">MessageBox</span><span class="p">(</span><span class="n">fileExtensionStr</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">fileExtensionStr</span><span class="p">.</span><span class="n">Compare</span><span class="p">(</span><span class="n">_T</span><span class="p">(</span><span class="s">"dat"</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">m_data</span><span class="p">.</span><span class="n">Serialize</span><span class="p">(</span><span class="n">ar</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p><strong>글 다썻다아 ~</strong></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#bitmap" class="page__taxonomy-item" rel="tag">bitmap</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#carchive" class="page__taxonomy-item" rel="tag">CArchive</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#serialization" class="page__taxonomy-item" rel="tag">serialization</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#serialize" class="page__taxonomy-item" rel="tag">serialize</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#toolbar" class="page__taxonomy-item" rel="tag">Toolbar</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%A7%81%EB%A0%AC%ED%99%94" class="page__taxonomy-item" rel="tag">직렬화</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%88%B4%EB%B0%94" class="page__taxonomy-item" rel="tag">툴바</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" class="page__taxonomy-item" rel="tag">프로그래밍</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-09">May 09, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D%5B%EC%8B%A4%EC%8A%B5%5D+Document+CArchive+%EA%B8%B0%EB%B3%B8%ED%83%80%EC%9E%85+%ED%81%B4%EB%9E%98%EC%8A%A4+%EC%A7%81%EB%A0%AC%ED%99%94%20https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F09%2Fexplict-serialize" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F09%2Fexplict-serialize" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F09%2Fexplict-serialize" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2020/05/07/mojave-update" class="pagination--pager" title="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+">Previous</a>
+    
+    
+      <a href="/2020/05/09/Chromium-edge" class="pagination--pager" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">Well begun is half done, aristotle</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/Chromium-edge" rel="permalink">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-update" rel="permalink">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-darkmode-darkeader-app" rel="permalink">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/06/Serialiization" rel="permalink">[C++] Serialization : 설명
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 06 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[C++] Serialiization : 설명
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Support</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">Copyright 2020 타스 (TARS-C). Powered by <a href="https://github.com" rel="nofollow">Github.</a></div>
+      </footer>
+    </div>
+
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/assets/js/notify.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/4eee35f757.js"></script> -->
+  <script src="https://kit.fontawesome.com/194998b224.js" crossorigin="anonymous"></script>
+  <script data-ad-client="ca-pub-2361575299096846" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://tars-c.github.io/2020/05/09/explict-serialize";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020/05/09/Document CAcrchive 기본타입 클래스 직렬화"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tars-c-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+
+
+
+
+
+  </body>
+</html>

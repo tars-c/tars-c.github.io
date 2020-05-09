@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지) - 타스의 개발 블로그</title>
+<meta name="description" content="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)">
+
+
+  <meta name="author" content="타스 (TARS-C)">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="타스의 개발 블로그">
+<meta property="og:title" content="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)">
+<meta property="og:url" content="https://tars-c.github.io/2020/05/07/mojave-darkmode-darkeader-app">
+
+
+  <meta property="og:description" content="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)">
+
+
+
+  <meta property="og:image" content="https://tars-c.github.io/assets/images/profile_tars200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-07T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-05-07T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://tars-c.github.io/2020/05/07/mojave-darkmode-darkeader-app">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "타스 (TARS-C)",
+      "url": "https://tars-c.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="타스의 개발 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/xeicon.min.css">
+
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+<meta name="google-site-verification" content="g-v4nitOjaIwCDktuCHo4KVSNkfjJuRQ0Nm_QDRcvPM" />
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          타스의 개발 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" >프로그래밍</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile_tars200.png" alt="타스 (TARS-C)" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">타스 (TARS-C)</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>탐구하며 노력하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea, KR</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a target="_blank" href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> 주인장에게 문의하기</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gv8vlln" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> C/C++ 단톡방</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)">
+    <meta itemprop="description" content="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)">
+    <meta itemprop="datePublished" content="2020-05-07T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-07T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#darkreader">DarkReader</a>
+    <ul>
+      <li><a href="#다크모드-적용-전">다크모드 적용 전</a></li>
+      <li><a href="#다크모드-적용-후">다크모드 적용 후</a></li>
+      <li><a href="#필터-효과-적용-후">필터 효과 적용 후</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>이 글이 앱 홍보가 될 수도 있는데<br />
+회사나 남한테 부탁받는 것이 아닌 내돈쓰고 내가 후기를 작성한 것이니 참고 바랍니다.</p>
+
+<p>모하비를 설치하고 파인더를 둘러보고 설정창도 봤는데<br />
+너무 마음에 들었다. (다크모드 내맘에 딱인걸 ?)</p>
+
+<p><br />
+이제 구글좀 한번 들어가볼까 하다가 사파리를 눌렀다.
+사파리를 키는 순간 (두둥!)<br /></p>
+
+<p><img src="https://1.bp.blogspot.com/-ho57yY-LW2Q/XrS8kpuYzHI/AAAAAAAAAq8/eQ1Z0UxmZ7YO6vZYzb4SFE-1bGWtOmJ8ACLcBGAsYHQ/s1600/darkmode_main.png" alt="img1" />
+이럴거면 도대체 왜 내가 설치했지 ? 라는 생각이 한가득이었다.<br />
+구글이 시작 페이지인데 브라우저 화면이 화이트톤 그자체였다.<br />
+시간은 시간대로 날리고 허무한 느낌만 가득했다..</p>
+
+<p><br />
+타이틀 및 메뉴바만 다크모드가 되고<br />
+브라우저 화면은 다크모드가 되지 않다니..<br />
+<strong><del>(이것이 애플님께서 말씀하시는 다크모드 갬성인가 ?)</del></strong></p>
+
+<p>분명 나랑 똑같은 일을 겪은 사람들이 있을거라고 판단하고<br />
+검색을 해봤다.</p>
+
+<p>한가지 얻은 결론은….<br /></p>
+<blockquote>
+  <p>사파리에서 브라우저 화면이 다크해지는 건 지원하지 않습니다.<br />
+CSS를 이용한 다크모드를 지원하며 사용하려면<br />
+웹사이트에서 스타일을 따로 설정한 경우 지원이 가능합니다.</p>
+</blockquote>
+
+<p>대표적으로 다크모드 CSS를 설정한 웹사이트가 클리앙이다. <strong><del>(역시 클라앙은 맥잘알)</del></strong>
+<img src="https://1.bp.blogspot.com/-iYAB4pOChXU/XrS8hDqOueI/AAAAAAAAAqU/un_tIK3oHhQLqdalA1CyvuygZhn3hxGIgCLcBGAsYHQ/s1600/darkmode_clien.png" alt="img2" /></p>
+
+<p>흠 …<br />
+문제점은 파악했으니 이제 해결법을 찾아보도록 한다.<br />
+앱스토어에 dark mode라 검색해보았고<br />
+사파리에서 다크모드를 지원햊는 앱을 발견했다.<br />
+이름은 말 그대로 DarkMode.<br />
+<img src="https://1.bp.blogspot.com/-2rTUw4JTANU/XrS8giQFMyI/AAAAAAAAAqQ/b_f7bFLkd2MSxKStW5lb2vhHGET3yNdSACLcBGAsYHQ/s1600/darkmode_app.png" alt="img3" /></p>
+
+<p>후기를 찾아보니까 안좋다는 말이 있어서 패스했다.<br />
+<img src="https://1.bp.blogspot.com/-Gh_uUNtBqMU/XrS8lYqUWjI/AAAAAAAAArA/FXz7HYXhKvEiTn2l0I6wXu6zsBJ7xckjwCLcBGAsYHQ/s1600/darkmode_review.png" alt="img4" /><br />
+<strong><del>(유튜브 동영상을 봤을 땐 좋아보였는데)</del></strong></p>
+
+<h2 id="darkreader">DarkReader</h2>
+<p>” mojave safari dark mode “ 구글에 검색해서 찾다보니 동영상 하나가 눈에 들어왔다.<br />
+동영상을 요약하자면 <code class="highlighter-rouge">DarkReader</code> 앱 기능을 소개하는 동영상이었다.<br /></p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8FvvrUW7UjI" frameborder="0" allowfullscreen=""></iframe>
+
+<p><br />
+동영상을 보고 나름 괜찮아보였던 앱이었다. <del><strong>(동영상에서 설명은 알아먹지 못했다)</strong></del><br />
+앱스토어 후기도 전체적으로 살펴본 결과<br />
+평점이 심각하게 낮은게 없어보여서 그냥 눈감고 질렀다.<br />
+무료이면 좋겠지만 가격이 조금있었다. (5,900원)<br />
+<strong><del>(애플님께서 앱 개발자에게 연마다 등록비 명목으로 돈을 지불하기 때문에 어쩔 수 없다)</del></strong><br />
+간식 한번 안먹고 병원 안가는 셈치고 바로 질렀다.<br /></p>
+
+<p><img src="https://1.bp.blogspot.com/-C1hks8Ibf_8/XrS8hIHwQcI/AAAAAAAAAqY/wvCn3m1x8R8ou6YzGQQhiXiwphhOpD_zwCLcBGAsYHQ/s1600/darkmode_darkreader_app.png" alt="img5" /></p>
+
+<p>사용해본 결과 개인적으로 2%정도 아쉽지만 너무 좋다.</p>
+<ul>
+  <li>기능을 간략히 나열해보자면
+    <ul>
+      <li>사이트별 커스텀 테마</li>
+      <li>단축키를 이용한 다크모드 ON/OFF</li>
+      <li>전체 윈도우를 대상으로 다크모드 ON/OFF</li>
+      <li>PDF 다크모드 ON/OFF</li>
+      <li>테마 (Monokai, Abyss 같은 개발 프로그램 테마가 아니다!)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>테마는 특정 색상의 집합을 적용하는 것이 아니라<br />
+부가적인 요소(Sepia, GrayScale, Birghtness, Contrast)를 변경할 수 있다는 것이다.<br />
+테마보단 밝기나 채도를 변경할 수 있는 필터라고 하는게 맞는거 같다.</p>
+
+<p>솔직히 색상 계열 테마를 사용자가 설정할 수 있으면 Best of Best아닌가<br />
+<strong><del>뭐.. 그래도 만족한다.</del></strong></p>
+
+<p><img src="https://1.bp.blogspot.com/-JjtJMdaaNZg/XrS8h5jVEWI/AAAAAAAAAqk/tMW0Eq0i1v8X6Abfl8tw31qayDFv0ZvAACLcBGAsYHQ/s1600/darkmode_darkreader_apply.png" alt="img6" /><br />
+설치를 하면 사파리 메뉴바 상단에 DarkReader 앱 아이콘이 생긴다.<br />
+그걸 눌러서 조절하면 된다.</p>
+
+<p>아쉬운게 색상별 테마 기능이 없는 것과 macOS만 유료이고<br />
+나머진 무료 + 오픈소스 그자체이다.</p>
+
+<p>길게 말하면 뭐하나 ?<br />
+적용 전, 적용 후를 보는게 낫지</p>
+
+<h3 id="다크모드-적용-전">다크모드 적용 전</h3>
+<p><img src="https://1.bp.blogspot.com/-BEpBU0WsbJ0/XrS8iNKTEII/AAAAAAAAAqo/rWvxcVfBpJo_fYhNe2u0yOhL_I455yn2ACLcBGAsYHQ/s1600/darkmode_disable.png" alt="img7" /></p>
+
+<h3 id="다크모드-적용-후">다크모드 적용 후</h3>
+<p>다이나믹 모드라 한다.<br />
+<img src="https://1.bp.blogspot.com/-ip_jkXHh6uM/XrS8ik5d90I/AAAAAAAAAqs/SudUQcIpJ6YI3gbJdr5sq93TqXdSZ5VYgCLcBGAsYHQ/s1600/darkmode_dynamic.png" alt="img8" /></p>
+
+<h3 id="필터-효과-적용-후">필터 효과 적용 후</h3>
+<p>(필터는 색상을 바꾸는게 아니라 빛의 밝기를 조절하는 것이다)<br />
+<img src="https://1.bp.blogspot.com/-NEsWdHtOwHM/XrS8jvBIIyI/AAAAAAAAAq0/WfDDS8qtB1I_zKETrMLDZraACqkskNd3QCLcBGAsYHQ/s1600/darkmode_filter.png" alt="img9" />
+<br />
+<br />
+<br /></p>
+
+<p>사실 밝은 화이트톤이 최고인거 같다.<br />
+근데 눈 건강에 안좋다면 괜찮은 다크모드를 쓰는 것도 좋지아니한가 ?<br />
+다이나믹 모드를 사용하면 뿌연 보라색상이 마음에 안들어서 필터를 씌우고 사용한다.<br />
+<strong><del>(뿌연 색보단 밝은 핑크색이 낫지)</del></strong></p>
+
+<p>마지막으로 깃허브를 다크모드를 감상해보자<br />
+<img src="https://1.bp.blogspot.com/-3px-3Q4b-_A/XrS8kLevm9I/AAAAAAAAAq4/Y5RBLQkWNrsfUixVX588RnoSzywWLDhHgCLcBGAsYHQ/s1600/darkmode_github.png" alt="img10" /></p>
+
+<p>오오옷 역시 좋아 ㅠㅠ<br />
+역시 돈투자한 보람이 있군<br />
+<img src="/assets/images/Fun/prodo_thumb_up.png" alt="img11" /><br /></p>
+
+<p><strong><em>으음, 처음엔 몰랐다..</em></strong><br />
++ 네이버 블로그는 Dynamic 모드로 다크모드 잘되는데 필터를 사용할 경우는 작동을 안한다.
+<strong><del>(정보습득은 msdn, google, tistory로 하지만..)</del></strong></p>
+
+<p><strong>글 다썻다아 ~</strong></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#darkmode" class="page__taxonomy-item" rel="tag">DarkMode</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#darkreader" class="page__taxonomy-item" rel="tag">DarkReader</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#macos" class="page__taxonomy-item" rel="tag">MacOS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#macos" class="page__taxonomy-item" rel="tag">macOS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#mojave" class="page__taxonomy-item" rel="tag">Mojave</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%8B%A4%ED%81%AC%EB%A6%AC%EB%8D%94" class="page__taxonomy-item" rel="tag">다크리더</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C" class="page__taxonomy-item" rel="tag">다크모드</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%AA%A8%ED%95%98%EB%B9%84" class="page__taxonomy-item" rel="tag">모하비</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#macos" class="page__taxonomy-item" rel="tag">MacOS</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-07">May 07, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BMacOS%5D+Mojave%2C+Safari+%EB%8B%A4%ED%81%AC%EB%AA%A8%EB%93%9C+%EB%AC%B8%EC%A0%9C%EC%A0%90+%EA%B7%B8%EB%A6%AC%EA%B3%A0+%EC%95%B1+%EC%B6%94%EC%B2%9C+%28%EC%9D%B4%EB%AF%B8%EC%A7%80%29%20https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F07%2Fmojave-darkmode-darkeader-app" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F07%2Fmojave-darkmode-darkeader-app" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F07%2Fmojave-darkmode-darkeader-app" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2020/05/06/Serialiization" class="pagination--pager" title="[C++] Serialization : 설명
+">Previous</a>
+    
+    
+      <a href="/2020/05/07/mojave-update" class="pagination--pager" title="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">Well begun is half done, aristotle</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/Chromium-edge" rel="permalink">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/explict-serialize" rel="permalink">[MFC][실습] Document CArchive 기본타입 클래스 직렬화
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-update" rel="permalink">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/06/Serialiization" rel="permalink">[C++] Serialization : 설명
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 06 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[C++] Serialiization : 설명
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Support</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">Copyright 2020 타스 (TARS-C). Powered by <a href="https://github.com" rel="nofollow">Github.</a></div>
+      </footer>
+    </div>
+
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/assets/js/notify.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/4eee35f757.js"></script> -->
+  <script src="https://kit.fontawesome.com/194998b224.js" crossorigin="anonymous"></script>
+  <script data-ad-client="ca-pub-2361575299096846" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://tars-c.github.io/2020/05/07/mojave-darkmode-darkeader-app";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020/05/07/MacOS-Mojave DarkReader App"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tars-c-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+
+
+
+
+
+  </body>
+</html>

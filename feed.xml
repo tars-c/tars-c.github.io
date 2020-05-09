@@ -1,4 +1,280 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-09T01:13:25+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC][실습] Document CArchive 기본타입 클래스 직렬화</title><link href="https://tars-c.github.io/explict-serialize-2020/05/09" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 기본타입 클래스 직렬화" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/explict-serialize-2020/05/Document%20CAcrchive%20%EA%B8%B0%EB%B3%B8%ED%83%80%EC%9E%85%20%ED%81%B4%EB%9E%98%EC%8A%A4%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/explict-serialize-2020/05/09">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-09T16:26:35+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/Chromium-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/Chromium-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
+정보가 없는 상태에서 직접 다운받으면서 써본 경험을 바탕으로으로 작성되었습니다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;신문물을 접한 느낌이랄까..&lt;/del&gt;&lt;/strong&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Fun/surprise.jpg&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;strong&gt;으아악!!&lt;/strong&gt;&lt;br /&gt;
+산소호흡기를 땔 조짐이 보였던 MS Edge가 크로미움 기반으로 새롭게 변했다는 소식을 접했다.&lt;br /&gt;
+출시 날짜를 찾아보니까… 2020년 02월 15일이다. &lt;strong&gt;&lt;del&gt;(포스팅이 좀 늦었네..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;a href=&quot;https://www.microsoft.com/ko-kr/edge?form=MA13DE&amp;amp;OCID=MA13DE&quot; target=&quot;_blank&quot;&gt;LINK: (MicroSoft) Edge 다운로드 받기&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;구닥다리 Edge가 Chromium을 올라타서 새롭게 탄생했다.&lt;br /&gt;
+추측이지만 Chromium 기반이라 업데이트도 자동으로 할 것 같다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;반드시 업데이트 기능을 비활성화 시키도록하자&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;주인장은 과거에 Chrome광이었다.&lt;br /&gt;
+어느날 Chrome Update를 하다보니 Chrome이 너무 불편해졌다.&lt;br /&gt;
+그리고 강제로 Update하는거 너무 싫어한다.&lt;br /&gt;
+그 이후로 주인장은 Chrome을 쓰지 않는다.&lt;br /&gt;
+Chrome &lt;strong&gt;최신버전 기능을 1도 모르니 이점 참고&lt;/strong&gt;바란다.&lt;br /&gt;
+Chromium 기반으로 만들어진 Vivaldi를 사용하거나 Safari를 사용한다.&lt;br /&gt;
+**&lt;del&gt;Chrome은 오래된 크롬 버전만 사용할 뿐이다.**&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;다운받아서 얼마나 좋은지 직접 느껴보자!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Edge가 지원하는 플랫폼은 다음과 같다.
+    &lt;ul&gt;
+      &lt;li&gt;Windows 10&lt;/li&gt;
+      &lt;li&gt;Windows 8.1&lt;/li&gt;
+      &lt;li&gt;Windows 8&lt;/li&gt;
+      &lt;li&gt;Windows 7&lt;/li&gt;
+      &lt;li&gt;macOS&lt;/li&gt;
+      &lt;li&gt;Android&lt;/li&gt;
+      &lt;li&gt;iOS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;아쉽게도 리눅스는 지원하지 않는다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;설치-화면&quot;&gt;설치 화면&lt;/h2&gt;
+&lt;p&gt;깔끔한 설치화면이다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/install-1.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;아이콘을 보니까 마이크로소프트 느낌이랑 조금 멀게 느껴졌다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(vscode, Visual Studio 느낌이 아닌데?)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+새로운 Edge 브라우저 아이콘을 보니까 태극 느낌도 나고 크롬 느낌도 나는 것 같고…&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/install-2.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;인스톨러가 인터넷으로 설치파일을 다운을 받은 후&lt;br /&gt;
+백그라운드에서 설치를 진행한다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/install-3.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;설치가 완료 됬다.&lt;br /&gt;
+설치 완료 후 작은 창 하나가 뜨는데 사용자에게 초기화 작업해주는 거랑 비슷하다.&lt;br /&gt;
+넘기다 보면 마이크로소프트 계정 로그인으로 데이터를 동기화하여 사용자가 편리하게 사용할 수 있다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(지원 가능한 어마무시한 플랫폼들..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/start1.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/start2.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;기능-살펴보기&quot;&gt;기능 살펴보기&lt;/h2&gt;
+&lt;p&gt;일단 메뉴 리스트를 눌러서 보면 크롬이랑 너무 흡사하다. &lt;strong&gt;&lt;del&gt;(Chromium 기반이니까 비슷할 수 밖에)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+기본 확대 비율은 125% 로 설정되어 있지만, 110% 사용을 추천한다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/menu_list.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;메모리-사용량-및-속도&quot;&gt;메모리 사용량 및 속도&lt;/h3&gt;
+&lt;p&gt;소비되는 메모리를 보기 위해 구버전 크롬과 비교해보았다.&lt;br /&gt;
+탭을 두개 사용하고 똑같은 사이트에 접속한 상황이다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Edge:&lt;/strong&gt; 102.6 MB&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/7-edge.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Chrome(구버전):&lt;/strong&gt; 125.2 MB&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/7-chrome.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+소비되는 메모리는 엣지가 더 가볍다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(크롬 구버전보다 가벼울 수도 있구나.. 마소 역시 소프트 강자 무섭다 ㄷㄷ)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;크롬 구버전은 약간 버벅임이 있다. &lt;strong&gt;&lt;del&gt;(아마 구버전이라 속도면에서 떨어진게 아닐까)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+확실히 엣지를 사용하여 구글을 검색하거나 웹사이트를 서핑할 때 불편함을 못느꼈다.&lt;/p&gt;
+
+&lt;p&gt;하드웨어 가속을 끄고 몇가지 검색도 해보면서 테스트를 다시 해보았다.&lt;br /&gt;
+Edge 옵션에서 하드웨어 가속을 꺼도 빠른 느낌이 강했다. &lt;strong&gt;&lt;del&gt;(가상머신에서 돌리는건데 이렇게 빨라?)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+구버전 Chrome도 &lt;strong&gt;&lt;del&gt;빠르지만&lt;/del&gt;&lt;/strong&gt; 나라면 새로운 Edge가 우세한 느낌이 강했다.&lt;br /&gt;
+메모리 사용량 부분은 탭 수가 적고 작업 시간이 짧은 상태로 확인했으므로 평가로는 부적합하니 참고만 하자.
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;즐겨찾기-북마크&quot;&gt;즐겨찾기 (북마크)&lt;/h3&gt;
+&lt;p&gt;크롬이랑 비슷한 즐겨찾기다.&lt;br /&gt;
+그냥 무난해보인다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/bookmark.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;편리한-설장창&quot;&gt;편리한 설장창&lt;/h3&gt;
+&lt;p&gt;설정창을 보면 너무나 편리하게 잘 써놔있다.&lt;br /&gt;
+자세한건 직접 드를 받아서 살펴보는걸 추천한다.&lt;br /&gt;
+크롬 사파리 비발디를 써봤지만 그중에 가장 눈에 확 들어온다.&lt;br /&gt;
+125% 확대된 상태에서 왼쪽 설정 리스트가 안보이니 참고하자.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/option_main.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Edge/option_browser.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;가장 마음에 들었던건 웹사이트 추적기능을 잘설명해놨다.&lt;br /&gt;
+검색 데이터를 지우는 것도 편리하다.
+&lt;img src=&quot;/assets/images/Edge/website_trace.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+진짜 사용자를 고려해서 텍스트부터 위치까지 전부 다 세심하게 맞춰진 것 같아서 좋았다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;설정창에 비활성화 기능이 유독 많아보이는건 기분탓이겠지 ?&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;다운로드-목록&quot;&gt;다운로드 목록&lt;/h3&gt;
+&lt;p&gt;다운로드된 목록을 봐도 사용자가 쉽게 알 수 있게&lt;br /&gt;
+시간도 나오고 파일도 종류별로도 필터링 할 수 있다는 점이다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/download.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;방문-기록-history&quot;&gt;방문 기록 (History)&lt;/h3&gt;
+&lt;p&gt;방문 기록을 “ 검색 기록 “ 이란 이름으로 제공한다.
+필터링이 잘될 것 같이 UI가 세심하게 잘짜여졌다.
+시간까지 나올 줄은 몰랐다.
+&lt;img src=&quot;/assets/images/Edge/history.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;반면에 주인장이 사용하는 최신 Safari는…&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/history_safari.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(너무 형편없다)&lt;/del&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;닫힌-탭-복원&quot;&gt;닫힌 탭 복원&lt;/h3&gt;
+&lt;p&gt;닫힌 탭 복원 기능도 상당히 좋다.&lt;br /&gt;
+Ctrl+Shift+T 단축키를 이용해서 방금 닫은 탭을 복원할 수 있고&lt;br /&gt;
+메뉴 리스트 -&amp;gt; 검색 기록 에 가면&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(단축키 상태가.. 누르기는 불편하다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/restore_tab.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;브라우저-데이터-가져오기&quot;&gt;브라우저 데이터 가져오기&lt;/h3&gt;
+&lt;p&gt;브라우저 데이터 가져오는 기능이 있다.&lt;br /&gt;
+크롬과 IE 브라우저에 있는 데이터를 가져올 수 있다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/load_data.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;앱-new&quot;&gt;앱 (New!)&lt;/h3&gt;
+&lt;p&gt;앱 기능을 사용해보았다.&lt;br /&gt;
+사이트 별로 앱으로 등록할 수 있다.&lt;br /&gt;
+이미 등록된 사이트의 앱은 다시 등록할 수 없다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;윈도우즈 스토어에 있는 앱도 사용이 가능할텐데.. 스토어가 폐허라서 그냥 안쓴다.&lt;/del&gt;&lt;/strong&gt;
+&lt;img src=&quot;/assets/images/Edge/App.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;사이트로 등록된 앱을 사용하면 주소창이 없는 작은 브라우저 창이 뜬다.&lt;br /&gt;
+주소 창이 없어서 주소 입력은 불가능하다.&lt;br /&gt;
+상단바에 번역기도 같이 쓸 수 있어서 나름 쓸모 있어보인다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/app_window.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;내가 생각하기론 레퍼런스 문서를 자주 참고해야할 때 유용한 기능이라 생각한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(불필요한 리소스 사용은 최소화 하고 필요한 기능만 제공하는 그런 느낌이랄까..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/app_split.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;등록된 앱은 윈도우즈10에서 아래 그림처럼 시작메뉴(?!)에 등록해서 사용할 수도 있다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/app_start_menu.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;확장-프로그램&quot;&gt;확장 프로그램&lt;/h3&gt;
+&lt;p&gt;그냥 크롬에서 사용할 수 있는거 새로운 Edge에서도 사용할 수 있다.
+&lt;img src=&quot;/assets/images/Edge/exten.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;브라우저-작업관리자&quot;&gt;브라우저 작업관리자&lt;/h3&gt;
+&lt;p&gt;단축키는 Shift+ESC 이다.
+탭이 많은 경우 일일히 탭별로 찾아서 끄는 거 진짜 불편했다.&lt;br /&gt;
+크롬과 똑같이 과관리자를 지원했다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/taskmgr.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;번역&quot;&gt;번역&lt;/h3&gt;
+&lt;p&gt;크롬과 비슷하게 구글이 아닌 빙번역 기능도 제공한다.&lt;br /&gt;
+구글과 빙 두 번역간 약간의 차이가 있어 보이긴하다.&lt;br /&gt;
+어느 것이 좋은지는 사용자의 선택.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/translate.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;다크모드&quot;&gt;다크모드&lt;/h3&gt;
+&lt;p&gt;다크모드를 지원하는데 애플에서 말하는 갬성과 똑같이 타이틀바만 지원하고 있다.&lt;br /&gt;
+(엣지에서 제공하는 다크모드는 해당 웹사이트에서 설정해야 적용됨)&lt;br /&gt;
+제공하지 않아도 다크모드 사용을 원한다면 Chrome &lt;a href=&quot;https://chrome.google.com/webstore/detail/dark-reader-dark/kbbbldgkhcpkmmjbjelmkjkchibeklng&quot; target=&quot;_blank&quot;&gt;DarkReader 확장 프로그램&lt;/a&gt; 사용을 추천한다.&lt;br /&gt;
+다크모드 적용 사진은 이미 이 글에 있으므로 생략한다.&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;벤치마크&quot;&gt;벤치마크&lt;/h2&gt;
+&lt;p&gt;JetStream에서 여러 브라우저를 평가한 결과이다.&lt;br /&gt;
+우승자는 Edge, 다른 평가에서는 Chrome이 승리하기도 했다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;파이어폭스한테는 지지 않았다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+Edge가 크롬을 이기는 것으로 보아 제대로 탈바꿈한건 분명하다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/stream-chrome.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Edge/stream-edge.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;a href=&quot;https://venturebeat.com/2020/01/15/browser-benchmark-battle-january-2020-chrome-firefox-edge-brave/5/&quot; target=&quot;_blank&quot;&gt;브라우저 평가 사이트 보러가기 (이미지 출처)&lt;/a&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
+&lt;p&gt;이 밖에도 많은 기능들이 있을 것 같지만 여기까지만 보도록하겠다.&lt;br /&gt;
+전반적으로 Chromium 영향을 많이 받아서 크롬과 흡사하다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;새롭게 탈바꿈 하기전에 Edge 브라우저는 솔직히 &lt;strong&gt;&lt;del&gt;쓰레기&lt;/del&gt;&lt;/strong&gt;였다.&lt;br /&gt;
+마소에 근무하고 계시는 천재 개발자팀이 힘을 합쳐 새생명을 불어넣어주셨다.&lt;br /&gt;
+업데이트를 자주해서 크롬처럼 무거워지는 루트만 타지 않는다면 계속 쓰고싶다.&lt;/p&gt;
+
+&lt;p&gt;확실히 크롬 기반의 엔진을 올라타니까 제대로 탈바꿈했다.&lt;br /&gt;
+기능이 많아서 무거울 거라고 생각했지만 그렇게 무겁다는 느낌을 받지 못했다.&lt;br /&gt;
+가상머신에서 돌리는데에도 빠르고 부드럽게 돌아간다.&lt;/p&gt;
+
+&lt;p&gt;Chromium, Microsoft 이 두 단어가 값어치를 알 수 있다.&lt;br /&gt;
+친구한테 엣지 새롭게 나왔으니 써보라고 추천은 하고 싶다. &lt;strong&gt;&lt;del&gt;(추천 못할 정도는 아니다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+최신 버전 크롬 쓰시는 분들은 큰 메리트를 느끼지 못한다고 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;평가: ★★★★☆&lt;/strong&gt;&lt;br /&gt;
+5점 만점에 4점, 크롬이 별로라면 한번쯤 써볼만하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="크로미움" /><category term="Chromium" /><category term="엣지" /><category term="Edge" /><summary type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</summary></entry><entry><title type="html">[MFC][실습] Document CArchive 기본타입 클래스 직렬화</title><link href="https://tars-c.github.io/2020/05/09/explict-serialize" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 기본타입 클래스 직렬화" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Document%20CAcrchive%20%EA%B8%B0%EB%B3%B8%ED%83%80%EC%9E%85%20%ED%81%B4%EB%9E%98%EC%8A%A4%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/explict-serialize">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;실습은 Doc 클래스 가상함수인 Serialize() 및 MyData 클래스 구현부만 개발한다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;데이터를 직렬화 하기 위해서는 CObject 클래스를 상속받거나&lt;br /&gt;
@@ -46,7 +322,8 @@
 &lt;p&gt;매크로 함수는 직렬화 클래스를 명시할 뿐 사용하지 않는다고해서 직렬화가 불가능하다는 의미는 아니다.&lt;br /&gt;
 개발 프로젝트가 커지면서 외부 컴퓨터 및 시스템을 사용할 때 데이터를 가져오거나 교환 시&lt;br /&gt;
 스키마 넘버는 직렬화 데이터가 클래스에 해당하는 데이터가 일치하는지 검증을 하기 위해 사용된다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;SQL 데이터베이스 스키마 넘버와 혼동하지말자&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+읽어들인 데이터의 스키마 넘버와 현재 메모리에 있는 스키마 넘버가 다른 경우 CAcriveException을 발생시킨다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;스키마 넘버라고해서 SQL 데이터베이스 스키마 넘버와 혼동하지말자&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;객체의-직렬화-사용할-함수&quot;&gt;객체의 직렬화: 사용할 함수&lt;/h2&gt;
 &lt;p&gt;CObject* 타입의 데이터 및 원시타입(Primitive)의 데이터만 «, » 연산자를 사용하도록 한다.&lt;br /&gt;
@@ -250,7 +527,7 @@ CFile객체로 접근하여 파일의 패스 정보를 이용해 파일을 필�
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="툴바" /><category term="Toolbar" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화</summary></entry><entry><title type="html">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)</title><link href="https://tars-c.github.io/mojave-update/2020/05/07" rel="alternate" type="text/html" title="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/mojave-update/2020/05/MacOS-Mojave%20Update</id><content type="html" xml:base="https://tars-c.github.io/mojave-update/2020/05/07">&lt;p&gt;정말 &lt;strong&gt;다크모드&lt;/strong&gt;가 눈에 좋을까 ?&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="툴바" /><category term="Toolbar" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화</summary></entry><entry><title type="html">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)</title><link href="https://tars-c.github.io/2020/05/07/mojave-update" rel="alternate" type="text/html" title="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/07/MacOS-Mojave%20Update</id><content type="html" xml:base="https://tars-c.github.io/2020/05/07/mojave-update">&lt;p&gt;정말 &lt;strong&gt;다크모드&lt;/strong&gt;가 눈에 좋을까 ?&lt;br /&gt;
 &lt;img src=&quot;https://1.bp.blogspot.com/-_0vKgI5dcbM/XrTRzuKPRbI/AAAAAAAAAsE/QKZkP9w1OZgs2-OjrRYq15PZU2CWpQ7WACLcBGAsYHQ/s1600/mojave1.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;왜-갑자기-mojave로-업뎃을-했는가-&quot;&gt;왜 갑자기 Mojave로 업뎃을 했는가 ?&lt;/h2&gt;
@@ -342,7 +619,7 @@ MacOS 모하비(Mojave) 크기는 약 6GB이다.&lt;br /&gt;
 &lt;p&gt;Mojave에서 처음으로 도입된 스택이란 기능을 써보았는데&lt;br /&gt;
 바탕화면을 한방에 정리해주는 것은 가장 마음에 들었다. 하지만 불편한 것도 있었다..&lt;br /&gt;
 앞으로 써보고 후기글도 남겨보겠다.&lt;br /&gt;
-&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="모하비" /><category term="Mojave" /><category term="업데이트" /><category term="Update" /><summary type="html">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)</summary></entry><entry><title type="html">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)</title><link href="https://tars-c.github.io/mojave-darkmode-darkeader-app/2020/05/07" rel="alternate" type="text/html" title="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/mojave-darkmode-darkeader-app/2020/05/MacOS-Mojave%20DarkReader%20App</id><content type="html" xml:base="https://tars-c.github.io/mojave-darkmode-darkeader-app/2020/05/07">&lt;p&gt;이 글이 앱 홍보가 될 수도 있는데&lt;br /&gt;
+&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="모하비" /><category term="Mojave" /><category term="업데이트" /><category term="Update" /><summary type="html">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)</summary></entry><entry><title type="html">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)</title><link href="https://tars-c.github.io/2020/05/07/mojave-darkmode-darkeader-app" rel="alternate" type="text/html" title="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/07/MacOS-Mojave%20DarkReader%20App</id><content type="html" xml:base="https://tars-c.github.io/2020/05/07/mojave-darkmode-darkeader-app">&lt;p&gt;이 글이 앱 홍보가 될 수도 있는데&lt;br /&gt;
 회사나 남한테 부탁받는 것이 아닌 내돈쓰고 내가 후기를 작성한 것이니 참고 바랍니다.&lt;/p&gt;
 
 &lt;p&gt;모하비를 설치하고 파인더를 둘러보고 설정창도 봤는데&lt;br /&gt;
@@ -461,7 +738,7 @@ CSS를 이용한 다크모드를 지원하며 사용하려면&lt;br /&gt;
 + 네이버 블로그는 Dynamic 모드로 다크모드 잘되는데 필터를 사용할 경우는 작동을 안한다.
 &lt;strong&gt;&lt;del&gt;(정보습득은 msdn, google, tistory로 하지만..)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="다크모드" /><category term="DarkMode" /><category term="모하비" /><category term="Mojave" /><category term="다크리더" /><category term="DarkReader" /><category term="MacOS" /><category term="macOS" /><summary type="html">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)</summary></entry><entry><title type="html">[C++] Serialization : 설명</title><link href="https://tars-c.github.io/Serialiization/2020/05/06" rel="alternate" type="text/html" title="[C++] Serialization : 설명" /><published>2020-05-06T00:00:00+09:00</published><updated>2020-05-06T00:00:00+09:00</updated><id>https://tars-c.github.io/Serialiization/2020/05/Serialization%20-%20%EC%84%A4%EB%AA%85</id><content type="html" xml:base="https://tars-c.github.io/Serialiization/2020/05/06">&lt;h2 id=&quot;직렬화serialization란-&quot;&gt;직렬화(Serialization)란 ?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="다크모드" /><category term="DarkMode" /><category term="모하비" /><category term="Mojave" /><category term="다크리더" /><category term="DarkReader" /><category term="MacOS" /><category term="macOS" /><summary type="html">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)</summary></entry><entry><title type="html">[C++] Serialization : 설명</title><link href="https://tars-c.github.io/2020/05/06/Serialiization" rel="alternate" type="text/html" title="[C++] Serialization : 설명" /><published>2020-05-06T00:00:00+09:00</published><updated>2020-05-06T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/06/Serialization%20-%20%EC%84%A4%EB%AA%85</id><content type="html" xml:base="https://tars-c.github.io/2020/05/06/Serialiization">&lt;h2 id=&quot;직렬화serialization란-&quot;&gt;직렬화(Serialization)란 ?&lt;/h2&gt;
 &lt;p&gt;크고 복잡한 데이터(Object)를 가장 단순한 byte형태(Binary Data)로 변환하는 것을 의미합니다.&lt;/p&gt;
 
 &lt;p&gt;반대로 가장 단순한 형태로 저장된 데이터들을 복잡한 데이터(Object)로 변환하는 것을&lt;br /&gt;
@@ -616,7 +893,7 @@ DC에 SelectObject() 할 수 없는 포맷&lt;/p&gt;
       &lt;li&gt;CreateCompatibleBitmap() 함수를 이용한 변환 및 생성&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="DIB" /><category term="DDB" /><category term="장치" /><category term="Device" /><category term="비트맵" /><category term="Bitmap" /><category term="포맷" /><category term="Format" /><category term="이미지포맷" /><category term="ImageFormat" /><summary type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</summary></entry><entry><title type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</title><link href="https://tars-c.github.io/library/spdlog/2020/05/05" rel="alternate" type="text/html" title="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/library/spdlog/2020/05/%EB%B9%A0%EB%A5%B8%20%EB%A1%9C%EA%B7%B8%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="https://tars-c.github.io/library/spdlog/2020/05/05">&lt;p&gt;C++ 개발자방에서 한분이 라이브러리를 소개시켜주었습니다.&lt;br /&gt;
+&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="DIB" /><category term="DDB" /><category term="장치" /><category term="Device" /><category term="비트맵" /><category term="Bitmap" /><category term="포맷" /><category term="Format" /><category term="이미지포맷" /><category term="ImageFormat" /><summary type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</summary></entry><entry><title type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</title><link href="https://tars-c.github.io/2020/05/05/library/spdlog" rel="alternate" type="text/html" title="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/05/library/%EB%B9%A0%EB%A5%B8%20%EB%A1%9C%EA%B7%B8%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="https://tars-c.github.io/2020/05/05/library/spdlog">&lt;p&gt;C++ 개발자방에서 한분이 라이브러리를 소개시켜주었습니다.&lt;br /&gt;
 벤치마크 성능을 보니까 빠르고 좋아보여 공유하고자 합니다.&lt;br /&gt;
 자세한건 아래 링크를 참고해주시기 바랍니다.&lt;/p&gt;
 
@@ -649,7 +926,7 @@ DC에 SelectObject() 할 수 없는 포맷&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;br /&gt;
-  이 라이브러리는 JetBrains 라이센스 기증을 받아 제작되었습니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="spdlog" /><category term="로그" /><category term="Logging" /><category term="Log" /><category term="라이브러리" /><category term="Library" /><summary type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</summary></entry><entry><title type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</title><link href="https://tars-c.github.io/bitmap-header-get-file-size/2020/05/04" rel="alternate" type="text/html" title="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기" /><published>2020-05-04T00:00:00+09:00</published><updated>2020-05-04T00:00:00+09:00</updated><id>https://tars-c.github.io/bitmap-header-get-file-size/2020/05/%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%97%A4%EB%8D%94%20%EC%9D%BD%EC%96%B4%EC%84%9C%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/bitmap-header-get-file-size/2020/05/04">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+  이 라이브러리는 JetBrains 라이센스 기증을 받아 제작되었습니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="spdlog" /><category term="로그" /><category term="Logging" /><category term="Log" /><category term="라이브러리" /><category term="Library" /><summary type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</summary></entry><entry><title type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</title><link href="https://tars-c.github.io/2020/05/04/bitmap-header-get-file-size" rel="alternate" type="text/html" title="[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기" /><published>2020-05-04T00:00:00+09:00</published><updated>2020-05-04T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/04/%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%97%A4%EB%8D%94%20%EC%9D%BD%EC%96%B4%EC%84%9C%20%ED%8C%8C%EC%9D%BC%20%ED%81%AC%EA%B8%B0%20%EC%95%8C%EC%95%84%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/2020/05/04/bitmap-header-get-file-size">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;비트맵 파일 헤더 중 파일 크기 정보에 해당하는 데이터를 읽어서 파일 크기를 출력합니다.&lt;br /&gt;
 비트맵 헤더 시작 위치는 0x0에 있습니다.&lt;/p&gt;
 
@@ -727,7 +1004,7 @@ DC에 SelectObject() 할 수 없는 포맷&lt;/p&gt;
 &lt;p&gt;실습 결과:&lt;br /&gt;
 &lt;img src=&quot;/assets/images/CImage/resultbmpfilesize.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/CImage/bmpfilesizeinfo.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="cpp" /><category term="비트맵" /><category term="bitmap" /><category term="bmp" /><category term="header" /><category term="헤더" /><category term="파일크기" /><category term="파일읽기" /><category term="파일 크기 정보" /><category term="BITMAPFILEHEADER" /><category term="BITMAPINFOHEADER" /><summary type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</summary></entry><entry><title type="html">[C++] 비트 연산 Bitwise</title><link href="https://tars-c.github.io/bitwise/2020/05/03" rel="alternate" type="text/html" title="[C++] 비트 연산 Bitwise" /><published>2020-05-03T00:00:00+09:00</published><updated>2020-05-03T00:00:00+09:00</updated><id>https://tars-c.github.io/bitwise/2020/05/%EB%B9%84%ED%8A%B8%20%EC%97%B0%EC%82%B0%20Bitwise</id><content type="html" xml:base="https://tars-c.github.io/bitwise/2020/05/03">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/CImage/bmpfilesizeinfo.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="cpp" /><category term="비트맵" /><category term="bitmap" /><category term="bmp" /><category term="header" /><category term="헤더" /><category term="파일크기" /><category term="파일읽기" /><category term="파일 크기 정보" /><category term="BITMAPFILEHEADER" /><category term="BITMAPINFOHEADER" /><summary type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</summary></entry><entry><title type="html">[C++] 비트 연산 Bitwise</title><link href="https://tars-c.github.io/2020/05/03/bitwise" rel="alternate" type="text/html" title="[C++] 비트 연산 Bitwise" /><published>2020-05-03T00:00:00+09:00</published><updated>2020-05-03T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/03/%EB%B9%84%ED%8A%B8%20%EC%97%B0%EC%82%B0%20Bitwise</id><content type="html" xml:base="https://tars-c.github.io/2020/05/03/bitwise">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;저에게 XOR은 조금 친근하지 못한 연산자였는데&lt;br /&gt;
 한가지 쓰임을 알게게 되어 비트 연산 전체를 포스팅하게 되었습니다.&lt;br /&gt;
 비트 연산을 한다고 해서 피연산자를 2개 요구하는 연산자들은 결과가 바로 반영되지 않습니다.&lt;br /&gt;
@@ -1048,146 +1325,4 @@ FF를 2진수로 표현하면 1111 1111 입니다.&lt;/p&gt;
 &lt;p&gt;지금까지 비트연산과 쓰임세를 알아보는 유익한 시간이었습니다.
 &lt;!--
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
---&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="비트" /><category term="bit" /><category term="bitwise" /><category term="비트연산" /><category term="or" /><category term="and" /><category term="not" /><category term="xor" /><category term="shift" /><summary type="html">[C++] 비트 연산 Bitwise</summary></entry><entry><title type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/" rel="alternate" type="text/html" title="[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)" /><published>2020-05-02T00:00:00+09:00</published><updated>2020-05-02T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage%20%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EB%A7%8C%EB%93%A4%EA%B8%B0-2</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/cimage/CImage-%EB%B9%84%EC%96%B4%EC%9E%88%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%EB%A7%8C%EB%93%A4%EA%B8%B0-2/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;비어있는 비트맵 만들기 1편: &lt;a href=&quot;/../프로그래밍/mfc/cimage/CImage-비어있는-비트맵-만들기-1&quot; target=&quot;_blank&quot;&gt;비어있는 비트맵 만들기&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;비어있는 비트맵을 만들었으니 큰 이미지에서 일부만 잘라서 화면에 출력해보겠습니다.&lt;br /&gt;
-BitBlt() 함수를 이용하여 이미지를 그리고 그릴 이미지의 범위를 지정해주면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;실습에서 사용된 이미지 파일은 bmp 파일(24 bit)입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;조각-이미지-만들기&quot;&gt;조각 이미지 만들기&lt;/h2&gt;
-&lt;p&gt;조각 이미지를 만드는 방법은 큰 이미지를 로드한 후 비어있는 비트맵에 그림을 그려주는 것입니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;먼저 파일이나 리소스ID를 이용해 큰 이미지(bmpImage)를 로드합니다.&lt;br /&gt;
-비어있는 비트맵(sliceBmpImage)을 150x150 사이즈로 만들고&lt;br /&gt;
-bmpImage가 가지고 있는 이미지를 sliceBmpImage DC에 복사(BitBlt) 합니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;비트맵을 만들 때 주의할 점은 어떤 이미지를 잘라내어 담을지 결정해두고&lt;br /&gt;
-해당 이미지와 화소당 비트(&lt;a href=&quot;https://ko.wikipedia.org/wiki/색_깊이&quot;&gt;BPP&lt;/a&gt;)를 똑같이 만들어줘야 합니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;DC를 가져올 때에는 BitBlt() 함수는 HDC 타입 데이터를 요구하기 때문에&lt;br /&gt;
-CImage 클래스에서 제공하는 GetDC() 함수를 사용합니다.&lt;br /&gt;
-GetDC() 함수를 사용했을 경우 반드시 ReleaseDC()를 해줘서 사용한 리소스를 돌려주어야 합니다.&lt;/p&gt;
-
-&lt;p&gt;마지막으로 sliceBmpImage가 가지고 있는 이미지를 화면 DC에다가 그려줍니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;OnPaintDC&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoadFromResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AfxGetInstanceHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IDB_BITMAP1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;ㅖ&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 사용자는 그림에서 250, 250 위치부터 150x150 크기 조각 이미지를 비어있는 비트맵에 0,0 위치에 복사&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BitBlt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;250&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;250&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SRCCOPY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReleaseDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;bmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Detach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 사용자는 뷰에서 40, 15가 떨어진 위치에서 150x150 크기의 조각 이미지를 화면에 출력하고 싶습니다.&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BitBlt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SRCCOPY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sliceBmpImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Detach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;f-큰-이미지에서-조각-이미지-출력하는-함수&quot;&gt;[F] 큰 이미지에서 조각 이미지 출력하는 함수&lt;/h2&gt;
-&lt;figcaption&gt;이미지를 잘라내는 작업은 빠르지 않습니다&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SliceDraw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CDC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CSize&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SliceDraw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CDC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CSize&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tmpSliceImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;tmpSliceImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BitBlt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tmpSliceImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SRCCOPY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;tmpSliceImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReleaseDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;tmpSliceImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BitBlt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;destY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SRCCOPY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;tmpSliceImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Detach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//SliceDraw(dc, 40, 15, CSize(300, 300), bmpImage, 250, 250);&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;f-큰-이미지에서-조각-이미지의-cimage-타입-변수를-반환하는-함수&quot;&gt;[F] 큰 이미지에서 조각 이미지의 CImage 타입 변수를 반환하는 함수&lt;/h2&gt;
-&lt;figcaption&gt;이미지를 잘라내는 작업은 빠르지 않습니다&lt;/figcaption&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getSliceImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CSize&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getSliceImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CSize&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resultSliceImage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;resultSliceImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-
-	&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BitBlt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;resultSliceImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;srcY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SRCCOPY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-	&lt;span class=&quot;n&quot;&gt;resultSliceImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ReleaseDC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resultSliceImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//CImage bmpImage;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//bmpImage.LoadFromResource(AfxGetInstanceHandle(), IDB_BITMAP1);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//CImage *sliceMyImage = getSliceImage(bmpImage, CSize(200, 200), 50, 50);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//sliceMyImage-&amp;gt;BitBlt(dc.m_hDC, CPoint(100, 100), SRCCOPY);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//bmpImage.Detach();&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//sliceMyImage-&amp;gt;Detach();&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//delete sliceMyImage;&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//sliceMyImage = nullptr;&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;정리&quot;&gt;정리&lt;/h2&gt;
-&lt;p&gt;간단히 실습한 과정을 정리해보았습니다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;조각 이미지 크기를 입력하여 비어있는 비트맵을 만들고 큰 이미지를 일부 복사해야합니다.
-    &lt;ul&gt;
-      &lt;li&gt;비어있는 비트맵과 큰 이미지의 화소당 비트(&lt;a href=&quot;https://ko.wikipedia.org/wiki/색_깊이&quot;&gt;BPP&lt;/a&gt;)는 반드시 동일해야합니다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;이미지를 복사할 때 복사를 시작할 위치 및 복사할 이미지 크기를 적어야합니다.&lt;/li&gt;
-  &lt;li&gt;BitBlt() 함수를 이용하여 비어있는 비트맵에 큰 이미지를 복사합니다.
-    &lt;ul&gt;
-      &lt;li&gt;복사할 대상DC 매개변수가 HDC를 요구하므로
-        &lt;ul&gt;
-          &lt;li&gt;GetDC() 함수를 이용하여 CImage가 가지고 있는 이미지 DC로 접근할 수 있습니다.&lt;/li&gt;
-          &lt;li&gt;GetDC() 함수를 사용한 경우 빠르게 ReleaseDC() 함수를 사용하여 사용한 리소스를 되돌려 줍니다.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;View에 출력할 조각 이미지를 출력할 위치와 출력할 조각 이미지의 크기를 입력합니다.&lt;/li&gt;
-  &lt;li&gt;마지막으로 출력된 그림을 보고 흐뭇하게 웃습니다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;실습 결과:&lt;br /&gt;
-&lt;img src=&quot;/assets/images/CImage/sliceBmpImage.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="CImage" /><category term="이미지" /><category term="Image" /><category term="비트맵" /><category term="Bitmap" /><category term="출력" /><category term="BitBlt" /><category term="부분 이미지" /><category term="SliceDraw" /><category term="getSliceImage" /><summary type="html">[MFC][실습] CImage : 비어있는 비트맵 만들기-2 (출력)</summary></entry></feed>
+--&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="비트" /><category term="bit" /><category term="bitwise" /><category term="비트연산" /><category term="or" /><category term="and" /><category term="not" /><category term="xor" /><category term="shift" /><summary type="html">[C++] 비트 연산 Bitwise</summary></entry></feed>

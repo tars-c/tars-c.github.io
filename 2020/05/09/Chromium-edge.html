@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지) - 타스의 개발 블로그</title>
+<meta name="description" content="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)">
+
+
+  <meta name="author" content="타스 (TARS-C)">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="타스의 개발 블로그">
+<meta property="og:title" content="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)">
+<meta property="og:url" content="https://tars-c.github.io/2020/05/09/Chromium-edge">
+
+
+  <meta property="og:description" content="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)">
+
+
+
+  <meta property="og:image" content="https://tars-c.github.io/assets/images/profile_tars200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-09T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-05-09T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://tars-c.github.io/2020/05/09/Chromium-edge">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "타스 (TARS-C)",
+      "url": "https://tars-c.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="타스의 개발 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/xeicon.min.css">
+
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+<meta name="google-site-verification" content="g-v4nitOjaIwCDktuCHo4KVSNkfjJuRQ0Nm_QDRcvPM" />
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          타스의 개발 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" >프로그래밍</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile_tars200.png" alt="타스 (TARS-C)" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">타스 (TARS-C)</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>탐구하며 노력하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea, KR</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a target="_blank" href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> 주인장에게 문의하기</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gv8vlln" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> C/C++ 단톡방</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)">
+    <meta itemprop="description" content="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)">
+    <meta itemprop="datePublished" content="2020-05-09T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-09T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#설치-화면">설치 화면</a></li>
+  <li><a href="#기능-살펴보기">기능 살펴보기</a>
+    <ul>
+      <li><a href="#메모리-사용량-및-속도">메모리 사용량 및 속도</a></li>
+      <li><a href="#즐겨찾기-북마크">즐겨찾기 (북마크)</a></li>
+      <li><a href="#편리한-설장창">편리한 설장창</a></li>
+      <li><a href="#다운로드-목록">다운로드 목록</a></li>
+      <li><a href="#방문-기록-history">방문 기록 (History)</a></li>
+      <li><a href="#닫힌-탭-복원">닫힌 탭 복원</a></li>
+      <li><a href="#브라우저-데이터-가져오기">브라우저 데이터 가져오기</a></li>
+      <li><a href="#앱-new">앱 (New!)</a></li>
+      <li><a href="#확장-프로그램">확장 프로그램</a></li>
+      <li><a href="#브라우저-작업관리자">브라우저 작업관리자</a></li>
+      <li><a href="#번역">번역</a></li>
+      <li><a href="#다크모드">다크모드</a></li>
+    </ul>
+  </li>
+  <li><a href="#벤치마크">벤치마크</a></li>
+  <li><a href="#결론">결론</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <p>이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고<br />
+정보가 없는 상태에서 직접 다운받으면서 써본 경험을 바탕으로으로 작성되었습니다.<br />
+<strong><del>신문물을 접한 느낌이랄까..</del></strong>
+<br /></p>
+
+<p><img src="/assets/images/Fun/surprise.jpg" alt="img1" /><br />
+<strong>으아악!!</strong><br />
+산소호흡기를 땔 조짐이 보였던 MS Edge가 크로미움 기반으로 새롭게 변했다는 소식을 접했다.<br />
+출시 날짜를 찾아보니까… 2020년 02월 15일이다. <strong><del>(포스팅이 좀 늦었네..)</del></strong><br />
+<strong><a href="https://www.microsoft.com/ko-kr/edge?form=MA13DE&amp;OCID=MA13DE" target="_blank">LINK: (MicroSoft) Edge 다운로드 받기</a></strong></p>
+
+<p>구닥다리 Edge가 Chromium을 올라타서 새롭게 탄생했다.<br />
+추측이지만 Chromium 기반이라 업데이트도 자동으로 할 것 같다.<br />
+<strong><del>반드시 업데이트 기능을 비활성화 시키도록하자</del></strong></p>
+
+<p>주인장은 과거에 Chrome광이었다.<br />
+어느날 Chrome Update를 하다보니 Chrome이 너무 불편해졌다.<br />
+그리고 강제로 Update하는거 너무 싫어한다.<br />
+그 이후로 주인장은 Chrome을 쓰지 않는다.<br />
+Chrome <strong>최신버전 기능을 1도 모르니 이점 참고</strong>바란다.<br />
+Chromium 기반으로 만들어진 Vivaldi를 사용하거나 Safari를 사용한다.<br />
+**<del>Chrome은 오래된 크롬 버전만 사용할 뿐이다.**</del></p>
+
+<p>다운받아서 얼마나 좋은지 직접 느껴보자!</p>
+<ul>
+  <li>Edge가 지원하는 플랫폼은 다음과 같다.
+    <ul>
+      <li>Windows 10</li>
+      <li>Windows 8.1</li>
+      <li>Windows 8</li>
+      <li>Windows 7</li>
+      <li>macOS</li>
+      <li>Android</li>
+      <li>iOS</li>
+    </ul>
+  </li>
+</ul>
+
+<p>아쉽게도 리눅스는 지원하지 않는다.<br /></p>
+
+<h2 id="설치-화면">설치 화면</h2>
+<p>깔끔한 설치화면이다.<br />
+<img src="/assets/images/Edge/install-1.png" alt="img1" /><br />
+<br />
+<br />
+<br />
+<br /></p>
+
+<p>아이콘을 보니까 마이크로소프트 느낌이랑 조금 멀게 느껴졌다.<br />
+<strong><del>(vscode, Visual Studio 느낌이 아닌데?)</del></strong><br />
+새로운 Edge 브라우저 아이콘을 보니까 태극 느낌도 나고 크롬 느낌도 나는 것 같고…<br />
+<img src="/assets/images/Edge/install-2.png" alt="img1" /><br />
+<br />
+<br />
+<br />
+<br /></p>
+
+<p>인스톨러가 인터넷으로 설치파일을 다운을 받은 후<br />
+백그라운드에서 설치를 진행한다.<br />
+<img src="/assets/images/Edge/install-3.png" alt="img1" />
+<br />
+<br />
+<br />
+<br /></p>
+
+<p>설치가 완료 됬다.<br />
+설치 완료 후 작은 창 하나가 뜨는데 사용자에게 초기화 작업해주는 거랑 비슷하다.<br />
+넘기다 보면 마이크로소프트 계정 로그인으로 데이터를 동기화하여 사용자가 편리하게 사용할 수 있다.<br />
+<strong><del>(지원 가능한 어마무시한 플랫폼들..)</del></strong><br />
+<img src="/assets/images/Edge/start1.png" alt="img1" /><br />
+<br />
+<img src="/assets/images/Edge/start2.png" alt="img1" /><br /></p>
+
+<h2 id="기능-살펴보기">기능 살펴보기</h2>
+<p>일단 메뉴 리스트를 눌러서 보면 크롬이랑 너무 흡사하다. <strong><del>(Chromium 기반이니까 비슷할 수 밖에)</del></strong><br />
+기본 확대 비율은 125% 로 설정되어 있지만, 110% 사용을 추천한다.<br />
+<img src="/assets/images/Edge/menu_list.png" alt="img1" />
+<br />
+<br />
+<br /></p>
+
+<h3 id="메모리-사용량-및-속도">메모리 사용량 및 속도</h3>
+<p>소비되는 메모리를 보기 위해 구버전 크롬과 비교해보았다.<br />
+탭을 두개 사용하고 똑같은 사이트에 접속한 상황이다.<br /></p>
+
+<p><strong>Edge:</strong> 102.6 MB<br />
+<img src="/assets/images/Edge/7-edge.png" alt="img1" /></p>
+
+<p><strong>Chrome(구버전):</strong> 125.2 MB<br />
+<img src="/assets/images/Edge/7-chrome.png" alt="img1" /><br />
+소비되는 메모리는 엣지가 더 가볍다.<br />
+<strong><del>(크롬 구버전보다 가벼울 수도 있구나.. 마소 역시 소프트 강자 무섭다 ㄷㄷ)</del></strong></p>
+
+<p>크롬 구버전은 약간 버벅임이 있다. <strong><del>(아마 구버전이라 속도면에서 떨어진게 아닐까)</del></strong><br />
+확실히 엣지를 사용하여 구글을 검색하거나 웹사이트를 서핑할 때 불편함을 못느꼈다.</p>
+
+<p>하드웨어 가속을 끄고 몇가지 검색도 해보면서 테스트를 다시 해보았다.<br />
+Edge 옵션에서 하드웨어 가속을 꺼도 빠른 느낌이 강했다. <strong><del>(가상머신에서 돌리는건데 이렇게 빨라?)</del></strong><br />
+구버전 Chrome도 <strong><del>빠르지만</del></strong> 나라면 새로운 Edge가 우세한 느낌이 강했다.<br />
+메모리 사용량 부분은 탭 수가 적고 작업 시간이 짧은 상태로 확인했으므로 평가로는 부적합하니 참고만 하자.
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="즐겨찾기-북마크">즐겨찾기 (북마크)</h3>
+<p>크롬이랑 비슷한 즐겨찾기다.<br />
+그냥 무난해보인다.<br />
+<img src="/assets/images/Edge/bookmark.png" alt="img1" />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="편리한-설장창">편리한 설장창</h3>
+<p>설정창을 보면 너무나 편리하게 잘 써놔있다.<br />
+자세한건 직접 드를 받아서 살펴보는걸 추천한다.<br />
+크롬 사파리 비발디를 써봤지만 그중에 가장 눈에 확 들어온다.<br />
+125% 확대된 상태에서 왼쪽 설정 리스트가 안보이니 참고하자.<br />
+<img src="/assets/images/Edge/option_main.png" alt="img1" /><br /></p>
+
+<p><img src="/assets/images/Edge/option_browser.png" alt="img1" /><br /></p>
+
+<p>가장 마음에 들었던건 웹사이트 추적기능을 잘설명해놨다.<br />
+검색 데이터를 지우는 것도 편리하다.
+<img src="/assets/images/Edge/website_trace.png" alt="img1" /><br />
+진짜 사용자를 고려해서 텍스트부터 위치까지 전부 다 세심하게 맞춰진 것 같아서 좋았다.<br />
+<strong><del>설정창에 비활성화 기능이 유독 많아보이는건 기분탓이겠지 ?</del></strong><br />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="다운로드-목록">다운로드 목록</h3>
+<p>다운로드된 목록을 봐도 사용자가 쉽게 알 수 있게<br />
+시간도 나오고 파일도 종류별로도 필터링 할 수 있다는 점이다.<br />
+<img src="/assets/images/Edge/download.png" alt="img1" />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="방문-기록-history">방문 기록 (History)</h3>
+<p>방문 기록을 “ 검색 기록 “ 이란 이름으로 제공한다.
+필터링이 잘될 것 같이 UI가 세심하게 잘짜여졌다.
+시간까지 나올 줄은 몰랐다.
+<img src="/assets/images/Edge/history.png" alt="img1" /></p>
+
+<p>반면에 주인장이 사용하는 최신 Safari는…<br />
+<img src="/assets/images/Edge/history_safari.png" alt="img1" /><br />
+<strong><del>(너무 형편없다)</del></strong>
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="닫힌-탭-복원">닫힌 탭 복원</h3>
+<p>닫힌 탭 복원 기능도 상당히 좋다.<br />
+Ctrl+Shift+T 단축키를 이용해서 방금 닫은 탭을 복원할 수 있고<br />
+메뉴 리스트 -&gt; 검색 기록 에 가면<br />
+<strong><del>(단축키 상태가.. 누르기는 불편하다)</del></strong><br />
+<img src="/assets/images/Edge/restore_tab.png" alt="img1" />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="브라우저-데이터-가져오기">브라우저 데이터 가져오기</h3>
+<p>브라우저 데이터 가져오는 기능이 있다.<br />
+크롬과 IE 브라우저에 있는 데이터를 가져올 수 있다.<br />
+<img src="/assets/images/Edge/load_data.png" alt="img1" />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="앱-new">앱 (New!)</h3>
+<p>앱 기능을 사용해보았다.<br />
+사이트 별로 앱으로 등록할 수 있다.<br />
+이미 등록된 사이트의 앱은 다시 등록할 수 없다.<br />
+<strong><del>윈도우즈 스토어에 있는 앱도 사용이 가능할텐데.. 스토어가 폐허라서 그냥 안쓴다.</del></strong>
+<img src="/assets/images/Edge/App.png" alt="img1" />
+<br />
+<br /></p>
+
+<p>사이트로 등록된 앱을 사용하면 주소창이 없는 작은 브라우저 창이 뜬다.<br />
+주소 창이 없어서 주소 입력은 불가능하다.<br />
+상단바에 번역기도 같이 쓸 수 있어서 나름 쓸모 있어보인다.<br />
+<img src="/assets/images/Edge/app_window.png" alt="img1" /><br />
+<br />
+<br /></p>
+
+<p>내가 생각하기론 레퍼런스 문서를 자주 참고해야할 때 유용한 기능이라 생각한다.<br />
+<strong><del>(불필요한 리소스 사용은 최소화 하고 필요한 기능만 제공하는 그런 느낌이랄까..)</del></strong><br />
+<img src="/assets/images/Edge/app_split.png" alt="img1" />
+<br />
+<br /></p>
+
+<p>등록된 앱은 윈도우즈10에서 아래 그림처럼 시작메뉴(?!)에 등록해서 사용할 수도 있다.<br />
+<img src="/assets/images/Edge/app_start_menu.png" alt="img1" />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="확장-프로그램">확장 프로그램</h3>
+<p>그냥 크롬에서 사용할 수 있는거 새로운 Edge에서도 사용할 수 있다.
+<img src="/assets/images/Edge/exten.png" alt="img1" />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="브라우저-작업관리자">브라우저 작업관리자</h3>
+<p>단축키는 Shift+ESC 이다.
+탭이 많은 경우 일일히 탭별로 찾아서 끄는 거 진짜 불편했다.<br />
+크롬과 똑같이 과관리자를 지원했다.<br />
+<img src="/assets/images/Edge/taskmgr.png" alt="img1" />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="번역">번역</h3>
+<p>크롬과 비슷하게 구글이 아닌 빙번역 기능도 제공한다.<br />
+구글과 빙 두 번역간 약간의 차이가 있어 보이긴하다.<br />
+어느 것이 좋은지는 사용자의 선택.<br />
+<img src="/assets/images/Edge/translate.png" alt="img1" />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h3 id="다크모드">다크모드</h3>
+<p>다크모드를 지원하는데 애플에서 말하는 갬성과 똑같이 타이틀바만 지원하고 있다.<br />
+(엣지에서 제공하는 다크모드는 해당 웹사이트에서 설정해야 적용됨)<br />
+제공하지 않아도 다크모드 사용을 원한다면 Chrome <a href="https://chrome.google.com/webstore/detail/dark-reader-dark/kbbbldgkhcpkmmjbjelmkjkchibeklng" target="_blank">DarkReader 확장 프로그램</a> 사용을 추천한다.<br />
+다크모드 적용 사진은 이미 이 글에 있으므로 생략한다.<br />
+<br />
+<br />
+<br />
+<br /></p>
+
+<h2 id="벤치마크">벤치마크</h2>
+<p>JetStream에서 여러 브라우저를 평가한 결과이다.<br />
+우승자는 Edge, 다른 평가에서는 Chrome이 승리하기도 했다.<br />
+<strong><del>파이어폭스한테는 지지 않았다.</del></strong><br />
+Edge가 크롬을 이기는 것으로 보아 제대로 탈바꿈한건 분명하다.<br />
+<img src="/assets/images/Edge/stream-chrome.png" alt="img1" /><br /></p>
+
+<p><img src="/assets/images/Edge/stream-edge.png" alt="img1" /><br />
+<a href="https://venturebeat.com/2020/01/15/browser-benchmark-battle-january-2020-chrome-firefox-edge-brave/5/" target="_blank">브라우저 평가 사이트 보러가기 (이미지 출처)</a>
+<br />
+<br />
+<br />
+<br /></p>
+
+<h2 id="결론">결론</h2>
+<p>이 밖에도 많은 기능들이 있을 것 같지만 여기까지만 보도록하겠다.<br />
+전반적으로 Chromium 영향을 많이 받아서 크롬과 흡사하다.<br /></p>
+
+<p>새롭게 탈바꿈 하기전에 Edge 브라우저는 솔직히 <strong><del>쓰레기</del></strong>였다.<br />
+마소에 근무하고 계시는 천재 개발자팀이 힘을 합쳐 새생명을 불어넣어주셨다.<br />
+업데이트를 자주해서 크롬처럼 무거워지는 루트만 타지 않는다면 계속 쓰고싶다.</p>
+
+<p>확실히 크롬 기반의 엔진을 올라타니까 제대로 탈바꿈했다.<br />
+기능이 많아서 무거울 거라고 생각했지만 그렇게 무겁다는 느낌을 받지 못했다.<br />
+가상머신에서 돌리는데에도 빠르고 부드럽게 돌아간다.</p>
+
+<p>Chromium, Microsoft 이 두 단어가 값어치를 알 수 있다.<br />
+친구한테 엣지 새롭게 나왔으니 써보라고 추천은 하고 싶다. <strong><del>(추천 못할 정도는 아니다)</del></strong><br />
+최신 버전 크롬 쓰시는 분들은 큰 메리트를 느끼지 못한다고 한다.</p>
+
+<p><strong>평가: ★★★★☆</strong><br />
+5점 만점에 4점, 크롬이 별로라면 한번쯤 써볼만하다.</p>
+
+<p><strong>글 다썻다아 ~</strong></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#chromium" class="page__taxonomy-item" rel="tag">Chromium</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#edge" class="page__taxonomy-item" rel="tag">Edge</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%97%A3%EC%A7%80" class="page__taxonomy-item" rel="tag">엣지</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%81%AC%EB%A1%9C%EB%AF%B8%EC%9B%80" class="page__taxonomy-item" rel="tag">크로미움</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8" class="page__taxonomy-item" rel="tag">프로그램</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-09">May 09, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5B%EC%86%8C%EA%B0%9C%5D+Chromium+%EC%9C%BC%EB%A1%9C+%EC%9E%AC%ED%83%84%EC%83%9D%ED%95%9C+Edge+%EC%82%B4%ED%8E%B4%EB%B3%B4%EA%B8%B0+%28%EC%9D%B4%EB%AF%B8%EC%A7%80%29%20https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F09%2FChromium-edge" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F09%2FChromium-edge" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F09%2FChromium-edge" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2020/05/09/explict-serialize" class="pagination--pager" title="[MFC][실습] Document CArchive 기본타입 클래스 직렬화
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">Well begun is half done, aristotle</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/explict-serialize" rel="permalink">[MFC][실습] Document CArchive 기본타입 클래스 직렬화
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-update" rel="permalink">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-darkmode-darkeader-app" rel="permalink">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/06/Serialiization" rel="permalink">[C++] Serialization : 설명
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 06 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[C++] Serialiization : 설명
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Support</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">Copyright 2020 타스 (TARS-C). Powered by <a href="https://github.com" rel="nofollow">Github.</a></div>
+      </footer>
+    </div>
+
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/assets/js/notify.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/4eee35f757.js"></script> -->
+  <script src="https://kit.fontawesome.com/194998b224.js" crossorigin="anonymous"></script>
+  <script data-ad-client="ca-pub-2361575299096846" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://tars-c.github.io/2020/05/09/Chromium-edge";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020/05/09/Chromium 기반 Edge를 살펴보자"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tars-c-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+
+
+
+
+
+  </body>
+</html>
