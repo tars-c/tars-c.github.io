@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[MFC][실습] Document CArchive 비트맵 파일 직렬화 - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC][실습] Document CArchive 비트맵 파일 직렬화">
+
+
+  <meta name="author" content="타스 (TARS-C)">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="타스의 개발 블로그">
+<meta property="og:title" content="[MFC][실습] Document CArchive 비트맵 파일 직렬화">
+<meta property="og:url" content="https://tars-c.github.io/2020-05-11/implicit-serialize">
+
+
+  <meta property="og:description" content="[MFC][실습] Document CArchive 비트맵 파일 직렬화">
+
+
+
+  <meta property="og:image" content="https://tars-c.github.io/assets/images/profile_tars200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-11T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-05-11T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://tars-c.github.io/2020-05-11/implicit-serialize">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "타스 (TARS-C)",
+      "url": "https://tars-c.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="타스의 개발 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/xeicon.min.css">
+
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+<meta name="google-site-verification" content="g-v4nitOjaIwCDktuCHo4KVSNkfjJuRQ0Nm_QDRcvPM" />
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          타스의 개발 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" >프로그래밍</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile_tars200.png" alt="타스 (TARS-C)" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">타스 (TARS-C)</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>탐구하며 노력하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea, KR</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a target="_blank" href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> 주인장에게 문의하기</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gv8vlln" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> C/C++ 단톡방</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[MFC][실습] Document CArchive 비트맵 파일 직렬화">
+    <meta itemprop="description" content="[MFC][실습] Document CArchive 비트맵 파일 직렬화">
+    <meta itemprop="datePublished" content="2020-05-11T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-11T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC][실습] Document CArchive 비트맵 파일 직렬화
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#서론">서론</a></li>
+  <li><a href="#비트맵의-직렬화">비트맵의 직렬화</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <h2 id="서론">서론</h2>
+<p>이 글은 stackoverflow, MSDN 을 참고하여 작성되었습니다.<br /></p>
+
+<p>이번 글에서는 비트맵 파일 직렬화를 실습한다.<br />
+국내 개발 블로그를 보면 대부분 기본자료형 위주로 포스팅되어 있다.<br />
+너무 기초만 다루는 것 같았다. <strong><del>(내 코드도 기초수준이다)</del></strong><br />
+네트워크 프로그래밍에서 사용되는 직렬화는 더 공부를 하고 다음에 실습하도록 한다.</p>
+
+<p>명시적(implicit)으로 직렬화 하는 방법에 대해 알아본다.<br />
+암시적이나 명시적이나 모두 비슷하니<br />
+자세한 설명은 이전 글을 참고하도록 하자.<br />
+<a href="/2020/05/09/explict-serialize.html/" target="_blank">이전 글: Document CArchive 기본타입 및 객체 직렬화</a></p>
+
+<p>명시적 직렬화도 암시적이랑 비슷하게 CFile 객체를 CArchive 객체가 참조하여 사용한다.</p>
+<h2 id="비트맵의-직렬화">비트맵의 직렬화</h2>
+<p>아래 코드를 설명해보면<br />
+힙 메모리를 할당하여 이미지 객체와 스트림을 만들고(연결) 메모리에 저장한다.<br />
+CreateStreamOnHGlobal() API 함수를 이용하여 메모리에 스트림을 만든다.<br />
+CImage 클래스에서 제공하는 Save() 함수를 이용해 스트림에 데이터를 저장한다.</p>
+
+<p>데이터가 저장된 힙 메모리에 함수를 이용해 포인터와 메모리 크기를 구하고<br />
+구한 포인터 위치에서 파일의 크기만큼 CArchive 객체를 이용해 직렬화하여 파일을 저장하는 것이다.<br /></p>
+
+<p>MSDN을 보면 전역(Global) 메모리는 과거에 사용되어졌다고 한다.<br />
+x86 이후의 시스템에서는 16비트 프로그램을 포팅하거나<br />
+16비트 Windows프로그램의 소스코드 호환성 때문에 지원된다고 한다.
+<strong><del>(도대체 언제적 것인지..)</del></strong></p>
+
+<p>GlobalAlloc() 함수는 결국에 디폴트 힙을 할당하는 함수의 래퍼함수로 구현되어 있다고 한다.<br />
+이로 인해 오버헤드가 발생한다는 경고문도 적혀있다.<br />
+x86 환경에선 과거 세그먼트 메모리 구조에서 가상 메모리를 사용 구조로 바뀌었다.</p>
+
+<p>GMEM_MOVEABLE은 이동이 가능한 메모리를 할당하지만<br />
+메모리는 프로세스 영역 내(힙 영역 내)에서만 움직일 수 있다고 한다.<br />
+반대로 고정된 메모리는 GMEM_FIXED를 이용한다.<br />
+메모리 이동은 힙 메모리 단편화와 연관이 있다.<br />
+특별한 상황이 아니라면 기본적으로 이동이 가능한 메모리를 사용하도록 하자.<br />
+할당 메모리 크기가 0인 이유는 삭제가 가능한 메모리를 할당받기 위해서이다.</p>
+
+<p>누가 메모리를 왜 삭제하는지는 운영체제에 대한 이해가 필요할 것 같다..<br />
+구글에 아무리 검색해봐도 삭제 가능한(discard) 메모리를 사용하는 이유는 모르겠다.<br />
+일단 0으로 할당함으로 써 스트림에서 자유로운 크기를 만들 수 있다는 것은 확실하다.</p>
+
+<p>오버헤드가 적은 HeapCreate, HeapAlloc 할당한 함수를 이용해<br />
+스트림을 만들고 저장하면 좋은데 아직 실력이 부족하다..</p>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="code"><pre><span class="c1">// m_image는 CImage타입의 이미지 데이터를 가지고 있는 멤버변수이다.</span>
+<span class="n">CFile</span> <span class="n">file</span><span class="p">;</span>
+<span class="n">CFileException</span> <span class="n">fileException</span><span class="p">;</span>
+<span class="n">file</span><span class="p">.</span><span class="n">Open</span><span class="p">(</span><span class="n">_T</span><span class="p">(</span><span class="s">"C:</span><span class="se">\\</span><span class="s">Temp</span><span class="se">\\</span><span class="s">MyBMP.BMP"</span><span class="p">),</span> <span class="n">CFile</span><span class="o">::</span><span class="n">modeCreate</span> <span class="o">|</span> <span class="n">CFile</span><span class="o">::</span><span class="n">modeWrite</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fileException</span><span class="p">);</span>
+<span class="n">CArchive</span> <span class="nf">archive</span><span class="p">(</span><span class="o">&amp;</span><span class="n">file</span><span class="p">,</span> <span class="n">CArchive</span><span class="o">::</span><span class="n">store</span><span class="p">);</span>
+
+<span class="n">IStream</span> <span class="o">*</span><span class="n">pStream</span><span class="p">;</span>
+<span class="n">HGLOBAL</span> <span class="n">hGloMem</span> <span class="o">=</span> <span class="n">GlobalAlloc</span><span class="p">(</span><span class="n">GMEM_MOVEABLE</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">CreateStreamOnHGlobal</span><span class="p">(</span><span class="n">hGloMem</span><span class="p">,</span> <span class="n">TRUE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">pStream</span><span class="p">);</span>
+<span class="n">m_image</span><span class="p">.</span><span class="n">Save</span><span class="p">(</span><span class="n">pStream</span><span class="p">,</span> <span class="n">Gdiplus</span><span class="o">::</span><span class="n">ImageFormatBMP</span><span class="p">);</span>
+
+<span class="n">LPVOID</span> <span class="n">pBmpData</span> <span class="o">=</span> <span class="n">GlobalLock</span><span class="p">(</span><span class="n">hGloMem</span><span class="p">);</span>
+<span class="kt">size_t</span> <span class="n">size</span> <span class="o">=</span> <span class="n">GlobalSize</span><span class="p">(</span><span class="n">hGloMem</span><span class="p">);</span>
+<span class="n">archive</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">pBmpData</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+
+<span class="n">archive</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+<span class="n">GlobalUnlock</span><span class="p">(</span><span class="n">hGloMem</span><span class="p">);</span>
+<span class="n">GlobalFree</span><span class="p">(</span><span class="n">hGloMem</span><span class="p">);</span>
+<span class="n">file</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+<span class="n">pStream</span><span class="o">-&gt;</span><span class="n">Release</span><span class="p">();</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>GlobalLock() 함수로 메모리의 단편화에서의 이동을 제한하고<br />
+실제 메모리의 첫번쨰 위치를 얻어오는 것이다.</p>
+
+<p>반드시 리소스를 사용했으면 해제 및 반납하는 작업을 빼먹지 말자.<br />
+<strong><del>이해는 충분히 한 것 같으니 마친다.</del></strong><br /></p>
+
+<p><strong>글 다썻다아 ~</strong></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#bitmap" class="page__taxonomy-item" rel="tag">bitmap</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#carchive" class="page__taxonomy-item" rel="tag">CArchive</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#cfile" class="page__taxonomy-item" rel="tag">CFile</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#serialization" class="page__taxonomy-item" rel="tag">serialization</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#serialize" class="page__taxonomy-item" rel="tag">serialize</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%B9%84%ED%8A%B8%EB%A7%B5" class="page__taxonomy-item" rel="tag">비트맵</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%A7%81%EB%A0%AC%ED%99%94" class="page__taxonomy-item" rel="tag">직렬화</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%8C%8C%EC%9D%BC" class="page__taxonomy-item" rel="tag">파일</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" class="page__taxonomy-item" rel="tag">프로그래밍</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-11">May 11, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D%5B%EC%8B%A4%EC%8A%B5%5D+Document+CArchive+%EB%B9%84%ED%8A%B8%EB%A7%B5+%ED%8C%8C%EC%9D%BC+%EC%A7%81%EB%A0%AC%ED%99%94%20https%3A%2F%2Ftars-c.github.io%2F2020-05-11%2Fimplicit-serialize" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020-05-11%2Fimplicit-serialize" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020-05-11%2Fimplicit-serialize" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2020/05/09/chromium-based-edge" class="pagination--pager" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+">Previous</a>
+    
+    
+      <a href="/2020-05-11/alogrithm-regret" class="pagination--pager" title="[잡담] 알고리즘 그리고 후회
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">Well begun is half done, aristotle</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-11/alogrithm-regret" rel="permalink">[잡담] 알고리즘 그리고 후회
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 11 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[잡담] 알고리즘 그리고 후회
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/chromium-based-edge" rel="permalink">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/explict-serialize" rel="permalink">[MFC][실습] Document CArchive 기본타입 및 객체 직렬화
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] Document CAcrchive 기본타입 및 객체 직렬화
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-update" rel="permalink">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Support</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">Copyright 2020 타스 (TARS-C). Powered by <a href="https://github.com" rel="nofollow">Github.</a></div>
+      </footer>
+    </div>
+
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/assets/js/notify.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/4eee35f757.js"></script> -->
+  <script src="https://kit.fontawesome.com/194998b224.js" crossorigin="anonymous"></script>
+  <script data-ad-client="ca-pub-2361575299096846" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://tars-c.github.io/2020-05-11/implicit-serialize";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020-05-11/Document CArchive 비트맵 직렬화"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tars-c-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+
+
+
+
+
+  </body>
+</html>

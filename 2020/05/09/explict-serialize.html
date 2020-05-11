@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[MFC][실습] Document CArchive 기본타입 클래스 직렬화 - 타스의 개발 블로그</title>
-<meta name="description" content="[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화">
+<!-- begin _includes/seo.html --><title>[MFC][실습] Document CArchive 기본타입 및 객체 직렬화 - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC][실습] Document CAcrchive 기본타입 및 객체 직렬화">
 
 
   <meta name="author" content="타스 (TARS-C)">
@@ -13,11 +13,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
-<meta property="og:title" content="[MFC][실습] Document CArchive 기본타입 클래스 직렬화">
+<meta property="og:title" content="[MFC][실습] Document CArchive 기본타입 및 객체 직렬화">
 <meta property="og:url" content="https://tars-c.github.io/2020/05/09/explict-serialize">
 
 
-  <meta property="og:description" content="[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화">
+  <meta property="og:description" content="[MFC][실습] Document CAcrchive 기본타입 및 객체 직렬화">
 
 
 
@@ -277,15 +277,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[MFC][실습] Document CArchive 기본타입 클래스 직렬화">
-    <meta itemprop="description" content="[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화">
+    <meta itemprop="headline" content="[MFC][실습] Document CArchive 기본타입 및 객체 직렬화">
+    <meta itemprop="description" content="[MFC][실습] Document CAcrchive 기본타입 및 객체 직렬화">
     <meta itemprop="datePublished" content="2020-05-09T00:00:00+09:00">
     <meta itemprop="dateModified" content="2020-05-09T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[MFC][실습] Document CArchive 기본타입 클래스 직렬화
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC][실습] Document CArchive 기본타입 및 객체 직렬화
 </h1>
           
         </header>
@@ -322,7 +322,7 @@
   <li>MFC에서 직렬화를 하는 방법이 대표적으로 2가지가 존재한다.
     <ul>
       <li>툴바에서 Open, Save 버튼을 이용한 방법 (CArchive 암시적 생성)</li>
-      <li>CFile, CArchive 객체를 이용한 방법 (CArchive 명시적 생성)</li>
+      <li><a href="/2020-05-11/implicit-serialize" target="_blank">CFile, CArchive 객체를 이용한 방법 (CArchive 명시적 생성)</a></li>
     </ul>
   </li>
 </ul>
@@ -585,10 +585,6 @@ CFile객체로 접근하여 파일의 패스 정보를 이용해 파일을 필�
     
       
       
-      <a href="/tags/#bitmap" class="page__taxonomy-item" rel="tag">bitmap</a><span class="sep">, </span>
-    
-      
-      
       <a href="/tags/#carchive" class="page__taxonomy-item" rel="tag">CArchive</a><span class="sep">, </span>
     
       
@@ -650,7 +646,7 @@ CFile객체로 접근하여 파일의 패스 정보를 이용해 파일을 필�
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D%5B%EC%8B%A4%EC%8A%B5%5D+Document+CArchive+%EA%B8%B0%EB%B3%B8%ED%83%80%EC%9E%85+%ED%81%B4%EB%9E%98%EC%8A%A4+%EC%A7%81%EB%A0%AC%ED%99%94%20https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F09%2Fexplict-serialize" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D%5B%EC%8B%A4%EC%8A%B5%5D+Document+CArchive+%EA%B8%B0%EB%B3%B8%ED%83%80%EC%9E%85+%EB%B0%8F+%EA%B0%9D%EC%B2%B4+%EC%A7%81%EB%A0%AC%ED%99%94%20https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F09%2Fexplict-serialize" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F09%2Fexplict-serialize" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -725,6 +721,32 @@ CFile객체로 접근하여 파일의 패스 정보를 이용해 파일을 필�
     
     <h2 class="archive__item-title" itemprop="headline">
       
+        <a href="/2020-05-11/implicit-serialize" rel="permalink">[MFC][실습] Document CArchive 비트맵 파일 직렬화
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 11 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] Document CArchive 비트맵 파일 직렬화
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
         <a href="/2020/05/09/chromium-based-edge" rel="permalink">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
 </a>
       
@@ -763,32 +785,6 @@ CFile객체로 접근하여 파일의 패스 정보를 이용해 파일을 필�
   
   
   <p class="archive__item-excerpt" itemprop="description">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/2020/05/07/mojave-darkmode-darkeader-app" rel="permalink">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
-</a>
-      
-    </h2>
-    <!--     
-    
-  -->
-  
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
-  
-  
-  <p class="archive__item-excerpt" itemprop="description">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
 </p>
   </article>
 </div>
