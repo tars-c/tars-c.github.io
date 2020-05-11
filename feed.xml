@@ -1,280 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-09T17:11:23+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
-정보가 없는 상태에서 직접 다운받으면서 써본 경험을 바탕으로으로 작성되었습니다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;신문물을 접한 느낌이랄까..&lt;/del&gt;&lt;/strong&gt;
-&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-11T12:50:57+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[잡담] 알고리즘 그리고 후회</title><link href="https://tars-c.github.io/2020-05-11/alogrithm-regret" rel="alternate" type="text/html" title="[잡담] 알고리즘 그리고 후회" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/PS,%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98,%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%ED%9B%84%ED%9A%8C</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/alogrithm-regret">&lt;p&gt;2020년 알고리즘의 붐이 불었다.&lt;br /&gt;
+사실 불고도 계속 불고 있다라는 표현이 맞는 것 같다.&lt;br /&gt;
+아마 2018?년도부터 불지 않았나…&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/Fun/surprise.jpg&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-&lt;strong&gt;으아악!!&lt;/strong&gt;&lt;br /&gt;
-산소호흡기를 땔 조짐이 보였던 MS Edge가 크로미움 기반으로 새롭게 변했다는 소식을 접했다.&lt;br /&gt;
-출시 날짜를 찾아보니까… 2020년 01월 15일이다. &lt;strong&gt;&lt;del&gt;(포스팅이 좀 늦었네..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-&lt;strong&gt;&lt;a href=&quot;https://www.microsoft.com/ko-kr/edge?form=MA13DE&amp;amp;OCID=MA13DE&quot; target=&quot;_blank&quot;&gt;LINK: (MicroSoft) Edge 다운로드 받기&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;4,5년 전만 해도 PS는 소수가 즐겨하는 놀이에 불과했다라고 생각했다.&lt;br /&gt;
+그때 나도 알고리즘에 입문해서 열심히 공부할껄 그랬다. &lt;strong&gt;&lt;del&gt;(그땐 뭘했더라..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+솔직히 지금와서 정말로 후회한다.
+**&lt;del&gt;누군가 알고리즘을 포기하더라도 자료구조는 포기하지 말아야 한다는 것을 말해주고 싶다.**&lt;/del&gt;&lt;/p&gt;
 
-&lt;p&gt;구닥다리 Edge가 Chromium을 올라타서 새롭게 탄생했다.&lt;br /&gt;
-추측이지만 Chromium 기반이라 업데이트도 자동으로 할 것 같다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;반드시 업데이트 기능을 비활성화 시키도록하자&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;개발을 하면서 알고리즘은 땔래야 떌 수가 없다.&lt;br /&gt;
+알고리즘은 간단히 말해 문제를 해결하는 능력이다.&lt;br /&gt;
+250원에서 3명이서 30원씩 나누고 나머지로 몇명의 사람들이 더 나눌 수 있는가 ?&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;문제의 예시가 조금 허접하다… 이해바란다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+위 문제를 사칙연산 및 루트 복잡한 수학식을 이용해&lt;br /&gt;
+아주 빠르고 최대한의 효율로 풀어내는 것이 솔빙이다(Problem Solving, PS)&lt;br /&gt;
+문제해결, 솔빙(PS), 알고리즘 모두 비슷한 의미다.&lt;br /&gt;
+효율을 매우 중요시하는 건 아니지만&lt;br /&gt;
+문제에서 시간과 메모리(기억공간)을 제한하기에 효율은 따를래야 따를 수 밖에 없다.&lt;/p&gt;
 
-&lt;p&gt;주인장은 과거에 Chrome광이었다.&lt;br /&gt;
-어느날 Chrome Update를 하다보니 Chrome이 너무 불편해졌다.&lt;br /&gt;
-그리고 강제로 Update하는거 너무 싫어한다.&lt;br /&gt;
-그 이후로 주인장은 Chrome을 쓰지 않는다.&lt;br /&gt;
-Chrome &lt;strong&gt;최신버전 기능을 1도 모르니 이점 참고&lt;/strong&gt;바란다.&lt;br /&gt;
-Chromium 기반으로 만들어진 Vivaldi를 사용하거나 Safari를 사용한다.&lt;br /&gt;
-**&lt;del&gt;Chrome은 오래된 크롬 버전만 사용할 뿐이다.**&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;주말에 기초 알고리즘 문제를 풀면서 느낀건 나누기 곱하기를&lt;br /&gt;
+복잡하게 만들면 조금 어렵게 느껴질 수도 있다는 것이다.&lt;br /&gt;
+그림을 확대하거나 축소할 때에도 곱하기 나누기의 연산을 이용한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(조금 어려웠었지만 재밌는 경험이었다)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;다운받아서 얼마나 좋은지 직접 느껴보자!&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Edge가 지원하는 플랫폼은 다음과 같다.
-    &lt;ul&gt;
-      &lt;li&gt;Windows 10&lt;/li&gt;
-      &lt;li&gt;Windows 8.1&lt;/li&gt;
-      &lt;li&gt;Windows 8&lt;/li&gt;
-      &lt;li&gt;Windows 7&lt;/li&gt;
-      &lt;li&gt;macOS&lt;/li&gt;
-      &lt;li&gt;Android&lt;/li&gt;
-      &lt;li&gt;iOS&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;커뮤니티에서 보면 알고리즘 문제 질문은 하루에도 수백번 올라온다.&lt;br /&gt;
+매년이 지날 수록 머리 좋은 신입생들은 정말 치고 올라오고 있다.&lt;br /&gt;
+나는 접근도 못하는 문제를 &lt;strong&gt;&lt;del&gt;어디선가 Copy &amp;amp; Paste한걸까?&lt;/del&gt;&lt;/strong&gt; 풀었다고 하고…&lt;br /&gt;
+정말 문제의 해결을 설명할 수 있을정도로 머리가 좋은건지 의심도 든다.&lt;br /&gt;
+반대로 문제를 빠르게 해결하는 그자의 능력이 대단하고 부럽기도한다.&lt;br /&gt;
+정말 이 세상에 똑똑한 사람들은 많은 것 같다.&lt;/p&gt;
 
-&lt;p&gt;아쉽게도 리눅스는 지원하지 않는다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;실제로 구글에 알고리즘 문제의 제목을 쳐보면 여러 블로그들이 나온다.&lt;br /&gt;
+어떤 블로그에는 해설이 포함되어 있는데 &lt;strong&gt;&lt;del&gt;또 다른 블로그에는 코드만 가득하다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;설치-화면&quot;&gt;설치 화면&lt;/h2&gt;
-&lt;p&gt;깔끔한 설치화면이다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/install-1.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;정말 이 많은 사람들이 이 어려운 문제를 풀었을까 라는 의문을 가지기도 한다.&lt;br /&gt;
+내 머리로는 풀기도 힘든 문제, 고민을 짧게는 3시간~5시간 이상 고민하면서 풀어야할 문제들이&lt;br /&gt;
+금방 금방 풀리는 느낌이 강하다.. 뭐가 진실인지는 아무도 알 수 없다.&lt;/p&gt;
 
-&lt;p&gt;아이콘을 보니까 마이크로소프트 느낌이랑 조금 멀게 느껴졌다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(vscode, Visual Studio 느낌이 아닌데?)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-새로운 Edge 브라우저 아이콘을 보니까 태극 느낌도 나고 크롬 느낌도 나는 것 같고…&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/install-2.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;커뮤니티에서 사람들이 떠드는 내용만 봐도 경쟁력이 느껴질 수 밖에 없다.&lt;br /&gt;
+개발이란 곳이 이런 곳이었나 .. 분명 처음엔 자신감 뿜뿜이었는데 약간 위축이되기도 한다.&lt;br /&gt;
+알고리즘 부분이 남들보다 취약해서 그렇게 느끼는 것 같기도 하다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;데이터를 자유자제로 다룰 수준이면 되지 않는가 ?&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;인스톨러가 인터넷으로 설치파일을 다운을 받은 후&lt;br /&gt;
-백그라운드에서 설치를 진행한다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/install-3.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;처음엔 문제해결 능력을 키우고 그것을 응용하는 것이 중요한줄 알았다.&lt;br /&gt;
+근데 깊게 들어가면 알고리즘 문제를 푸는 것도 경험이었다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;경험이 많은 사람이 문제도 잘 풀더라&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;설치가 완료 됬다.&lt;br /&gt;
-설치 완료 후 작은 창 하나가 뜨는데 사용자에게 초기화 작업해주는 거랑 비슷하다.&lt;br /&gt;
-넘기다 보면 마이크로소프트 계정 로그인으로 데이터를 동기화하여 사용자가 편리하게 사용할 수 있다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(지원 가능한 어마무시한 플랫폼들..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/start1.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/start2.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;처음부터 개발 좀 해본(간단한 프로그램좀 만들어 본) 개발자들이&lt;br /&gt;
+BFS DFS, DP, 세그먼트 트리 이런 복잡한 문제를 쉽게 풀어내는 사람 거의 없다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;기능-살펴보기&quot;&gt;기능 살펴보기&lt;/h2&gt;
-&lt;p&gt;일단 메뉴 리스트를 눌러서 보면 크롬이랑 너무 흡사하다. &lt;strong&gt;&lt;del&gt;(Chromium 기반이니까 비슷할 수 밖에)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-기본 확대 비율은 125% 로 설정되어 있지만, 110% 사용을 추천한다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/menu_list.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;나도 원리를 깨우치는건 좋아한다.&lt;br /&gt;
+이 함수가 어떤식으로 돌아가는지, 하나씩 분해하고 쪼개서 분석하는 걸 무척이나 좋아한다.&lt;/p&gt;
 
-&lt;h3 id=&quot;메모리-사용량-및-속도&quot;&gt;메모리 사용량 및 속도&lt;/h3&gt;
-&lt;p&gt;소비되는 메모리를 보기 위해 구버전 크롬과 비교해보았다.&lt;br /&gt;
-탭을 두개 사용하고 똑같은 사이트에 접속한 상황이다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;근데 난.. 수학적인 능력이 조금은 떨어지지 않나 생각이든다.&lt;br /&gt;
+능력부족은 결국에 알고리즘 문제를 해결하는 능력이 떨어지는 것에 영향을 끼치는 것 같다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Edge:&lt;/strong&gt; 102.6 MB&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/7-edge.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;사실 높은 등급의 개발자라면 수학을 떌래야 떌 수가 없다.&lt;br /&gt;
+코드를 효율적으로 써야하니까…&lt;br /&gt;
+주어진 상황에서 식을 자유롭게 만든다면 문제를 해결하고 푸는데는 분명 도움이 크게된다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Chrome(구버전):&lt;/strong&gt; 125.2 MB&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/7-chrome.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-소비되는 메모리는 엣지가 더 가볍다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(크롬 구버전보다 가벼울 수도 있구나.. 마소 역시 소프트 강자 무섭다 ㄷㄷ)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;대기업은 아니지만 현업에 20년 이상 근무중이신 분께 여쭤보았지만&lt;br /&gt;
+알고리즘 문제를 단 1번도 푼적이 없다고 한다.&lt;br /&gt;
+하지만 실제 현업에서에 나타나는 문제는 알고리즘보다 복잡하다고 한다.&lt;/p&gt;
 
-&lt;p&gt;크롬 구버전은 약간 버벅임이 있다. &lt;strong&gt;&lt;del&gt;(아마 구버전이라 속도면에서 떨어진게 아닐까)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-확실히 엣지를 사용하여 구글을 검색하거나 웹사이트를 서핑할 때 불편함을 못느꼈다.&lt;/p&gt;
+&lt;p&gt;요즘은 대기업에 입사하기 위해서는 코딩테스트(즉, 알고리즘)는 필수다.&lt;br /&gt;
+언제부터 개발자의 기준이 알고리즘 해결이 된지 모르겠다.&lt;/p&gt;
 
-&lt;p&gt;하드웨어 가속을 끄고 몇가지 검색도 해보면서 테스트를 다시 해보았다.&lt;br /&gt;
-Edge 옵션에서 하드웨어 가속을 꺼도 빠른 느낌이 강했다. &lt;strong&gt;&lt;del&gt;(가상머신에서 돌리는건데 이렇게 빨라?)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-구버전 Chrome도 &lt;strong&gt;&lt;del&gt;빠르지만&lt;/del&gt;&lt;/strong&gt; 나라면 새로운 Edge가 우세한 느낌이 강했다.&lt;br /&gt;
-메모리 사용량 부분은 탭 수가 적고 작업 시간이 짧은 상태로 확인했으므로 평가로는 부적합하니 참고만 하자.
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;나는 대기업갈 생각은 1도 없지만.. 그래도 알고리즘의 기초는 알아야하지 않을까?&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(경쟁자가 너무 많고 스펙도 월등한 사람들이 판을 쳐서 눈을 낮춘 것이다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;즐겨찾기-북마크&quot;&gt;즐겨찾기 (북마크)&lt;/h3&gt;
-&lt;p&gt;크롬이랑 비슷한 즐겨찾기다.&lt;br /&gt;
-그냥 무난해보인다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/bookmark.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;요즘은 하드웨어 성능이 좋아져서 알고리즘이 쓸모가 없다라는 의견도 몇몇본다.&lt;br /&gt;
+하지만 현실은 하드웨어가 좋아졌어도 성능을 중요시하는 개발 분야는 분명히 있다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(발빠르게 동작하는 서버, 벙렬프로그래밍)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;편리한-설장창&quot;&gt;편리한 설장창&lt;/h3&gt;
-&lt;p&gt;설정창을 보면 너무나 편리하게 잘 써놔있다.&lt;br /&gt;
-자세한건 직접 다운로드를 받아서 살펴보기 바란다.&lt;br /&gt;
-크롬 사파리 비발디를 써봤지만 그중에 가장 눈에 확 들어온다.&lt;br /&gt;
-125% 확대된 상태에선 설정창 왼쪽 리스트가 안보이니 참고하자.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/option_main.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;어렵고 경험위주의 복잡한 알고리즘까지 많은 시간을 허비하진 않더라도 &lt;strong&gt;&lt;del&gt;(대회나갈거아니잖아)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+간단한 문제는 개발자만의 사고력으로 문제를 간단히 해결하는 능력은 있어야한다고 본다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/Edge/option_browser.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;커뮤니티를 보면 남들이 얼마나 성장하는지 눈에 보인다.&lt;br /&gt;
+남들이 뭘 하든 나는 사과나무 한그루를 더 심을 것이다.&lt;br /&gt;
+개발 분야에선 안좋게 표현한다면 뒤쳐진다고? 표현하기도 하는 것 같다.&lt;br /&gt;
+하지만 나는 내가 공부하고 싶은 것을 공부하면서 한 우물만 깊게파는 사람이 될 것이다.&lt;br /&gt;
+개발 언어는 도구에 불과하다. 도구는 이용할 뿐이라는 걸 명심해야한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;다양한 언어 및 프레임워크를 사용하여 한가지 분야를 파도록 하자.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+그래도 기본적인 사고력 성장을 위해 주말엔 기초 알고리즘은 공부하려고 한다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;가장 마음에 들었던건 웹사이트 추적기능을 잘설명해놨다.&lt;br /&gt;
-검색 데이터를 지우는 것도 편리하다.
-&lt;img src=&quot;/assets/images/Edge/website_trace.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-진짜 사용자를 고려해서 텍스트부터 위치까지 전부 다 세심하게 맞춰진 것 같아서 좋았다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;설정창에 비활성화 기능이 유독 많아보이는건 기분탓이겠지 ?&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;다운로드-목록&quot;&gt;다운로드 목록&lt;/h3&gt;
-&lt;p&gt;다운로드된 목록을 봐도 사용자가 쉽게 알 수 있게&lt;br /&gt;
-시간도 나오고 파일도 종류별로도 필터링 할 수 있다는 점이다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/download.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;방문-기록-history&quot;&gt;방문 기록 (History)&lt;/h3&gt;
-&lt;p&gt;방문 기록을 &lt;code class=&quot;highlighter-rouge&quot;&gt;검색 기록&lt;/code&gt;이란 이름으로 제공한다.
-필터링이 잘될 것 같이 UI가 세심하게 잘짜여졌다.
-시간까지 나올 줄은 몰랐다.
-&lt;img src=&quot;/assets/images/Edge/history.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;반면에 주인장이 사용하는 최신 Safari는…&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/history_safari.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(너무 형편없다)&lt;/del&gt;&lt;/strong&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;닫힌-탭-복원&quot;&gt;닫힌 탭 복원&lt;/h3&gt;
-&lt;p&gt;닫힌 탭 복원 기능도 상당히 좋다.&lt;br /&gt;
-Ctrl+Shift+T 단축키를 이용해서 방금 닫은 탭을 복원할 수 있고&lt;br /&gt;
-메뉴 리스트 -&amp;gt; 검색 기록 에 가면&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(단축키 상태가.. 누르기는 불편하다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/restore_tab.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;브라우저-데이터-가져오기&quot;&gt;브라우저 데이터 가져오기&lt;/h3&gt;
-&lt;p&gt;브라우저 데이터 가져오는 기능이 있다.&lt;br /&gt;
-크롬과 IE 브라우저에 있는 데이터를 가져올 수 있다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/load_data.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;앱-new&quot;&gt;앱 (New!)&lt;/h3&gt;
-&lt;p&gt;앱 기능을 사용해보았다.&lt;br /&gt;
-사이트 별로 앱으로 등록할 수 있다.&lt;br /&gt;
-이미 등록된 사이트의 앱은 다시 등록할 수 없다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;윈도우즈 스토어에 있는 앱도 사용이 가능할텐데.. 스토어가 폐허라서 그냥 안쓴다.&lt;/del&gt;&lt;/strong&gt;
-&lt;img src=&quot;/assets/images/Edge/App.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;사이트로 등록된 앱을 사용하면 주소창이 없는 작은 브라우저 창이 뜬다.&lt;br /&gt;
-주소 창이 없어서 주소 입력은 불가능하다.&lt;br /&gt;
-상단바에 번역기도 같이 쓸 수 있어서 나름 쓸모 있어보인다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/app_window.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;내가 생각하기론 레퍼런스 문서를 자주 참고해야할 때 유용한 기능이라 생각한다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(불필요한 리소스 사용은 최소화 하고 필요한 기능만 제공하는 그런 느낌이랄까..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/app_split.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;등록된 앱은 윈도우즈10에서 아래 그림처럼 시작메뉴(?!)에 등록해서 사용할 수도 있다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/app_start_menu.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;확장-프로그램&quot;&gt;확장 프로그램&lt;/h3&gt;
-&lt;p&gt;그냥 크롬에서 사용할 수 있는거 새로운 Edge에서도 사용할 수 있다.
-&lt;img src=&quot;/assets/images/Edge/exten.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;브라우저-작업관리자&quot;&gt;브라우저 작업관리자&lt;/h3&gt;
-&lt;p&gt;단축키는 Shift+ESC 이다.
-탭이 많은 경우 일일히 탭별로 찾아서 끄는 거 진짜 불편했다.&lt;br /&gt;
-크롬과 똑같이 브라우저 내 작업관리자를 지원했다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/taskmgr.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;번역&quot;&gt;번역&lt;/h3&gt;
-&lt;p&gt;크롬과 비슷하게 구글이 아닌 빙번역 기능도 제공한다.&lt;br /&gt;
-구글과 빙 두 번역간 약간의 차이가 있어 보이긴하다.&lt;br /&gt;
-어느 것이 좋은지는 사용자의 선택이다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/translate.png&quot; alt=&quot;img1&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;다크모드&quot;&gt;다크모드&lt;/h3&gt;
-&lt;p&gt;다크모드를 지원하는데 애플에서 말하는 갬성과 똑같이 타이틀바만 지원하고 있다.&lt;br /&gt;
-(엣지에서 제공하는 다크모드는 해당 웹사이트에서 설정해야 적용됨)&lt;br /&gt;
-제공하지 않아도 다크모드 사용을 원한다면 Chrome &lt;a href=&quot;https://chrome.google.com/webstore/detail/dark-reader-dark/kbbbldgkhcpkmmjbjelmkjkchibeklng&quot; target=&quot;_blank&quot;&gt;DarkReader 확장 프로그램&lt;/a&gt; 사용을 추천한다.&lt;br /&gt;
-다크모드 적용 사진은 이미 이 글에 있으므로 생략한다.&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;벤치마크&quot;&gt;벤치마크&lt;/h2&gt;
-&lt;p&gt;JetStream에서 여러 브라우저를 평가한 결과이다.&lt;br /&gt;
-우승자는 Edge, 다른 평가에서는 Chrome이 승리하기도 했다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;파이어폭스한테는 지지 않았다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-Edge가 크롬을 이기는 것으로 보아 제대로 탈바꿈한건 분명하다.&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Edge/stream-chrome.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/Edge/stream-edge.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-&lt;a href=&quot;https://venturebeat.com/2020/01/15/browser-benchmark-battle-january-2020-chrome-firefox-edge-brave/5/&quot; target=&quot;_blank&quot;&gt;브라우저 평가 사이트 보러가기 (이미지 출처)&lt;/a&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
-&lt;p&gt;이 밖에도 많은 기능들이 있을 것 같지만 여기까지만 보도록하겠다.&lt;br /&gt;
-전반적으로 Chromium 영향을 많이 받아서 크롬과 흡사하다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;새롭게 탈바꿈 하기전에 Edge 브라우저는 솔직히 &lt;strong&gt;&lt;del&gt;쓰레기&lt;/del&gt;&lt;/strong&gt;였다.&lt;br /&gt;
-마소에 근무하고 계시는 천재 개발자팀이 힘을 합쳐 새생명을 불어넣어주셨다.&lt;br /&gt;
-업데이트를 자주해서 크롬처럼 무거워지는 루트만 타지 않는다면 계속 쓰고싶다.&lt;/p&gt;
-
-&lt;p&gt;확실히 크롬 기반의 엔진을 올라타니까 제대로 탈바꿈했다.&lt;br /&gt;
-기능이 많아서 무거울 거라고 생각했지만 그렇게 무겁다는 느낌을 받지 못했다.&lt;br /&gt;
-가상머신에서 돌리는데에도 빠르고 부드럽게 돌아간다.&lt;/p&gt;
-
-&lt;p&gt;Chromium, Microsoft 이 두 단어가 값어치를 알 수 있다.&lt;br /&gt;
-친구한테 엣지 새롭게 나왔으니 써보라고 추천은 하고 싶다. &lt;strong&gt;&lt;del&gt;(추천 못할 정도는 아니다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-최신 버전 크롬 쓰시는 분들은 큰 메리트를 느끼지 못한다고 한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;평가: ★★★★☆&lt;/strong&gt;&lt;br /&gt;
-5점 만점에 4점, 크롬이 별로라면 한번쯤 써볼만하다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="크롬" /><category term="Chrome" /><category term="크로미움" /><category term="Chromium" /><category term="엣지" /><category term="Edge" /><summary type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</summary></entry><entry><title type="html">[MFC][실습] Document CArchive 기본타입 클래스 직렬화</title><link href="https://tars-c.github.io/2020/05/09/explict-serialize" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 기본타입 클래스 직렬화" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Document%20CAcrchive%20%EA%B8%B0%EB%B3%B8%ED%83%80%EC%9E%85%20%ED%81%B4%EB%9E%98%EC%8A%A4%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/explict-serialize">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;이 글은 현업 경험이 없는 아마추어 개발자가 쓴 것이니 참고용으로 보기 바란다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="알고리즘" /><category term="Alogrithm" /><category term="솔빙" /><category term="PS" /><summary type="html">[잡담] 알고리즘 그리고 후회</summary></entry><entry><title type="html">[MFC][실습] Document CArchive 기본타입 클래스 직렬화</title><link href="https://tars-c.github.io/2020/05/09/explict-serialize" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 기본타입 클래스 직렬화" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Document%20CAcrchive%20%EA%B8%B0%EB%B3%B8%ED%83%80%EC%9E%85%20%ED%81%B4%EB%9E%98%EC%8A%A4%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/explict-serialize">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;실습은 Doc 클래스 가상함수인 Serialize() 및 MyData 클래스 구현부만 개발한다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;데이터를 직렬화 하기 위해서는 CObject 클래스를 상속받거나&lt;br /&gt;
@@ -527,7 +336,285 @@ CFile객체로 접근하여 파일의 패스 정보를 이용해 파일을 필�
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="툴바" /><category term="Toolbar" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화</summary></entry><entry><title type="html">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)</title><link href="https://tars-c.github.io/2020/05/07/mojave-update" rel="alternate" type="text/html" title="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/07/MacOS-Mojave%20Update</id><content type="html" xml:base="https://tars-c.github.io/2020/05/07/mojave-update">&lt;p&gt;정말 &lt;strong&gt;다크모드&lt;/strong&gt;가 눈에 좋을까 ?&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="툴바" /><category term="Toolbar" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화</summary></entry><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
+정보가 없는 상태에서 직접 다운받으면서 써본 경험을 바탕으로으로 작성되었습니다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;신문물을 접한 느낌이랄까..&lt;/del&gt;&lt;/strong&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Fun/surprise.jpg&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;strong&gt;으아악!!&lt;/strong&gt;&lt;br /&gt;
+산소호흡기를 땔 조짐이 보였던 MS Edge가 크로미움 기반으로 새롭게 변했다는 소식을 접했다.&lt;br /&gt;
+출시 날짜를 찾아보니까… 2020년 01월 15일이다. &lt;strong&gt;&lt;del&gt;(포스팅이 좀 늦었네..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;a href=&quot;https://www.microsoft.com/ko-kr/edge?form=MA13DE&amp;amp;OCID=MA13DE&quot; target=&quot;_blank&quot;&gt;LINK: (MicroSoft) Edge 다운로드 받기&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;구닥다리 Edge가 Chromium을 올라타서 새롭게 탄생했다.&lt;br /&gt;
+추측이지만 Chromium 기반이라 업데이트도 자동으로 할 것 같다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;반드시 업데이트 기능을 비활성화 시키도록하자&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;주인장은 과거에 Chrome광이었다.&lt;br /&gt;
+어느날 Chrome Update를 하다보니 Chrome이 너무 불편해졌다.&lt;br /&gt;
+그리고 강제로 Update하는거 너무 싫어한다.&lt;br /&gt;
+그 이후로 주인장은 Chrome을 쓰지 않는다.&lt;br /&gt;
+Chrome &lt;strong&gt;최신버전 기능을 1도 모르니 이점 참고&lt;/strong&gt;바란다.&lt;br /&gt;
+Chromium 기반으로 만들어진 Vivaldi를 사용하거나 Safari를 사용한다.&lt;br /&gt;
+**&lt;del&gt;Chrome은 오래된 크롬 버전만 사용할 뿐이다.**&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;다운받아서 얼마나 좋은지 직접 느껴보자!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Edge가 지원하는 플랫폼은 다음과 같다.
+    &lt;ul&gt;
+      &lt;li&gt;Windows 10&lt;/li&gt;
+      &lt;li&gt;Windows 8.1&lt;/li&gt;
+      &lt;li&gt;Windows 8&lt;/li&gt;
+      &lt;li&gt;Windows 7&lt;/li&gt;
+      &lt;li&gt;macOS&lt;/li&gt;
+      &lt;li&gt;Android&lt;/li&gt;
+      &lt;li&gt;
+        &lt;h2 id=&quot;ios&quot;&gt;iOS&lt;/h2&gt;
+        &lt;p&gt;&lt;strong&gt;&lt;del&gt;(지원 가능한 어마무시한 플랫폼들..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+아쉽게도 리눅스는 지원하지 않는다.&lt;br /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;설치-화면&quot;&gt;설치 화면&lt;/h2&gt;
+&lt;p&gt;깔끔한 설치화면이다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/install-1.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;아이콘을 보니까 마이크로소프트 느낌이랑 조금 멀게 느껴졌다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(vscode, Visual Studio 느낌이 아닌데?)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+새로운 Edge 브라우저 아이콘을 보니까 태극 느낌도 나고 크롬 느낌도 나는 것 같고…&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/install-2.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;인스톨러가 인터넷으로 설치파일을 다운을 받은 후&lt;br /&gt;
+백그라운드에서 설치를 진행한다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/install-3.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;설치가 완료 됬다.&lt;br /&gt;
+설치 완료 후 작은 창 하나가 뜨는데 사용자에게 초기화 작업해주는 거랑 비슷하다.&lt;br /&gt;
+넘기다 보면 마이크로소프트 계정 로그인으로 데이터를 동기화하여
+사용자가 편리하게 사용할 수 있다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/start1.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/start2.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;기능-살펴보기&quot;&gt;기능 살펴보기&lt;/h2&gt;
+&lt;p&gt;일단 메뉴 리스트를 눌러서 보면 크롬이랑 너무 흡사하다. &lt;strong&gt;&lt;del&gt;(Chromium 기반이니까 비슷할 수 밖에)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+기본 확대 비율은 125% 로 설정되어 있지만, 110% 사용을 추천한다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/menu_list.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;메모리-사용량-및-속도&quot;&gt;메모리 사용량 및 속도&lt;/h3&gt;
+&lt;p&gt;소비되는 메모리를 보기 위해 구버전 크롬과 비교해보았다.&lt;br /&gt;
+탭을 두개 사용하고 똑같은 사이트에 접속한 상황이다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Edge:&lt;/strong&gt; 102.6 MB&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/7-edge.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Chrome(구버전):&lt;/strong&gt; 125.2 MB&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/7-chrome.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+소비되는 메모리는 엣지가 더 가볍다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(크롬 구버전보다 가벼울 수도 있구나.. 마소 역시 소프트 강자 무섭다 ㄷㄷ)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;크롬 구버전은 약간 버벅임이 있다. &lt;strong&gt;&lt;del&gt;(아마 구버전이라 속도면에서 떨어진게 아닐까)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+확실히 엣지를 사용하여 구글을 검색하거나 웹사이트를 서핑할 때 불편함을 못느꼈다.&lt;/p&gt;
+
+&lt;p&gt;하드웨어 가속을 끄고 몇가지 검색도 해보면서 테스트를 다시 해보았다.&lt;br /&gt;
+Edge 옵션에서 하드웨어 가속을 꺼도 빠른 느낌이 강했다. &lt;strong&gt;&lt;del&gt;(가상머신에서 돌리는건데 이렇게 빨라?)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+구버전 Chrome도 &lt;strong&gt;&lt;del&gt;빠르지만&lt;/del&gt;&lt;/strong&gt; 나라면 새로운 Edge가 우세한 느낌이 강했다.&lt;br /&gt;
+메모리 사용량 부분은 탭 수가 적고 작업 시간이 짧은 상태로 확인했으므로 평가로는 부적합하니 참고만 하자.
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;즐겨찾기-북마크&quot;&gt;즐겨찾기 (북마크)&lt;/h3&gt;
+&lt;p&gt;크롬이랑 비슷한 즐겨찾기다.&lt;br /&gt;
+그냥 무난해보인다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/bookmark.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;편리한-설장창&quot;&gt;편리한 설장창&lt;/h3&gt;
+&lt;p&gt;설정창을 보면 너무나 편리하게 잘 써놔있다.&lt;br /&gt;
+자세한건 직접 다운로드를 받아서 살펴보기 바란다.&lt;br /&gt;
+크롬 사파리 비발디를 써봤지만 그중에 가장 눈에 확 들어온다.&lt;br /&gt;
+125% 확대된 상태에선 설정창 왼쪽 리스트가 안보이니 참고하자.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/option_main.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Edge/option_browser.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;가장 마음에 들었던건 웹사이트 추적기능을 잘설명해놨다.&lt;br /&gt;
+검색 데이터를 지우는 것도 편리하다.
+&lt;img src=&quot;/assets/images/Edge/website_trace.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+진짜 사용자를 고려해서 텍스트부터 위치까지 전부 다 세심하게 맞춰진 것 같아서 좋았다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;설정창에 비활성화 기능이 유독 많아보이는건 기분탓이겠지 ?&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;다운로드-목록&quot;&gt;다운로드 목록&lt;/h3&gt;
+&lt;p&gt;다운로드된 목록을 봐도 사용자가 쉽게 알 수 있게&lt;br /&gt;
+시간도 나오고 파일도 종류별로도 필터링 할 수 있다는 점이다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/download.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;방문-기록-history&quot;&gt;방문 기록 (History)&lt;/h3&gt;
+&lt;p&gt;방문 기록을 &lt;code class=&quot;highlighter-rouge&quot;&gt;검색 기록&lt;/code&gt;이란 이름으로 제공한다.
+필터링이 잘될 것 같이 UI가 세심하게 잘짜여졌다.
+시간까지 나올 줄은 몰랐다.
+&lt;img src=&quot;/assets/images/Edge/history.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;반면에 주인장이 사용하는 최신 Safari는…&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/history_safari.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(너무 형편없다)&lt;/del&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;닫힌-탭-복원&quot;&gt;닫힌 탭 복원&lt;/h3&gt;
+&lt;p&gt;닫힌 탭 복원 기능도 상당히 좋다.&lt;br /&gt;
+Ctrl+Shift+T 단축키를 이용해서 방금 닫은 탭을 복원할 수 있고&lt;br /&gt;
+메뉴 리스트 -&amp;gt; 검색 기록 에 가면&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(단축키 상태가.. 누르기는 불편하다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/restore_tab.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;브라우저-데이터-가져오기&quot;&gt;브라우저 데이터 가져오기&lt;/h3&gt;
+&lt;p&gt;브라우저 데이터 가져오는 기능이 있다.&lt;br /&gt;
+크롬과 IE 브라우저에 있는 데이터를 가져올 수 있다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/load_data.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;앱-new&quot;&gt;앱 (New!)&lt;/h3&gt;
+&lt;p&gt;앱 기능을 사용해보았다.&lt;br /&gt;
+사이트 별로 앱으로 등록할 수 있다.&lt;br /&gt;
+이미 등록된 사이트의 앱은 다시 등록할 수 없다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;윈도우즈 스토어에 있는 앱도 사용이 가능할텐데.. 스토어가 폐허라서 그냥 안쓴다.&lt;/del&gt;&lt;/strong&gt;
+&lt;img src=&quot;/assets/images/Edge/App.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;사이트로 등록된 앱을 사용하면 주소창이 없는 작은 브라우저 창이 뜬다.&lt;br /&gt;
+주소 창이 없어서 주소 입력은 불가능하다.&lt;br /&gt;
+상단바에 번역기도 같이 쓸 수 있어서 나름 쓸모 있어보인다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/app_window.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;내가 생각하기론 레퍼런스 문서를 자주 참고해야할 때 유용한 기능이라 생각한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(불필요한 리소스 사용은 최소화 하고 필요한 기능만 제공하는 그런 느낌이랄까..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/app_split.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;등록된 앱은 윈도우즈10에서 아래 그림처럼 시작메뉴(?!)에 등록해서 사용할 수도 있다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/app_start_menu.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;확장-프로그램&quot;&gt;확장 프로그램&lt;/h3&gt;
+&lt;p&gt;그냥 크롬에서 사용할 수 있는거 새로운 Edge에서도 사용할 수 있다.
+&lt;img src=&quot;/assets/images/Edge/exten.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;브라우저-작업관리자&quot;&gt;브라우저 작업관리자&lt;/h3&gt;
+&lt;p&gt;단축키는 Shift+ESC 이다.
+탭이 많은 경우 일일히 탭별로 찾아서 끄는 거 진짜 불편했다.&lt;br /&gt;
+크롬과 똑같이 브라우저 내 작업관리자를 지원했다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/taskmgr.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;번역&quot;&gt;번역&lt;/h3&gt;
+&lt;p&gt;크롬과 비슷하게 구글이 아닌 빙번역 기능도 제공한다.&lt;br /&gt;
+구글과 빙 두 번역간 약간의 차이가 있어 보이긴하다.&lt;br /&gt;
+어느 것이 좋은지는 사용자의 선택이다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/translate.png&quot; alt=&quot;img1&quot; /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;다크모드&quot;&gt;다크모드&lt;/h3&gt;
+&lt;p&gt;다크모드를 지원하는데 애플에서 말하는 갬성과 똑같이 타이틀바만 지원하고 있다.&lt;br /&gt;
+(엣지에서 제공하는 다크모드는 해당 웹사이트에서 설정해야 적용됨)&lt;br /&gt;
+제공하지 않아도 다크모드 사용을 원한다면 Chrome &lt;a href=&quot;https://chrome.google.com/webstore/detail/dark-reader-dark/kbbbldgkhcpkmmjbjelmkjkchibeklng&quot; target=&quot;_blank&quot;&gt;DarkReader 확장 프로그램&lt;/a&gt; 사용을 추천한다.&lt;br /&gt;
+Edge에서 제공하는 다크모드 적용 사진은 이미 이 글에 있으므로 생략한다.&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;벤치마크&quot;&gt;벤치마크&lt;/h2&gt;
+&lt;p&gt;JetStream에서 여러 브라우저를 평가한 결과이다.&lt;br /&gt;
+우승자는 Edge, 다른 평가에서는 Chrome이 승리하기도 했다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;파이어폭스한테는 지지 않았다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+Edge가 크롬을 이기는 것으로 보아 제대로 탈바꿈한건 분명하다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/Edge/stream-chrome.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Edge/stream-edge.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
+&lt;a href=&quot;https://venturebeat.com/2020/01/15/browser-benchmark-battle-january-2020-chrome-firefox-edge-brave/5/&quot; target=&quot;_blank&quot;&gt;브라우저 평가 사이트 보러가기 (이미지 출처)&lt;/a&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
+&lt;p&gt;이 밖에도 많은 기능들이 있을 것 같지만 여기까지만 보도록하겠다.&lt;br /&gt;
+전반적으로 Chromium 영향을 많이 받아서 크롬과 흡사하다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;새롭게 탈바꿈 하기전에 Edge 브라우저는 솔직히 &lt;strong&gt;&lt;del&gt;쓰레기&lt;/del&gt;&lt;/strong&gt;였다.&lt;br /&gt;
+마소에 근무하고 계시는 천재 개발자팀이 힘을 합쳐 새생명을 불어넣어주셨다.&lt;br /&gt;
+업데이트를 자주해서 크롬처럼 무거워지는 루트만 타지 않는다면 계속 쓰고싶다.&lt;/p&gt;
+
+&lt;p&gt;확실히 크롬 기반의 엔진을 올라타니까 제대로 탈바꿈했다.&lt;br /&gt;
+기능이 많아서 무거울 거라고 생각했지만 그렇게 무겁다는 느낌을 받지 못했다.&lt;br /&gt;
+가상머신에서 돌리는데에도 빠르고 부드럽게 돌아간다.&lt;/p&gt;
+
+&lt;p&gt;Chromium, Microsoft 이 두 단어가 값어치를 알 수 있다.&lt;br /&gt;
+친구한테 엣지 새롭게 나왔으니 써보라고 추천은 하고 싶다. &lt;strong&gt;&lt;del&gt;(추천 못할 정도는 아니다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+최신 버전 크롬 쓰시는 분들은 큰 메리트를 느끼지 못한다고 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;평가: ★★★★☆&lt;/strong&gt;&lt;br /&gt;
+5점 만점에 4점, 크롬이 별로라면 한번쯤 써볼만하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="크롬" /><category term="Chrome" /><category term="크로미움" /><category term="Chromium" /><category term="엣지" /><category term="Edge" /><summary type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</summary></entry><entry><title type="html">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)</title><link href="https://tars-c.github.io/2020/05/07/mojave-update" rel="alternate" type="text/html" title="[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/07/MacOS-Mojave%20Update</id><content type="html" xml:base="https://tars-c.github.io/2020/05/07/mojave-update">&lt;p&gt;정말 &lt;strong&gt;다크모드&lt;/strong&gt;가 눈에 좋을까 ?&lt;br /&gt;
 &lt;img src=&quot;https://1.bp.blogspot.com/-_0vKgI5dcbM/XrTRzuKPRbI/AAAAAAAAAsE/QKZkP9w1OZgs2-OjrRYq15PZU2CWpQ7WACLcBGAsYHQ/s1600/mojave1.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;왜-갑자기-mojave로-업뎃을-했는가-&quot;&gt;왜 갑자기 Mojave로 업뎃을 했는가 ?&lt;/h2&gt;
@@ -1004,325 +1091,4 @@ DC에 SelectObject() 할 수 없는 포맷&lt;/p&gt;
 &lt;p&gt;실습 결과:&lt;br /&gt;
 &lt;img src=&quot;/assets/images/CImage/resultbmpfilesize.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/CImage/bmpfilesizeinfo.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="cpp" /><category term="비트맵" /><category term="bitmap" /><category term="bmp" /><category term="header" /><category term="헤더" /><category term="파일크기" /><category term="파일읽기" /><category term="파일 크기 정보" /><category term="BITMAPFILEHEADER" /><category term="BITMAPINFOHEADER" /><summary type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</summary></entry><entry><title type="html">[C++] 비트 연산 Bitwise</title><link href="https://tars-c.github.io/2020/05/03/bitwise" rel="alternate" type="text/html" title="[C++] 비트 연산 Bitwise" /><published>2020-05-03T00:00:00+09:00</published><updated>2020-05-03T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/03/%EB%B9%84%ED%8A%B8%20%EC%97%B0%EC%82%B0%20Bitwise</id><content type="html" xml:base="https://tars-c.github.io/2020/05/03/bitwise">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;저에게 XOR은 조금 친근하지 못한 연산자였는데&lt;br /&gt;
-한가지 쓰임을 알게게 되어 비트 연산 전체를 포스팅하게 되었습니다.&lt;br /&gt;
-비트 연산을 한다고 해서 피연산자를 2개 요구하는 연산자들은 결과가 바로 반영되지 않습니다.&lt;br /&gt;
-비트 연산도 산술연산자처럼 축약형으로 사용할 수 있습니다. (&amp;amp;=, |=, ^=, «=, »=)&lt;/p&gt;
-
-&lt;p&gt;비트연산은 다른 연산자에 비해 처리 속도가 빠릅니다.&lt;br /&gt;
-공부를 할때 숫자를 막 써놔도 비트연산은 눈으로 봐도 잘 들어오지 않습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;화면에 계산기를 켜두고 하나씩 실습해보면 누구나 쉽게 터득할 수 있습니다.&lt;br /&gt;
-비트연산 관련 프로그래밍 시 계산기를 이용하면 빠르게 작업을 처리할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;예시에서 사용되는 타입 크기는 임의 크기인 1byte입니다.&lt;br /&gt;
-기본 int 타입 크기는 x86 환경에서 4byte인 점을 주의하셔야 합니다.&lt;br /&gt;
-(자료형의 크기가 클 수록 비트가 복잡하므로 나머지 3byte는 명시 안함)&lt;/p&gt;
-
-&lt;p&gt;비트는 10진수가 가진 값을 2의 n승 꼴로 표현할 수 있습니다.&lt;br /&gt;
-10진수와 관계지어 비트가 차지하고 있는 위치에 대해 알아야합니다.&lt;br /&gt;
-아래에 비트연산을 이해하기 위해서는 다음과 같은 개념을 아셔야 합니다.&lt;br /&gt;
-첫번째 비트: 2의 0승 = 1&lt;br /&gt;
-두번째 비트: 2의 1승 = 2&lt;br /&gt;
-세번째 비트: 2의 3승 = 4&lt;br /&gt;
-네번째 비트: 2의 4승 = 8&lt;br /&gt;
-다섯번째 비트: 2의 5승 = 16&lt;/p&gt;
-
-&lt;p&gt;비트가 0000 1111 로 구성되어 있으면&lt;br /&gt;
-10진수 값은  15가 됩니다. (1 + 2 + 4 + 8)&lt;/p&gt;
-
-&lt;h2 id=&quot;or-연산&quot;&gt;OR 연산&lt;/h2&gt;
-&lt;p&gt;OR 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt; 입니다.&lt;br /&gt;
-피연산자는 2개가 필요합니다.&lt;/p&gt;
-
-&lt;p&gt;OR 비트연산은 두개의 비트 중 하나만 1이면 결과가 참(1)이 되는 것을 의미합니다.&lt;br /&gt;
-쉽게 이해하기 위해 변수를 만들어 연산자를 이용해 계산을 해보고 과정을 적어보겠습니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;위 식에서 A와 B는 OR 연산자(|)를 이용해 비트 연산을 진행하게 됩니다.&lt;br /&gt;
-0000 0101 :: 5&lt;br /&gt;
-0000 0010 :: 2&lt;br /&gt;
-0000 0111 :: 7(결과)&lt;/p&gt;
-
-&lt;p&gt;연산하는 과정을 하나씩 살펴보자면, (맨 오른쪽이 첫번째 비트)&lt;br /&gt;
-(5의 1번째 비트 1 | 2의 1번째 비트 0) 연산 = 1&lt;br /&gt;
-(5의 2번째 비트 0 | 2의 2번째 비트 1) 연산 = 1&lt;br /&gt;
-(5의 3번째 비트 1 | 2의 3번째 비트 0) 연산 = 1&lt;br /&gt;
-나머지 비트 모두 0&lt;br /&gt;
-연산 결과: 0000 0111 (10진수: 7)이 나오게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;또, OR 연산은 두개의 피연산자가 가진 값에 해당하는 비트가 중복되지 않는 선에서 더하기에도 쓰인다는 겁니다.&lt;br /&gt;
-5와 2를 OR 비트 연산했는데 결과값이 7이 나왔죠 ? &lt;del&gt;&lt;strong&gt;(어이쿠! 더해졌네?)&lt;/strong&gt;&lt;/del&gt;&lt;br /&gt;
-반대로 비트가 중복되는 경우를 보자면&lt;br /&gt;
-1과 3을 OR 연산하면 결과가 3이 나오게 되고 덧셈을 못하는 슬픔을 겪게 될 수도 있습니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;덧셈방식을 이용하여 특정 속상값을 부여할 수도 있습니다.&lt;br /&gt;
-0000 0000 비어 있는 비트가 있을 때&lt;br /&gt;
-0000 0001 10진수 1을 사용하여 OR 연산으로 1비트를 채워줄 수 있고&lt;br /&gt;
-0000 0010 두번째 비트도 10진수 2를 사용하여 1을 채워줄 수 있습니다.&lt;br /&gt;
-OR 비트 연산을 이용하면 값에 여러가지 속성값을 부여할 수 있습니다. (Flag 연산)&lt;/p&gt;
-
-&lt;p&gt;WINAPI, MFC에서도 스타일처럼 여러개의 속성을 적용시킬 수 있을 때&lt;br /&gt;
-OR 비트 연산을 이용해 여러개의 속성을 부여하는 방식을 다음과 같이 사용합됩니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_VISIBLE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_CHILD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_THINFRAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;and-연산&quot;&gt;AND 연산&lt;/h2&gt;
-&lt;p&gt;AND 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt; 입니다.&lt;br /&gt;
-피연산자는 2개가 필요합니다.&lt;/p&gt;
-
-&lt;p&gt;AND 비트 연산은 두개의 비트 중 둘다 1이어야 결과가 참(1)이 되는 것을 의미합니다.&lt;br /&gt;
-쉽게 이해하기 위해 변수를 만들어 연산자를 이용해 계산을 해보고 과정을 적어보겠습니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;위 식에서 A와 B는 AND 연산자(&amp;amp;)를 이용해 비트 연산을 진행하게 됩니다.&lt;br /&gt;
-0000 0101 :: 5&lt;br /&gt;
-0000 0011 :: 3&lt;br /&gt;
-0000 0001 :: 1(결과)&lt;/p&gt;
-
-&lt;p&gt;연산하는 과정을 하나씩 살펴보자면, (맨 왼쪽이 첫번째 비트)&lt;br /&gt;
-(5의 1번째 비트 1 &amp;amp; 3의 1번째 비트 1) 연산 = 1&lt;br /&gt;
-(5의 2번째 비트 0 &amp;amp; 3의 2번째 비트 1) 연산 = 0&lt;br /&gt;
-(5의 3번째 비트 1 &amp;amp; 3의 3번째 비트 0) 연산 = 0&lt;br /&gt;
-나머지 비트 모두 0&lt;br /&gt;
-연산 결과: 0000 0001 (10진수: 1)&lt;/p&gt;
-
-&lt;p&gt;또, AND 연산자(&amp;amp;)를 이용해 속성값을 가지고 있는지에 대해 찾을 수도 있습니다.&lt;br /&gt;
-말로 설명하는 것보다 코드로 설명드리겠습니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
-&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x02&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x04&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;operator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;levelPermission&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myPermission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;myPermission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;//invalid permission&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;c1&quot;&gt;// success&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;속성에서 관리자의 권한값은 4입니다.&lt;br /&gt;
-사용자가 가지고 있는 권한은 유저(1) + 관리자(4)이므로 권한값은 즉, 5입니다.&lt;br /&gt;
-4와 5를 AND 연산자(&amp;amp;)를 이용해 비트연산을 진행합니다.&lt;br /&gt;
-0000 0101 (10진수: 5)&lt;br /&gt;
-0000 0100 (10진수: 4)&lt;/p&gt;
-
-&lt;p&gt;두 수가 가진 비트 중 3번째 비트가 모두 1이므로 AND 연산 결과는 1이 됩니다.&lt;br /&gt;
-&lt;strong&gt;(전 개인적으로 접근 불가나 오류 발생하는 코드가 위에 있으면 좋더라구요..)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;속성 값이 가진 비트를 뒤집어서 &amp;amp; 연산하면 사용자가 가지고 있는 권한을 뺏을 수 있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;myPermission&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ePermission&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;not-연산&quot;&gt;NOT 연산&lt;/h2&gt;
-&lt;p&gt;NOT 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt; 입니다.&lt;br /&gt;
-피연산자는 1개가 필요합니다.&lt;/p&gt;
-
-&lt;p&gt;NOT 비트연산은 비트를 모두 뒤집어버리는 것입니다.&lt;br /&gt;
-0을 1로, 1을 0으로 바꾼다 생각하시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;생각보다 쓰임이 적다고 생각되는 연산자였습니다.&lt;br /&gt;
-&lt;del&gt;&lt;strong&gt;알고리즈머 YunGoon님께 관련된 쓰임세를 몇가지 알아왔습니다. 감사합니다.&lt;/strong&gt;&lt;/del&gt;&lt;br /&gt;
-쓰임1과 쓰임2에 해당하는 - 는 부호 연산자입니다. &lt;del&gt;(빼기가 아닙니다)&lt;/del&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;-n은-n1-꼴로-사용될-수-있다&quot;&gt;-~n은 n+1 꼴로 사용될 수 있다&lt;/h3&gt;
-&lt;p&gt;10진수 4를 비트로 표현하면 0000 0100 입니다.&lt;br /&gt;
-이를 NOT 연산하여 비트를 뒤집어 보면 1111 1011이 됩니다.&lt;br /&gt;
-그리고 맨 앞에 있는 -로 부호를 반전시켜주면 비트는 0000 0101이 되고 5가 되는 것입니다.&lt;br /&gt;
-부호를 반전시킬 때는 NOT 연산으로 비트를 모두 뒤집고 맨 오른쪽 비트에 1을 더하면 됩니다.&lt;br /&gt;
-1을 더하는 이유는 보수의 변환과정에서 1을 더했기 때문에 다시 더해주는 것입니다.&lt;/p&gt;
-
-&lt;p&gt;0000 0100 (10진수: 4)&lt;br /&gt;
-1111 1011 (NOT) (10진수: -5)&lt;br /&gt;
-0000 0101 (부호반전) (10진수: 5)&lt;/p&gt;
-
-&lt;h3 id=&quot;-n은-n-1-꼴로-사용할-수-있다&quot;&gt;~-n은 n-1 꼴로 사용할 수 있다&lt;/h3&gt;
-&lt;p&gt;쓰임1과 매우 비슷합니다. 이번엔 7로 해보겠습니다.&lt;br /&gt;
-10진수 7을 비트로 표현하면 0000 0111 입니다.&lt;br /&gt;
-2의 보수로 만드는 방법을 이용해 -7로 만들어주는 것입니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;음수를 표현할 때 2의 보수를 사용하는데 변환과정을 아주 간략하게 설명드리면&lt;br /&gt;
-양수 7이 가진 비트를 뒤집고 맨 오른쪽 비트에 1을 더해줍니다.&lt;br /&gt;
--7에서 NOT 연산을 하여 비트를 뒤집어주면 6이 됩니다.&lt;/p&gt;
-
-&lt;p&gt;0000 0111 (10진수: 7)&lt;br /&gt;
-1111 1001 (부호반전) (10진수: -7)&lt;br /&gt;
-0000 0110 (NOT) (10진수: 6)&lt;/p&gt;
-
-&lt;h3 id=&quot;eof라면-루프-탈출에-사용할-수-있다&quot;&gt;EOF라면 루프 탈출에 사용할 수 있다&lt;/h3&gt;
-&lt;p&gt;수 많은 컴파일러가 EOF를 -1로 정의합니다.&lt;br /&gt;
--1 값을 가지고 반복문을 사용한다면 NOT 연산을 통해 비트를 뒤집습니다.&lt;br /&gt;
--1 값이 0 으로 변경되고 if, while, for 같은 조건문에서 활용될 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;1111 1111 (10진수: -1)&lt;br /&gt;
-0000 0000 (NOT) (10진수: 0)&lt;/p&gt;
-
-&lt;p&gt;이는 while(~scanf()) { } 처럼 응용할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;xor-연산&quot;&gt;XOR 연산&lt;/h2&gt;
-&lt;p&gt;XOR 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt; 입니다.&lt;br /&gt;
-피연산자는 2개가 필요합니다.&lt;/p&gt;
-
-&lt;p&gt;XOR 비트연산은 OR과 비슷하면서도 전혀 다릅니다.&lt;br /&gt;
-두 수중 비트를 하나씩 비교하여 둘다 1이거나 0일 떄 0을 반환합니다.&lt;br /&gt;
-서로 같은 값이면 0, 서로 같지 않으면 1을 반환한다고 생가하시면 됩니다.&lt;br /&gt;
-쉽게 이해하기 위해 변수를 만들어 연산자를 이용해 계산을 해보고 과정을 적어보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;숫자 7과 3을 예시로 들어보겠습니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ans&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;위 식에서 A와 B는 XOR 연산자(^)를 이용해 비트 연산을 진행하게 됩니다.&lt;br /&gt;
-0000 0111 :: 7&lt;br /&gt;
-0000 0011 :: 3&lt;br /&gt;
-0000 0100 :: 4(결과)&lt;/p&gt;
-
-&lt;p&gt;연산하는 과정을 하나씩 살펴보자면, (맨 왼쪽이 첫번째 비트)&lt;br /&gt;
-(7의 1번째 비트 1 &amp;amp; 3의 1번째 비트 1) 연산 = 0&lt;br /&gt;
-(7의 2번째 비트 1 &amp;amp; 3의 2번째 비트 1) 연산 = 0&lt;br /&gt;
-(7의 3번째 비트 1 &amp;amp; 3의 3번째 비트 0) 연산 = 1&lt;br /&gt;
-나머지 비트 모두 0 또는 1로 같으므로 0&lt;/p&gt;
-
-&lt;p&gt;XOR은 알면 알 수록 신기한 녀석입니다. &lt;del&gt;&lt;strong&gt;(누가 발견한거지?)&lt;/strong&gt;&lt;/del&gt;&lt;br /&gt;
-XOR은 이미지 연산이나 교체 알고리즘에 사용됩니다.&lt;br /&gt;
-우연히 알파벳을 빠르게 교체하는 문제를 풀면서 새로운 사용 방법을 알게되었습니다.&lt;br /&gt;
-&lt;del&gt;&lt;strong&gt;이 방법도 알고리즈머 YunGoon님께서 알려주셨습니다. (깊게 생각했으면 스스로 알았을까?)&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/CPP/bitwise.png&quot; alt=&quot;img1&quot; /&gt;&lt;br /&gt;
-위 그림처럼 10진수 32는 비트를 1개만 가지고 있습니다.&lt;br /&gt;
-반대로 31은 32가 가지고 있는 비트를 제외한 나머지 하위 비트를 모두 가지고 있습니다.&lt;br /&gt;
-&lt;del&gt;&lt;strong&gt;(이미 알고있는 정보인데도 뭔가 다시 깨달은 느낌이랄까요 ?)&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;비트가-가득찬-경우&quot;&gt;비트가 가득찬 경우&lt;/h3&gt;
-&lt;p&gt;10진수 31과 5를 XOR 연산해보겠습니다.&lt;br /&gt;
-0001 1111 :: 31&lt;br /&gt;
-0000 0101 :: 5&lt;br /&gt;
-0001 1010 :: 26(결과)&lt;/p&gt;
-
-&lt;p&gt;자세한 연산과정은 생략하겠습니다.&lt;br /&gt;
-재밌는 사실은 31에서 5를 뺀 값인 26이 나온다는 겁니다.&lt;br /&gt;
-주의할 점은 31과 31을 연산하면 0이 나오니 주의해야합니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;비트가-비어-있는-경우&quot;&gt;비트가 비어 있는 경우&lt;/h3&gt;
-&lt;p&gt;10진수 32와 5를 XOR 연산해보겠습니다.&lt;br /&gt;
-0010 0000 :: 32&lt;br /&gt;
-0000 0101 :: 5&lt;br /&gt;
-0010 0101 :: 37&lt;/p&gt;
-
-&lt;p&gt;자세한 연산과정은 생략하겠습니다.&lt;br /&gt;
-재밌는 사실은 32에서 5를 더한 값인 37이 나온다는 겁니다.&lt;br /&gt;
-32가 가지고 있는 비트 중 연산하려는 5의 비트가 비어있는 경우 덧셈을 하게 됩니다.&lt;br /&gt;
-&lt;br /&gt;
-위 방식을 응용한다면 영어 대소문자를 변환하는 작업에 처리속도를 향상시킬 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;shift-연산&quot;&gt;SHIFT 연산&lt;/h2&gt;
-&lt;p&gt;SHIFT 비트 연산자는 &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;, &amp;gt;&amp;gt;&lt;/code&gt; 입니다.&lt;br /&gt;
-피연산자는 2개가 필요합니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;왼쪽 피연산자에는 비트를 조작할 데이터를 적고&lt;br /&gt;
-오른쪽 피연산자에는 몇칸을 밀 것인지에 대해 적습니다.&lt;/p&gt;
-
-&lt;p&gt;SHIFT 연산은 비트를 오른쪽 혹은 왼쪽으로 이동할 때 사용합니다.&lt;br /&gt;
-왼쪽으로 비트가 밀려서 범위를 초과하면 값이 사라지게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;양수는 최상위 부호비트가 0이므로 어떻게 밀어도 상관이 없습니다.&lt;br /&gt;
-음수인 경우에 SHIFT 연산할 경우 최상위 비트(MSB, 부호비트)도 같이 밀리기 때문에 주의해야합니다.&lt;/p&gt;
-
-&lt;p&gt;오른쪽으로 « 밀어서 범위 초과로 값이 이상한 경우 오버플로우(overflow)&lt;br /&gt;
-왼쪽으로 » 밀어서 범위 초과로 값이 이상한 경우 언더플로우(underflow)라 합니다.&lt;br /&gt;
-SHIFT 연산은 단독으로 사용되기보다 | 및 &amp;amp; 연산과 함께 사용되는 편입니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;shift-오른쪽으로-시프트&quot;&gt;SHIFT « (오른쪽으로 시프트)&lt;/h3&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;31 이 가지고 있는 전체 비트를 오른쪽으로 1칸 밀게 됩니다.&lt;br /&gt;
-오른쪽으로 비트가 밀리면 빈자리는 0으로 채워집니다.&lt;/p&gt;
-
-&lt;p&gt;0001 1111 :: 31&lt;br /&gt;
-0011 1110 :: 62(결과)&lt;br /&gt;
-결과를 보면 알 수 있듯이 오른쪽으로 비트를 1칸 밀 수록 2배 커집니다.&lt;br /&gt;
-&lt;br /&gt;
-그럼 한번에 2칸을 밀면 2배 커질까요 ? 아닙니다.&lt;br /&gt;
-4배 커지게 되는데 이는 오른쪽으로 비트를 밀 수록 2의 n승만큼 커지는 것입니다.&lt;/p&gt;
-
-&lt;p&gt;31 « 3을 계산해봅시다.&lt;br /&gt;
-2의 3승은 8 즉, 31x8 값인 248이 결과로 산출됩니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;shift-왼쪽으로-시프트&quot;&gt;SHIFT » (왼쪽으로 시프트)&lt;/h3&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;mi&quot;&gt;79&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;79 가 가지고 있는 전체 비트를 왼쪽으로 2칸 밀게 됩니다.&lt;br /&gt;
-왼쪽으로 비트가 밀려서 자료형 범위를 초과하게 되면 값이 사라지게 됩니다.&lt;br /&gt;
-&lt;br /&gt;
-0100 1111 :: 79&lt;br /&gt;
-0001 0011 :: 19(결과)&lt;/p&gt;
-
-&lt;p&gt;결과를 보면 알 수 있듯이 왼쪽으로 비트를 1칸 밀 수록 2배 작아집니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;shift-and를-이용한-색상값-마스크&quot;&gt;SHIFT, AND를 이용한 색상값 마스크&lt;/h3&gt;
-&lt;p&gt;SHIFT 연산은 컬러값에서 마스크 연산에 사용 됩니다.&lt;br /&gt;
-색상은 RGB로 표현하는데 0~255 값으로 구성되어 있습니다.&lt;/p&gt;
-
-&lt;p&gt;RGB 하얀색 색상값을 가진 값은 0xFF(R) FF(G) FF(B)가 됩니다.&lt;br /&gt;
-16진수 기준 15는 0xF입니다.&lt;br /&gt;
-10진수 255는 16진수로 0xFF가 됩니다.&lt;br /&gt;
-FF를 2진수로 표현하면 1111 1111 입니다.&lt;/p&gt;
-
-&lt;p&gt;10진수 65,535는 16진수 0xFFFF가 됩니다.&lt;br /&gt;
-10진수 16,777,215는 16진수 0xFFFFFF가 됩니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;0xFFEE11 컬러값에서 RGB중 R을 나타내는 FF 부분을 뽑아 내려면&lt;br /&gt;
-오른쪽으로 8칸씩 2번 밀면됩니다. (총 16번)&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;비트로 표현해보겠습니다.&lt;br /&gt;
-0001 0001 :: 11&lt;br /&gt;
-1110 1110 :: EE&lt;br /&gt;
-1111 1111 :: FF
-0xFFEE11 » 16
-0xFF&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-처음 8칸을 오른쪽으로 밀면 가장 하위 비트에 속하는 11은 사라지게 됩니다.&lt;br /&gt;
-다시 8칸을 오른쪽으로 밀면 하위 비트에 속하는 EE는 사라지게 됩니다.&lt;br /&gt;
-색상값을 비트를 밀어서 찾아낼 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;그럼 만약 ? EE 값을 뽑기 위해선 어떤 방법을 취해야할까요 ?&lt;br /&gt;
-11은 찾는 값이 아니므로 8칸을 밀어서 버려줍니다.&lt;br /&gt;
-0xFFEE 값 중 EE 값을 추출하기 위해서는 0xFF 값과 AND 연산을 진행하면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;이를 비트로 표현해보겠습니다. 8byte마다 구분은 / 로 하겠습니다.&lt;br /&gt;
-1111 1111 / 1110 1110 :: FFEE&lt;br /&gt;
-0000 0000 / 1111 1111 :: FF&lt;br /&gt;
-0000 0000 / 1110 1110 :: EE(결과)&lt;/p&gt;
-
-&lt;p&gt;지금까지 비트연산과 쓰임세를 알아보는 유익한 시간이었습니다.
-&lt;!--
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
---&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="비트" /><category term="bit" /><category term="bitwise" /><category term="비트연산" /><category term="or" /><category term="and" /><category term="not" /><category term="xor" /><category term="shift" /><summary type="html">[C++] 비트 연산 Bitwise</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;/assets/images/CImage/bmpfilesizeinfo.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="cpp" /><category term="비트맵" /><category term="bitmap" /><category term="bmp" /><category term="header" /><category term="헤더" /><category term="파일크기" /><category term="파일읽기" /><category term="파일 크기 정보" /><category term="BITMAPFILEHEADER" /><category term="BITMAPINFOHEADER" /><summary type="html">[C++] 비트맵 헤더 정보를 읽어 비트맵 파일 크기 구하기</summary></entry></feed>

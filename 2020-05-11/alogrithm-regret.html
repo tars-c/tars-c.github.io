@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>[잡담] 알고리즘 그리고 후회 - 타스의 개발 블로그</title>
+<meta name="description" content="[잡담] 알고리즘 그리고 후회">
+
+
+  <meta name="author" content="타스 (TARS-C)">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="타스의 개발 블로그">
+<meta property="og:title" content="[잡담] 알고리즘 그리고 후회">
+<meta property="og:url" content="https://tars-c.github.io/2020-05-11/alogrithm-regret">
+
+
+  <meta property="og:description" content="[잡담] 알고리즘 그리고 후회">
+
+
+
+  <meta property="og:image" content="https://tars-c.github.io/assets/images/profile_tars200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-11T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-05-11T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://tars-c.github.io/2020-05-11/alogrithm-regret">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "타스 (TARS-C)",
+      "url": "https://tars-c.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="타스의 개발 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/xeicon.min.css">
+
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+<meta name="google-site-verification" content="g-v4nitOjaIwCDktuCHo4KVSNkfjJuRQ0Nm_QDRcvPM" />
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          타스의 개발 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" >프로그래밍</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile_tars200.png" alt="타스 (TARS-C)" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">타스 (TARS-C)</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>탐구하며 노력하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea, KR</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a target="_blank" href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> 주인장에게 문의하기</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gv8vlln" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> C/C++ 단톡방</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[잡담] 알고리즘 그리고 후회">
+    <meta itemprop="description" content="[잡담] 알고리즘 그리고 후회">
+    <meta itemprop="datePublished" content="2020-05-11T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-11T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[잡담] 알고리즘 그리고 후회
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>2020년 알고리즘의 붐이 불었다.<br />
+사실 불고도 계속 불고 있다라는 표현이 맞는 것 같다.<br />
+아마 2018?년도부터 불지 않았나…</p>
+
+<p>4,5년 전만 해도 PS는 소수가 즐겨하는 놀이에 불과했다라고 생각했다.<br />
+그때 나도 알고리즘에 입문해서 열심히 공부할껄 그랬다. <strong><del>(그땐 뭘했더라..)</del></strong><br />
+솔직히 지금와서 정말로 후회한다.
+**<del>누군가 알고리즘을 포기하더라도 자료구조는 포기하지 말아야 한다는 것을 말해주고 싶다.**</del></p>
+
+<p>개발을 하면서 알고리즘은 땔래야 떌 수가 없다.<br />
+알고리즘은 간단히 말해 문제를 해결하는 능력이다.<br />
+250원에서 3명이서 30원씩 나누고 나머지로 몇명의 사람들이 더 나눌 수 있는가 ?<br />
+<strong><del>문제의 예시가 조금 허접하다… 이해바란다.</del></strong><br />
+위 문제를 사칙연산 및 루트 복잡한 수학식을 이용해<br />
+아주 빠르고 최대한의 효율로 풀어내는 것이 솔빙이다(Problem Solving, PS)<br />
+문제해결, 솔빙(PS), 알고리즘 모두 비슷한 의미다.<br />
+효율을 매우 중요시하는 건 아니지만<br />
+문제에서 시간과 메모리(기억공간)을 제한하기에 효율은 따를래야 따를 수 밖에 없다.</p>
+
+<p>주말에 기초 알고리즘 문제를 풀면서 느낀건 나누기 곱하기를<br />
+복잡하게 만들면 조금 어렵게 느껴질 수도 있다는 것이다.<br />
+그림을 확대하거나 축소할 때에도 곱하기 나누기의 연산을 이용한다.<br />
+<strong><del>(조금 어려웠었지만 재밌는 경험이었다)</del></strong></p>
+
+<p>커뮤니티에서 보면 알고리즘 문제 질문은 하루에도 수백번 올라온다.<br />
+매년이 지날 수록 머리 좋은 신입생들은 정말 치고 올라오고 있다.<br />
+나는 접근도 못하는 문제를 <strong><del>어디선가 Copy &amp; Paste한걸까?</del></strong> 풀었다고 하고…<br />
+정말 문제의 해결을 설명할 수 있을정도로 머리가 좋은건지 의심도 든다.<br />
+반대로 문제를 빠르게 해결하는 그자의 능력이 대단하고 부럽기도한다.<br />
+정말 이 세상에 똑똑한 사람들은 많은 것 같다.</p>
+
+<p>실제로 구글에 알고리즘 문제의 제목을 쳐보면 여러 블로그들이 나온다.<br />
+어떤 블로그에는 해설이 포함되어 있는데 <strong><del>또 다른 블로그에는 코드만 가득하다.</del></strong></p>
+
+<p>정말 이 많은 사람들이 이 어려운 문제를 풀었을까 라는 의문을 가지기도 한다.<br />
+내 머리로는 풀기도 힘든 문제, 고민을 짧게는 3시간~5시간 이상 고민하면서 풀어야할 문제들이<br />
+금방 금방 풀리는 느낌이 강하다.. 뭐가 진실인지는 아무도 알 수 없다.</p>
+
+<p>커뮤니티에서 사람들이 떠드는 내용만 봐도 경쟁력이 느껴질 수 밖에 없다.<br />
+개발이란 곳이 이런 곳이었나 .. 분명 처음엔 자신감 뿜뿜이었는데 약간 위축이되기도 한다.<br />
+알고리즘 부분이 남들보다 취약해서 그렇게 느끼는 것 같기도 하다.<br />
+<strong><del>데이터를 자유자제로 다룰 수준이면 되지 않는가 ?</del></strong></p>
+
+<p>처음엔 문제해결 능력을 키우고 그것을 응용하는 것이 중요한줄 알았다.<br />
+근데 깊게 들어가면 알고리즘 문제를 푸는 것도 경험이었다.<br />
+<strong><del>경험이 많은 사람이 문제도 잘 풀더라</del></strong></p>
+
+<p>처음부터 개발 좀 해본(간단한 프로그램좀 만들어 본) 개발자들이<br />
+BFS DFS, DP, 세그먼트 트리 이런 복잡한 문제를 쉽게 풀어내는 사람 거의 없다.<br /></p>
+
+<p>나도 원리를 깨우치는건 좋아한다.<br />
+이 함수가 어떤식으로 돌아가는지, 하나씩 분해하고 쪼개서 분석하는 걸 무척이나 좋아한다.</p>
+
+<p>근데 난.. 수학적인 능력이 조금은 떨어지지 않나 생각이든다.<br />
+능력부족은 결국에 알고리즘 문제를 해결하는 능력이 떨어지는 것에 영향을 끼치는 것 같다.</p>
+
+<p>사실 높은 등급의 개발자라면 수학을 떌래야 떌 수가 없다.<br />
+코드를 효율적으로 써야하니까…<br />
+주어진 상황에서 식을 자유롭게 만든다면 문제를 해결하고 푸는데는 분명 도움이 크게된다.</p>
+
+<p>대기업은 아니지만 현업에 20년 이상 근무중이신 분께 여쭤보았지만<br />
+알고리즘 문제를 단 1번도 푼적이 없다고 한다.<br />
+하지만 실제 현업에서에 나타나는 문제는 알고리즘보다 복잡하다고 한다.</p>
+
+<p>요즘은 대기업에 입사하기 위해서는 코딩테스트(즉, 알고리즘)는 필수다.<br />
+언제부터 개발자의 기준이 알고리즘 해결이 된지 모르겠다.</p>
+
+<p>나는 대기업갈 생각은 1도 없지만.. 그래도 알고리즘의 기초는 알아야하지 않을까?<br />
+<strong><del>(경쟁자가 너무 많고 스펙도 월등한 사람들이 판을 쳐서 눈을 낮춘 것이다)</del></strong><br /></p>
+
+<p>요즘은 하드웨어 성능이 좋아져서 알고리즘이 쓸모가 없다라는 의견도 몇몇본다.<br />
+하지만 현실은 하드웨어가 좋아졌어도 성능을 중요시하는 개발 분야는 분명히 있다.<br />
+<strong><del>(발빠르게 동작하는 서버, 벙렬프로그래밍)</del></strong></p>
+
+<p>어렵고 경험위주의 복잡한 알고리즘까지 많은 시간을 허비하진 않더라도 <strong><del>(대회나갈거아니잖아)</del></strong><br />
+간단한 문제는 개발자만의 사고력으로 문제를 간단히 해결하는 능력은 있어야한다고 본다.</p>
+
+<p>커뮤니티를 보면 남들이 얼마나 성장하는지 눈에 보인다.<br />
+남들이 뭘 하든 나는 사과나무 한그루를 더 심을 것이다.<br />
+개발 분야에선 안좋게 표현한다면 뒤쳐진다고? 표현하기도 하는 것 같다.<br />
+하지만 나는 내가 공부하고 싶은 것을 공부하면서 한 우물만 깊게파는 사람이 될 것이다.<br />
+개발 언어는 도구에 불과하다. 도구는 이용할 뿐이라는 걸 명심해야한다.<br />
+<strong><del>다양한 언어 및 프레임워크를 사용하여 한가지 분야를 파도록 하자.</del></strong><br />
+그래도 기본적인 사고력 성장을 위해 주말엔 기초 알고리즘은 공부하려고 한다.<br /></p>
+
+<p>이 글은 현업 경험이 없는 아마추어 개발자가 쓴 것이니 참고용으로 보기 바란다.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#alogrithm" class="page__taxonomy-item" rel="tag">Alogrithm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#ps" class="page__taxonomy-item" rel="tag">PS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%86%94%EB%B9%99" class="page__taxonomy-item" rel="tag">솔빙</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98" class="page__taxonomy-item" rel="tag">알고리즘</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#%EC%9E%A1%EB%8B%B4" class="page__taxonomy-item" rel="tag">잡담</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-11">May 11, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5B%EC%9E%A1%EB%8B%B4%5D+%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98+%EA%B7%B8%EB%A6%AC%EA%B3%A0+%ED%9B%84%ED%9A%8C%20https%3A%2F%2Ftars-c.github.io%2F2020-05-11%2Falogrithm-regret" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020-05-11%2Falogrithm-regret" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020-05-11%2Falogrithm-regret" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2020/05/09/chromium-based-edge" class="pagination--pager" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">Well begun is half done, aristotle</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/chromium-based-edge" rel="permalink">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/09/explict-serialize" rel="permalink">[MFC][실습] Document CArchive 기본타입 클래스 직렬화
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 09 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] Document CAcrchive 기본타입 클래스 직렬화
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-update" rel="permalink">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] 뒤늦은 모하비(Mojave) 10.13.6 업데이트 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020/05/07/mojave-darkmode-darkeader-app" rel="permalink">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 07 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Support</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">Copyright 2020 타스 (TARS-C). Powered by <a href="https://github.com" rel="nofollow">Github.</a></div>
+      </footer>
+    </div>
+
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/assets/js/notify.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/4eee35f757.js"></script> -->
+  <script src="https://kit.fontawesome.com/194998b224.js" crossorigin="anonymous"></script>
+  <script data-ad-client="ca-pub-2361575299096846" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://tars-c.github.io/2020-05-11/alogrithm-regret";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020-05-11/PS, 알고리즘, 그리고 후회"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tars-c-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+
+
+
+
+
+  </body>
+</html>
