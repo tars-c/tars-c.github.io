@@ -1,98 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-11T19:35:46+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</title><link href="https://tars-c.github.io/2020-05-11/implicit-serialize" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 비트맵 파일 직렬화" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/Document%20CArchive%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/implicit-serialize">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;이 글은 stackoverflow, MSDN 을 참고하여 작성되었습니다.&lt;br /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-12T20:10:55+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기</title><link href="https://tars-c.github.io/2020-05-12/sdi-formview" rel="alternate" type="text/html" title="[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기" /><published>2020-05-12T00:00:00+09:00</published><updated>2020-05-12T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-12/SDI%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20Dialog%20Based%20%EC%B2%98%EB%9F%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/2020-05-12/sdi-formview">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;SDI 프로젝트는 기본적으로 만들면 CView 클래스를 상속받아 만들어지기 때문에&lt;br /&gt;
+리소스뷰 비주얼 에디터를 이용하여 컨트롤 생성 및 배치할 수 없다.&lt;br /&gt;
+CView를 상속받은 경우 동적으로 컨트롤을 생성 및 배치해야한다.&lt;/p&gt;
 
-&lt;p&gt;이번 글에서는 비트맵 파일 직렬화를 실습한다.&lt;br /&gt;
-국내 개발 블로그를 보면 대부분 기본자료형 위주로 포스팅되어 있다.&lt;br /&gt;
-너무 기초만 다루는 것 같았다. &lt;strong&gt;&lt;del&gt;(내 코드도 기초수준이다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-네트워크 프로그래밍에서 사용되는 직렬화는 더 공부를 하고 다음에 실습하도록 한다.&lt;/p&gt;
+&lt;p&gt;CView와 다르게 CFormView 클래스를 상속받은 경우&lt;br /&gt;
+Dialog를 이용한 컨트롤 생성 및 배치가 가능한다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;명시적(implicit)으로 직렬화 하는 방법에 대해 알아본다.&lt;br /&gt;
-암시적이나 명시적이나 모두 비슷하니&lt;br /&gt;
-자세한 설명은 이전 글을 참고하도록 하자.&lt;br /&gt;
-&lt;a href=&quot;/2020/05/09/explict-serialize.html/&quot; target=&quot;_blank&quot;&gt;이전 글: Document CArchive 기본타입 및 객체 직렬화&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;이번 글에선 CFormView가 간단히 알아보고&lt;br /&gt;
+프로젝트를 생성할 때 CFormView를 상속받아 생성하는 법을 알아본다.&lt;br /&gt;
+추가로 CView를 상속받은 View를 CFormView로 상속받은 View로 바꾸는 작업도 진행한다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;명시적 직렬화도 암시적이랑 비슷하게 CFile 객체를 CArchive 객체가 참조하여 사용한다.&lt;/p&gt;
-&lt;h2 id=&quot;비트맵의-직렬화&quot;&gt;비트맵의 직렬화&lt;/h2&gt;
-&lt;p&gt;아래 코드를 설명해보면&lt;br /&gt;
-힙 메모리를 할당하여 이미지 객체와 스트림을 만들고(연결) 메모리에 저장한다.&lt;br /&gt;
-CreateStreamOnHGlobal() API 함수를 이용하여 메모리에 스트림을 만든다.&lt;br /&gt;
-CImage 클래스에서 제공하는 Save() 함수를 이용해 스트림에 데이터를 저장한다.&lt;/p&gt;
+&lt;h2 id=&quot;cformview란-&quot;&gt;CFormView란 ?&lt;/h2&gt;
+&lt;p&gt;대화상자 리소스를 이용해 컨트롤을 배치할 수 있는 뷰이다.&lt;br /&gt;
+폼 기반의 MFC를 이용한 프로그램을 개발할 때 가장 기본이 되는 뷰이다.&lt;br /&gt;
+CSCrollView의 파생 클래스이며 스크롤 기능을 지원한다.&lt;br /&gt;
+CFormView를 이용하면 개발자가 양식을 만들어 다른 뷰에도 붙일 수 있다.&lt;/p&gt;
 
-&lt;p&gt;데이터가 저장된 힙 메모리에 함수를 이용해 포인터와 메모리 크기를 구하고&lt;br /&gt;
-구한 포인터 위치에서 파일의 크기만큼 CArchive 객체를 이용해 직렬화하여 파일을 저장하는 것이다.&lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;다이얼로그와 연결이 되어 비주얼에디터를 사용할 수 있으므로 생산성에도 영향을 준다.
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;MSDN을 보면 전역(Global) 메모리는 과거에 사용되어졌다고 한다.&lt;br /&gt;
-x86 이후의 시스템에서는 16비트 프로그램을 포팅하거나&lt;br /&gt;
-16비트 Windows프로그램의 소스코드 호환성 때문에 지원된다고 한다.
-&lt;strong&gt;&lt;del&gt;(도대체 언제적 것인지..)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;cformview를-상속받는-view-프로젝트-만들기&quot;&gt;CFormView를 상속받는 View 프로젝트 만들기&lt;/h2&gt;
+&lt;p&gt;MFC 프로젝트를 만들 때 기본적으로 CView를 상속받는다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;GlobalAlloc() 함수는 결국에 디폴트 힙을 할당하는 함수의 래퍼함수로 구현되어 있다고 한다.&lt;br /&gt;
-이로 인해 오버헤드가 발생한다는 경고문도 적혀있다.&lt;br /&gt;
-x86 환경에선 과거 세그먼트 메모리 구조에서 가상 메모리를 사용 구조로 바뀌었다.&lt;/p&gt;
+&lt;p&gt;다음 그림과 같이 기반 클래스를 CFormView를 변경하면 프로젝트를 생성 시&lt;br /&gt;
+FormView를 상속받는 View가 만들어진다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;생각보다 너무 단순해서 놀랐다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CFormView/create_formview.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;GMEM_MOVEABLE은 이동이 가능한 메모리를 할당하지만&lt;br /&gt;
-메모리는 프로세스 영역 내(힙 영역 내)에서만 움직일 수 있다고 한다.&lt;br /&gt;
-반대로 고정된 메모리는 GMEM_FIXED를 이용한다.&lt;br /&gt;
-메모리 이동은 힙 메모리 단편화와 연관이 있다.&lt;br /&gt;
-특별한 상황이 아니라면 기본적으로 이동이 가능한 메모리를 사용하도록 하자.&lt;br /&gt;
-할당 메모리 크기가 0인 이유는 삭제가 가능한 메모리를 할당받기 위해서이다.&lt;/p&gt;
+&lt;h2 id=&quot;cview를-상속받은-view를-cformview로-상속받는-view로-변경하기&quot;&gt;CView를 상속받은 View를 CFormView로 상속받는 View로 변경하기&lt;/h2&gt;
+&lt;p&gt;솔루션 이름을 “ TE “ 로 프로젝트를 CView를 상속받은 프로젝트를 만든다. (Test 줄임말)&lt;br /&gt;
+Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올바르게 작동하지 않을 수 있다.&lt;/p&gt;
 
-&lt;p&gt;누가 메모리를 왜 삭제하는지는 운영체제에 대한 이해가 필요할 것 같다..&lt;br /&gt;
-구글에 아무리 검색해봐도 삭제 가능한(discard) 메모리를 사용하는 이유는 모르겠다.&lt;br /&gt;
-일단 0으로 할당함으로 써 스트림에서 자유로운 크기를 만들 수 있다는 것은 확실하다.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;TEView.h 를 엽니다.&lt;/li&gt;
+  &lt;li&gt;CView를 CFormView로 Rename(Ctrl+R+R) 합니다. (미리보기 -&amp;gt; 적용)&lt;/li&gt;
+  &lt;li&gt;리소스뷰로 가서 Dialog 삽입 및 ID를 지정합니다. (IDD_TE)&lt;/li&gt;
+  &lt;li&gt;창을 눌러 다음과 같이 속성을 변경합니다.
+    &lt;ul&gt;
+      &lt;li&gt;속성 Style: Popup -&amp;gt; Child&lt;/li&gt;
+      &lt;li&gt;속성 System Menu: True -&amp;gt; False&lt;/li&gt;
+      &lt;li&gt;속성 Title Bar: True -&amp;gt; False&lt;/li&gt;
+      &lt;li&gt;속성 Border: Dialog Frame -&amp;gt; None&lt;/li&gt;
+      &lt;li&gt;(요약 - ON: WS_CHILD / OFF:WS_POPUP, WS_SYSMENU, WS_BORDER)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;TEView.h 파일을 열어 #include “resource.h” 아래에 전역변수로 추가한다.
+    &lt;ul&gt;
+      &lt;li&gt;enum { IDD = IDD_TE };&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;TEView.cpp 디폴트 생성자 정의부에 멤버이니셜라이저로 CFormView 생성자를 호출한다.
+    &lt;ul&gt;
+      &lt;li&gt;생성자 호출 시 필요한 매개변수는 Dialog ID 입니다.&lt;/li&gt;
+      &lt;li&gt;: CFormView(IDD_TE)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;TEView.cpp 클래스 마법사를 이용해 OnInitialUpdate() 가상함수를 재정의한다.&lt;/li&gt;
+  &lt;li&gt;아래 두 함수를 사용해서 뷰의 크기를 프레임과 맞추고 빌드를 한다.(딘축키: F7)
+    &lt;ol&gt;
+      &lt;li&gt;GetParentFrame()-&amp;gt;RecalcLayout();&lt;/li&gt;
+      &lt;li&gt;ResizeParentToFit();&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;오버헤드가 적은 HeapCreate, HeapAlloc 할당한 함수를 이용해&lt;br /&gt;
-스트림을 만들고 저장하면 좋은데 아직 실력이 부족하다..&lt;/p&gt;
+&lt;p&gt;결과:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/CFormView/result_formview.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// m_image는 CImage타입의 이미지 데이터를 가지고 있는 멤버변수이다.&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CFile&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CFileException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Temp&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;MyBMP.BMP&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;modeCreate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;modeWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CArchive&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;archive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CArchive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;h2 id=&quot;메뉴-및-툴바-삭제하기&quot;&gt;메뉴 및 툴바 삭제하기&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;툴바를 삭제하고 싶다면 다음과 같이 진행한다.
+    &lt;ul&gt;
+      &lt;li&gt;CMainFrame::OnCreate() 에서 m_wndToolBar 관련 코드를 주석처리한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;상단 메뉴를 삭제하고 싶다면 다음과 같이 진행한다.
+    &lt;ul&gt;
+      &lt;li&gt;CTEApp::InitInstance() 창 초기화 작업란에 m_pMainWnd-&amp;gt;SetMenu(NULL); 코드를 삽입한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;span class=&quot;n&quot;&gt;IStream&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;HGLOBAL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GlobalAlloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GMEM_MOVEABLE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;CreateStreamOnHGlobal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;m_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Gdiplus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ImageFormatBMP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;LPVOID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pBmpData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GlobalLock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GlobalSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;archive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pBmpData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;archive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;GlobalUnlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;GlobalFree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;GlobalLock() 함수로 메모리의 단편화에서의 이동을 제한하고&lt;br /&gt;
-실제 메모리의 첫번쨰 위치를 얻어오는 것이다.&lt;/p&gt;
-
-&lt;p&gt;반드시 리소스를 사용했으면 해제 및 반납하는 작업을 빼먹지 말자.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;이해는 충분히 한 것 같으니 마친다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="파일" /><category term="CFile" /><category term="비트맵" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</summary></entry><entry><title type="html">[잡담] 알고리즘 그리고 후회</title><link href="https://tars-c.github.io/2020-05-11/alogrithm-regret" rel="alternate" type="text/html" title="[잡담] 알고리즘 그리고 후회" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/PS,%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98,%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%ED%9B%84%ED%9A%8C</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/alogrithm-regret">&lt;p&gt;2020년 알고리즘의 붐이 불었다.&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;글 다 썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="SDI" /><category term="프로젝트" /><category term="다이얼로그" /><category term="Dialog" /><category term="폼뷰" /><category term="FormvView" /><category term="툴바" /><category term="Toolbar" /><category term="메뉴" /><category term="Menu" /><category term="삭제하기" /><category term="Destroy" /><summary type="html">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기</summary></entry><entry><title type="html">[잡담] 알고리즘 그리고 후회</title><link href="https://tars-c.github.io/2020-05-11/alogrithm-regret" rel="alternate" type="text/html" title="[잡담] 알고리즘 그리고 후회" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/PS,%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98,%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%ED%9B%84%ED%9A%8C</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/alogrithm-regret">&lt;p&gt;2020년 알고리즘의 붐이 불었다.&lt;br /&gt;
 사실 불고도 계속 불고 있다라는 표현이 맞는 것 같다.&lt;br /&gt;
 아마 2018?년도부터 불지 않았나…&lt;/p&gt;
 
@@ -177,7 +167,107 @@ BFS DFS, DP, 세그먼트 트리 이런 복잡한 문제를 쉽게 풀어내는 
 &lt;strong&gt;&lt;del&gt;다양한 언어 및 프레임워크를 사용하여 한가지 분야를 파도록 하자.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
 그래도 기본적인 사고력 성장을 위해 주말엔 기초 알고리즘은 공부하려고 한다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;이 글은 현업 경험이 없는 아마추어 개발자가 쓴 것이니 참고용으로 보기 바란다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="알고리즘" /><category term="Alogrithm" /><category term="솔빙" /><category term="PS" /><summary type="html">[잡담] 알고리즘 그리고 후회</summary></entry><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
+&lt;p&gt;이 글은 현업 경험이 없는 아마추어 개발자가 쓴 것이니 참고용으로 보기 바란다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="알고리즘" /><category term="Alogrithm" /><category term="솔빙" /><category term="PS" /><summary type="html">[잡담] 알고리즘 그리고 후회</summary></entry><entry><title type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</title><link href="https://tars-c.github.io/2020-05-11/implicit-serialize" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 비트맵 파일 직렬화" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/Document%20CArchive%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/implicit-serialize">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;이 글은 stackoverflow, MSDN 을 참고하여 작성되었습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번 글에서는 비트맵 파일 직렬화를 실습한다.&lt;br /&gt;
+국내 개발 블로그를 보면 대부분 기본자료형 위주로 포스팅되어 있다.&lt;br /&gt;
+너무 기초만 다루는 것 같았다. &lt;strong&gt;&lt;del&gt;(내 코드도 기초수준이다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+네트워크 프로그래밍에서 사용되는 직렬화는 더 공부를 하고 다음에 실습하도록 한다.&lt;/p&gt;
+
+&lt;p&gt;명시적(implicit)으로 직렬화 하는 방법에 대해 알아본다.&lt;br /&gt;
+암시적이나 명시적이나 모두 비슷하니&lt;br /&gt;
+자세한 설명은 이전 글을 참고하도록 하자.&lt;br /&gt;
+&lt;a href=&quot;/2020/05/09/explict-serialize.html/&quot; target=&quot;_blank&quot;&gt;이전 글: Document CArchive 기본타입 및 객체 직렬화&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;명시적 직렬화도 암시적이랑 비슷하게 CFile 객체를 CArchive 객체가 참조하여 사용한다.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CFile 객체를 CArchive 객체가 참조하게 될 때 모드를 정할 수 있다.&lt;/li&gt;
+  &lt;li&gt;CArchive::store (저장)&lt;/li&gt;
+  &lt;li&gt;CArchive::load (불러오기)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;비트맵의-직렬화&quot;&gt;비트맵의 직렬화&lt;/h2&gt;
+&lt;p&gt;아래 코드를 설명해보면&lt;br /&gt;
+힙 메모리를 할당하여 이미지 객체와 스트림을 만들고(연결) 메모리에 저장한다.&lt;br /&gt;
+CreateStreamOnHGlobal() API 함수를 이용하여 메모리에 스트림을 만든다.&lt;br /&gt;
+CImage 클래스에서 제공하는 Save() 함수를 이용해 스트림에 데이터를 저장한다.&lt;/p&gt;
+
+&lt;p&gt;데이터가 저장된 힙 메모리에 함수를 이용해 포인터와 메모리 크기를 구하고&lt;br /&gt;
+구한 포인터 위치에서 파일의 크기만큼 CArchive 객체를 이용해 직렬화하여 파일을 저장하는 것이다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;MSDN을 보면 전역(Global) 메모리는 과거에 사용되어졌다고 한다.&lt;br /&gt;
+x86 이후의 시스템에서는 16비트 프로그램을 포팅하거나&lt;br /&gt;
+16비트 Windows프로그램의 소스코드 호환성 때문에 지원된다고 한다.
+&lt;strong&gt;&lt;del&gt;(도대체 언제적 것인지..)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;GlobalAlloc() 함수는 결국에 디폴트 힙을 할당하는 함수의 래퍼함수로 구현되어 있다고 한다.&lt;br /&gt;
+이로 인해 오버헤드가 발생한다는 경고문도 적혀있다.&lt;br /&gt;
+x86 환경에선 과거 세그먼트 메모리 구조에서 가상 메모리를 사용 구조로 바뀌었다.&lt;/p&gt;
+
+&lt;p&gt;GMEM_MOVEABLE은 이동이 가능한 메모리를 할당하지만&lt;br /&gt;
+메모리는 프로세스 영역 내(힙 영역 내)에서만 움직일 수 있다고 한다.&lt;br /&gt;
+반대로 고정된 메모리는 GMEM_FIXED를 이용한다.&lt;br /&gt;
+메모리 이동은 힙 메모리 단편화와 연관이 있다.&lt;br /&gt;
+특별한 상황이 아니라면 기본적으로 이동이 가능한 메모리를 사용하도록 하자.&lt;br /&gt;
+할당 메모리 크기가 0인 이유는 삭제가 가능한 메모리를 할당받기 위해서이다.&lt;/p&gt;
+
+&lt;p&gt;누가 메모리를 왜 삭제하는지는 운영체제에 대한 이해가 필요할 것 같다..&lt;br /&gt;
+구글에 아무리 검색해봐도 삭제 가능한(discard) 메모리를 사용하는 이유는 모르겠다.&lt;br /&gt;
+일단 0으로 할당함으로 써 스트림에서 자유로운 크기를 만들 수 있다는 것은 확실하다.&lt;/p&gt;
+
+&lt;p&gt;오버헤드가 적은 HeapCreate, HeapAlloc 할당한 함수를 이용해&lt;br /&gt;
+스트림을 만들고 저장하면 좋은데 아직 실력이 부족하다..&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// m_image는 CImage타입의 이미지 데이터를 가지고 있는 멤버변수이다.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CFile&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CFileException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;C:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Temp&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;MyBMP.BMP&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;modeCreate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;modeWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CArchive&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;archive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CArchive&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;IStream&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;HGLOBAL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GlobalAlloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GMEM_MOVEABLE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CreateStreamOnHGlobal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;m_image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pStream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Gdiplus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ImageFormatBMP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;LPVOID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pBmpData&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GlobalLock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GlobalSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;archive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pBmpData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;archive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;GlobalUnlock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;GlobalFree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hGloMem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;GlobalLock() 함수로 메모리의 단편화에서의 이동을 제한하고&lt;br /&gt;
+실제 메모리의 첫번쨰 위치를 얻어오는 것이다.&lt;/p&gt;
+
+&lt;p&gt;반드시 리소스를 사용했으면 해제 및 반납하는 작업을 빼먹지 말자.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;이해는 충분히 한 것 같으니 마친다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="파일" /><category term="CFile" /><category term="비트맵" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</summary></entry><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
 정보가 없는 상태에서 직접 다운받으면서 써본 경험을 바탕으로으로 작성되었습니다.&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;신문물을 접한 느낌이랄까..&lt;/del&gt;&lt;/strong&gt;
 &lt;br /&gt;&lt;/p&gt;
@@ -956,43 +1046,7 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
 뷰어를 통해 이미지를 확인할 수 있습니다.&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;p&gt;&lt;a href=&quot;https://rockdrumy.tistory.com/1044&quot; target=&quot;_blank&quot;&gt;이미지 출처: Tistory 드럼치는 프로그래머&lt;/a&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="직렬화" /><category term="Serialization" /><category term="Serialize" /><summary type="html">[C++] Serialiization : 설명</summary></entry><entry><title type="html">[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" rel="alternate" type="text/html" title="[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EC%A0%95%EB%B3%B4%20%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
-&lt;p&gt;프로그램 개발 시 이미지의 크기 정보 및 가지고 있는 정보가 필요할 때가 있습니다.&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;CImage 클래스에서 제공하는 함수&lt;/code&gt;에서 이미지 정보를 가져오는 함수를 알아봅니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;이미지-정보-가져오기&quot;&gt;이미지 정보 가져오기&lt;/h2&gt;
-
-&lt;h3 id=&quot;가로폭-width-가져오기&quot;&gt;가로(폭, Width) 가져오기&lt;/h3&gt;
-&lt;p&gt;가로 폭 정보를 제공해주는 함수는 GetWidth() 입니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgWidth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;세로높이-height-가져오기&quot;&gt;세로(높이, Height) 가져오기&lt;/h3&gt;
-&lt;p&gt;세로 높이 정보를 제공해주는 함수는 GetHeight() 입니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;pixel당-비트-수bpp-가져오기&quot;&gt;Pixel당 비트 수(BPP) 가져오기&lt;/h3&gt;
-&lt;p&gt;Pixel당 비트 수 정보를 제공해주는 함수는 GetBPP() 입니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;x-y-위치의-픽셀-주소-및-컬러값-가져오기&quot;&gt;x, y 위치의 픽셀 주소 및 컬러값 가져오기&lt;/h3&gt;
-&lt;p&gt;(x, y) 위치의 픽셀 주소값 제공해주는 함수는 GetPixelAddress() 입니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;CImage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...);&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetBPP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;COLORREF&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;memcpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetPixelAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imgBPP&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>타스 (TARS-C)</name></author><category term="이미지" /><category term="Image" /><category term="정보" /><category term="GetWidth" /><category term="GetHeight" /><category term="GetBPP" /><category term="GetPixelAddress" /><category term="가로" /><category term="Width" /><category term="세로" /><category term="Height" /><category term="화소당비트" /><category term="BPP" /><category term="픽셀" /><category term="Pixel" /><category term="주소" /><category term="Address" /><summary type="html">[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)</summary></entry><entry><title type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/" rel="alternate" type="text/html" title="[MFC] Bitmap Format (DIB, DDB) : 설명" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80%20%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%8F%AC%EB%A7%B7%20(DIB,%20DDB)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/">&lt;ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://rockdrumy.tistory.com/1044&quot; target=&quot;_blank&quot;&gt;이미지 출처: Tistory 드럼치는 프로그래머&lt;/a&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="직렬화" /><category term="Serialization" /><category term="Serialize" /><summary type="html">[C++] Serialiization : 설명</summary></entry><entry><title type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/" rel="alternate" type="text/html" title="[MFC] Bitmap Format (DIB, DDB) : 설명" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80%20%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%8F%AC%EB%A7%B7%20(DIB,%20DDB)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/">&lt;ul&gt;
   &lt;li&gt;Windows에서 비트맵은 총 2가지 포맷을 지원합니다.
     &lt;ul&gt;
       &lt;li&gt;DDB(Device Dependent Bitmap)&lt;/li&gt;
