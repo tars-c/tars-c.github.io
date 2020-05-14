@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[C++] Serialization : 설명 - 타스의 개발 블로그</title>
-<meta name="description" content="[C++] Serialiization : 설명">
+<!-- begin _includes/seo.html --><title>[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기 - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기">
 
 
   <meta name="author" content="타스 (TARS-C)">
@@ -13,11 +13,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
-<meta property="og:title" content="[C++] Serialization : 설명">
-<meta property="og:url" content="https://tars-c.github.io/2020/05/06/Serialiization">
+<meta property="og:title" content="[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기">
+<meta property="og:url" content="https://tars-c.github.io/2020-05-14/getkeystate">
 
 
-  <meta property="og:description" content="[C++] Serialiization : 설명">
+  <meta property="og:description" content="[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기">
 
 
 
@@ -27,11 +27,11 @@
 
 
 
-  <meta property="article:published_time" content="2020-05-06T00:00:00+09:00">
+  <meta property="article:published_time" content="2020-05-14T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2020-05-06T00:00:00+09:00">
+  <meta property="article:modified_time" content="2020-05-14T00:00:00+09:00">
 
 
 
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="https://tars-c.github.io/2020/05/06/Serialiization">
+<link rel="canonical" href="https://tars-c.github.io/2020-05-14/getkeystate">
 
 
 
@@ -281,15 +281,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[C++] Serialization : 설명">
-    <meta itemprop="description" content="[C++] Serialiization : 설명">
-    <meta itemprop="datePublished" content="2020-05-06T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2020-05-06T00:00:00+09:00">
+    <meta itemprop="headline" content="[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기">
+    <meta itemprop="description" content="[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기">
+    <meta itemprop="datePublished" content="2020-05-14T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-14T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[C++] Serialization : 설명
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기
 </h1>
           
         </header>
@@ -301,51 +301,90 @@
             <nav class="toc">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
               <ul class="toc__menu">
-  <li><a href="#직렬화serialization란-">직렬화(Serialization)란 ?</a></li>
-  <li><a href="#직렬화를-사용하는-이유는-">직렬화를 사용하는 이유는 ?</a></li>
-  <li><a href="#직렬화한-데이터를-사용자가-직접-볼-수는-없는가-">직렬화한 데이터를 사용자가 직접 볼 수는 없는가 ?</a></li>
+  <li><a href="#서론">서론</a></li>
+  <li><a href="#getkeystate-함수-알아보기">GetKeyState() 함수 알아보기</a></li>
+  <li><a href="#누른-상태-확인하기">누른 상태 확인하기</a></li>
 </ul>
             </nav>
           </aside>
         
-        <h2 id="직렬화serialization란-">직렬화(Serialization)란 ?</h2>
-<p>크고 복잡한 데이터(Object)를 가장 단순한 byte형태(Binary Data)로 변환하는 것을 의미합니다.</p>
+        <h2 id="서론">서론</h2>
+<p>사용자는 어떤 키를 누를지 모르는 야생마와 비슷하다.<br />
+개발자는 프로그램을 개발하면서 사용자가 특정 키를 누른지를 구해야할 때가 있다.</p>
 
-<p>반대로 가장 단순한 형태로 저장된 데이터들을 복잡한 데이터(Object)로 변환하는 것을<br />
-역직렬화(Deserialiization)라 합니다.<br />
-<img src="/assets/images/CPP/Serialiization.png" alt="img1" /></p>
+<p>해당 키가 눌러져 있는지에 대해 확인하는 함수에 대해 알아본다.<br />
+이때 사용되는 키코드는 Virtual Key Code 이다.<br />
+Virtual Key Code 목록은 다음 링크에서 볼 수 있다.<br />
+<a href="https://docs.microsoft.com/ko-kr/windows/win32/inputdev/virtual-key-codes" target="_blank">LINK: MSDN Virtual Key Code List</a></p>
 
+<h2 id="getkeystate-함수-알아보기">GetKeyState() 함수 알아보기</h2>
+<p>사용할 함수는 GetKeyState() 이다.<br />
+인자로는 Virtual Key Code를 요구하고 있다.</p>
+
+<p>반환 타입은 WORD 크기(16bit)와 같은 SHORT 타입이다.<br />
+2BYTE를 각각 쪼개거나 비트 연산을 통해 정보를 가져와 사용한다.</p>
+
+<p>반환 데이터에서 high-order bit가 1이면 해당 키를 누른 상태이며 그 외는 땐 상태를 의미한다.<br />
+low-order bit가 1이면 키가 토글된 상태를 의미한다. 그 외는 토글되지 않은 상태를 의미한다.</p>
+
+<p>토글된 상태 값은 토글키(Toggle Key) 에만 적용되는 속성이다.<br />
+키보드에서 토글키를 누르면 오른쪽 상단의 키보드에 불이 들어오고(1) 다시 누르면 꺼진다(0)</p>
 <ul>
-  <li>사용 예시는 크게 3가지입니다.
+  <li>Windows 토글키는 대표적으로 3가지가 존재한다.
     <ul>
-      <li>서로 다른프로세스 통신(IPC)</li>
-      <li>파일 입출력(File I/O)</li>
-      <li>네트워크 통신(Socket)</li>
+      <li>Caps Lock</li>
+      <li>Num Lock</li>
+      <li>Scroll Lock</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="직렬화를-사용하는-이유는-">직렬화를 사용하는 이유는 ?</h2>
-<p>Object객체는 상당히 복잡한 형태로 이루어져 있습니다.<br />
-객체를 파일로 저장하거나 다른 컴퓨터에게 전송을할 때 Stream을 이용합니다.</p>
+<h2 id="누른-상태-확인하기">누른 상태 확인하기</h2>
+<p>키를 누르고 있는지 알기 위해 high order bit와 비트 연산을 진행한다.</p>
 
-<p>Stream을 이용해 이미지 파일을 복사한다고 할 때<br />
-기존 파일을 Binary로 읽어(Read)들이고 읽어들인 데이터를 쓰게(Write) 됩니다.</p>
+<p>16bit 데이터에서 high order bit, low order bit는 다음과 같다.<br />
+high order bit는 1000 0000 0000 0000 을 의미하고 16진수로는 0x8000 이다.<br />
+low   order bit는 0000 0000 0000 0001 을 의미하고 16진수로는 0x1 이다.</p>
 
-<p>Stream은 큰 데이터를 한번에 보낼 수 없고 원시타입(Primitive)의 데이터를 전송할 수 있습니다.<br />
-큰 데이터들은 직렬화(Serialiization)를 이용하여 전송가능한 원시타입으로 변환하여<br />
-Stream으로 데이터를 교환하거나 전송합니다.</p>
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="n">GetKeyState</span><span class="p">(</span><span class="sc">'A'</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x8000</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// key down code</span>
+<span class="p">}</span>
 
-<h2 id="직렬화한-데이터를-사용자가-직접-볼-수는-없는가-">직렬화한 데이터를 사용자가 직접 볼 수는 없는가 ?</h2>
-<p>직렬화된 데이터는 사용자가 직접 보기 힘듭니다.<br />
-HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니다.<br />
-이는 저장된 파일을 HEX Viewer로 보는 것과 비슷합니다.</p>
+<span class="c1">// VK_CAPITAL = Caps Lock</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">GetKeyState</span><span class="p">(</span><span class="n">VK_CAPITAL</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// toggle on code</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="c1">// toggle off code</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
 
-<p>이미지 같은 경우는 헤더를 포함한 데이터 자체만을 저장했을 때<br />
-뷰어를 통해 이미지를 확인할 수 있습니다.</p>
+<p>‘a’ 를 매개변수로 입력하면 정상적으로 작동하지 않는다.<br />
+‘a’ 는 virtual key code 목록에 존재하지 않기 때문이다. ‘A’ 를 사용하자<br />
+virtual key code는 소문자 아스키를 지원하지 않는다는 것을 명심하자.</p>
 
-<hr />
-<p><a href="https://rockdrumy.tistory.com/1044" target="_blank">이미지 출처: Tistory 드럼치는 프로그래머</a></p>
+<p>a 키를 누르면 정상적으로 키가 눌린지 감지가 된다.<br />
+Ctrl, Shift 등 다른 키를 누른 상태에서 a 키를 누르면 감지가 되지 않는 점이 있다.</p>
+
+<p><strong>글 다썻다아 ~</strong></p>
+
 
         
       </section>
@@ -366,15 +405,43 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     
       
       
-      <a href="/tags/#serialization" class="page__taxonomy-item" rel="tag">Serialization</a><span class="sep">, </span>
+      <a href="/tags/#getkeystate" class="page__taxonomy-item" rel="tag">GetKeyState</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#serialize" class="page__taxonomy-item" rel="tag">Serialize</a><span class="sep">, </span>
+      <a href="/tags/#high-order" class="page__taxonomy-item" rel="tag">high-order</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#%EC%A7%81%EB%A0%AC%ED%99%94" class="page__taxonomy-item" rel="tag">직렬화</a>
+      <a href="/tags/#low-order" class="page__taxonomy-item" rel="tag">low-order</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#togglekey" class="page__taxonomy-item" rel="tag">ToggleKey</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#virtualkey" class="page__taxonomy-item" rel="tag">VirtualKey</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#vk" class="page__taxonomy-item" rel="tag">VK</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EA%B0%80%EC%83%81%ED%82%A4" class="page__taxonomy-item" rel="tag">가상키</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%83%81%EC%9C%84%EB%B9%84%ED%8A%B8" class="page__taxonomy-item" rel="tag">상위비트</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%86%A0%EA%B8%80%ED%82%A4" class="page__taxonomy-item" rel="tag">토글키</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%95%98%EC%9C%84%EB%B9%84%ED%8A%B8" class="page__taxonomy-item" rel="tag">하위비트</a>
     
     </span>
   </p>
@@ -395,6 +462,10 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     
       
       
+      <a href="/categories/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
+    
+      
+      
       <a href="/categories/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" class="page__taxonomy-item" rel="tag">프로그래밍</a>
     
     </span>
@@ -402,7 +473,7 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-06">May 06, 2020</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-14">May 14, 2020</time></p>
         
       </footer>
 
@@ -411,23 +482,22 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BC%2B%2B%5D+Serialization+%3A+%EC%84%A4%EB%AA%85%20https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F06%2FSerialiization" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+GetKeyState%3A+%ED%95%B4%EB%8B%B9+%ED%82%A4%EA%B0%80+%EB%88%8C%EB%9F%AC%EC%A0%B8+%EC%9E%88%EB%8A%94%EC%A7%80+%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0%20https%3A%2F%2Ftars-c.github.io%2F2020-05-14%2Fgetkeystate" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F06%2FSerialiization" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020-05-14%2Fgetkeystate" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020%2F05%2F06%2FSerialiization" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020-05-14%2Fgetkeystate" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/CImage-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%A0%95%EB%B3%B4-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0/" class="pagination--pager" title="[MFC] CImage : 이미지 정보 가져오기 (크기, BPP, Pixel)
+      <a href="/2020-05-13/cformview-onchar-onkeydown-issue" class="pagination--pager" title="[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법
 ">Previous</a>
     
     
-      <a href="/2020/05/07/mojave-darkmode-darkeader-app" class="pagination--pager" title="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -450,32 +520,6 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     <div class="page__related">
       <h4 class="page__related-title">Well begun is half done, aristotle</h4>
       <div class="grid__wrapper">
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title" itemprop="headline">
-      
-        <a href="/2020-05-14/getkeystate" rel="permalink">[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기
-</a>
-      
-    </h2>
-    <!--     
-    
-  -->
-  
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 14 2020</p>
-  
-  
-  <p class="archive__item-excerpt" itemprop="description">[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기
-</p>
-  </article>
-</div>
-
         
           
 
@@ -555,6 +599,32 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
 </div>
 
         
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-11/implicit-serialize" rel="permalink">[MFC][실습] Document CArchive 비트맵 파일 직렬화
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 11 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] Document CArchive 비트맵 파일 직렬화
+</p>
+  </article>
+</div>
+
+        
       </div>
     </div>
   
@@ -620,8 +690,8 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://tars-c.github.io/2020/05/06/Serialiization";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/2020/05/06/Serialization - 설명"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://tars-c.github.io/2020-05-14/getkeystate";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020-05-14/GetKeyState: 해당 키가 눌러져 있는지 확인하기"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     
     (function() { // DON'T EDIT BELOW THIS LINE

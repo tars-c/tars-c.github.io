@@ -1,4 +1,170 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-12T20:10:55+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기</title><link href="https://tars-c.github.io/2020-05-12/sdi-formview" rel="alternate" type="text/html" title="[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기" /><published>2020-05-12T00:00:00+09:00</published><updated>2020-05-12T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-12/SDI%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20Dialog%20Based%20%EC%B2%98%EB%9F%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/2020-05-12/sdi-formview">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-14T22:17:16+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기</title><link href="https://tars-c.github.io/2020-05-14/getkeystate" rel="alternate" type="text/html" title="[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기" /><published>2020-05-14T00:00:00+09:00</published><updated>2020-05-14T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-14/GetKeyState:%20%ED%95%B4%EB%8B%B9%20%ED%82%A4%EA%B0%80%20%EB%88%8C%EB%9F%AC%EC%A0%B8%20%EC%9E%88%EB%8A%94%EC%A7%80%20%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/2020-05-14/getkeystate">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;사용자는 어떤 키를 누를지 모르는 야생마와 비슷하다.&lt;br /&gt;
+개발자는 프로그램을 개발하면서 사용자가 특정 키를 누른지를 구해야할 때가 있다.&lt;/p&gt;
+
+&lt;p&gt;해당 키가 눌러져 있는지에 대해 확인하는 함수에 대해 알아본다.&lt;br /&gt;
+이때 사용되는 키코드는 Virtual Key Code 이다.&lt;br /&gt;
+Virtual Key Code 목록은 다음 링크에서 볼 수 있다.&lt;br /&gt;
+&lt;a href=&quot;https://docs.microsoft.com/ko-kr/windows/win32/inputdev/virtual-key-codes&quot; target=&quot;_blank&quot;&gt;LINK: MSDN Virtual Key Code List&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;getkeystate-함수-알아보기&quot;&gt;GetKeyState() 함수 알아보기&lt;/h2&gt;
+&lt;p&gt;사용할 함수는 GetKeyState() 이다.&lt;br /&gt;
+인자로는 Virtual Key Code를 요구하고 있다.&lt;/p&gt;
+
+&lt;p&gt;반환 타입은 WORD 크기(16bit)와 같은 SHORT 타입이다.&lt;br /&gt;
+2BYTE를 각각 쪼개거나 비트 연산을 통해 정보를 가져와 사용한다.&lt;/p&gt;
+
+&lt;p&gt;반환 데이터에서 high-order bit가 1이면 해당 키를 누른 상태이며 그 외는 땐 상태를 의미한다.&lt;br /&gt;
+low-order bit가 1이면 키가 토글된 상태를 의미한다. 그 외는 토글되지 않은 상태를 의미한다.&lt;/p&gt;
+
+&lt;p&gt;토글된 상태 값은 토글키(Toggle Key) 에만 적용되는 속성이다.&lt;br /&gt;
+키보드에서 토글키를 누르면 오른쪽 상단의 키보드에 불이 들어오고(1) 다시 누르면 꺼진다(0)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Windows 토글키는 대표적으로 3가지가 존재한다.
+    &lt;ul&gt;
+      &lt;li&gt;Caps Lock&lt;/li&gt;
+      &lt;li&gt;Num Lock&lt;/li&gt;
+      &lt;li&gt;Scroll Lock&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;누른-상태-확인하기&quot;&gt;누른 상태 확인하기&lt;/h2&gt;
+&lt;p&gt;키를 누르고 있는지 알기 위해 high order bit와 비트 연산을 진행한다.&lt;/p&gt;
+
+&lt;p&gt;16bit 데이터에서 high order bit, low order bit는 다음과 같다.&lt;br /&gt;
+high order bit는 1000 0000 0000 0000 을 의미하고 16진수로는 0x8000 이다.&lt;br /&gt;
+low   order bit는 0000 0000 0000 0001 을 의미하고 16진수로는 0x1 이다.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetKeyState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x8000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// key down code&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// VK_CAPITAL = Caps Lock&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetKeyState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VK_CAPITAL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// toggle on code&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// toggle off code&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;‘a’ 를 매개변수로 입력하면 정상적으로 작동하지 않는다.&lt;br /&gt;
+‘a’ 는 virtual key code 목록에 존재하지 않기 때문이다. ‘A’ 를 사용하자&lt;br /&gt;
+virtual key code는 소문자 아스키를 지원하지 않는다는 것을 명심하자.&lt;/p&gt;
+
+&lt;p&gt;a 키를 누르면 정상적으로 키가 눌린지 감지가 된다.&lt;br /&gt;
+Ctrl, Shift 등 다른 키를 누른 상태에서 a 키를 누르면 감지가 되지 않는 점이 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="가상키" /><category term="VK" /><category term="VirtualKey" /><category term="GetKeyState" /><category term="상위비트" /><category term="high-order" /><category term="하위비트" /><category term="low-order" /><category term="토글키" /><category term="ToggleKey" /><summary type="html">[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기</summary></entry><entry><title type="html">[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법</title><link href="https://tars-c.github.io/2020-05-13/cformview-onchar-onkeydown-issue" rel="alternate" type="text/html" title="[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법" /><published>2020-05-13T00:00:00+09:00</published><updated>2020-05-13T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-13/CFormView%20OnChar%20OnKeyDown</id><content type="html" xml:base="https://tars-c.github.io/2020-05-13/cformview-onchar-onkeydown-issue">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;SDI 프로젝트와 다르게&lt;br /&gt;
+컨트롤이 있는 Dialog, FormView에선 OnChar, OnKeyDown 핸들러가 호출되지 않는 현상이 발생한다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;핸들러가 호출이 되지 않은 원인은&lt;br /&gt;
+사용자가 키를 눌러 메시지를 발생하면 Form 안에 포커스를 가지고 있는 컨트롤이 메시지를 처리한다.&lt;/p&gt;
+
+&lt;p&gt;디버거를 돌려보면 알 수 있듯이 View, Dialog는 메시지를 받지 못하고 처리도 못한다.&lt;br /&gt;
+결국에 WM_CHAR, WM_KEYDOWN 메시지는 Form 안에 있는 컨트롤이 보내고 처리한다.&lt;/p&gt;
+
+&lt;p&gt;만약 Form, Dialog, View에 버튼처럼 포커스를 줄 수 있는 컨트롤을 제거하면&lt;br /&gt;
+정상적으로 뷰에서도 OnChar, OnKeyDown 핸들러가 호출된다.&lt;/p&gt;
+
+&lt;p&gt;호출 흐름을 적어보면&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;사용자가 키를 누름&lt;/li&gt;
+  &lt;li&gt;(WM_KEYDOWN, WM_CHAR) 메시지 큐에 들어감&lt;/li&gt;
+  &lt;li&gt;메시지 루프 돌며 처리 대기중&lt;/li&gt;
+  &lt;li&gt;컨트롤 PreTranslateMessage 호출됨&lt;/li&gt;
+  &lt;li&gt;View PreTranslateMessage 호출됨&lt;/li&gt;
+  &lt;li&gt;(메시지를 가로채어 뷰에게 보내주자)&lt;/li&gt;
+  &lt;li&gt;메시지 루프가 메시지큐에서 꺼내 메시지 처리&lt;/li&gt;
+  &lt;li&gt;OnKeyDown(), OnChar() 핸들러 호출됨&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;해결-방법&quot;&gt;해결 방법&lt;/h2&gt;
+&lt;p&gt;뷰 대신에 포커스를 가진 컨트롤이 메시지를 처리하고 있다.&lt;br /&gt;
+메시지 큐에서 메시지를 꺼내기 전(PreTranslateMessage)에 메시지 정보를 얻어 &lt;br /&gt;
+SendMessage 함수를 이용해 뷰에 메시지를 보내어 강제로 핸들러를 호출할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;OnKeyDown(), OnChar() 직접적으로 함수 호출은 잘못된 방식이므로 지양해야한다.&lt;/p&gt;
+&lt;figcaption&gt;CTEView.cpp&lt;/figcaption&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;BOOL&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CTEView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PreTranslateMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MSG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WM_KEYDOWN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetSafeHwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WM_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetSafeHwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lParam&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CFormView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PreTranslateMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pMsg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;PreTranslateMessage() 함수의 반환값은 계속 메시지를 처리할 것인지에 대해 결정한다.&lt;/p&gt;
+
+&lt;p&gt;TRUE이면 더 이상 해당 메시지를 처리하지 않는다는 의미이고&lt;br /&gt;
+FALSE이면 해당 메시지를 계속 처리한다는 의미이다.&lt;/p&gt;
+
+&lt;p&gt;TRUE 반환 예시를 들어보겠다.&lt;br /&gt;
+CButton::PreTranslateMessage() 함수에서 TRUE를 반환하면 그냥 끝이 나버린다.&lt;br /&gt;
+다음으로 진행되는 PreTranslateMessage() 함수 및 메시지 핸들러는 호출되지 않는다.&lt;/p&gt;
+
+&lt;p&gt;그럼 반대로 FALSE 반환 예시를 들어보겠다.&lt;br /&gt;
+Button::PreTranslateMessage() 함수에서 FALSE를 반환하고&lt;br /&gt;
+부모인 TEView::PreTranslateMessage 에서 처리하고 또 FALSE 반환할 시에&lt;br /&gt;
+메시지 핸들러까지 호출된다. 만약 첫단계에서는 FALSE를 반환, 두번째에선 TRUE를 반환하면&lt;br /&gt;
+해당 메시지 핸들러는 호출되지 않는다.&lt;/p&gt;
+
+&lt;p&gt;PreTranslateMessage() 함수 인자로는 MSG 타입이 넘어온다.&lt;br /&gt;
+넘어온 pMSg 구조체는 메시지 관련 정보들을 가지고 있다.&lt;br /&gt;
+가지고 있는 정보는 어느 핸들(hwnd)에서 무슨 메시지(message)를 보낸지 알 수 있고&lt;br /&gt;
+메시지가 가진 정보(WPARAM, LPARAM)를 이용할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="다이얼로그" /><category term="Dialog" /><category term="폼뷰" /><category term="CFormView" /><category term="OnChar" /><category term="OnKeyDown" /><category term="PreTranslateMessage" /><category term="핸들러" /><category term="handler" /><summary type="html">[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법</summary></entry><entry><title type="html">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기</title><link href="https://tars-c.github.io/2020-05-12/sdi-formview" rel="alternate" type="text/html" title="[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기" /><published>2020-05-12T00:00:00+09:00</published><updated>2020-05-12T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-12/SDI%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20Dialog%20Based%20%EC%B2%98%EB%9F%BC%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0</id><content type="html" xml:base="https://tars-c.github.io/2020-05-12/sdi-formview">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;SDI 프로젝트는 기본적으로 만들면 CView 클래스를 상속받아 만들어지기 때문에&lt;br /&gt;
 리소스뷰 비주얼 에디터를 이용하여 컨트롤 생성 및 배치할 수 없다.&lt;br /&gt;
 CView를 상속받은 경우 동적으로 컨트롤을 생성 및 배치해야한다.&lt;/p&gt;
@@ -23,8 +189,8 @@ CFormView를 이용하면 개발자가 양식을 만들어 다른 뷰에도 붙�
 &lt;h2 id=&quot;cformview를-상속받는-view-프로젝트-만들기&quot;&gt;CFormView를 상속받는 View 프로젝트 만들기&lt;/h2&gt;
 &lt;p&gt;MFC 프로젝트를 만들 때 기본적으로 CView를 상속받는다.&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;다음 그림과 같이 기반 클래스를 CFormView를 변경하면 프로젝트를 생성 시&lt;br /&gt;
-FormView를 상속받는 View가 만들어진다.&lt;br /&gt;
+&lt;p&gt;다음 그림과 같이 기반 클래스를 CFormView를 변경하면
+프로젝트를 생성 시 CFormView를 상속받는 View가 만들어진다.&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;생각보다 너무 단순해서 놀랐다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
 &lt;img src=&quot;/assets/images/CFormView/create_formview.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
@@ -45,7 +211,7 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
       &lt;li&gt;(요약 - ON: WS_CHILD / OFF:WS_POPUP, WS_SYSMENU, WS_BORDER)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;TEView.h 파일을 열어 #include “resource.h” 아래에 전역변수로 추가한다.
+  &lt;li&gt;TEView.h 파일을 열어 TEView 클래스 public 멤버변수로 선언합니다.
     &lt;ul&gt;
       &lt;li&gt;enum { IDD = IDD_TE };&lt;/li&gt;
     &lt;/ul&gt;
@@ -82,92 +248,7 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;글 다 썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="SDI" /><category term="프로젝트" /><category term="다이얼로그" /><category term="Dialog" /><category term="폼뷰" /><category term="FormvView" /><category term="툴바" /><category term="Toolbar" /><category term="메뉴" /><category term="Menu" /><category term="삭제하기" /><category term="Destroy" /><summary type="html">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기</summary></entry><entry><title type="html">[잡담] 알고리즘 그리고 후회</title><link href="https://tars-c.github.io/2020-05-11/alogrithm-regret" rel="alternate" type="text/html" title="[잡담] 알고리즘 그리고 후회" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/PS,%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98,%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%ED%9B%84%ED%9A%8C</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/alogrithm-regret">&lt;p&gt;2020년 알고리즘의 붐이 불었다.&lt;br /&gt;
-사실 불고도 계속 불고 있다라는 표현이 맞는 것 같다.&lt;br /&gt;
-아마 2018?년도부터 불지 않았나…&lt;/p&gt;
-
-&lt;p&gt;4,5년 전만 해도 PS는 소수가 즐겨하는 놀이에 불과했다라고 생각했다.&lt;br /&gt;
-그때 나도 알고리즘에 입문해서 열심히 공부할껄 그랬다. &lt;strong&gt;&lt;del&gt;(그땐 뭘했더라..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-솔직히 지금와서 정말로 후회한다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;누군가 알고리즘을 포기하더라도 자료구조는 포기하지 말아야 한다는 것을 말해주고 싶다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;개발을 하면서 알고리즘은 땔래야 떌 수가 없다.&lt;br /&gt;
-알고리즘은 간단히 말해 문제를 해결하는 능력이다.&lt;br /&gt;
-250원에서 3명이서 30원씩 나누고 나머지로 몇명의 사람들이 더 나눌 수 있는가 ?&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;문제의 예시가 조금 허접하다… 이해바란다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-위 문제를 사칙연산 및 루트 복잡한 수학식을 이용해&lt;br /&gt;
-아주 빠르고 최대한의 효율로 풀어내는 것이 솔빙이다(Problem Solving, PS)&lt;br /&gt;
-문제해결, 솔빙(PS), 알고리즘 모두 비슷한 의미다.&lt;br /&gt;
-효율을 매우 중요시하는 건 아니지만&lt;br /&gt;
-문제에서 시간과 메모리(기억공간)을 제한하기에 효율은 따를래야 따를 수 밖에 없다.&lt;/p&gt;
-
-&lt;p&gt;주말에 기초 알고리즘 문제를 풀면서 느낀건 나누기 곱하기를&lt;br /&gt;
-복잡하게 만들면 조금 어렵게 느껴질 수도 있다는 것이다.&lt;br /&gt;
-그림을 확대하거나 축소할 때에도 곱하기 나누기의 연산을 이용한다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(조금 어려웠었지만 재밌는 경험이었다)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;커뮤니티에서 보면 알고리즘 문제 질문은 하루에도 수백번 올라온다.&lt;br /&gt;
-매년이 지날 수록 머리 좋은 신입생들은 정말 치고 올라오고 있다.&lt;br /&gt;
-나는 접근도 못하는 문제를 &lt;strong&gt;&lt;del&gt;어디선가 Copy &amp;amp; Paste한걸까?&lt;/del&gt;&lt;/strong&gt; 풀었다고 하고…&lt;br /&gt;
-정말 문제의 해결을 설명할 수 있을정도로 머리가 좋은건지 의심도 든다.&lt;br /&gt;
-반대로 문제를 빠르게 해결하는 그자의 능력이 대단하고 부럽기도한다.&lt;br /&gt;
-정말 이 세상에 똑똑한 사람들은 많은 것 같다.&lt;/p&gt;
-
-&lt;p&gt;실제로 구글에 알고리즘 문제의 제목을 쳐보면 여러 블로그들이 나온다.&lt;br /&gt;
-어떤 블로그에는 해설이 포함되어 있는데 &lt;strong&gt;&lt;del&gt;또 다른 블로그에는 코드만 가득하다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;정말 이 많은 사람들이 이 어려운 문제를 풀었을까 라는 의문을 가지기도 한다.&lt;br /&gt;
-내 머리로는 풀기도 힘든 문제, 고민을 짧게는 3시간~5시간 이상 고민하면서 풀어야할 문제들이&lt;br /&gt;
-금방 금방 풀리는 느낌이 강하다.. 뭐가 진실인지는 아무도 알 수 없다.&lt;/p&gt;
-
-&lt;p&gt;커뮤니티에서 사람들이 떠드는 내용만 봐도 경쟁력이 느껴질 수 밖에 없다.&lt;br /&gt;
-개발이란 곳이 이런 곳이었나 .. 분명 처음엔 자신감 뿜뿜이었는데 약간 위축이되기도 한다.&lt;br /&gt;
-알고리즘 부분이 남들보다 취약해서 그렇게 느끼는 것 같기도 하다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;데이터를 자유자제로 다룰 수준이면 되지 않는가 ?&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;처음엔 문제해결 능력을 키우고 그것을 응용하는 것이 중요한줄 알았다.&lt;br /&gt;
-근데 깊게 들어가면 알고리즘 문제를 푸는 것도 경험이었다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;경험이 많은 사람이 문제도 잘 풀더라&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;처음부터 개발 좀 해본(간단한 프로그램좀 만들어 본) 개발자들이&lt;br /&gt;
-BFS DFS, DP, 세그먼트 트리 이런 복잡한 문제를 쉽게 풀어내는 사람 거의 없다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;나도 원리를 깨우치는건 좋아한다.&lt;br /&gt;
-이 함수가 어떤식으로 돌아가는지, 하나씩 분해하고 쪼개서 분석하는 걸 무척이나 좋아한다.&lt;/p&gt;
-
-&lt;p&gt;근데 난.. 수학적인 능력이 조금은 떨어지지 않나 생각이든다.&lt;br /&gt;
-능력부족은 결국에 알고리즘 문제를 해결하는 능력이 떨어지는 것에 영향을 끼치는 것 같다.&lt;/p&gt;
-
-&lt;p&gt;사실 높은 등급의 개발자라면 수학을 떌래야 떌 수가 없다.&lt;br /&gt;
-코드를 효율적으로 써야하니까…&lt;br /&gt;
-주어진 상황에서 식을 자유롭게 만든다면 문제를 해결하고 푸는데는 분명 도움이 크게된다.&lt;/p&gt;
-
-&lt;p&gt;대기업은 아니지만 현업에 20년 이상 근무중이신 분께 여쭤보았지만&lt;br /&gt;
-알고리즘 문제를 단 1번도 푼적이 없다고 한다.&lt;br /&gt;
-하지만 실제 현업에서에 나타나는 문제는 알고리즘보다 복잡하다고 한다.&lt;/p&gt;
-
-&lt;p&gt;요즘은 대기업에 입사하기 위해서는 코딩테스트(즉, 알고리즘)는 필수다.&lt;br /&gt;
-언제부터 개발자의 기준이 알고리즘 해결이 된지 모르겠다.&lt;/p&gt;
-
-&lt;p&gt;나는 대기업갈 생각은 1도 없지만.. 그래도 알고리즘의 기초는 알아야하지 않을까?&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(경쟁자가 너무 많고 스펙도 월등한 사람들이 판을 쳐서 눈을 낮춘 것이다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;요즘은 하드웨어 성능이 좋아져서 알고리즘이 쓸모가 없다라는 의견도 몇몇본다.&lt;br /&gt;
-하지만 현실은 하드웨어가 좋아졌어도 성능을 중요시하는 개발 분야는 분명히 있다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(발빠르게 동작하는 서버, 벙렬프로그래밍)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;어렵고 경험위주의 복잡한 알고리즘까지 많은 시간을 허비하진 않더라도 &lt;strong&gt;&lt;del&gt;(대회나갈거아니잖아)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-간단한 문제는 개발자만의 사고력으로 문제를 간단히 해결하는 능력은 있어야한다고 본다.&lt;/p&gt;
-
-&lt;p&gt;커뮤니티를 보면 남들이 얼마나 성장하는지 눈에 보인다.&lt;br /&gt;
-남들이 뭘 하든 나는 사과나무 한그루를 더 심을 것이다.&lt;br /&gt;
-개발 분야에선 안좋게 표현한다면 뒤쳐진다고? 표현하기도 하는 것 같다.&lt;br /&gt;
-하지만 나는 내가 공부하고 싶은 것을 공부하면서 한 우물만 깊게파는 사람이 될 것이다.&lt;br /&gt;
-개발 언어는 도구에 불과하다. 도구는 이용할 뿐이라는 걸 명심해야한다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;다양한 언어 및 프레임워크를 사용하여 한가지 분야를 파도록 하자.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-그래도 기본적인 사고력 성장을 위해 주말엔 기초 알고리즘은 공부하려고 한다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이 글은 현업 경험이 없는 아마추어 개발자가 쓴 것이니 참고용으로 보기 바란다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="알고리즘" /><category term="Alogrithm" /><category term="솔빙" /><category term="PS" /><summary type="html">[잡담] 알고리즘 그리고 후회</summary></entry><entry><title type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</title><link href="https://tars-c.github.io/2020-05-11/implicit-serialize" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 비트맵 파일 직렬화" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/Document%20CArchive%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/implicit-serialize">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;글 다 썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="SDI" /><category term="프로젝트" /><category term="다이얼로그" /><category term="Dialog" /><category term="폼뷰" /><category term="FormvView" /><category term="툴바" /><category term="Toolbar" /><category term="메뉴" /><category term="Menu" /><category term="삭제하기" /><category term="Destroy" /><summary type="html">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기</summary></entry><entry><title type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</title><link href="https://tars-c.github.io/2020-05-11/implicit-serialize" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 비트맵 파일 직렬화" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/Document%20CArchive%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/implicit-serialize">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;이 글은 stackoverflow, MSDN 을 참고하여 작성되었습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;이번 글에서는 비트맵 파일 직렬화를 실습한다.&lt;br /&gt;
@@ -267,7 +348,92 @@ x86 환경에선 과거 세그먼트 메모리 구조에서 가상 메모리를 
 &lt;p&gt;반드시 리소스를 사용했으면 해제 및 반납하는 작업을 빼먹지 말자.&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;이해는 충분히 한 것 같으니 마친다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="파일" /><category term="CFile" /><category term="비트맵" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</summary></entry><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="파일" /><category term="CFile" /><category term="비트맵" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</summary></entry><entry><title type="html">[잡담] 알고리즘 그리고 후회</title><link href="https://tars-c.github.io/2020-05-11/alogrithm-regret" rel="alternate" type="text/html" title="[잡담] 알고리즘 그리고 후회" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/PS,%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98,%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%ED%9B%84%ED%9A%8C</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/alogrithm-regret">&lt;p&gt;2020년 알고리즘의 붐이 불었다.&lt;br /&gt;
+사실 불고도 계속 불고 있다라는 표현이 맞는 것 같다.&lt;br /&gt;
+아마 2018?년도부터 불지 않았나…&lt;/p&gt;
+
+&lt;p&gt;4,5년 전만 해도 PS는 소수가 즐겨하는 놀이에 불과했다라고 생각했다.&lt;br /&gt;
+그때 나도 알고리즘에 입문해서 열심히 공부할껄 그랬다. &lt;strong&gt;&lt;del&gt;(그땐 뭘했더라..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+솔직히 지금와서 정말로 후회한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;누군가 알고리즘을 포기하더라도 자료구조는 포기하지 말아야 한다는 것을 말해주고 싶다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;개발을 하면서 알고리즘은 땔래야 떌 수가 없다.&lt;br /&gt;
+알고리즘은 간단히 말해 문제를 해결하는 능력이다.&lt;br /&gt;
+250원에서 3명이서 30원씩 나누고 나머지로 몇명의 사람들이 더 나눌 수 있는가 ?&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;문제의 예시가 조금 허접하다… 이해바란다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+위 문제를 사칙연산 및 루트 복잡한 수학식을 이용해&lt;br /&gt;
+아주 빠르고 최대한의 효율로 풀어내는 것이 솔빙이다(Problem Solving, PS)&lt;br /&gt;
+문제해결, 솔빙(PS), 알고리즘 모두 비슷한 의미다.&lt;br /&gt;
+효율을 매우 중요시하는 건 아니지만&lt;br /&gt;
+문제에서 시간과 메모리(기억공간)을 제한하기에 효율은 따를래야 따를 수 밖에 없다.&lt;/p&gt;
+
+&lt;p&gt;주말에 기초 알고리즘 문제를 풀면서 느낀건 나누기 곱하기를&lt;br /&gt;
+복잡하게 만들면 조금 어렵게 느껴질 수도 있다는 것이다.&lt;br /&gt;
+그림을 확대하거나 축소할 때에도 곱하기 나누기의 연산을 이용한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(조금 어려웠었지만 재밌는 경험이었다)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;커뮤니티에서 보면 알고리즘 문제 질문은 하루에도 수백번 올라온다.&lt;br /&gt;
+매년이 지날 수록 머리 좋은 신입생들은 정말 치고 올라오고 있다.&lt;br /&gt;
+나는 접근도 못하는 문제를 &lt;strong&gt;&lt;del&gt;어디선가 Copy &amp;amp; Paste한걸까?&lt;/del&gt;&lt;/strong&gt; 풀었다고 하고…&lt;br /&gt;
+정말 문제의 해결을 설명할 수 있을정도로 머리가 좋은건지 의심도 든다.&lt;br /&gt;
+반대로 문제를 빠르게 해결하는 그자의 능력이 대단하고 부럽기도한다.&lt;br /&gt;
+정말 이 세상에 똑똑한 사람들은 많은 것 같다.&lt;/p&gt;
+
+&lt;p&gt;실제로 구글에 알고리즘 문제의 제목을 쳐보면 여러 블로그들이 나온다.&lt;br /&gt;
+어떤 블로그에는 해설이 포함되어 있는데 &lt;strong&gt;&lt;del&gt;또 다른 블로그에는 코드만 가득하다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;정말 이 많은 사람들이 이 어려운 문제를 풀었을까 라는 의문을 가지기도 한다.&lt;br /&gt;
+내 머리로는 풀기도 힘든 문제, 고민을 짧게는 3시간~5시간 이상 고민하면서 풀어야할 문제들이&lt;br /&gt;
+금방 금방 풀리는 느낌이 강하다.. 뭐가 진실인지는 아무도 알 수 없다.&lt;/p&gt;
+
+&lt;p&gt;커뮤니티에서 사람들이 떠드는 내용만 봐도 경쟁력이 느껴질 수 밖에 없다.&lt;br /&gt;
+개발이란 곳이 이런 곳이었나 .. 분명 처음엔 자신감 뿜뿜이었는데 약간 위축이되기도 한다.&lt;br /&gt;
+알고리즘 부분이 남들보다 취약해서 그렇게 느끼는 것 같기도 하다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;데이터를 자유자제로 다룰 수준이면 되지 않는가 ?&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;처음엔 문제해결 능력을 키우고 그것을 응용하는 것이 중요한줄 알았다.&lt;br /&gt;
+근데 깊게 들어가면 알고리즘 문제를 푸는 것도 경험이었다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;경험이 많은 사람이 문제도 잘 풀더라&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;처음부터 개발 좀 해본(간단한 프로그램좀 만들어 본) 개발자들이&lt;br /&gt;
+BFS DFS, DP, 세그먼트 트리 이런 복잡한 문제를 쉽게 풀어내는 사람 거의 없다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;나도 원리를 깨우치는건 좋아한다.&lt;br /&gt;
+이 함수가 어떤식으로 돌아가는지, 하나씩 분해하고 쪼개서 분석하는 걸 무척이나 좋아한다.&lt;/p&gt;
+
+&lt;p&gt;근데 난.. 수학적인 능력이 조금은 떨어지지 않나 생각이든다.&lt;br /&gt;
+능력부족은 결국에 알고리즘 문제를 해결하는 능력이 떨어지는 것에 영향을 끼치는 것 같다.&lt;/p&gt;
+
+&lt;p&gt;사실 높은 등급의 개발자라면 수학을 떌래야 떌 수가 없다.&lt;br /&gt;
+코드를 효율적으로 써야하니까…&lt;br /&gt;
+주어진 상황에서 식을 자유롭게 만든다면 문제를 해결하고 푸는데는 분명 도움이 크게된다.&lt;/p&gt;
+
+&lt;p&gt;대기업은 아니지만 현업에 20년 이상 근무중이신 분께 여쭤보았지만&lt;br /&gt;
+알고리즘 문제를 단 1번도 푼적이 없다고 한다.&lt;br /&gt;
+하지만 실제 현업에서에 나타나는 문제는 알고리즘보다 복잡하다고 한다.&lt;/p&gt;
+
+&lt;p&gt;요즘은 대기업에 입사하기 위해서는 코딩테스트(즉, 알고리즘)는 필수다.&lt;br /&gt;
+언제부터 개발자의 기준이 알고리즘 해결이 된지 모르겠다.&lt;/p&gt;
+
+&lt;p&gt;나는 대기업갈 생각은 1도 없지만.. 그래도 알고리즘의 기초는 알아야하지 않을까?&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(경쟁자가 너무 많고 스펙도 월등한 사람들이 판을 쳐서 눈을 낮춘 것이다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;요즘은 하드웨어 성능이 좋아져서 알고리즘이 쓸모가 없다라는 의견도 몇몇본다.&lt;br /&gt;
+하지만 현실은 하드웨어가 좋아졌어도 성능을 중요시하는 개발 분야는 분명히 있다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(발빠르게 동작하는 서버, 벙렬프로그래밍)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;어렵고 경험위주의 복잡한 알고리즘까지 많은 시간을 허비하진 않더라도 &lt;strong&gt;&lt;del&gt;(대회나갈거아니잖아)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+간단한 문제는 개발자만의 사고력으로 문제를 간단히 해결하는 능력은 있어야한다고 본다.&lt;/p&gt;
+
+&lt;p&gt;커뮤니티를 보면 남들이 얼마나 성장하는지 눈에 보인다.&lt;br /&gt;
+남들이 뭘 하든 나는 사과나무 한그루를 더 심을 것이다.&lt;br /&gt;
+개발 분야에선 안좋게 표현한다면 뒤쳐진다고? 표현하기도 하는 것 같다.&lt;br /&gt;
+하지만 나는 내가 공부하고 싶은 것을 공부하면서 한 우물만 깊게파는 사람이 될 것이다.&lt;br /&gt;
+개발 언어는 도구에 불과하다. 도구는 이용할 뿐이라는 걸 명심해야한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;다양한 언어 및 프레임워크를 사용하여 한가지 분야를 파도록 하자.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+그래도 기본적인 사고력 성장을 위해 주말엔 기초 알고리즘은 공부하려고 한다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 글은 현업 경험이 없는 아마추어 개발자가 쓴 것이니 참고용으로 보기 바란다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="알고리즘" /><category term="Alogrithm" /><category term="솔빙" /><category term="PS" /><summary type="html">[잡담] 알고리즘 그리고 후회</summary></entry><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
 정보가 없는 상태에서 직접 다운받으면서 써본 경험을 바탕으로으로 작성되었습니다.&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;신문물을 접한 느낌이랄까..&lt;/del&gt;&lt;/strong&gt;
 &lt;br /&gt;&lt;/p&gt;
@@ -1046,119 +1212,4 @@ HEX Viewer를 이용해 직렬화된 값을 16진수로 확인할 수 있습니�
 뷰어를 통해 이미지를 확인할 수 있습니다.&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;p&gt;&lt;a href=&quot;https://rockdrumy.tistory.com/1044&quot; target=&quot;_blank&quot;&gt;이미지 출처: Tistory 드럼치는 프로그래머&lt;/a&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="직렬화" /><category term="Serialization" /><category term="Serialize" /><summary type="html">[C++] Serialiization : 설명</summary></entry><entry><title type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</title><link href="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/" rel="alternate" type="text/html" title="[MFC] Bitmap Format (DIB, DDB) : 설명" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80%20%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%ED%8F%AC%EB%A7%B7%20(DIB,%20DDB)</id><content type="html" xml:base="https://tars-c.github.io/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/mfc/Windows%EA%B0%80-%EC%A7%80%EC%9B%90%ED%95%98%EB%8A%94-%EB%B9%84%ED%8A%B8%EB%A7%B5-%ED%8F%AC%EB%A7%B7-(DIB,-DDB)/">&lt;ul&gt;
-  &lt;li&gt;Windows에서 비트맵은 총 2가지 포맷을 지원합니다.
-    &lt;ul&gt;
-      &lt;li&gt;DDB(Device Dependent Bitmap)&lt;/li&gt;
-      &lt;li&gt;DIB(Device Indepedent Bitmap)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;ddb-과거-화려했던-스타&quot;&gt;DDB (과거 화려했던 스타)&lt;/h2&gt;
-&lt;p&gt;Windows 3.0 이전 버전에서 사용되던 포맷 방식입니다.&lt;br /&gt;
-하지만 오늘날에서도 쓸 수 있습니다.&lt;br /&gt;
-DC에 SelectObject() 할 수 있는 포맷&lt;br /&gt;
-&lt;del&gt;&lt;strong&gt;(개발자라면 DDB도 알아야합니다)&lt;/strong&gt;&lt;/del&gt;&lt;/p&gt;
-
-&lt;p&gt;장치에 의존 및 독립되지 않은 비트맵을 의미합니다.&lt;br /&gt;
-과거 비트맵을 출력했던 방식에서 사용됩니다.&lt;/p&gt;
-
-&lt;p&gt;장치에 독립되지 않고 의존적이므로 내 장치가 흑백 장치라면&lt;br /&gt;
-어떤 이미지든 흑백으로 밖에 이미지를 볼 수 밖에 없는 것입니다.&lt;/p&gt;
-
-&lt;p&gt;DIB의 장점은 연산할 때 속도가 빠릅니다.&lt;br /&gt;
-단점은 컬러 비트맵을 출력할 수 있는 장치에서는 흑백 비트맵을 출력할 수 없습니다.&lt;/p&gt;
-
-&lt;p&gt;Createbitmap() 함수를 사용하여 DDB 비트맵을 생성할 수 있습니다.&lt;br /&gt;
-장치에 독립적이므로 비트맵 헤더 구조가 간단하게 이루어져있습니다.&lt;/p&gt;
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tagBITMAP&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LONG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LONG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LONG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LONG&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmWidthBytes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WORD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmPlanes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WORD&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmBitsPixel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LPVOID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bmBits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BITMAP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;dib-지금도-핫한-스타&quot;&gt;DIB (지금도 핫한 스타)&lt;/h2&gt;
-&lt;p&gt;Windows 3.0 버전부터 사용되온 포맷 방식입니다.&lt;br /&gt;
-지금까지도 흔하게 쓰고 있는 비트맵입니다.&lt;/p&gt;
-
-&lt;p&gt;비트맵 파일을 저장될 때에도 DIB 포맷을 사용합니다.&lt;br /&gt;
-DC에 SelectObject() 할 수 없는 포맷&lt;/p&gt;
-
-&lt;p&gt;장치랑 상관없이 어느장치에나 색상을 완벽하게 출력할 수 있습니다.&lt;br /&gt;
-활용도가 DIB보단 훨씬 넓고 광범위합니다.&lt;br /&gt;
-전체적으로 파일이 가지고 있는 데이터가 크므로 연산 속도가 느립니다.&lt;/p&gt;
-
-&lt;p&gt;흑백만 출력할 수 있는 장치에서&lt;br /&gt;
-파일 자체가 비트맵 정보를 가지고 있기 때문에 컬러로 출력할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;CreateCompatibleBitmap() 함수를 사용하여 DIB 비트맵을 변환 및 생성할 수 있습니다.&lt;br /&gt;
-색상정보를 가지고 있기 때문에 비트맵 헤더의 크기는 DIB 비트맵 헤더보다 큽니다.&lt;br /&gt;
-헤더는 BITMAPFILEHEADER, BITMAPINFOHEADER 로 구성되어 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;정리&quot;&gt;정리&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;DDB
-    &lt;ul&gt;
-      &lt;li&gt;과거 화려했던 스타 (Windows 3.0 이전 버전, 지금까지도 사용할 수 있음)&lt;/li&gt;
-      &lt;li&gt;장치에 묶여있음(종송적)&lt;/li&gt;
-      &lt;li&gt;장치가 지원하는 색상만 출력할 수 있음&lt;/li&gt;
-      &lt;li&gt;비트맵 헤더가 매우 단순하고 가벼움&lt;/li&gt;
-      &lt;li&gt;연산 속도는 빠름&lt;/li&gt;
-      &lt;li&gt;생성 및 파괴 오버헤드 적음&lt;/li&gt;
-      &lt;li&gt;DC에 SelectObject() 가능 &lt;del&gt;&lt;strong&gt;(Only You)&lt;/strong&gt;&lt;/del&gt;&lt;/li&gt;
-      &lt;li&gt;Createbitmap() 함수를 이용한 생성&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;DIB
-    &lt;ul&gt;
-      &lt;li&gt;지금도 핫한 스타 (WIndows 3.0 버전에서부터 사용됨)&lt;/li&gt;
-      &lt;li&gt;장치랑 상관없이 자유로움 &lt;del&gt;&lt;strong&gt;(장치에서의 해방이다~)&lt;/strong&gt;&lt;/del&gt;&lt;/li&gt;
-      &lt;li&gt;장치가 지원하지 않지만 다른 색상도 출력할 수 있음&lt;/li&gt;
-      &lt;li&gt;색상 정보를 가지고 있으므로 비트맵 헤더가 복잡하고 큼&lt;/li&gt;
-      &lt;li&gt;연산속도는 DDB보다 느림&lt;/li&gt;
-      &lt;li&gt;생성 및 파괴는 DIB보다 비효율적&lt;/li&gt;
-      &lt;li&gt;DC에 SelectObject() 불가능! (내부 변환과정 거쳐야함)&lt;/li&gt;
-      &lt;li&gt;CreateCompatibleBitmap() 함수를 이용한 변환 및 생성&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>타스 (TARS-C)</name></author><category term="DIB" /><category term="DDB" /><category term="장치" /><category term="Device" /><category term="비트맵" /><category term="Bitmap" /><category term="포맷" /><category term="Format" /><category term="이미지포맷" /><category term="ImageFormat" /><summary type="html">[MFC] Bitmap Format (DIB, DDB) : 설명</summary></entry><entry><title type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</title><link href="https://tars-c.github.io/2020/05/05/library/spdlog" rel="alternate" type="text/html" title="[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog" /><published>2020-05-05T00:00:00+09:00</published><updated>2020-05-05T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/05/library/%EB%B9%A0%EB%A5%B8%20%EB%A1%9C%EA%B7%B8%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%20%EC%86%8C%EA%B0%9C</id><content type="html" xml:base="https://tars-c.github.io/2020/05/05/library/spdlog">&lt;p&gt;C++ 개발자방에서 한분이 라이브러리를 소개시켜주었습니다.&lt;br /&gt;
-벤치마크 성능을 보니까 빠르고 좋아보여 공유하고자 합니다.&lt;br /&gt;
-자세한건 아래 링크를 참고해주시기 바랍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/gabime/spdlog&quot; target=&quot;_blank&quot;&gt;Project: spldog Library Repository&lt;/a&gt;&lt;br /&gt;
-&lt;a href=&quot;https://travis-ci.org/gabime/spdlog&quot;&gt;&lt;img src=&quot;https://travis-ci.org/gabime/spdlog.svg?branch=v1.x&quot; alt=&quot;Build Status&quot; /&gt;&lt;/a&gt;   &lt;a href=&quot;https://ci.appveyor.com/project/gabime/spdlog&quot;&gt;&lt;img src=&quot;https://ci.appveyor.com/api/projects/status/d2jnxclg20vd0o50?svg=true&quot; alt=&quot;Build status&quot; /&gt;&lt;/a&gt;   &lt;a href=&quot;https://github.com/gabime/spdlog/releases/latest&quot;&gt;&lt;img src=&quot;https://img.shields.io/github/release/gabime/spdlog.svg&quot; alt=&quot;Release&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;지원하는 플랫폼
-    &lt;ul&gt;
-      &lt;li&gt;Android&lt;/li&gt;
-      &lt;li&gt;Linux (FreeBSD, OpenBSD, Solaris, AIX)&lt;/li&gt;
-      &lt;li&gt;macOS (clang 3.5 later)&lt;/li&gt;
-      &lt;li&gt;Windows (msvc 2013 later, cygwin)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;지원하는 설치 및 패키지 매니저
-    &lt;ul&gt;
-      &lt;li&gt;cmake&lt;/li&gt;
-      &lt;li&gt;Homebrew&lt;/li&gt;
-      &lt;li&gt;MacPorts&lt;/li&gt;
-      &lt;li&gt;FreeBSD&lt;/li&gt;
-      &lt;li&gt;Fedora&lt;/li&gt;
-      &lt;li&gt;Gentoo&lt;/li&gt;
-      &lt;li&gt;Arch Linux&lt;/li&gt;
-      &lt;li&gt;vcpkg&lt;/li&gt;
-      &lt;li&gt;conan&lt;/li&gt;
-      &lt;li&gt;conda&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;
-  이 라이브러리는 JetBrains 라이센스 기증을 받아 제작되었습니다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="spdlog" /><category term="로그" /><category term="Logging" /><category term="Log" /><category term="라이브러리" /><category term="Library" /><summary type="html">[C++][소개] 빠른 로깅(Logging) 라이브러리 : spdlog</summary></entry></feed>
+&lt;p&gt;&lt;a href=&quot;https://rockdrumy.tistory.com/1044&quot; target=&quot;_blank&quot;&gt;이미지 출처: Tistory 드럼치는 프로그래머&lt;/a&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="직렬화" /><category term="Serialization" /><category term="Serialize" /><summary type="html">[C++] Serialiization : 설명</summary></entry></feed>

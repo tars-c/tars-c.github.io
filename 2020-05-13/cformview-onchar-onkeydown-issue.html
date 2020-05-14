@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기 - 타스의 개발 블로그</title>
-<meta name="description" content="[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기">
+<!-- begin _includes/seo.html --><title>[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법 - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법">
 
 
   <meta name="author" content="타스 (TARS-C)">
@@ -13,11 +13,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
-<meta property="og:title" content="[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기">
-<meta property="og:url" content="https://tars-c.github.io/2020-05-12/sdi-formview">
+<meta property="og:title" content="[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법">
+<meta property="og:url" content="https://tars-c.github.io/2020-05-13/cformview-onchar-onkeydown-issue">
 
 
-  <meta property="og:description" content="[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기">
+  <meta property="og:description" content="[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법">
 
 
 
@@ -27,11 +27,11 @@
 
 
 
-  <meta property="article:published_time" content="2020-05-12T00:00:00+09:00">
+  <meta property="article:published_time" content="2020-05-13T00:00:00+09:00">
 
 
 
-  <meta property="article:modified_time" content="2020-05-12T00:00:00+09:00">
+  <meta property="article:modified_time" content="2020-05-13T00:00:00+09:00">
 
 
 
@@ -40,7 +40,7 @@
   
 
 
-<link rel="canonical" href="https://tars-c.github.io/2020-05-12/sdi-formview">
+<link rel="canonical" href="https://tars-c.github.io/2020-05-13/cformview-onchar-onkeydown-issue">
 
 
 
@@ -281,15 +281,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기">
-    <meta itemprop="description" content="[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기">
-    <meta itemprop="datePublished" content="2020-05-12T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2020-05-12T00:00:00+09:00">
+    <meta itemprop="headline" content="[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법">
+    <meta itemprop="description" content="[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법">
+    <meta itemprop="datePublished" content="2020-05-13T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-13T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법
 </h1>
           
         </header>
@@ -302,99 +302,103 @@
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
               <ul class="toc__menu">
   <li><a href="#서론">서론</a></li>
-  <li><a href="#cformview란-">CFormView란 ?</a></li>
-  <li><a href="#cformview를-상속받는-view-프로젝트-만들기">CFormView를 상속받는 View 프로젝트 만들기</a></li>
-  <li><a href="#cview를-상속받은-view를-cformview로-상속받는-view로-변경하기">CView를 상속받은 View를 CFormView로 상속받는 View로 변경하기</a></li>
-  <li><a href="#메뉴-및-툴바-삭제하기">메뉴 및 툴바 삭제하기</a></li>
+  <li><a href="#해결-방법">해결 방법</a></li>
 </ul>
             </nav>
           </aside>
         
         <h2 id="서론">서론</h2>
-<p>SDI 프로젝트는 기본적으로 만들면 CView 클래스를 상속받아 만들어지기 때문에<br />
-리소스뷰 비주얼 에디터를 이용하여 컨트롤 생성 및 배치할 수 없다.<br />
-CView를 상속받은 경우 동적으로 컨트롤을 생성 및 배치해야한다.</p>
+<p>SDI 프로젝트와 다르게<br />
+컨트롤이 있는 Dialog, FormView에선 OnChar, OnKeyDown 핸들러가 호출되지 않는 현상이 발생한다.<br /></p>
 
-<p>CView와 다르게 CFormView 클래스를 상속받은 경우<br />
-Dialog를 이용한 컨트롤 생성 및 배치가 가능한다.<br /></p>
+<p>핸들러가 호출이 되지 않은 원인은<br />
+사용자가 키를 눌러 메시지를 발생하면 Form 안에 포커스를 가지고 있는 컨트롤이 메시지를 처리한다.</p>
 
-<p>이번 글에선 CFormView가 간단히 알아보고<br />
-프로젝트를 생성할 때 CFormView를 상속받아 생성하는 법을 알아본다.<br />
-추가로 CView를 상속받은 View를 CFormView로 상속받은 View로 바꾸는 작업도 진행한다.<br /></p>
+<p>디버거를 돌려보면 알 수 있듯이 View, Dialog는 메시지를 받지 못하고 처리도 못한다.<br />
+결국에 WM_CHAR, WM_KEYDOWN 메시지는 Form 안에 있는 컨트롤이 보내고 처리한다.</p>
 
-<h2 id="cformview란-">CFormView란 ?</h2>
-<p>대화상자 리소스를 이용해 컨트롤을 배치할 수 있는 뷰이다.<br />
-폼 기반의 MFC를 이용한 프로그램을 개발할 때 가장 기본이 되는 뷰이다.<br />
-CSCrollView의 파생 클래스이며 스크롤 기능을 지원한다.<br />
-CFormView를 이용하면 개발자가 양식을 만들어 다른 뷰에도 붙일 수 있다.</p>
+<p>만약 Form, Dialog, View에 버튼처럼 포커스를 줄 수 있는 컨트롤을 제거하면<br />
+정상적으로 뷰에서도 OnChar, OnKeyDown 핸들러가 호출된다.</p>
 
-<p>다이얼로그와 연결이 되어 비주얼에디터를 사용할 수 있으므로 생산성에도 영향을 준다.
-<br />
-<br /></p>
-
-<h2 id="cformview를-상속받는-view-프로젝트-만들기">CFormView를 상속받는 View 프로젝트 만들기</h2>
-<p>MFC 프로젝트를 만들 때 기본적으로 CView를 상속받는다.<br /></p>
-
-<p>다음 그림과 같이 기반 클래스를 CFormView를 변경하면
-프로젝트를 생성 시 CFormView를 상속받는 View가 만들어진다.<br />
-<strong><del>생각보다 너무 단순해서 놀랐다.</del></strong><br />
-<img src="/assets/images/CFormView/create_formview.png" alt="img1" /></p>
-
-<h2 id="cview를-상속받은-view를-cformview로-상속받는-view로-변경하기">CView를 상속받은 View를 CFormView로 상속받는 View로 변경하기</h2>
-<p>솔루션 이름을 “ TE “ 로 프로젝트를 CView를 상속받은 프로젝트를 만든다. (Test 줄임말)<br />
-Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올바르게 작동하지 않을 수 있다.</p>
-
+<p>호출 흐름을 적어보면</p>
 <ol>
-  <li>TEView.h 를 엽니다.</li>
-  <li>CView를 CFormView로 Rename(Ctrl+R+R) 합니다. (미리보기 -&gt; 적용)</li>
-  <li>리소스뷰로 가서 Dialog 삽입 및 ID를 지정합니다. (IDD_TE)</li>
-  <li>창을 눌러 다음과 같이 속성을 변경합니다.
-    <ul>
-      <li>속성 Style: Popup -&gt; Child</li>
-      <li>속성 System Menu: True -&gt; False</li>
-      <li>속성 Title Bar: True -&gt; False</li>
-      <li>속성 Border: Dialog Frame -&gt; None</li>
-      <li>(요약 - ON: WS_CHILD / OFF:WS_POPUP, WS_SYSMENU, WS_BORDER)</li>
-    </ul>
-  </li>
-  <li>TEView.h 파일을 열어 TEView 클래스 public 멤버변수로 선언합니다.
-    <ul>
-      <li>enum { IDD = IDD_TE };</li>
-    </ul>
-  </li>
-  <li>TEView.cpp 디폴트 생성자 정의부에 멤버이니셜라이저로 CFormView 생성자를 호출한다.
-    <ul>
-      <li>생성자 호출 시 필요한 매개변수는 Dialog ID 입니다.</li>
-      <li>: CFormView(IDD_TE)</li>
-    </ul>
-  </li>
-  <li>TEView.cpp 클래스 마법사를 이용해 OnInitialUpdate() 가상함수를 재정의한다.</li>
-  <li>아래 두 함수를 사용해서 뷰의 크기를 프레임과 맞추고 빌드를 한다.(딘축키: F7)
-    <ol>
-      <li>GetParentFrame()-&gt;RecalcLayout();</li>
-      <li>ResizeParentToFit();</li>
-    </ol>
-  </li>
+  <li>사용자가 키를 누름</li>
+  <li>(WM_KEYDOWN, WM_CHAR) 메시지 큐에 들어감</li>
+  <li>메시지 루프 돌며 처리 대기중</li>
+  <li>컨트롤 PreTranslateMessage 호출됨</li>
+  <li>View PreTranslateMessage 호출됨</li>
+  <li>(메시지를 가로채어 뷰에게 보내주자)</li>
+  <li>메시지 루프가 메시지큐에서 꺼내 메시지 처리</li>
+  <li>OnKeyDown(), OnChar() 핸들러 호출됨</li>
 </ol>
 
-<p>결과:<br />
-<img src="/assets/images/CFormView/result_formview.png" alt="img1" /></p>
+<h2 id="해결-방법">해결 방법</h2>
+<p>뷰 대신에 포커스를 가진 컨트롤이 메시지를 처리하고 있다.<br />
+메시지 큐에서 메시지를 꺼내기 전(PreTranslateMessage)에 메시지 정보를 얻어 <br />
+SendMessage 함수를 이용해 뷰에 메시지를 보내어 강제로 핸들러를 호출할 수 있다.</p>
 
-<h2 id="메뉴-및-툴바-삭제하기">메뉴 및 툴바 삭제하기</h2>
-<ol>
-  <li>툴바를 삭제하고 싶다면 다음과 같이 진행한다.
-    <ul>
-      <li>CMainFrame::OnCreate() 에서 m_wndToolBar 관련 코드를 주석처리한다.</li>
-    </ul>
-  </li>
-  <li>상단 메뉴를 삭제하고 싶다면 다음과 같이 진행한다.
-    <ul>
-      <li>CTEApp::InitInstance() 창 초기화 작업란에 m_pMainWnd-&gt;SetMenu(NULL); 코드를 삽입한다.</li>
-    </ul>
-  </li>
-</ol>
+<p>OnKeyDown(), OnChar() 직접적으로 함수 호출은 잘못된 방식이므로 지양해야한다.</p>
+<figcaption>CTEView.cpp</figcaption>
 
-<p><strong>글 다 썻다아 ~</strong></p>
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="code"><pre><span class="n">BOOL</span> <span class="n">CTEView</span><span class="o">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span><span class="n">MSG</span><span class="o">*</span> <span class="n">pMsg</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="c1">// TODO: 여기에 특수화된 코드를 추가 및/또는 기본 클래스를 호출합니다.</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">message</span> <span class="o">==</span> <span class="n">WM_KEYDOWN</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="o">::</span><span class="n">SendMessage</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">GetSafeHwnd</span><span class="p">(),</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">,</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">wParam</span><span class="p">,</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">lParam</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">message</span> <span class="o">==</span> <span class="n">WM_CHAR</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="o">::</span><span class="n">SendMessage</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">GetSafeHwnd</span><span class="p">(),</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">message</span><span class="p">,</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">wParam</span><span class="p">,</span> <span class="n">pMsg</span><span class="o">-&gt;</span><span class="n">lParam</span><span class="p">);</span>
+		<span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+  <span class="p">{</span>
+	  <span class="k">return</span> <span class="n">CFormView</span><span class="o">::</span><span class="n">PreTranslateMessage</span><span class="p">(</span><span class="n">pMsg</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>PreTranslateMessage() 함수의 반환값은 계속 메시지를 처리할 것인지에 대해 결정한다.</p>
+
+<p>TRUE이면 더 이상 해당 메시지를 처리하지 않는다는 의미이고<br />
+FALSE이면 해당 메시지를 계속 처리한다는 의미이다.</p>
+
+<p>TRUE 반환 예시를 들어보겠다.<br />
+CButton::PreTranslateMessage() 함수에서 TRUE를 반환하면 그냥 끝이 나버린다.<br />
+다음으로 진행되는 PreTranslateMessage() 함수 및 메시지 핸들러는 호출되지 않는다.</p>
+
+<p>그럼 반대로 FALSE 반환 예시를 들어보겠다.<br />
+Button::PreTranslateMessage() 함수에서 FALSE를 반환하고<br />
+부모인 TEView::PreTranslateMessage 에서 처리하고 또 FALSE 반환할 시에<br />
+메시지 핸들러까지 호출된다. 만약 첫단계에서는 FALSE를 반환, 두번째에선 TRUE를 반환하면<br />
+해당 메시지 핸들러는 호출되지 않는다.</p>
+
+<p>PreTranslateMessage() 함수 인자로는 MSG 타입이 넘어온다.<br />
+넘어온 pMSg 구조체는 메시지 관련 정보들을 가지고 있다.<br />
+가지고 있는 정보는 어느 핸들(hwnd)에서 무슨 메시지(message)를 보낸지 알 수 있고<br />
+메시지가 가진 정보(WPARAM, LPARAM)를 이용할 수 있다.</p>
+
+<p><strong>글 다썻다아 ~</strong></p>
 
 
         
@@ -416,7 +420,7 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
     
       
       
-      <a href="/tags/#destroy" class="page__taxonomy-item" rel="tag">Destroy</a><span class="sep">, </span>
+      <a href="/tags/#cformview" class="page__taxonomy-item" rel="tag">CFormView</a><span class="sep">, </span>
     
       
       
@@ -424,19 +428,19 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
     
       
       
-      <a href="/tags/#formvview" class="page__taxonomy-item" rel="tag">FormvView</a><span class="sep">, </span>
+      <a href="/tags/#handler" class="page__taxonomy-item" rel="tag">handler</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#menu" class="page__taxonomy-item" rel="tag">Menu</a><span class="sep">, </span>
+      <a href="/tags/#onchar" class="page__taxonomy-item" rel="tag">OnChar</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#sdi" class="page__taxonomy-item" rel="tag">SDI</a><span class="sep">, </span>
+      <a href="/tags/#onkeydown" class="page__taxonomy-item" rel="tag">OnKeyDown</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#toolbar" class="page__taxonomy-item" rel="tag">Toolbar</a><span class="sep">, </span>
+      <a href="/tags/#pretranslatemessage" class="page__taxonomy-item" rel="tag">PreTranslateMessage</a><span class="sep">, </span>
     
       
       
@@ -444,23 +448,11 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
     
       
       
-      <a href="/tags/#%EB%A9%94%EB%89%B4" class="page__taxonomy-item" rel="tag">메뉴</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%EC%82%AD%EC%A0%9C%ED%95%98%EA%B8%B0" class="page__taxonomy-item" rel="tag">삭제하기</a><span class="sep">, </span>
-    
-      
-      
-      <a href="/tags/#%ED%88%B4%EB%B0%94" class="page__taxonomy-item" rel="tag">툴바</a><span class="sep">, </span>
-    
-      
-      
       <a href="/tags/#%ED%8F%BC%EB%B7%B0" class="page__taxonomy-item" rel="tag">폼뷰</a><span class="sep">, </span>
     
       
       
-      <a href="/tags/#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8" class="page__taxonomy-item" rel="tag">프로젝트</a>
+      <a href="/tags/#%ED%95%B8%EB%93%A4%EB%9F%AC" class="page__taxonomy-item" rel="tag">핸들러</a>
     
     </span>
   </p>
@@ -485,6 +477,10 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
     
       
       
+      <a href="/categories/#issue" class="page__taxonomy-item" rel="tag">Issue</a><span class="sep">, </span>
+    
+      
+      
       <a href="/categories/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
     
       
@@ -496,7 +492,7 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-12">May 12, 2020</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-13">May 13, 2020</time></p>
         
       </footer>
 
@@ -505,22 +501,22 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+SDI+%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8+Dialog+Based+%EC%B2%98%EB%9F%BC+%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0%20https%3A%2F%2Ftars-c.github.io%2F2020-05-12%2Fsdi-formview" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+Form%EC%97%90%EC%84%9C+OnChar%2C+OnKeyDown+%ED%95%B8%EB%93%A4%EB%9F%AC+%ED%98%B8%EC%B6%9C%EC%9D%B4+%EC%95%88+%EB%90%A0+%EC%8B%9C+%ED%95%B4%EA%B2%B0%EB%B0%A9%EB%B2%95%20https%3A%2F%2Ftars-c.github.io%2F2020-05-13%2Fcformview-onchar-onkeydown-issue" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020-05-12%2Fsdi-formview" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020-05-13%2Fcformview-onchar-onkeydown-issue" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020-05-12%2Fsdi-formview" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020-05-13%2Fcformview-onchar-onkeydown-issue" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/2020-05-11/alogrithm-regret" class="pagination--pager" title="[잡담] 알고리즘 그리고 후회
+      <a href="/2020-05-12/sdi-formview" class="pagination--pager" title="[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기
 ">Previous</a>
     
     
-      <a href="/2020-05-13/cformview-onchar-onkeydown-issue" class="pagination--pager" title="[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법
+      <a href="/2020-05-14/getkeystate" class="pagination--pager" title="[MFC] GetKeyState: 해당 키가 눌러져 있는지 확인하기
 ">Next</a>
     
   </nav>
@@ -580,7 +576,7 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/2020-05-13/cformview-onchar-onkeydown-issue" rel="permalink">[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법
+        <a href="/2020-05-12/sdi-formview" rel="permalink">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기
 </a>
       
     </h2>
@@ -588,10 +584,10 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
     
   -->
   
-  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 13 2020</p>
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 12 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[MFC] Form에서 OnChar, OnKeyDown 핸들러 호출이 안 될 시 해결방법
+  <p class="archive__item-excerpt" itemprop="description">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기
 </p>
   </article>
 </div>
@@ -714,8 +710,8 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
     
   <script>
     var disqus_config = function () {
-      this.page.url = "https://tars-c.github.io/2020-05-12/sdi-formview";  // Replace PAGE_URL with your page's canonical URL variable
-      this.page.identifier = "/2020-05-12/SDI 프로젝트 Dialog Based 처럼 사용하기"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      this.page.url = "https://tars-c.github.io/2020-05-13/cformview-onchar-onkeydown-issue";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020-05-13/CFormView OnChar OnKeyDown"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     
     (function() { // DON'T EDIT BELOW THIS LINE
