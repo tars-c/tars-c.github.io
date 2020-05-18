@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-18T23:58:20+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] 서브클래싱</title><link href="https://tars-c.github.io/2020-05-18/mfc-subclassing" rel="alternate" type="text/html" title="[MFC] 서브클래싱" /><published>2020-05-18T00:00:00+09:00</published><updated>2020-05-18T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-18/%EC%84%9C%EB%B8%8C%ED%81%B4%EB%9E%98%EC%8B%B1</id><content type="html" xml:base="https://tars-c.github.io/2020-05-18/mfc-subclassing">&lt;h1 id=&quot;서론&quot;&gt;서론&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-19T00:42:58+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC][실습] 서브클래싱</title><link href="https://tars-c.github.io/2020-05-18/mfc-subclassing" rel="alternate" type="text/html" title="[MFC][실습] 서브클래싱" /><published>2020-05-18T00:00:00+09:00</published><updated>2020-05-18T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-18/%EC%84%9C%EB%B8%8C%ED%81%B4%EB%9E%98%EC%8B%B1</id><content type="html" xml:base="https://tars-c.github.io/2020-05-18/mfc-subclassing">&lt;h1 id=&quot;서론&quot;&gt;서론&lt;/h1&gt;
 &lt;p&gt;MFC에서 제공하는 컨트롤 및 뷰는 가장 단순하고&lt;br /&gt;
 가장 기본적인 기능만 제공하고 있다.&lt;/p&gt;
 
@@ -38,12 +38,12 @@
 
 &lt;h2 id=&quot;동적-서브-클래싱&quot;&gt;동적 서브 클래싱&lt;/h2&gt;
 &lt;p&gt;동적 서브 클래싱을 하기 위해 필요한 함수는&lt;br /&gt;
-CWnd::SubclassDlgItem() 및 CWnd::SubSubclassWindow(hWnd) 이다.&lt;br /&gt;
+CWnd::SubclassDlgItem() 및 CWnd::SubSubclassWindow() 이다.&lt;br /&gt;
 런타임에서 서브클래싱을 할 수 있다.&lt;br /&gt;
 프로그램이 실행 되면서 프로시저를 변경할 때 아주 유용하게 쓰인다.&lt;br /&gt;
 프로시저가 변경된다는 것은 프로그램의 처리 결과를 바뀌게 된다는 의미이다.&lt;/p&gt;
 
-&lt;h2 id=&quot;unsubclasswindow&quot;&gt;UnsubclassWindow()&lt;/h2&gt;
+&lt;h2 id=&quot;unsubclasswindow-함수&quot;&gt;UnsubclassWindow() 함수&lt;/h2&gt;
 &lt;p&gt;서브 클래싱을 동적으로 해제해줄 수 있는 함수이다.&lt;br /&gt;
 이 함수를 해제하면 기본 윈도우 프로시저가 메시지를 처리하게 된다.&lt;br /&gt;
 동적 서브 클래싱이 되지 않은 객체한테 사용하면 Crash를 겪게될 수 있다.&lt;/p&gt;
@@ -326,7 +326,7 @@ SetFocus() 함수를 이용해서 즉시 화면을 갱신한다.&lt;/p&gt;
 또 컨트롤 입력창 텍스트의 색상은 빨간색으로 변경된다.&lt;/p&gt;
 
 &lt;p&gt;Result.gif File(4.24MB)&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Subclassing/result.gif&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://1.bp.blogspot.com/-R1bwpWmANK0/XsKsNRlGH7I/AAAAAAAAAuU/3h9U_npxVVIuaNSHqY_QKFNfkTTb4a3xgCK4BGAsYHg/w1684-h1069-p-k-no-nu/result.gif&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;subclasswindow-함수&quot;&gt;SubclassWindow() 함수&lt;/h2&gt;
 &lt;p&gt;프로시저를 바꿀 윈도우의 핸들을 요구한다.&lt;br /&gt;
@@ -356,12 +356,10 @@ VERIFY, ASSERT 매크로 함수를 이용해 사용하는 것이 런타임에서
 3
 4
 5
-6
 &lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CTESUBView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnInitialUpdate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;m_editHwnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CreateWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Edit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_VISIBLE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_CHILD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_BORDER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;250&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AfxGetInstanceHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;m_myEdit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SubclassWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_editHwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;m_editHwnd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CreateWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Edit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_VISIBLE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_CHILD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WS_BORDER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;250&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;150&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_hWnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AfxGetInstanceHandle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;m_myEdit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SubclassWindow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m_editHwnd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -371,7 +369,7 @@ m_editHwnd 핸들값으로 CWnd 객체를 생성하고 m_myEdit에 연결시킨�
 객체가 연결됨으로 기본 프로시저가 아닌 CMyEdit 프로시저가 메시지를 처리한다.&lt;br /&gt;
 추가로 m_myEdit 객체가 가지고 있는 함수도 이용할 수 있다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;글 다 썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="서브클래싱" /><category term="Subclassing" /><category term="SubclassDlgItem" /><category term="UnsubclassWindow" /><category term="SubclassWindow" /><summary type="html">[MFC] 서브클래싱</summary></entry><entry><title type="html">[WINAPI][CODE] USB 꺼내기 처리</title><link href="https://tars-c.github.io/2020-05-17/winapi-code-usb-eject" rel="alternate" type="text/html" title="[WINAPI][CODE] USB 꺼내기 처리" /><published>2020-05-17T00:00:00+09:00</published><updated>2020-05-17T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-17/USB%20%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80%20%EA%BA%BC%EB%82%B4%EA%B8%B0%20%EC%B2%98%EB%A6%AC</id><content type="html" xml:base="https://tars-c.github.io/2020-05-17/winapi-code-usb-eject">&lt;p&gt;아래 코드는 죠우저프님이 제공해주신 코드입니다.&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;글 다 썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="서브클래싱" /><category term="Subclassing" /><category term="SubclassDlgItem" /><category term="UnsubclassWindow" /><category term="SubclassWindow" /><summary type="html">[MFC][실습] 서브클래싱</summary></entry><entry><title type="html">[WINAPI][CODE] USB 꺼내기 처리</title><link href="https://tars-c.github.io/2020-05-17/winapi-code-usb-eject" rel="alternate" type="text/html" title="[WINAPI][CODE] USB 꺼내기 처리" /><published>2020-05-17T00:00:00+09:00</published><updated>2020-05-17T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-17/USB%20%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80%20%EA%BA%BC%EB%82%B4%EA%B8%B0%20%EC%B2%98%EB%A6%AC</id><content type="html" xml:base="https://tars-c.github.io/2020-05-17/winapi-code-usb-eject">&lt;p&gt;아래 코드는 죠우저프님이 제공해주신 코드입니다.&lt;br /&gt;
 죠우저프님의 허락을 받아 공유합니다.&lt;br /&gt;
 WINAPI, C언어 입니다.&lt;/p&gt;
 
@@ -819,10 +817,8 @@ Virtual Key Code 목록은 다음 링크에서 볼 수 있다.&lt;br /&gt;
 &lt;a href=&quot;https://docs.microsoft.com/ko-kr/windows/win32/inputdev/virtual-key-codes&quot; target=&quot;_blank&quot;&gt;LINK: MSDN Virtual Key Code List&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;getkeystate-함수-알아보기&quot;&gt;GetKeyState() 함수 알아보기&lt;/h2&gt;
-&lt;p&gt;사용할 함수는 GetKeyState() 이다.&lt;br /&gt;
-인자로는 Virtual Key Code를 요구하고 있다.&lt;/p&gt;
-
-&lt;p&gt;반환 타입은 WORD 크기(16bit)와 같은 SHORT 타입이다.&lt;br /&gt;
+&lt;p&gt;인자로는 int 타입의 Virtual Key Code를 요구하고 있다.&lt;br /&gt;
+반환 타입은 SHORT(16bit, 2Byte) 타입이다.&lt;br /&gt;
 2BYTE를 각각 쪼개거나 비트 연산을 통해 정보를 가져와 사용한다.&lt;/p&gt;
 
 &lt;p&gt;반환 데이터에서 high-order bit가 1이면 해당 키를 누른 상태이며 그 외는 땐 상태를 의미한다.&lt;br /&gt;
@@ -840,7 +836,21 @@ low-order bit가 1이면 키가 토글된 상태를 의미한다. 그 외는 토
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;getasync&quot;&gt;GetAsync&lt;/h2&gt;
+&lt;h2 id=&quot;getasynckeystate-함수-알아보기&quot;&gt;GetAsyncKeyState() 함수 알아보기&lt;/h2&gt;
+&lt;p&gt;이 함수는 비동기이므로 GetKeyState() 함수보다 빠르게 작동한다.&lt;br /&gt;
+인자로는 int 타입의 Virtual Key Code를 요구하고 있다.&lt;br /&gt;
+반환 타입은 SHORT(16bit, 2Byte) 타입이다.&lt;br /&gt;
+위 GetKeyState() 함수와 동일하게 사용방법이 같다.&lt;br /&gt;
+토글키에 대한 속성은 구할 수 없다.&lt;/p&gt;
+
+&lt;p&gt;이 함수는 현재 키가 눌렸는지에 대해서만 구할 수 있다.&lt;br /&gt;
+또 low order bit를 이용해서 마지막으로 키가 눌렸는지에 대해서도&lt;br /&gt;
+구할 수 있었지만 x86 환경에서는 구할 수 없었다.&lt;br /&gt;
+혹시 몰라 직접 테스트를 진행해보았으나 프로그램 1개로는 low order bit 값을 확인할 수 없었다.&lt;br /&gt;
+아마 16비트 호환성을 위해 low order bit를 유지하고 있는 것 같다 (MSDN)&lt;/p&gt;
+
+&lt;p&gt;high order bit는 키가 눌렀는 지에 대한 상태를 의미하며 아래처럼 사용한다.
+&lt;br /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;누른-상태-확인하기&quot;&gt;누른 상태 확인하기&lt;/h2&gt;
 &lt;p&gt;키를 누르고 있는지 알기 위해 high order bit와 비트 연산을 진행한다.&lt;/p&gt;

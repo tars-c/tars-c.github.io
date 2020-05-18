@@ -303,7 +303,7 @@
               <ul class="toc__menu">
   <li><a href="#서론">서론</a></li>
   <li><a href="#getkeystate-함수-알아보기">GetKeyState() 함수 알아보기</a></li>
-  <li><a href="#getasync">GetAsync</a></li>
+  <li><a href="#getasynckeystate-함수-알아보기">GetAsyncKeyState() 함수 알아보기</a></li>
   <li><a href="#누른-상태-확인하기">누른 상태 확인하기</a></li>
 </ul>
             </nav>
@@ -319,10 +319,8 @@ Virtual Key Code 목록은 다음 링크에서 볼 수 있다.<br />
 <a href="https://docs.microsoft.com/ko-kr/windows/win32/inputdev/virtual-key-codes" target="_blank">LINK: MSDN Virtual Key Code List</a></p>
 
 <h2 id="getkeystate-함수-알아보기">GetKeyState() 함수 알아보기</h2>
-<p>사용할 함수는 GetKeyState() 이다.<br />
-인자로는 Virtual Key Code를 요구하고 있다.</p>
-
-<p>반환 타입은 WORD 크기(16bit)와 같은 SHORT 타입이다.<br />
+<p>인자로는 int 타입의 Virtual Key Code를 요구하고 있다.<br />
+반환 타입은 SHORT(16bit, 2Byte) 타입이다.<br />
 2BYTE를 각각 쪼개거나 비트 연산을 통해 정보를 가져와 사용한다.</p>
 
 <p>반환 데이터에서 high-order bit가 1이면 해당 키를 누른 상태이며 그 외는 땐 상태를 의미한다.<br />
@@ -340,7 +338,21 @@ low-order bit가 1이면 키가 토글된 상태를 의미한다. 그 외는 토
   </li>
 </ul>
 
-<h2 id="getasync">GetAsync</h2>
+<h2 id="getasynckeystate-함수-알아보기">GetAsyncKeyState() 함수 알아보기</h2>
+<p>이 함수는 비동기이므로 GetKeyState() 함수보다 빠르게 작동한다.<br />
+인자로는 int 타입의 Virtual Key Code를 요구하고 있다.<br />
+반환 타입은 SHORT(16bit, 2Byte) 타입이다.<br />
+위 GetKeyState() 함수와 동일하게 사용방법이 같다.<br />
+토글키에 대한 속성은 구할 수 없다.</p>
+
+<p>이 함수는 현재 키가 눌렸는지에 대해서만 구할 수 있다.<br />
+또 low order bit를 이용해서 마지막으로 키가 눌렸는지에 대해서도<br />
+구할 수 있었지만 x86 환경에서는 구할 수 없었다.<br />
+혹시 몰라 직접 테스트를 진행해보았으나 프로그램 1개로는 low order bit 값을 확인할 수 없었다.<br />
+아마 16비트 호환성을 위해 low order bit를 유지하고 있는 것 같다 (MSDN)</p>
+
+<p>high order bit는 키가 눌렀는 지에 대한 상태를 의미하며 아래처럼 사용한다.
+<br /></p>
 
 <h2 id="누른-상태-확인하기">누른 상태 확인하기</h2>
 <p>키를 누르고 있는지 알기 위해 high order bit와 비트 연산을 진행한다.</p>
@@ -538,7 +550,7 @@ Ctrl, Shift 등 다른 키를 누른 상태에서 a 키를 누르면 감지가 �
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/2020-05-18/mfc-subclassing" rel="permalink">[MFC] 서브클래싱
+        <a href="/2020-05-18/mfc-subclassing" rel="permalink">[MFC][실습] 서브클래싱
 </a>
       
     </h2>
@@ -549,7 +561,7 @@ Ctrl, Shift 등 다른 키를 누른 상태에서 a 키를 누르면 감지가 �
   <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 18 2020</p>
   
   
-  <p class="archive__item-excerpt" itemprop="description">[MFC] 서브클래싱
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] 서브클래싱
 </p>
   </article>
 </div>

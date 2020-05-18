@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
 <link rel="shortcut icon" href="/assets/images/favicon_dark.ico" type="image/x-icon">
-<!-- begin _includes/seo.html --><title>[MFC] 서브클래싱 - 타스의 개발 블로그</title>
-<meta name="description" content="[MFC] 서브클래싱">
+<!-- begin _includes/seo.html --><title>[MFC][실습] 서브클래싱 - 타스의 개발 블로그</title>
+<meta name="description" content="[MFC][실습] 서브클래싱">
 
 
   <meta name="author" content="타스 (TARS-C)">
@@ -13,11 +13,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="타스의 개발 블로그">
-<meta property="og:title" content="[MFC] 서브클래싱">
+<meta property="og:title" content="[MFC][실습] 서브클래싱">
 <meta property="og:url" content="https://tars-c.github.io/2020-05-18/mfc-subclassing">
 
 
-  <meta property="og:description" content="[MFC] 서브클래싱">
+  <meta property="og:description" content="[MFC][실습] 서브클래싱">
 
 
 
@@ -281,15 +281,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="[MFC] 서브클래싱">
-    <meta itemprop="description" content="[MFC] 서브클래싱">
+    <meta itemprop="headline" content="[MFC][실습] 서브클래싱">
+    <meta itemprop="description" content="[MFC][실습] 서브클래싱">
     <meta itemprop="datePublished" content="2020-05-18T00:00:00+09:00">
     <meta itemprop="dateModified" content="2020-05-18T00:00:00+09:00">
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">[MFC] 서브클래싱
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC][실습] 서브클래싱
 </h1>
           
         </header>
@@ -305,7 +305,7 @@
     <ul>
       <li><a href="#정적-서브-클래싱">정적 서브 클래싱</a></li>
       <li><a href="#동적-서브-클래싱">동적 서브 클래싱</a></li>
-      <li><a href="#unsubclasswindow">UnsubclassWindow()</a></li>
+      <li><a href="#unsubclasswindow-함수">UnsubclassWindow() 함수</a></li>
       <li><a href="#subclassdlgitem-함수">SubclassDlgItem() 함수</a>
         <ul>
           <li><a href="#코드-및-실습">코드 및 실습</a></li>
@@ -360,12 +360,12 @@
 
 <h2 id="동적-서브-클래싱">동적 서브 클래싱</h2>
 <p>동적 서브 클래싱을 하기 위해 필요한 함수는<br />
-CWnd::SubclassDlgItem() 및 CWnd::SubSubclassWindow(hWnd) 이다.<br />
+CWnd::SubclassDlgItem() 및 CWnd::SubSubclassWindow() 이다.<br />
 런타임에서 서브클래싱을 할 수 있다.<br />
 프로그램이 실행 되면서 프로시저를 변경할 때 아주 유용하게 쓰인다.<br />
 프로시저가 변경된다는 것은 프로그램의 처리 결과를 바뀌게 된다는 의미이다.</p>
 
-<h2 id="unsubclasswindow">UnsubclassWindow()</h2>
+<h2 id="unsubclasswindow-함수">UnsubclassWindow() 함수</h2>
 <p>서브 클래싱을 동적으로 해제해줄 수 있는 함수이다.<br />
 이 함수를 해제하면 기본 윈도우 프로시저가 메시지를 처리하게 된다.<br />
 동적 서브 클래싱이 되지 않은 객체한테 사용하면 Crash를 겪게될 수 있다.</p>
@@ -648,7 +648,7 @@ SetFocus() 함수를 이용해서 즉시 화면을 갱신한다.</p>
 또 컨트롤 입력창 텍스트의 색상은 빨간색으로 변경된다.</p>
 
 <p>Result.gif File(4.24MB)<br />
-<img src="/assets/images/Subclassing/result.gif" alt="img1" /></p>
+<img src="https://1.bp.blogspot.com/-R1bwpWmANK0/XsKsNRlGH7I/AAAAAAAAAuU/3h9U_npxVVIuaNSHqY_QKFNfkTTb4a3xgCK4BGAsYHg/w1684-h1069-p-k-no-nu/result.gif" alt="img1" /></p>
 
 <h2 id="subclasswindow-함수">SubclassWindow() 함수</h2>
 <p>프로시저를 바꿀 윈도우의 핸들을 요구한다.<br />
@@ -678,12 +678,10 @@ VERIFY, ASSERT 매크로 함수를 이용해 사용하는 것이 런타임에서
 3
 4
 5
-6
 </pre></td><td class="code"><pre><span class="kt">void</span> <span class="n">CTESUBView</span><span class="o">::</span><span class="n">OnInitialUpdate</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="n">m_editHwnd</span> <span class="o">=</span> <span class="o">::</span><span class="n">CreateWindow</span><span class="p">(</span><span class="n">_T</span><span class="p">(</span><span class="s">"Edit"</span><span class="p">),</span> <span class="n">_T</span><span class="p">(</span><span class="s">""</span><span class="p">),</span> <span class="n">WS_VISIBLE</span> <span class="o">|</span> <span class="n">WS_CHILD</span> <span class="o">|</span> <span class="n">WS_BORDER</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">m_hWnd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">AfxGetInstanceHandle</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
-
-<span class="n">m_myEdit</span><span class="p">.</span><span class="n">SubclassWindow</span><span class="p">(</span><span class="n">m_editHwnd</span><span class="p">);</span>
+	<span class="n">m_editHwnd</span> <span class="o">=</span> <span class="o">::</span><span class="n">CreateWindow</span><span class="p">(</span><span class="n">_T</span><span class="p">(</span><span class="s">"Edit"</span><span class="p">),</span> <span class="n">_T</span><span class="p">(</span><span class="s">""</span><span class="p">),</span> <span class="n">WS_VISIBLE</span> <span class="o">|</span> <span class="n">WS_CHILD</span> <span class="o">|</span> <span class="n">WS_BORDER</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">m_hWnd</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">AfxGetInstanceHandle</span><span class="p">(),</span> <span class="mi">0</span><span class="p">);</span>
+	<span class="n">m_myEdit</span><span class="p">.</span><span class="n">SubclassWindow</span><span class="p">(</span><span class="n">m_editHwnd</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></td></tr></tbody></table></code></pre></figure>
 
@@ -772,7 +770,7 @@ m_editHwnd 핸들값으로 CWnd 객체를 생성하고 m_myEdit에 연결시킨�
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D+%EC%84%9C%EB%B8%8C%ED%81%B4%EB%9E%98%EC%8B%B1%20https%3A%2F%2Ftars-c.github.io%2F2020-05-18%2Fmfc-subclassing" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%5D%5B%EC%8B%A4%EC%8A%B5%5D+%EC%84%9C%EB%B8%8C%ED%81%B4%EB%9E%98%EC%8B%B1%20https%3A%2F%2Ftars-c.github.io%2F2020-05-18%2Fmfc-subclassing" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020-05-18%2Fmfc-subclassing" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
