@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-19T00:57:18+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC][실습] Subclassing (이미지)</title><link href="https://tars-c.github.io/2020-05-18/mfc-subclassing" rel="alternate" type="text/html" title="[MFC][실습] Subclassing (이미지)" /><published>2020-05-18T00:00:00+09:00</published><updated>2020-05-18T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-18/%EC%84%9C%EB%B8%8C%ED%81%B4%EB%9E%98%EC%8B%B1</id><content type="html" xml:base="https://tars-c.github.io/2020-05-18/mfc-subclassing">&lt;h1 id=&quot;서론&quot;&gt;서론&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://tars-c.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tars-c.github.io/" rel="alternate" type="text/html" /><updated>2020-05-21T20:34:00+09:00</updated><id>https://tars-c.github.io/feed.xml</id><title type="html">타스의 개발 블로그</title><author><name>타스 (TARS-C)</name></author><entry><title type="html">[MFC] 공 튀기기, 땡겨서 이동시키기 (이미지)</title><link href="https://tars-c.github.io/2020-05-20/sketch-ball" rel="alternate" type="text/html" title="[MFC] 공 튀기기, 땡겨서 이동시키기 (이미지)" /><published>2020-05-20T00:00:00+09:00</published><updated>2020-05-20T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-20/%EA%B3%B5%EB%86%80%EC%9D%B4</id><content type="html" xml:base="https://tars-c.github.io/2020-05-20/sketch-ball">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;카카오톡 개발방에 들어가면 가끔&lt;br /&gt;
+누군가에게는 힘든 나에게는 할만한 과제가 보인다.&lt;br /&gt;
+많은 신입 대학생분들이 과제를 올리면서 도와달라고 한다.&lt;br /&gt;
+&lt;img src=&quot;/assets/images/MakeProgram/Sketch/kakao1.png&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/MakeProgram/Sketch/kakao2.png&quot; alt=&quot;img2&quot; /&gt;&lt;br /&gt;
+그들을 도와주면 내가 아는 걸 다시 되새김질 함으로써 잊지 않을 수 있다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;재밌는 건 같은 학교인지 과제가 같은 사람도 종종보인다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;이번해볼 실습은 공을 튀기고 3번 멈추는 것이다.&lt;br /&gt;
+너무 간단한거 같아서 공이 날라가는 강도를 조절할 수 있게 만들어봤다.
+조금 수학에서 해멨지만 그래도 만들었다.&lt;/p&gt;
+
+&lt;p&gt;복잡한 구조 및 클래스 생성보다는&lt;br /&gt;
+단순하게 View.cpp에서 그림을 그리고 계산했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;프로그램-모습&quot;&gt;프로그램 모습&lt;/h2&gt;
+
+&lt;p&gt;결과:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/MakeProgram/Sketch/sketch-ball.gif&quot; alt=&quot;img1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;피타고라스 개념 부분만 참고해서 만들었다.&lt;br /&gt;
+다 만들고서 느낀 점이 아직 보완할 점이 많다는 것이다.&lt;/p&gt;
+
+&lt;p&gt;이런 실습은 여러 대학에서 과제로 제출되기 때문에&lt;br /&gt;
+코드를 공개하여 대학생분들에게 도움을 주고 싶었다.&lt;br /&gt;
+공부를 하고 있다면 &lt;del&gt;지저분한&lt;/del&gt; 코드를 보면서 하나씩 원리를 깨우치며 배우길 바란다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;이 코드도 완벽하진 않다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;추가-내용-1&quot;&gt;추가 내용 1&lt;/h3&gt;
+&lt;p&gt;각도 계산이 부족해보여서 개선 후 Git에 커밋했다.&lt;br /&gt;
+이젠 버그도 없고 어느정도 실행하는데 잘되는 것 같다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(사실 버그 없는 프로그램이 더 이상하게 다가온다)&lt;/del&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;추가내용-2&quot;&gt;추가내용 2&lt;/h3&gt;
+&lt;p&gt;각도 고정 기능을 추가하여 사용자가 편리하게 날릴 수 있게 만들었다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(그림판처럼, 포토샵처럼 Shift 키의 쓰임을 써보고 싶었다.)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;키보드 관련 이슈가 있었으나 개인문제라는걸 5시간 후에 알았다…&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;함수 최적화는 나중을 기약하고 있다.&lt;br /&gt;
+누군가에게 작은 도움이 되었으면 하는 바램이다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;쓰레드를 이용해 개선도 해볼까?&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;공놀이 개발에 맛들이긴 했지만.. 할 것이 산더미다.&lt;/del&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;저장소-링크&quot;&gt;저장소 링크&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/tars-c/Sketch&quot; target=&quot;_blank&quot;&gt;Github Repository: Sketch Ball&lt;/a&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="공놀이" /><category term="Sketch" /><category term="공" /><category term="Ball" /><category term="원" /><category term="Ellipse" /><category term="공튀기기" /><summary type="html">[MFC] 공 튀기기, 땡겨서 이동시키기 (이미지)</summary></entry><entry><title type="html">[MFC][실습] Subclassing (이미지)</title><link href="https://tars-c.github.io/2020-05-18/mfc-subclassing" rel="alternate" type="text/html" title="[MFC][실습] Subclassing (이미지)" /><published>2020-05-18T00:00:00+09:00</published><updated>2020-05-18T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-18/%EC%84%9C%EB%B8%8C%ED%81%B4%EB%9E%98%EC%8B%B1</id><content type="html" xml:base="https://tars-c.github.io/2020-05-18/mfc-subclassing">&lt;h1 id=&quot;서론&quot;&gt;서론&lt;/h1&gt;
 &lt;p&gt;MFC에서 제공하는 컨트롤 및 뷰는 가장 단순하고&lt;br /&gt;
 가장 기본적인 기능만 제공하고 있다.&lt;/p&gt;
 
@@ -1071,92 +1125,7 @@ Visual Studio 2017 기준으로 작성되었으며 버전이 다를 경우 올�
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;글 다 썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="SDI" /><category term="프로젝트" /><category term="다이얼로그" /><category term="Dialog" /><category term="폼뷰" /><category term="FormvView" /><category term="툴바" /><category term="Toolbar" /><category term="메뉴" /><category term="Menu" /><category term="삭제하기" /><category term="Destroy" /><summary type="html">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기</summary></entry><entry><title type="html">[잡담] 알고리즘 그리고 후회</title><link href="https://tars-c.github.io/2020-05-11/alogrithm-regret" rel="alternate" type="text/html" title="[잡담] 알고리즘 그리고 후회" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/PS,%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98,%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%ED%9B%84%ED%9A%8C</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/alogrithm-regret">&lt;p&gt;2020년 알고리즘의 붐이 불었다.&lt;br /&gt;
-사실 불고도 계속 불고 있다라는 표현이 맞는 것 같다.&lt;br /&gt;
-아마 2018?년도부터 불지 않았나…&lt;/p&gt;
-
-&lt;p&gt;4,5년 전만 해도 PS는 소수가 즐겨하는 놀이에 불과했다라고 생각했다.&lt;br /&gt;
-그때 나도 알고리즘에 입문해서 열심히 공부할껄 그랬다. &lt;strong&gt;&lt;del&gt;(그땐 뭘했더라..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-솔직히 지금와서 정말로 후회한다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;누군가 알고리즘을 포기하더라도 자료구조는 포기하지 말아야 한다는 것을 말해주고 싶다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;개발을 하면서 알고리즘은 땔래야 떌 수가 없다.&lt;br /&gt;
-알고리즘은 간단히 말해 문제를 해결하는 능력이다.&lt;br /&gt;
-250원에서 3명이서 30원씩 나누고 나머지로 몇명의 사람들이 더 나눌 수 있는가 ?&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;문제의 예시가 조금 허접하다… 이해바란다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-위 문제를 사칙연산 및 루트 복잡한 수학식을 이용해&lt;br /&gt;
-아주 빠르고 최대한의 효율로 풀어내는 것이 솔빙이다(Problem Solving, PS)&lt;br /&gt;
-문제해결, 솔빙(PS), 알고리즘 모두 비슷한 의미다.&lt;br /&gt;
-효율을 매우 중요시하는 건 아니지만&lt;br /&gt;
-문제에서 시간과 메모리(기억공간)을 제한하기에 효율은 따를래야 따를 수 밖에 없다.&lt;/p&gt;
-
-&lt;p&gt;주말에 기초 알고리즘 문제를 풀면서 느낀건 나누기 곱하기를&lt;br /&gt;
-복잡하게 만들면 조금 어렵게 느껴질 수도 있다는 것이다.&lt;br /&gt;
-그림을 확대하거나 축소할 때에도 곱하기 나누기의 연산을 이용한다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(조금 어려웠었지만 재밌는 경험이었다)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;커뮤니티에서 보면 알고리즘 문제 질문은 하루에도 수백번 올라온다.&lt;br /&gt;
-매년이 지날 수록 머리 좋은 신입생들은 정말 치고 올라오고 있다.&lt;br /&gt;
-나는 접근도 못하는 문제를 &lt;strong&gt;&lt;del&gt;어디선가 Copy &amp;amp; Paste한걸까?&lt;/del&gt;&lt;/strong&gt; 풀었다고 하고…&lt;br /&gt;
-정말 문제의 해결을 설명할 수 있을정도로 머리가 좋은건지 의심도 든다.&lt;br /&gt;
-반대로 문제를 빠르게 해결하는 그자의 능력이 대단하고 부럽기도한다.&lt;br /&gt;
-정말 이 세상에 똑똑한 사람들은 많은 것 같다.&lt;/p&gt;
-
-&lt;p&gt;실제로 구글에 알고리즘 문제의 제목을 쳐보면 여러 블로그들이 나온다.&lt;br /&gt;
-어떤 블로그에는 해설이 포함되어 있는데 &lt;strong&gt;&lt;del&gt;또 다른 블로그에는 코드만 가득하다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;정말 이 많은 사람들이 이 어려운 문제를 풀었을까 라는 의문을 가지기도 한다.&lt;br /&gt;
-내 머리로는 풀기도 힘든 문제, 고민을 짧게는 3시간~5시간 이상 고민하면서 풀어야할 문제들이&lt;br /&gt;
-금방 금방 풀리는 느낌이 강하다.. 뭐가 진실인지는 아무도 알 수 없다.&lt;/p&gt;
-
-&lt;p&gt;커뮤니티에서 사람들이 떠드는 내용만 봐도 경쟁력이 느껴질 수 밖에 없다.&lt;br /&gt;
-개발이란 곳이 이런 곳이었나 .. 분명 처음엔 자신감 뿜뿜이었는데 약간 위축이되기도 한다.&lt;br /&gt;
-알고리즘 부분이 남들보다 취약해서 그렇게 느끼는 것 같기도 하다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;데이터를 자유자제로 다룰 수준이면 되지 않는가 ?&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;처음엔 문제해결 능력을 키우고 그것을 응용하는 것이 중요한줄 알았다.&lt;br /&gt;
-근데 깊게 들어가면 알고리즘 문제를 푸는 것도 경험이었다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;경험이 많은 사람이 문제도 잘 풀더라&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;처음부터 개발 좀 해본(간단한 프로그램좀 만들어 본) 개발자들이&lt;br /&gt;
-BFS DFS, DP, 세그먼트 트리 이런 복잡한 문제를 쉽게 풀어내는 사람 거의 없다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;나도 원리를 깨우치는건 좋아한다.&lt;br /&gt;
-이 함수가 어떤식으로 돌아가는지, 하나씩 분해하고 쪼개서 분석하는 걸 무척이나 좋아한다.&lt;/p&gt;
-
-&lt;p&gt;근데 난.. 수학적인 능력이 조금은 떨어지지 않나 생각이든다.&lt;br /&gt;
-능력부족은 결국에 알고리즘 문제를 해결하는 능력이 떨어지는 것에 영향을 끼치는 것 같다.&lt;/p&gt;
-
-&lt;p&gt;사실 높은 등급의 개발자라면 수학을 떌래야 떌 수가 없다.&lt;br /&gt;
-코드를 효율적으로 써야하니까…&lt;br /&gt;
-주어진 상황에서 식을 자유롭게 만든다면 문제를 해결하고 푸는데는 분명 도움이 크게된다.&lt;/p&gt;
-
-&lt;p&gt;대기업은 아니지만 현업에 20년 이상 근무중이신 분께 여쭤보았지만&lt;br /&gt;
-알고리즘 문제를 단 1번도 푼적이 없다고 한다.&lt;br /&gt;
-하지만 실제 현업에서에 나타나는 문제는 알고리즘보다 복잡하다고 한다.&lt;/p&gt;
-
-&lt;p&gt;요즘은 대기업에 입사하기 위해서는 코딩테스트(즉, 알고리즘)는 필수다.&lt;br /&gt;
-언제부터 개발자의 기준이 알고리즘 해결이 된지 모르겠다.&lt;/p&gt;
-
-&lt;p&gt;나는 대기업갈 생각은 1도 없지만.. 그래도 알고리즘의 기초는 알아야하지 않을까?&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(경쟁자가 너무 많고 스펙도 월등한 사람들이 판을 쳐서 눈을 낮춘 것이다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;요즘은 하드웨어 성능이 좋아져서 알고리즘이 쓸모가 없다라는 의견도 몇몇본다.&lt;br /&gt;
-하지만 현실은 하드웨어가 좋아졌어도 성능을 중요시하는 개발 분야는 분명히 있다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(발빠르게 동작하는 서버, 벙렬프로그래밍)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;어렵고 경험위주의 복잡한 알고리즘까지 많은 시간을 허비하진 않더라도 &lt;strong&gt;&lt;del&gt;(대회나갈거아니잖아)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-간단한 문제는 개발자만의 사고력으로 문제를 간단히 해결하는 능력은 있어야한다고 본다.&lt;/p&gt;
-
-&lt;p&gt;커뮤니티를 보면 남들이 얼마나 성장하는지 눈에 보인다.&lt;br /&gt;
-남들이 뭘 하든 나는 사과나무 한그루를 더 심을 것이다.&lt;br /&gt;
-개발 분야에선 안좋게 표현한다면 뒤쳐진다고? 표현하기도 하는 것 같다.&lt;br /&gt;
-하지만 나는 내가 공부하고 싶은 것을 공부하면서 한 우물만 깊게파는 사람이 될 것이다.&lt;br /&gt;
-개발 언어는 도구에 불과하다. 도구는 이용할 뿐이라는 걸 명심해야한다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;다양한 언어 및 프레임워크를 사용하여 한가지 분야를 파도록 하자.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-그래도 기본적인 사고력 성장을 위해 주말엔 기초 알고리즘은 공부하려고 한다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;이 글은 현업 경험이 없는 아마추어 개발자가 쓴 것이니 참고용으로 보기 바란다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="알고리즘" /><category term="Alogrithm" /><category term="솔빙" /><category term="PS" /><summary type="html">[잡담] 알고리즘 그리고 후회</summary></entry><entry><title type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</title><link href="https://tars-c.github.io/2020-05-11/implicit-serialize" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 비트맵 파일 직렬화" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/Document%20CArchive%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/implicit-serialize">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;글 다 썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="SDI" /><category term="프로젝트" /><category term="다이얼로그" /><category term="Dialog" /><category term="폼뷰" /><category term="FormvView" /><category term="툴바" /><category term="Toolbar" /><category term="메뉴" /><category term="Menu" /><category term="삭제하기" /><category term="Destroy" /><summary type="html">[MFC] SDI 프로젝트 Dialog Based 처럼 사용하기</summary></entry><entry><title type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</title><link href="https://tars-c.github.io/2020-05-11/implicit-serialize" rel="alternate" type="text/html" title="[MFC][실습] Document CArchive 비트맵 파일 직렬화" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/Document%20CArchive%20%EB%B9%84%ED%8A%B8%EB%A7%B5%20%EC%A7%81%EB%A0%AC%ED%99%94</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/implicit-serialize">&lt;h2 id=&quot;서론&quot;&gt;서론&lt;/h2&gt;
 &lt;p&gt;이 글은 stackoverflow, MSDN 을 참고하여 작성되었습니다.&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;이번 글에서는 비트맵 파일 직렬화를 실습한다.&lt;br /&gt;
@@ -1256,7 +1225,92 @@ x86 환경에선 과거 세그먼트 메모리 구조에서 가상 메모리를 
 &lt;p&gt;반드시 리소스를 사용했으면 해제 및 반납하는 작업을 빼먹지 말자.&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;이해는 충분히 한 것 같으니 마친다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="파일" /><category term="CFile" /><category term="비트맵" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</summary></entry><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="파일" /><category term="CFile" /><category term="비트맵" /><category term="bitmap" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CArchive 비트맵 파일 직렬화</summary></entry><entry><title type="html">[잡담] 알고리즘 그리고 후회</title><link href="https://tars-c.github.io/2020-05-11/alogrithm-regret" rel="alternate" type="text/html" title="[잡담] 알고리즘 그리고 후회" /><published>2020-05-11T00:00:00+09:00</published><updated>2020-05-11T00:00:00+09:00</updated><id>https://tars-c.github.io/2020-05-11/PS,%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98,%20%EA%B7%B8%EB%A6%AC%EA%B3%A0%20%ED%9B%84%ED%9A%8C</id><content type="html" xml:base="https://tars-c.github.io/2020-05-11/alogrithm-regret">&lt;p&gt;2020년 알고리즘의 붐이 불었다.&lt;br /&gt;
+사실 불고도 계속 불고 있다라는 표현이 맞는 것 같다.&lt;br /&gt;
+아마 2018?년도부터 불지 않았나…&lt;/p&gt;
+
+&lt;p&gt;4,5년 전만 해도 PS는 소수가 즐겨하는 놀이에 불과했다라고 생각했다.&lt;br /&gt;
+그때 나도 알고리즘에 입문해서 열심히 공부할껄 그랬다. &lt;strong&gt;&lt;del&gt;(그땐 뭘했더라..)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+솔직히 지금와서 정말로 후회한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;누군가 알고리즘을 포기하더라도 자료구조는 포기하지 말아야 한다는 것을 말해주고 싶다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;개발을 하면서 알고리즘은 땔래야 떌 수가 없다.&lt;br /&gt;
+알고리즘은 간단히 말해 문제를 해결하는 능력이다.&lt;br /&gt;
+250원에서 3명이서 30원씩 나누고 나머지로 몇명의 사람들이 더 나눌 수 있는가 ?&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;문제의 예시가 조금 허접하다… 이해바란다.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+위 문제를 사칙연산 및 루트 복잡한 수학식을 이용해&lt;br /&gt;
+아주 빠르고 최대한의 효율로 풀어내는 것이 솔빙이다(Problem Solving, PS)&lt;br /&gt;
+문제해결, 솔빙(PS), 알고리즘 모두 비슷한 의미다.&lt;br /&gt;
+효율을 매우 중요시하는 건 아니지만&lt;br /&gt;
+문제에서 시간과 메모리(기억공간)을 제한하기에 효율은 따를래야 따를 수 밖에 없다.&lt;/p&gt;
+
+&lt;p&gt;주말에 기초 알고리즘 문제를 풀면서 느낀건 나누기 곱하기를&lt;br /&gt;
+복잡하게 만들면 조금 어렵게 느껴질 수도 있다는 것이다.&lt;br /&gt;
+그림을 확대하거나 축소할 때에도 곱하기 나누기의 연산을 이용한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(조금 어려웠었지만 재밌는 경험이었다)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;커뮤니티에서 보면 알고리즘 문제 질문은 하루에도 수백번 올라온다.&lt;br /&gt;
+매년이 지날 수록 머리 좋은 신입생들은 정말 치고 올라오고 있다.&lt;br /&gt;
+나는 접근도 못하는 문제를 &lt;strong&gt;&lt;del&gt;어디선가 Copy &amp;amp; Paste한걸까?&lt;/del&gt;&lt;/strong&gt; 풀었다고 하고…&lt;br /&gt;
+정말 문제의 해결을 설명할 수 있을정도로 머리가 좋은건지 의심도 든다.&lt;br /&gt;
+반대로 문제를 빠르게 해결하는 그자의 능력이 대단하고 부럽기도한다.&lt;br /&gt;
+정말 이 세상에 똑똑한 사람들은 많은 것 같다.&lt;/p&gt;
+
+&lt;p&gt;실제로 구글에 알고리즘 문제의 제목을 쳐보면 여러 블로그들이 나온다.&lt;br /&gt;
+어떤 블로그에는 해설이 포함되어 있는데 &lt;strong&gt;&lt;del&gt;또 다른 블로그에는 코드만 가득하다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;정말 이 많은 사람들이 이 어려운 문제를 풀었을까 라는 의문을 가지기도 한다.&lt;br /&gt;
+내 머리로는 풀기도 힘든 문제, 고민을 짧게는 3시간~5시간 이상 고민하면서 풀어야할 문제들이&lt;br /&gt;
+금방 금방 풀리는 느낌이 강하다.. 뭐가 진실인지는 아무도 알 수 없다.&lt;/p&gt;
+
+&lt;p&gt;커뮤니티에서 사람들이 떠드는 내용만 봐도 경쟁력이 느껴질 수 밖에 없다.&lt;br /&gt;
+개발이란 곳이 이런 곳이었나 .. 분명 처음엔 자신감 뿜뿜이었는데 약간 위축이되기도 한다.&lt;br /&gt;
+알고리즘 부분이 남들보다 취약해서 그렇게 느끼는 것 같기도 하다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;데이터를 자유자제로 다룰 수준이면 되지 않는가 ?&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;처음엔 문제해결 능력을 키우고 그것을 응용하는 것이 중요한줄 알았다.&lt;br /&gt;
+근데 깊게 들어가면 알고리즘 문제를 푸는 것도 경험이었다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;경험이 많은 사람이 문제도 잘 풀더라&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;처음부터 개발 좀 해본(간단한 프로그램좀 만들어 본) 개발자들이&lt;br /&gt;
+BFS DFS, DP, 세그먼트 트리 이런 복잡한 문제를 쉽게 풀어내는 사람 거의 없다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;나도 원리를 깨우치는건 좋아한다.&lt;br /&gt;
+이 함수가 어떤식으로 돌아가는지, 하나씩 분해하고 쪼개서 분석하는 걸 무척이나 좋아한다.&lt;/p&gt;
+
+&lt;p&gt;근데 난.. 수학적인 능력이 조금은 떨어지지 않나 생각이든다.&lt;br /&gt;
+능력부족은 결국에 알고리즘 문제를 해결하는 능력이 떨어지는 것에 영향을 끼치는 것 같다.&lt;/p&gt;
+
+&lt;p&gt;사실 높은 등급의 개발자라면 수학을 떌래야 떌 수가 없다.&lt;br /&gt;
+코드를 효율적으로 써야하니까…&lt;br /&gt;
+주어진 상황에서 식을 자유롭게 만든다면 문제를 해결하고 푸는데는 분명 도움이 크게된다.&lt;/p&gt;
+
+&lt;p&gt;대기업은 아니지만 현업에 20년 이상 근무중이신 분께 여쭤보았지만&lt;br /&gt;
+알고리즘 문제를 단 1번도 푼적이 없다고 한다.&lt;br /&gt;
+하지만 실제 현업에서에 나타나는 문제는 알고리즘보다 복잡하다고 한다.&lt;/p&gt;
+
+&lt;p&gt;요즘은 대기업에 입사하기 위해서는 코딩테스트(즉, 알고리즘)는 필수다.&lt;br /&gt;
+언제부터 개발자의 기준이 알고리즘 해결이 된지 모르겠다.&lt;/p&gt;
+
+&lt;p&gt;나는 대기업갈 생각은 1도 없지만.. 그래도 알고리즘의 기초는 알아야하지 않을까?&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(경쟁자가 너무 많고 스펙도 월등한 사람들이 판을 쳐서 눈을 낮춘 것이다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;요즘은 하드웨어 성능이 좋아져서 알고리즘이 쓸모가 없다라는 의견도 몇몇본다.&lt;br /&gt;
+하지만 현실은 하드웨어가 좋아졌어도 성능을 중요시하는 개발 분야는 분명히 있다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;(발빠르게 동작하는 서버, 벙렬프로그래밍)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;어렵고 경험위주의 복잡한 알고리즘까지 많은 시간을 허비하진 않더라도 &lt;strong&gt;&lt;del&gt;(대회나갈거아니잖아)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+간단한 문제는 개발자만의 사고력으로 문제를 간단히 해결하는 능력은 있어야한다고 본다.&lt;/p&gt;
+
+&lt;p&gt;커뮤니티를 보면 남들이 얼마나 성장하는지 눈에 보인다.&lt;br /&gt;
+남들이 뭘 하든 나는 사과나무 한그루를 더 심을 것이다.&lt;br /&gt;
+개발 분야에선 안좋게 표현한다면 뒤쳐진다고? 표현하기도 하는 것 같다.&lt;br /&gt;
+하지만 나는 내가 공부하고 싶은 것을 공부하면서 한 우물만 깊게파는 사람이 될 것이다.&lt;br /&gt;
+개발 언어는 도구에 불과하다. 도구는 이용할 뿐이라는 걸 명심해야한다.&lt;br /&gt;
+&lt;strong&gt;&lt;del&gt;다양한 언어 및 프레임워크를 사용하여 한가지 분야를 파도록 하자.&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
+그래도 기본적인 사고력 성장을 위해 주말엔 기초 알고리즘은 공부하려고 한다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 글은 현업 경험이 없는 아마추어 개발자가 쓴 것이니 참고용으로 보기 바란다.&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="알고리즘" /><category term="Alogrithm" /><category term="솔빙" /><category term="PS" /><summary type="html">[잡담] 알고리즘 그리고 후회</summary></entry><entry><title type="html">[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)</title><link href="https://tars-c.github.io/2020/05/09/chromium-based-edge" rel="alternate" type="text/html" title="[소개] Chromium 으로 재탄생한 Edge 살펴보기 (이미지)" /><published>2020-05-09T00:00:00+09:00</published><updated>2020-05-09T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/09/Chromium%20%EA%B8%B0%EB%B0%98%20Edge%EB%A5%BC%20%EC%82%B4%ED%8E%B4%EB%B3%B4%EC%9E%90</id><content type="html" xml:base="https://tars-c.github.io/2020/05/09/chromium-based-edge">&lt;p&gt;이 글은 타 블로그를 참고해서 작성한 글이 절대 아니고&lt;br /&gt;
 정보가 없는 상태에서 직접 다운받으면서 써본 경험을 바탕으로으로 작성되었습니다.&lt;br /&gt;
 &lt;strong&gt;&lt;del&gt;신문물을 접한 느낌이랄까..&lt;/del&gt;&lt;/strong&gt;
 &lt;br /&gt;&lt;/p&gt;
@@ -1787,123 +1841,4 @@ CFile객체로 접근하여 파일의 패스 정보를 이용해 파일을 필�
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="툴바" /><category term="Toolbar" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CAcrchive 기본타입 및 객체 직렬화</summary></entry><entry><title type="html">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)</title><link href="https://tars-c.github.io/2020/05/07/mojave-darkmode-darkeader-app" rel="alternate" type="text/html" title="[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)" /><published>2020-05-07T00:00:00+09:00</published><updated>2020-05-07T00:00:00+09:00</updated><id>https://tars-c.github.io/2020/05/07/MacOS-Mojave%20DarkReader%20App</id><content type="html" xml:base="https://tars-c.github.io/2020/05/07/mojave-darkmode-darkeader-app">&lt;p&gt;이 글이 앱 홍보가 될 수도 있는데&lt;br /&gt;
-회사나 남한테 부탁받는 것이 아닌 내돈쓰고 내가 후기를 작성한 것이니 참고 바랍니다.&lt;/p&gt;
-
-&lt;p&gt;모하비를 설치하고 파인더를 둘러보고 설정창도 봤는데&lt;br /&gt;
-너무 마음에 들었다. (다크모드 내맘에 딱인걸 ?)&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-이제 구글좀 한번 들어가볼까 하다가 사파리를 눌렀다.
-사파리를 키는 순간 (두둥!)&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-ho57yY-LW2Q/XrS8kpuYzHI/AAAAAAAAAq8/eQ1Z0UxmZ7YO6vZYzb4SFE-1bGWtOmJ8ACLcBGAsYHQ/s1600/darkmode_main.png&quot; alt=&quot;img1&quot; /&gt;
-이럴거면 도대체 왜 내가 설치했지 ? 라는 생각이 한가득이었다.&lt;br /&gt;
-구글이 시작 페이지인데 브라우저 화면이 화이트톤 그자체였다.&lt;br /&gt;
-시간은 시간대로 날리고 허무한 느낌만 가득했다..&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;
-타이틀 및 메뉴바만 다크모드가 되고&lt;br /&gt;
-브라우저 화면은 다크모드가 되지 않다니..&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(이것이 애플님께서 말씀하시는 다크모드 갬성인가 ?)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;분명 나랑 똑같은 일을 겪은 사람들이 있을거라고 판단하고&lt;br /&gt;
-검색을 해봤다.&lt;/p&gt;
-
-&lt;p&gt;한가지 얻은 결론은….&lt;br /&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;사파리에서 브라우저 화면이 다크해지는 건 지원하지 않습니다.&lt;br /&gt;
-CSS를 이용한 다크모드를 지원하며 사용하려면&lt;br /&gt;
-웹사이트에서 스타일을 따로 설정한 경우 지원이 가능합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;대표적으로 다크모드 CSS를 설정한 웹사이트가 클리앙이다. &lt;strong&gt;&lt;del&gt;(역시 클라앙은 맥잘알)&lt;/del&gt;&lt;/strong&gt;
-&lt;img src=&quot;https://1.bp.blogspot.com/-iYAB4pOChXU/XrS8hDqOueI/AAAAAAAAAqU/un_tIK3oHhQLqdalA1CyvuygZhn3hxGIgCLcBGAsYHQ/s1600/darkmode_clien.png&quot; alt=&quot;img2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;흠 …&lt;br /&gt;
-문제점은 파악했으니 이제 해결법을 찾아보도록 한다.&lt;br /&gt;
-앱스토어에 dark mode라 검색해보았고&lt;br /&gt;
-사파리에서 다크모드를 지원햊는 앱을 발견했다.&lt;br /&gt;
-이름은 말 그대로 DarkMode.&lt;br /&gt;
-&lt;img src=&quot;https://1.bp.blogspot.com/-2rTUw4JTANU/XrS8giQFMyI/AAAAAAAAAqQ/b_f7bFLkd2MSxKStW5lb2vhHGET3yNdSACLcBGAsYHQ/s1600/darkmode_app.png&quot; alt=&quot;img3&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;후기를 찾아보니까 안좋다는 말이 있어서 패스했다.&lt;br /&gt;
-&lt;img src=&quot;https://1.bp.blogspot.com/-Gh_uUNtBqMU/XrS8lYqUWjI/AAAAAAAAArA/FXz7HYXhKvEiTn2l0I6wXu6zsBJ7xckjwCLcBGAsYHQ/s1600/darkmode_review.png&quot; alt=&quot;img4&quot; /&gt;&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(유튜브 동영상을 봤을 땐 좋아보였는데)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;darkreader&quot;&gt;DarkReader&lt;/h2&gt;
-&lt;p&gt;” mojave safari dark mode “ 구글에 검색해서 찾다보니 동영상 하나가 눈에 들어왔다.&lt;br /&gt;
-동영상을 요약하자면 &lt;code class=&quot;highlighter-rouge&quot;&gt;DarkReader&lt;/code&gt; 앱 기능을 소개하는 동영상이었다.&lt;br /&gt;&lt;/p&gt;
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/8FvvrUW7UjI&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;&lt;br /&gt;
-동영상을 보고 나름 괜찮아보였던 앱이었다. &lt;del&gt;&lt;strong&gt;(동영상에서 설명은 알아먹지 못했다)&lt;/strong&gt;&lt;/del&gt;&lt;br /&gt;
-앱스토어 후기도 전체적으로 살펴본 결과&lt;br /&gt;
-평점이 심각하게 낮은게 없어보여서 그냥 눈감고 질렀다.&lt;br /&gt;
-무료이면 좋겠지만 가격이 조금있었다. (5,900원)&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(애플님께서 앱 개발자에게 연마다 등록비 명목으로 돈을 지불하기 때문에 어쩔 수 없다)&lt;/del&gt;&lt;/strong&gt;&lt;br /&gt;
-간식 한번 안먹고 병원 안가는 셈치고 바로 질렀다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-C1hks8Ibf_8/XrS8hIHwQcI/AAAAAAAAAqY/wvCn3m1x8R8ou6YzGQQhiXiwphhOpD_zwCLcBGAsYHQ/s1600/darkmode_darkreader_app.png&quot; alt=&quot;img5&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;사용해본 결과 개인적으로 2%정도 아쉽지만 너무 좋다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;기능을 간략히 나열해보자면
-    &lt;ul&gt;
-      &lt;li&gt;사이트별 커스텀 테마&lt;/li&gt;
-      &lt;li&gt;단축키를 이용한 다크모드 ON/OFF&lt;/li&gt;
-      &lt;li&gt;전체 윈도우를 대상으로 다크모드 ON/OFF&lt;/li&gt;
-      &lt;li&gt;PDF 다크모드 ON/OFF&lt;/li&gt;
-      &lt;li&gt;테마 (Monokai, Abyss 같은 개발 프로그램 테마가 아니다!)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;테마는 특정 색상의 집합을 적용하는 것이 아니라&lt;br /&gt;
-부가적인 요소(Sepia, GrayScale, Birghtness, Contrast)를 변경할 수 있다는 것이다.&lt;br /&gt;
-테마보단 밝기나 채도를 변경할 수 있는 필터라고 하는게 맞는거 같다.&lt;/p&gt;
-
-&lt;p&gt;솔직히 색상 계열 테마를 사용자가 설정할 수 있으면 Best of Best아닌가&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;뭐.. 그래도 만족한다.&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-JjtJMdaaNZg/XrS8h5jVEWI/AAAAAAAAAqk/tMW0Eq0i1v8X6Abfl8tw31qayDFv0ZvAACLcBGAsYHQ/s1600/darkmode_darkreader_apply.png&quot; alt=&quot;img6&quot; /&gt;&lt;br /&gt;
-설치를 하면 사파리 메뉴바 상단에 DarkReader 앱 아이콘이 생긴다.&lt;br /&gt;
-그걸 눌러서 조절하면 된다.&lt;/p&gt;
-
-&lt;p&gt;아쉬운게 색상별 테마 기능이 없는 것과 macOS만 유료이고&lt;br /&gt;
-나머진 무료 + 오픈소스 그자체이다.&lt;/p&gt;
-
-&lt;p&gt;길게 말하면 뭐하나 ?&lt;br /&gt;
-적용 전, 적용 후를 보는게 낫지&lt;/p&gt;
-
-&lt;h3 id=&quot;다크모드-적용-전&quot;&gt;다크모드 적용 전&lt;/h3&gt;
-&lt;p&gt;&lt;img src=&quot;https://1.bp.blogspot.com/-BEpBU0WsbJ0/XrS8iNKTEII/AAAAAAAAAqo/rWvxcVfBpJo_fYhNe2u0yOhL_I455yn2ACLcBGAsYHQ/s1600/darkmode_disable.png&quot; alt=&quot;img7&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;다크모드-적용-후&quot;&gt;다크모드 적용 후&lt;/h3&gt;
-&lt;p&gt;다이나믹 모드라 한다.&lt;br /&gt;
-&lt;img src=&quot;https://1.bp.blogspot.com/-ip_jkXHh6uM/XrS8ik5d90I/AAAAAAAAAqs/SudUQcIpJ6YI3gbJdr5sq93TqXdSZ5VYgCLcBGAsYHQ/s1600/darkmode_dynamic.png&quot; alt=&quot;img8&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;필터-효과-적용-후&quot;&gt;필터 효과 적용 후&lt;/h3&gt;
-&lt;p&gt;(필터는 색상을 바꾸는게 아니라 빛의 밝기를 조절하는 것이다)&lt;br /&gt;
-&lt;img src=&quot;https://1.bp.blogspot.com/-NEsWdHtOwHM/XrS8jvBIIyI/AAAAAAAAAq0/WfDDS8qtB1I_zKETrMLDZraACqkskNd3QCLcBGAsYHQ/s1600/darkmode_filter.png&quot; alt=&quot;img9&quot; /&gt;
-&lt;br /&gt;
-&lt;br /&gt;
-&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;사실 밝은 화이트톤이 최고인거 같다.&lt;br /&gt;
-근데 눈 건강에 안좋다면 괜찮은 다크모드를 쓰는 것도 좋지아니한가 ?&lt;br /&gt;
-다이나믹 모드를 사용하면 뿌연 보라색상이 마음에 안들어서 필터를 씌우고 사용한다.&lt;br /&gt;
-&lt;strong&gt;&lt;del&gt;(뿌연 색보단 밝은 핑크색이 낫지)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;마지막으로 깃허브를 다크모드를 감상해보자&lt;br /&gt;
-&lt;img src=&quot;https://1.bp.blogspot.com/-3px-3Q4b-_A/XrS8kLevm9I/AAAAAAAAAq4/Y5RBLQkWNrsfUixVX588RnoSzywWLDhHgCLcBGAsYHQ/s1600/darkmode_github.png&quot; alt=&quot;img10&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;오오옷 역시 좋아 ㅠㅠ&lt;br /&gt;
-역시 돈투자한 보람이 있군&lt;br /&gt;
-&lt;img src=&quot;/assets/images/Fun/prodo_thumb_up.png&quot; alt=&quot;img11&quot; /&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;으음, 처음엔 몰랐다..&lt;/em&gt;&lt;/strong&gt;&lt;br /&gt;
-+ 네이버 블로그는 Dynamic 모드로 다크모드 잘되는데 필터를 사용할 경우는 작동을 안한다.
-&lt;strong&gt;&lt;del&gt;(정보습득은 msdn, google, tistory로 하지만..)&lt;/del&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="다크모드" /><category term="DarkMode" /><category term="모하비" /><category term="Mojave" /><category term="다크리더" /><category term="DarkReader" /><category term="MacOS" /><category term="macOS" /><summary type="html">[MacOS] Mojave, Safari 다크모드 문제점 그리고 앱 추천 (이미지)</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;글 다썻다아 ~&lt;/strong&gt;&lt;/p&gt;</content><author><name>타스 (TARS-C)</name></author><category term="툴바" /><category term="Toolbar" /><category term="직렬화" /><category term="serialize" /><category term="serialization" /><category term="CArchive" /><summary type="html">[MFC][실습] Document CAcrchive 기본타입 및 객체 직렬화</summary></entry></feed>
