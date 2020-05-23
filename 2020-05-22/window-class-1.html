@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<link rel="shortcut icon" href="/assets/images/favicon_dark.ico" type="image/x-icon">
+<!-- begin _includes/seo.html --><title>[MFC/WINAPI] 윈도우 클래스 정보 구하기 (DWLP 미포함) - 타스의 개발 블로그</title>
+<meta name="description" content="GetClassName(), GetCalssInfo(), GetClassLong(), GetClassLongPtr(), GetWindowLong(), GetWindowLongPtr()">
+
+
+  <meta name="author" content="타스 (TARS-C)">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="타스의 개발 블로그">
+<meta property="og:title" content="[MFC/WINAPI] 윈도우 클래스 정보 구하기 (DWLP 미포함)">
+<meta property="og:url" content="https://tars-c.github.io/2020-05-22/window-class-1">
+
+
+  <meta property="og:description" content="GetClassName(), GetCalssInfo(), GetClassLong(), GetClassLongPtr(), GetWindowLong(), GetWindowLongPtr()">
+
+
+
+  <meta property="og:image" content="https://tars-c.github.io/assets/images/profile_tars200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-22T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-05-22T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://tars-c.github.io/2020-05-22/window-class-1">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "타스 (TARS-C)",
+      "url": "https://tars-c.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="타스의 개발 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/xeicon.min.css">
+
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+<meta name="google-site-verification" content="g-v4nitOjaIwCDktuCHo4KVSNkfjJuRQ0Nm_QDRcvPM" />
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          타스의 개발 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" >프로그래밍</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile_tars200.png" alt="타스 (TARS-C)" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">타스 (TARS-C)</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>탐구하며 노력하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea, KR</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a target="_blank" href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> 주인장에게 문의하기</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gv8vlln" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> C/C++ 입문 질문방</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gmpuVEJb" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> 현직 개발자들의수다</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[MFC/WINAPI] 윈도우 클래스 정보 구하기 (DWLP 미포함)">
+    <meta itemprop="description" content="GetClassName(), GetCalssInfo(), GetClassLong(), GetClassLongPtr(), GetWindowLong(), GetWindowLongPtr()">
+    <meta itemprop="datePublished" content="2020-05-22T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-22T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[MFC/WINAPI] 윈도우 클래스 정보 구하기 (DWLP 미포함)
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#서론">서론</a></li>
+  <li><a href="#getclassname">GetClassName()</a></li>
+  <li><a href="#getclassinfo">GetClassInfo()</a>
+    <ul>
+      <li><a href="#예시">예시</a></li>
+    </ul>
+  </li>
+  <li><a href="#getclasslong-함수">GetClassLong() 함수</a>
+    <ul>
+      <li><a href="#getclasslongptr-함수">GetClassLongPtr() 함수</a></li>
+    </ul>
+  </li>
+  <li><a href="#getwindowlong-함수">GetWindowLong() 함수</a>
+    <ul>
+      <li><a href="#getwindowlongptr-함수">GetWindowLongPtr() 함수</a></li>
+    </ul>
+  </li>
+  <li><a href="#정리">정리</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <h2 id="서론">서론</h2>
+<p>MFC에서 기본적으로 등록된 윈도우 클래스(WNDCLASS)를 알아야 하는 경우<br />
+또는 윈도우가 가진 속성이 필요할 때가 있다.</p>
+
+<p>윈도우에 등록된 정보나 가지고 있는 속성을 알기 위해서는 아래 함수들을 사용해야 한다.<br />
+MFC에서 지원하는 함수가 없기 때문에 <strong>WINAPI에서 제공하는 함수</strong>를 사용해야 한다.</p>
+
+<p><strong>함수들이 비슷하므로 내용이 반복될 수 있으니 유의바란다.</strong><br />
+<strong><del>나도 반복적인 내용을 쓰고 싶지가 않다.</del></strong></p>
+
+<h2 id="getclassname">GetClassName()</h2>
+<p>윈도우 핸들과 클래스 이름을 담을 변수와 크기를 적어준다.<br />
+CString 타입 변수에 클래스 이름을 담기 위해서는 버퍼가 미리 확장되어야 한다.<br />
+이 함수를 이용하면 핸들을 알고 있을 때 클래스 이름을 구할 수 있다.
+<br />
+<br />
+<br /></p>
+
+<h2 id="getclassinfo">GetClassInfo()</h2>
+<p>인스턴스 핸들과 클래스 이름 및 넘겨받을 윈도우 클래스 포인터를 적어준다.<br />
+이 함수를 이용하면 윈도우 초기에 등록된(RegisterClass) 윈도우 클래스 정보를 구할 수 있다.</p>
+
+<h3 id="예시">예시</h3>
+<figcaption>MFCApplicationView.cpp</figcaption>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="code"><pre><span class="kt">void</span> <span class="n">CProccessMonitorView</span><span class="o">::</span><span class="n">OnInitialUpdate</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">CFormView</span><span class="o">::</span><span class="n">OnInitialUpdate</span><span class="p">();</span>
+    <span class="n">GetParentFrame</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">RecalcLayout</span><span class="p">();</span>
+    <span class="n">ResizeParentToFit</span><span class="p">();</span>
+    <span class="c1">// =============================================================</span>
+    <span class="n">CWnd</span><span class="o">*</span> <span class="n">pButtonWnd</span> <span class="o">=</span> <span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_BUTTON1</span><span class="p">);</span>
+    <span class="n">TCHAR</span> <span class="n">className</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+    <span class="n">GetClassName</span><span class="p">(</span><span class="n">pButtonWnd</span><span class="o">-&gt;</span><span class="n">m_hWnd</span><span class="p">,</span> <span class="n">className</span><span class="p">,</span> <span class="mi">32</span><span class="p">);</span>
+
+    <span class="n">CWnd</span><span class="o">*</span> <span class="n">pText1</span> <span class="o">=</span> <span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_STATIC1</span><span class="p">);</span>
+    <span class="n">CString</span> <span class="n">str</span><span class="p">;</span>
+    <span class="n">str</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="n">_T</span><span class="p">(</span><span class="s">"버튼 핸들에 해당하는 클래스: %s"</span><span class="p">),</span> <span class="n">className</span><span class="p">);</span>
+    <span class="n">pText1</span><span class="o">-&gt;</span><span class="n">SetWindowTextW</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+    <span class="c1">// =============================================================</span>
+    <span class="n">WNDCLASS</span> <span class="n">wc</span><span class="p">;</span>
+    <span class="n">GetClassInfoW</span><span class="p">(</span><span class="n">theApp</span><span class="p">.</span><span class="n">m_hInstance</span><span class="p">,</span> <span class="n">className</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">wc</span><span class="p">);</span>
+
+    <span class="n">CWnd</span><span class="o">*</span> <span class="n">pText2</span> <span class="o">=</span> <span class="n">GetDlgItem</span><span class="p">(</span><span class="n">IDC_STATIC2</span><span class="p">);</span>
+    <span class="n">str</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="n">_T</span><span class="p">(</span><span class="s">"윈도우 클래스에 등록된 클래스: %s"</span><span class="p">),</span> <span class="n">wc</span><span class="p">.</span><span class="n">lpszClassName</span><span class="p">);</span>
+    <span class="n">pText2</span><span class="o">-&gt;</span><span class="n">SetWindowTextW</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p>결과:<br /></p>
+
+<p><img src="/assets/images/ClassInfo/getclassinfo_result.png" alt="img1" /></p>
+
+<p>GetClassName() 함수로 핸들을 이용하여 해당하는 클래스 이름을 구할 수 있고<br />
+GetClassInfo() 함수로 구했던 클래스 이름을 가지고 Register한 윈도우 클래스를 구할 수 있다.</p>
+
+<p>조금 더 다양한 함수를 알아보자.
+<br />
+<br />
+<br />
+<br /></p>
+
+<h2 id="getclasslong-함수">GetClassLong() 함수</h2>
+<p>WNDCLASS, WNDCLASSEX 구조체로 등록된 속성들을 가져올 수 있는 함수이다.<br />
+x86 환경에서 사용되는 함수이며 64비트 호환을 위해 GetClassLongPtr() 함수를 제공한다.<br />
+<strong><del>GetClassInfo() 함수와 상당히 흡사하다</del></strong></p>
+
+<p><strong>핸들과 정보를 얻을 속성 값을 인자로 넘겨준다.</strong><br />
+속성값은 편리하게 매크로를 사용할 수 있으며<br />
+사용되는 매크로는 함수의 앞 글자를 따서 GCL_ 로 시작된다.<br /></p>
+
+<p>정상적으로 함수 호출에 성공했다면 윈도우가 가진 해당 속성값을 반환한다.<br />
+오류 발생 시 반환값은 0이며 GetLastError() 함수를 이용해 오류 정보를 받아볼 수 있다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>매크로</td>
+      <td>설명</td>
+    </tr>
+    <tr>
+      <td>GCW_ATOM</td>
+      <td>RegisterClass() 함수가 윈도우 클래스 등록 후 리턴값</td>
+    </tr>
+    <tr>
+      <td>GCL_CBCLSEXTRA</td>
+      <td>클래스 여분 메모리 양 (cbClsExtra)</td>
+    </tr>
+    <tr>
+      <td>GCL_CBWNDEXTRA</td>
+      <td>윈도우 여분 메모리 양 (cbWndExtra)</td>
+    </tr>
+    <tr>
+      <td>GCL_HBRBACKGROUND</td>
+      <td>배경 브러쉬 핸들 (hbrBackground)</td>
+    </tr>
+    <tr>
+      <td>GCL_HCURSOR</td>
+      <td>커서 핸들 (hCursor)</td>
+    </tr>
+    <tr>
+      <td>GCL_HICON</td>
+      <td>아이콘 핸들 (hIcon)</td>
+    </tr>
+    <tr>
+      <td>GCL_HICONSM</td>
+      <td>작은 아이콘 핸들 (hIconSm)</td>
+    </tr>
+    <tr>
+      <td>GCL_HMODULE</td>
+      <td>응용 프로그램 인스턴스 핸들 (hInstance)</td>
+    </tr>
+    <tr>
+      <td>GCL_MENUNAME</td>
+      <td>뉴 리소스 문자열 (hMenu)</td>
+    </tr>
+    <tr>
+      <td>GCL_STYLE</td>
+      <td>윈도우 스타일 (style)</td>
+    </tr>
+    <tr>
+      <td>GCL_WNDPROC</td>
+      <td>윈도우 프로시저 (lpfnWndProc)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><del>Extra Class Memory 관련으로 사용할 수 있었다.. (지금은 메모리가 넉넉하다)</del></strong></p>
+
+<h3 id="getclasslongptr-함수">GetClassLongPtr() 함수</h3>
+<p>GetClassLong() 함수와 크게 다를 것이 없다.<br />
+다만, 일부 매크로 함수가 확장되었기 때문에 GCLP_ 로 시작되는 매크로를 사용해야 한다.<br />
+Visual Stduio 가 많이 좋아져서 WinUser.h를 보면 _WIN64 매크로를 감지하여<br />
+GCLP_ 매크로를 굳이 사용하지 않아도 자동으로 치환된다.</p>
+
+<p>x64 환경에서는 포인터 크기가 커졌기에<br />
+지원하는 매크로 리스트를 보면 주소 및 포인터 부분이 새롭게 확장되어 지원되고 있다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>매크로</td>
+      <td>설명</td>
+    </tr>
+    <tr>
+      <td>GCLP_HBRBACKGROUND</td>
+      <td>백그라운드 브러쉬 핸들</td>
+    </tr>
+    <tr>
+      <td>GCLP_HCURSOR</td>
+      <td>커서 핸들</td>
+    </tr>
+    <tr>
+      <td>GCLP_HICON</td>
+      <td>아이콘 핸들</td>
+    </tr>
+    <tr>
+      <td>GCLP_HICONSM</td>
+      <td>작은 아이콘 핸들</td>
+    </tr>
+    <tr>
+      <td>GCLP_HMODULE</td>
+      <td>응용 프로그램 인스턴스 핸들</td>
+    </tr>
+    <tr>
+      <td>GCLP_MENUNAME</td>
+      <td>메뉴 리소스 문자열</td>
+    </tr>
+    <tr>
+      <td>GCLP_WNDPROC</td>
+      <td>윈도우 프로시저</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+<br />
+<br /></p>
+
+<h2 id="getwindowlong-함수">GetWindowLong() 함수</h2>
+<p>CreateWindow() 함수로 윈도우를 생성할 때 등록된<br />
+해당 윈도우의 속성을 가져올 수 있는 함수이다.<br />
+x86 환경에서 사용되는 함수이며 64비트 호환을 위해 GetWindowLongPtr() 함수를 제공한다.</p>
+
+<p><strong>핸들과 정보를 얻을 속성 값을 인자로 넘겨준다.</strong><br />
+속성값은 편리하게 매크로를 사용할 수 있으며<br />
+사용되는 매크로는 함수의 앞 글자를 따서 GWL_ 로 시작된다.<br /></p>
+
+<p>정상적으로 함수 호출에 성공했다면 윈도우가 가진 해당 속성값을 반환한다.<br />
+오류 발생 시 반환값은 0이며 GetLastError() 함수를 이용해 오류 정보를 받아볼 수 있다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>매크로</td>
+      <td>설명</td>
+    </tr>
+    <tr>
+      <td>GWL_EXSTYLE</td>
+      <td>확장 윈도우 스타일(WS_EX…)</td>
+    </tr>
+    <tr>
+      <td>GWL_HINSTANCE</td>
+      <td>응용 프로그램 인스턴스 핸들</td>
+    </tr>
+    <tr>
+      <td>GWL_HWNDPARENT</td>
+      <td>부모 윈도우의 핸들</td>
+    </tr>
+    <tr>
+      <td>GWL_ID</td>
+      <td>윈도우의 ID 및 식별자 (resource.h)</td>
+    </tr>
+    <tr>
+      <td>GWL_STYLE</td>
+      <td>윈도우 스타일(WS_…)</td>
+    </tr>
+    <tr>
+      <td>GWL_USERDATA</td>
+      <td>창과 관련된 사용자 데이터 (창을 만든 응용프로그램에서 사용하기 위한 값)</td>
+    </tr>
+    <tr>
+      <td>GWL_WNDPROC</td>
+      <td>윈도우 프로시저 (CallWindowProc() 함수를 이용하여 프로시저 호출 가능)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><del>Extra Window Memory 관련으로 사용할 수 있었다.. (지금은 메모리가 넉넉하다)</del></strong></p>
+
+<h3 id="getwindowlongptr-함수">GetWindowLongPtr() 함수</h3>
+<p>GetWindowLong() 함수와 크게 다를 것이 없다.<br />
+다만, 일부 매크로 함수가 확장되었기 때문에 GWLP_ 로 시작되는 매크로를 사용해야 한다.<br />
+Visual Stduio 가 많이 좋아져서 WinUser.h를 보면 _WIN64 매크로를 감지하여<br />
+GWLP_ 매크로를 굳이 사용하지 않아도 자동으로 치환된다.<br /></p>
+
+<p>x64 환경에서는 포인터 크기가 커졌기에<br />
+지원하는 매크로 리스트를 보면 핸들 및 포인터 부분이 새롭게 확장되어 지원되고 있다.<br /></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>매크로</td>
+      <td>설명</td>
+    </tr>
+    <tr>
+      <td>GWLP_WNDPROC</td>
+      <td>윈도우 프로시저</td>
+    </tr>
+    <tr>
+      <td>GWLP_HINSTANCE</td>
+      <td>응용 프로그램 핸들</td>
+    </tr>
+    <tr>
+      <td>GWLP_HWNDPARENT</td>
+      <td>부모 윈도우 핸들</td>
+    </tr>
+    <tr>
+      <td>GWLP_USERDATA</td>
+      <td>사용자 데이터</td>
+    </tr>
+    <tr>
+      <td>GWLP_ID</td>
+      <td>윈도우 ID (resource.h)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br />
+<br />
+<br /></p>
+
+<h2 id="정리">정리</h2>
+<ol>
+  <li>GetClassName()
+    <ul>
+      <li>핸들을 가지고 있는 윈도우 클래스 이름을 버퍼에 저장함</li>
+      <li>윈도우 핸들과 버퍼로 쓰일 변수 및 크기를 인자로 요구함</li>
+      <li>CString 같은 동적 컨테이너인 경우 미리 버퍼 크기를 확장하여야함</li>
+    </ul>
+  </li>
+  <li>GetClassInfo()
+    <ul>
+      <li>클래스 이름을 이용하여 해당 인스턴스에 등록된 윈도우 클래스구조체(WNDCLASS) 정보를 가져옴</li>
+      <li>인스턴스 핸들, 클래스 이름, 윈도우 클래스 정보를 받을 포인터를 인자로 요구함</li>
+    </ul>
+  </li>
+  <li>GetClassLong()
+    <ul>
+      <li>WNDCLASS, WNDCLASSEX 구조체에 등록된 속성 정보를 가져옴</li>
+      <li>핸들과 정보를 얻을 속성(매크로)값을 인자로 요구함</li>
+      <li>x86 함수이므로 x64 환경에선 GetClassLongPtr() 함수를 사용해야함 (매크로 자동치환)</li>
+      <li>리소스 정보를 가져올 수 있음(메뉴, 아이콘, 커서)</li>
+      <li>백그라운드 브러쉬 핸들을 가져올 수 있음</li>
+    </ul>
+  </li>
+  <li>GetWindowLong()
+    <ul>
+      <li>CreateWindow() 함수 호출 시에 사용된 윈도우 관련 속성 정보를 가져옴</li>
+      <li>핸들과 정보를 얻을 속성(매크로)값을 인자로 요구함</li>
+      <li>x86 함수이므로 x64 환경에선 GetWindowLongPtr() 함수를 사용해야함 (매크로 자동치환)</li>
+      <li>부모의 핸들을 가져올 수 있음</li>
+      <li>확장 스타일(WS_EX_…) 정보를 가져올 수 있음</li>
+    </ul>
+  </li>
+</ol>
+
+<p><br />
+<br />
+<br /></p>
+
+<p><strong>글 다 썻다아 ~</strong></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#getclassinfo" class="page__taxonomy-item" rel="tag">GetClassInfo</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#getclasslongptr" class="page__taxonomy-item" rel="tag">GetClassLongPtr</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#getclasslong" class="page__taxonomy-item" rel="tag">GetClassLong</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#getclassname" class="page__taxonomy-item" rel="tag">GetClassName</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#getwindowlongptr" class="page__taxonomy-item" rel="tag">GetWindowLongPtr</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#getwindowlong" class="page__taxonomy-item" rel="tag">GetWindowLong</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#registerclass" class="page__taxonomy-item" rel="tag">RegisterClass</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%9D%B4%EB%A6%84%EA%B5%AC%ED%95%98%EA%B8%B0" class="page__taxonomy-item" rel="tag">이름구하기</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%A0%95%EB%B3%B4%EA%B5%AC%ED%95%98%EA%B8%B0" class="page__taxonomy-item" rel="tag">정보구하기</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#mfc" class="page__taxonomy-item" rel="tag">MFC</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" class="page__taxonomy-item" rel="tag">프로그래밍</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-22">May 22, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5BMFC%2FWINAPI%5D+%EC%9C%88%EB%8F%84%EC%9A%B0+%ED%81%B4%EB%9E%98%EC%8A%A4+%EC%A0%95%EB%B3%B4+%EA%B5%AC%ED%95%98%EA%B8%B0+%28DWLP+%EB%AF%B8%ED%8F%AC%ED%95%A8%29%20https%3A%2F%2Ftars-c.github.io%2F2020-05-22%2Fwindow-class-1" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020-05-22%2Fwindow-class-1" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020-05-22%2Fwindow-class-1" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2020-05-22/modifier-key-issue-trytry" class="pagination--pager" title="[삽질기] Shift, Ctrl, Alt 보조키 반복키 인식 문제
+">Previous</a>
+    
+    
+      <a href="/2020-05-23/window-class-2" class="pagination--pager" title="[MFC/WINAPI] 윈도우 클래스 정보 변경하기 (DWLP 미포함)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">Well begun is half done, aristotle</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-23/window-class-2" rel="permalink">[MFC/WINAPI] 윈도우 클래스 정보 변경하기 (DWLP 미포함)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 23 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">SetClassLong(), SetClassLongPtr(), SetWindowLong(), SetWindowLongPtr()
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-22/modifier-key-issue-trytry" rel="permalink">[삽질기] Shift, Ctrl, Alt 보조키 반복키 인식 문제
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 22 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[삽질기] Shift, Ctrl, Alt 보조키 반복키인식 문제
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-20/sketch-ball" rel="permalink">[MFC] 공 튀기기, 땡겨서 이동시키기 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 20 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC] 공 튀기기, 땡겨서 이동시키기 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-18/mfc-subclassing" rel="permalink">[MFC][실습] Subclassing (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 18 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] Subclassing (이미지)
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Support</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">Copyright 2020 타스 (TARS-C). Powered by <a href="https://github.com" rel="nofollow">Github.</a></div>
+      </footer>
+    </div>
+
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/assets/js/notify.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/4eee35f757.js"></script> -->
+  <script src="https://kit.fontawesome.com/194998b224.js" crossorigin="anonymous"></script>
+  <script data-ad-client="ca-pub-2361575299096846" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://tars-c.github.io/2020-05-22/window-class-1";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020-05-22/윈도우 클래스 정보 구하기"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tars-c-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+
+
+
+
+
+  </body>
+</html>

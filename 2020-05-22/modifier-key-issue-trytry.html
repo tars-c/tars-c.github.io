@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<link rel="shortcut icon" href="/assets/images/favicon_dark.ico" type="image/x-icon">
+<!-- begin _includes/seo.html --><title>[삽질기] Shift, Ctrl, Alt 보조키 반복키 인식 문제 - 타스의 개발 블로그</title>
+<meta name="description" content="[삽질기] Shift, Ctrl, Alt 보조키 반복키인식 문제">
+
+
+  <meta name="author" content="타스 (TARS-C)">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="타스의 개발 블로그">
+<meta property="og:title" content="[삽질기] Shift, Ctrl, Alt 보조키 반복키 인식 문제">
+<meta property="og:url" content="https://tars-c.github.io/2020-05-22/modifier-key-issue-trytry">
+
+
+  <meta property="og:description" content="[삽질기] Shift, Ctrl, Alt 보조키 반복키인식 문제">
+
+
+
+  <meta property="og:image" content="https://tars-c.github.io/assets/images/profile_tars200.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-22T00:00:00+09:00">
+
+
+
+  <meta property="article:modified_time" content="2020-05-22T00:00:00+09:00">
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://tars-c.github.io/2020-05-22/modifier-key-issue-trytry">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "타스 (TARS-C)",
+      "url": "https://tars-c.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="타스의 개발 블로그 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/xeicon.min.css">
+
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+<meta name="google-site-verification" content="g-v4nitOjaIwCDktuCHo4KVSNkfjJuRQ0Nm_QDRcvPM" />
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          타스의 개발 블로그
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/" >블로그 방문하기</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/" >프로그래밍</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/profile_tars200.png" alt="타스 (TARS-C)" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">타스 (TARS-C)</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>탐구하며 노력하는 개발자</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Contact</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea, KR</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a target="_blank" href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> 주인장에게 문의하기</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gv8vlln" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> C/C++ 입문 질문방</a></li>
+          
+        
+          
+            <li><a target="_blank" href="https://open.kakao.com/o/gmpuVEJb" rel="nofollow noopener noreferrer"><i class="xi-kakaotalk xi-x" aria-hidden="true"></i> 현직 개발자들의수다</a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="[삽질기] Shift, Ctrl, Alt 보조키 반복키 인식 문제">
+    <meta itemprop="description" content="[삽질기] Shift, Ctrl, Alt 보조키 반복키인식 문제">
+    <meta itemprop="datePublished" content="2020-05-22T00:00:00+09:00">
+    <meta itemprop="dateModified" content="2020-05-22T00:00:00+09:00">
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">[삽질기] Shift, Ctrl, Alt 보조키 반복키 인식 문제
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 빠른 링크 (Link!)</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#서론">서론</a></li>
+  <li><a href="#문제점">문제점</a>
+    <ul>
+      <li><a href="#문제-해결-시도">문제 해결 시도</a></li>
+      <li><a href="#도움-요청">도움 요청</a></li>
+    </ul>
+  </li>
+  <li><a href="#원인1-절전모드">원인1: 절전모드</a></li>
+  <li><a href="#원인2-키보드-호환">원인2: 키보드 호환</a></li>
+  <li><a href="#해결-방안">해결 방안</a>
+    <ul>
+      <li><a href="#절전모드-해제">절전모드 해제</a></li>
+      <li><a href="#키-반복-반응속도-변경">키 반복 반응속도 변경</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
+        
+        <h2 id="서론">서론</h2>
+<p>CTRL, SHIFT, ALT 키는 윈도우즈에서 보조키라고 불린다.<br />
+보조키도 일반 키보드와 똑같이 꾹 누르고 있을 때 <strong>계속 메시지가 처리</strong>되어야한다.</p>
+
+<p>누군가 말하기 전까지 나는 알지 못했다.<br />
+어떤 키보드를 누르고 있을 땐 메시지가 계속 처리되야 한다는 걸</p>
+
+<p>WM_KEYDOWN 메시지를 처리하는 OnKeyDown 핸들러에서<br />
+키가 눌렀을 때를 감지하기 위해서 고군분투하며 5시간을 허비했다.</p>
+
+<p>더 늦게 말씀해주셨다면 하루 이상 소비하지 않았을까…<br />
+도움을 주신분들께 모두 정말 감사합니다.</p>
+
+<h2 id="문제점">문제점</h2>
+<p>VK_BACK은 백스페이스의 가상 키코드이다.<br />
+VK_SPACE는 스페이스바의 가상 키코드이다.</p>
+
+<p>백스페이스 키와 스페이스바 키를 누르고 있을 때에는 계속해서 메시지가 발생한다.<br />
+이를 반복키라고 표현하겠다. 그리고 위 두 키에는 반복키가 적용이 되고 있다.
+다른 키를 눌러도 반복키는 적용 되어야한다.<br /></p>
+
+<p>하지만 SHIFT 키를 누를 시 메시지가 한번 밖에 발생되지 않고 있다.<br />
+즉, 반복키가 적용되지 않는다.</p>
+
+<p>더 심각한건 누를 때가 아니라 키보드에서 손을 떌 때 핸들러가 호출되고 있었다.<br />
+그리고 난 위 방식처럼 작동되는 것이 윈도우즈 10에서 정해진 약속이다 라고 생각했다.</p>
+
+<p>Shift, Ctrl 키는 특수한 키니까… 당연히 이렇게 작동이 되겠지 라고<br />
+계속.. 계속.. 이상한 약속을 하며 나는 개발에 집중했다.</p>
+
+<h3 id="문제-해결-시도">문제 해결 시도</h3>
+<p>개발을 진행해 나아가면서<br />
+눌렀을 때를 감지해야하므로 키 인식을 해야하기 때문에<br />
+GetAsyncKeyState() GetKeyState() Accelerator() 등 모두 사용해보고<br />
+조건문도 바꾸고 다른 함수도 찾아보고 stackoverflow 관련 이슈도 찾으면서 별짓을 다해봤다.</p>
+
+<p>근데 아무리 해봐도 키를 누를 때를 감지하지 못했다.<br />
+아직 부족한 지식으로 검색을 통해 후킹을 시도해보기도 해봤다.<br />
+하지만 문제를 해결하기에는 역부족이었다.</p>
+
+<h3 id="도움-요청">도움 요청</h3>
+<p>혹시 몰라서 카카오톡 개발방에 도움을 부탁드렸다.</p>
+
+<p>방에서는 여러방법들을 제안해주셨지만 해결책으론 부족했다.<br />
+지쳐있는 중에 <code class="highlighter-rouge">윈도우 잡부</code> 라는 닉네임을 가지신 분께서 정말 큰 도움을 주셨다.<br />
+윈도우 잡부: (직접 테스트 코드를 보여주시면서) 저는 정상 작동 하는데요<br />
+나: (당황하며) 혹시 SHIFT 키를 누르고 계실 때 계속해서 메시지가 호출되나요 ?<br />
+윈도우 잡부: 네 아주 잘되는데요.</p>
+
+<p>윈도우즈10에서 작동 되는지 확인하기 위해 아버지가 사용중이신 컴퓨터를 잠시 빌려 테스트해봤다.<br />
+확인해보니까.. SHIFT 키를 누르고 있으면 메시지 핸들러가 계속 호출되고 있는 것이다.<br />
+<strong><del>충격 그자체였다.</del></strong></p>
+
+<h2 id="원인1-절전모드">원인1: 절전모드</h2>
+<p>결국에 내가 사용중인 운영체제 환경이 잘못된 것이 맞았다.<br />
+<strong><del>지금까지 윈도우 환경이랑 100% 같은 줄 알았는데 아니었다.</del></strong></p>
+
+<p>근본적인 문제는 윈도우즈10을 구동시키는 가상머신이 문제였다.<br />
+키보드 설정하는 부분에서 게임으로 최적화 하여 반응속도를 빠르게 해놨어야 했는데<br />
+배터리 아낀다는 걸 중요하게 여겨서 모두 최대 절전을 해버린 것이다.<br />
+이정도로 키보드 반응속도 까지 조절할 줄이야…
+<strong><del>가상먼신 기술에 감탄한다</del></strong></p>
+
+<p>옵션을 게임 최적화로 바꾸어 보고 재부팅 후 테스트해봤다.<br />
+키보드를 누르자마자 메시지가 핸들러가 호출된다.<br />
+문제는 한가지 더 남아있었다.</p>
+
+<h2 id="원인2-키보드-호환">원인2: 키보드 호환</h2>
+<p>첫번째 문제를 해결했지만<br />
+또 다른 문제점은 누르고 있을 때 메시지가 반복되지 않는다는 것이다.<br />
+즉, 반복키가 적용되지 않고 있다.</p>
+
+<p>눌렀을 때에만 감지해도 프로그램 개발하는데 문제는 없을 것 같지만<br />
+윈도우즈10 사용자와 똑같은 환경에서 개발해야하는게 당연한거 아닌가라는 생각이 들었다.</p>
+
+<p>구글에서 찾아봤는데 키보드 호환 문제로 일부 노트북에서 반복키가 설정되지 않는다는 것이다.<br />
+윈도우즈에서는 키보드 호환 문제를 필터키라는 기능으로 개선 방안을 마련해준다.</p>
+
+<p>그리고 필터키를 사용함으로 써 키가 눌리고 있을 대 키보드의 반응 속도를 설정할 수 있었고<br />
+키를 누르고 있으면 계속해서 메시지가 처리가 되지 않았던 문제를 해결했다.</p>
+
+<h2 id="해결-방안">해결 방안</h2>
+
+<h3 id="절전모드-해제">절전모드 해제</h3>
+<ol>
+  <li>키보드 속도 개선
+    <ul>
+      <li>윈도우즈10 구성 -&gt; 마우스 및 키보드로 이동
+        <ul>
+          <li>키보드: [✔]게임에 적합한 최적화</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>단축키 충돌 방지
+    <ul>
+      <li>앱 환경설정(⌘ + ,) -&gt; 단축키로 -&gt; Windows10 클릭
+        <ul>
+          <li>⇧ 에서 SHIFT로 등록</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>단축키 속도 개선
+    <ul>
+      <li>윈도우즈10 구성 -&gt; 부트 순서 -&gt; 외부 부팅장치 -&gt; 고급설정으로 이동
+        <ul>
+          <li>부트 플래그 추가: devices.kbd.end_delay=10</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>참고 사이트: <a href="https://kb.parallels.com/123602" target="_blank">Parallels: Shift key is not working inside Windows computer connected by RDP</a></p>
+
+<h3 id="키-반복-반응속도-변경">키 반복 반응속도 변경</h3>
+<ol>
+  <li>필터키 켜 ㅇ기
+    <ul>
+      <li>제어판(큰 아이콘) -&gt; 접근성 센터 -&gt; 키보드를 사용하기 쉽게 설정 -&gt; 필터 키 설정
+        <ul>
+          <li>[✔]필터 키 켜기</li>
+        </ul>
+      </li>
+      <li>바로 가기 키
+        <ul>
+          <li>모두 체크 해제</li>
+        </ul>
+      </li>
+      <li>필터 옵션
+        <ul>
+          <li>[✔]반복 키 및 느린켜기</li>
+        </ul>
+      </li>
+      <li>기타 설정
+        <ul>
+          <li>모두 체크 해제</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>반복 키 및 느린키 설정으로 이동하여 다음과 같이 설정한다.
+    <ul>
+      <li>[✔]키 반복 속도 늦춤
+        <ul>
+          <li>0.3초</li>
+          <li>0.3초</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>레지스트리를 이용한 키보드 반응속도 변경
+    <ul>
+      <li>기본적으로 설정된 반응 속도는 조금 느리다.</li>
+      <li>빠르게 변경하려면 레지스트리 수정을 해야한다.</li>
+      <li>레지스트리 편집기(regedit)를 열어 다음과 같이 설정한다.
+        <ul>
+          <li>컴퓨터\HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response 이동</li>
+          <li>AutoRepeatDelay 200 ~ 250</li>
+          <li>AutoRepeatRate: 10 ~ 50</li>
+          <li>Last Valid Delay: 200 ~ 250 (10진수)</li>
+          <li>Last Valid Repeat: 10 ~ 50 (10진수)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>참고 사이트: <a href="https://renelemon.tistory.com/65?category=897645" target="_blank">뱃푸와 레몬 티스토리</a></p>
+
+<p>주의사항은 접근성 센터에서 설정을 덮었으면 다시 레지스트리를 수정해야한다.<br />
+레지스트리를 변경했다면 재부팅은 필수다.<br /></p>
+
+<p>다음 아래 코드로 누를 때 마다 키가 눌리는지 테스트해보자</p>
+<figcaption>KeyTest.cpp</figcaption>
+
+<figure class="highlight"><pre><code class="language-c--" data-lang="c++"><table class="rouge-table"><tbody><tr><td class="gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre><span class="c1">// KeyTest.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.</span>
+<span class="c1">//</span>
+<span class="cp">#include &lt;iostream&gt;
+#include &lt;windows.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="k">while</span> <span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">GetKeyState</span><span class="p">(</span><span class="n">VK_SHIFT</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Press Shift!</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">Sleep</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></figure>
+
+<p><strong>이로써 반복키 문제는 해결했다.</strong></p>
+
+<p><strong>글 다 썻다아 ~</strong></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#alt" class="page__taxonomy-item" rel="tag">ALT</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#ctrl" class="page__taxonomy-item" rel="tag">CTRL</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#keyboard" class="page__taxonomy-item" rel="tag">keyboard</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#modifier" class="page__taxonomy-item" rel="tag">modifier</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#shift" class="page__taxonomy-item" rel="tag">SHIFT</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%B0%98%EB%B3%B5" class="page__taxonomy-item" rel="tag">반복</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%B0%98%EB%B3%B5%ED%82%A4" class="page__taxonomy-item" rel="tag">반복키</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EB%B3%B4%EC%A1%B0%ED%82%A4" class="page__taxonomy-item" rel="tag">보조키</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%82%BD%EC%A7%88%EA%B8%B0" class="page__taxonomy-item" rel="tag">삽질기</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%89%AC%ED%94%84%ED%8A%B8" class="page__taxonomy-item" rel="tag">쉬프트</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%95%8C%ED%8A%B8" class="page__taxonomy-item" rel="tag">알트</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%97%B0%ED%83%80" class="page__taxonomy-item" rel="tag">연타</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%9D%B8%EC%8B%9D" class="page__taxonomy-item" rel="tag">인식</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%EC%BB%A8%ED%8A%B8%EB%A1%A4" class="page__taxonomy-item" rel="tag">컨트롤</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%82%A4%EB%B3%B4%EB%93%9C" class="page__taxonomy-item" rel="tag">키보드</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#%EC%82%BD%EC%A7%88%EA%B8%B0" class="page__taxonomy-item" rel="tag">삽질기</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" class="page__taxonomy-item" rel="tag">프로그래밍</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-22">May 22, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%5B%EC%82%BD%EC%A7%88%EA%B8%B0%5D+Shift%2C+Ctrl%2C+Alt+%EB%B3%B4%EC%A1%B0%ED%82%A4+%EB%B0%98%EB%B3%B5%ED%82%A4+%EC%9D%B8%EC%8B%9D+%EB%AC%B8%EC%A0%9C%20https%3A%2F%2Ftars-c.github.io%2F2020-05-22%2Fmodifier-key-issue-trytry" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftars-c.github.io%2F2020-05-22%2Fmodifier-key-issue-trytry" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Ftars-c.github.io%2F2020-05-22%2Fmodifier-key-issue-trytry" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2020-05-20/sketch-ball" class="pagination--pager" title="[MFC] 공 튀기기, 땡겨서 이동시키기 (이미지)
+">Previous</a>
+    
+    
+      <a href="/2020-05-22/window-class-1" class="pagination--pager" title="[MFC/WINAPI] 윈도우 클래스 정보 구하기 (DWLP 미포함)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">Well begun is half done, aristotle</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-23/window-class-2" rel="permalink">[MFC/WINAPI] 윈도우 클래스 정보 변경하기 (DWLP 미포함)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 23 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">SetClassLong(), SetClassLongPtr(), SetWindowLong(), SetWindowLongPtr()
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-22/window-class-1" rel="permalink">[MFC/WINAPI] 윈도우 클래스 정보 구하기 (DWLP 미포함)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 22 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">GetClassName(), GetCalssInfo(), GetClassLong(), GetClassLongPtr(), GetWindowLong(), GetWindowLongPtr()
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-20/sketch-ball" rel="permalink">[MFC] 공 튀기기, 땡겨서 이동시키기 (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 20 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC] 공 튀기기, 땡겨서 이동시키기 (이미지)
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-05-18/mfc-subclassing" rel="permalink">[MFC][실습] Subclassing (이미지)
+</a>
+      
+    </h2>
+    <!--     
+    
+  -->
+  
+  <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> May 18 2020</p>
+  
+  
+  <p class="archive__item-excerpt" itemprop="description">[MFC][실습] Subclassing (이미지)
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Contact:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:securemem@icloud.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Support</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+<div class="page__footer-copyright">Copyright 2020 타스 (TARS-C). Powered by <a href="https://github.com" rel="nofollow">Github.</a></div>
+      </footer>
+    </div>
+
+    
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="/assets/js/notify.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/4eee35f757.js"></script> -->
+  <script src="https://kit.fontawesome.com/194998b224.js" crossorigin="anonymous"></script>
+  <script data-ad-client="ca-pub-2361575299096846" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://tars-c.github.io/2020-05-22/modifier-key-issue-trytry";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020-05-22/Shift, Ctrl, Alt 보조키 반복키인식 문제"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://tars-c-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  
+
+
+
+
+
+
+  </body>
+</html>
